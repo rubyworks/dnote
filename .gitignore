@@ -1,0 +1,6 @@
+.cache
+log
+doc/qedoc
+doc/rdoc
+doc/ri
+MANIFEST

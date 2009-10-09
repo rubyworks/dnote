@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+newgem = Dir['pkg/rdazzle-*.gem'].sort.last
+
+system "sudo gem uninstall rdazzle"
+system "syckle package -s rdoc"
+system "sudo gem install #{newgem}"
+

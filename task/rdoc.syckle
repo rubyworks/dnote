@@ -1,0 +1,11 @@
+---
+rdoc:
+  service  : RDoc
+  templib  : rdazzle
+  template : redfish
+  include  : [ lib, README.rdoc, LICENSE ]
+  exclude  : [ "lib/dnote/template" ]
+  main     : ~
+  extra    : ~
+  active   : true
+

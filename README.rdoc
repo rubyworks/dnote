@@ -1,0 +1,50 @@
+= D'Note
+
+* http://proutils.github.com/dnote
+* http://github.com/proutils/dnote
+
+
+== DESCRIPTION
+
+Extract developement notes from source code and make some pretty RDoc and/or HTML
+formatted files out of them.
+
+
+== SYNOPSIS
+
+Developer notes it the source code must be formate as follows: 
+
+  # TYPE: description ...
+  #       ... cont ...
+
+All notes must be separated by a blank line. Eg.
+
+  # TYPE: description ...
+  # 
+  # TYPE: description ...
+
+Without the blank line the second note will be taken to be part of the first.
+Any description that takes up more than one line must remain flush to the left
+margin (if the first line is flush to the left margin too) b/c RDoc will mistake
+of formatting the remaining lines as a +pre+ block it if is not. So...
+
+  # TYPE: ... description ...
+  # continue ...
+
+Alternately the whole note can be a +pre+ block by indenting them. Then the
+layout if freed-up.
+
+  # This is a description of something...
+  #
+  #   TYPE: description ...
+  #         continued ...
+
+
+== COPYRIGHTS
+
+(GPL Licensed)
+
+Copyright (c) 2006, 2009 Thomas Sawyer
+
+[INSERT NOTICE HERE]
+
