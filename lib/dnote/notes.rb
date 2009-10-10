@@ -302,7 +302,8 @@ module DNote
       xml = []
       xml << %[<div class="notes">]
       notes.each do |label, per_file|
-        xml << %[<h2>#{label}</h2>\n<ol class="set #{label.downcase}">]
+        xml << %[<h2>#{label}</h2>]
+        xml << %[<ol class="set #{label.downcase}">]
         per_file.each do |file, line_notes|
           xml << %[<li><h3><a href="#{file}">#{file}</a></h3><ol class="file" href="#{file}">]
           line_notes.sort!{ |a,b| a[0] <=> b[0] }
@@ -312,7 +313,7 @@ module DNote
           end
           xml << %[</ol></li>]
         end
-        xml << %[</div>]
+        xml << %[</ol>]
       end
       xml << "</div>"
       return xml.join("\n")
