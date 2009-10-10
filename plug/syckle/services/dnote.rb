@@ -17,7 +17,7 @@ module Syckle::Plugins
   #--
   # TODO: Should this service be part of the +site+ cycle?
   #++
-  class DNotes < Service
+  class DNote < Service
 
     cycle :main, :document
     cycle :main, :reset
@@ -35,7 +35,7 @@ module Syckle::Plugins
 
     # autorun if log/notes exists
     autorun do |project|
-      (project.log + 'notes').exists?
+      (project.log + 'notes').exist?
     end
 
     # Default note labels to looked for in source code.
