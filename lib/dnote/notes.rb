@@ -58,14 +58,14 @@ module DNote
       initialize_defaults
 
       if paths.empty?
-        if file = File.exist?('meta/loadpath')
-          paths = YAML.load(File.new(file)).to_list
-          paths = Array === paths ? paths : paths.split(/\s+/)
-        elsif file = File.exist?('lib')
-          paths = ['lib']
-        else
+        #if file = File.exist?('meta/loadpath')
+        #  paths = YAML.load(File.new(file)).to_list
+        #  paths = Array === paths ? paths : paths.split(/\s+/)
+        #elsif file = File.exist?('lib')
+        #  paths = ['lib']
+        #else
           paths = ['**/*.rb']
-        end
+        #end
       end
 
       @paths = paths
@@ -78,7 +78,7 @@ module DNote
     #
     def initialize_defaults
       @paths    = ['lib']
-      @output   = DEFAULT_OUTPUT
+      #@output   = DEFAULT_OUTPUT
       @labels   = DEFAULT_LABELS
       @title    = "Developer's Notes"
       #@format   = 'xml'
@@ -136,13 +136,21 @@ module DNote
       if notes.empty?
         puts "No #{labels.join(', ')} notes."
       else
-        templates.each do |template|
-          erb  = ERB.new(File.read(template))
+        if output
+          templates.each do |template|
+            erb  = ERB.new(File.read(template))
+            text = erb.result(binding)
+            #text = format_notes(notes, format)
+            file = write(File.basename(template), text)
+            #file = file #Pathname.new(file).relative_path_from(Pathname.pwd) #project.root
+            puts "Updated #{file}"
+          end
+        else
+          temp = templates.find{ |f| /rdoc$/ =~ f }
+          erb  = ERB.new(File.read(temp))
           text = erb.result(binding)
-          #text = format_notes(notes, format)
-          file = write(File.basename(template), text)
-          #file = file #Pathname.new(file).relative_path_from(Pathname.pwd) #project.root
-          puts "Updated #{file}"
+          puts text
+          puts
         end
         puts(counts.map{|l,n| "#{n} #{l}s"}.join(', '))
       end
@@ -286,7 +294,7 @@ module DNote
       notes.each do |label, per_file|
         out << %[\n== #{label}]
         per_file.each do |file, line_notes|
-          out << %[\n=== file://#{file}]
+          out << %[\n=== file://#{file}\n]
           line_notes.sort!{ |a,b| a[0] <=> b[0] }
           line_notes.each do |line, note|
             out << %[* #{note} (#{line})]
