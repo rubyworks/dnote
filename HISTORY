@@ -1,0 +1,23 @@
+= RELEASE HISTORY
+
+== 0.9 / 2009-10-10
+
+This release adds a syckle plugin and improves output.
+
+Changes:
+
+* Add syckle plugin, based on old Notes plugin.
+* Improved HTML output (</div> tag should have been </ol>).
+* If output not specified, sends rdoc to stdout.
+* If no paths specified, will scan '**/*.rb'
+
+== 0.8 / 2009-10-09
+
+This is the initial release of DNote. DNote is a spin-off
+of a Syckle (formerlly Reap) plugin which scans source
+code and compiles a list of developer notes.
+
+Changes:
+
+* Happy Birthday!
+
