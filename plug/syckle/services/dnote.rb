@@ -53,16 +53,21 @@ module Syckle::Plugins
     # Formats (xml, html, rdoc).
     #attr_accessor :formats
 
+    def output=(path)
+      @output = Pathname.new(path)
+    end
+
     #
     def dnote
-      @dnote ||= (
-        ::DNote.new(files, :output=>output, :labels=>labels, :noop=>noop?, :verbose=>verbose?)
-      )
+      @dnote ||= ::DNote.new(files, :labels=>labels, :verbose=>verbose?)
     end
 
     # Generate notes documents.
     def document
-      dnote.document
+      mkdir_p(output)
+      file = output + "index.html"
+      File.open(file, 'w'){ |f| f << dnote.to_html }
+      report "Updated #{file.to_s.sub(Dir.pwd+'/','')}"
     end
 
     # Mark notes documents as out-of-date.
@@ -80,7 +85,7 @@ module Syckle::Plugins
     #
     def initialize_defaults
       @files  = metadata.loadpath || 'lib'
-      @output = project.log + 'notes'
+      @output = project.log + 'dnote'
       @labels = DEFAULT_LABELS
     end
 
