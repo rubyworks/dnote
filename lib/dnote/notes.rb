@@ -1,7 +1,6 @@
 require 'rexml/text'
 require 'pathname'
 require 'erb'
-#require 'reap/project/scm'
 
 module DNote
 
@@ -29,16 +28,7 @@ module DNote
     DEFAULT_LABELS = ['TODO', 'FIXME', 'OPTIMIZE', 'DEPRECATE']
 
     #
-    #DEFAULT_OUTPUT = Pathname.new('log/notes')
-
-    #
     attr_accessor :title
-
-    # Non-Operative
-    #attr_accessor :noharm
-
-    # Verbose
-    attr_accessor :verbose
 
     # Paths to search.
     attr_accessor :paths
@@ -46,51 +36,23 @@ module DNote
     # Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
     attr_accessor :labels
 
-    # Directory or file to save output.
-    # Defaults is current working directory.
-    #attr_accessor :output
-
-    # Format (xml, html, text).
-    #attr_accessor :format
-
     #
     def initialize(paths, options={})
       initialize_defaults
-
-      if paths.empty?
-        #if file = File.exist?('meta/loadpath')
-        #  paths = YAML.load(File.new(file)).to_list
-        #  paths = Array === paths ? paths : paths.split(/\s+/)
-        #elsif file = File.exist?('lib')
-        #  paths = ['lib']
-        #else
-          paths = ['**/*.rb']
-        #end
-      end
-
-      @paths = paths
-
       options.each do |k, v|
         __send__("#{k}=", v)
       end
-
+      #@paths = ['**/*.rb'] if @paths.empty?
       parse
     end
 
     #
     def initialize_defaults
-      @paths    = ["lib"]
-      #@output   = DEFAULT_OUTPUT
       @labels   = DEFAULT_LABELS
+      @paths    = ["**/*.rb"]
       @title    = "Developer's Notes"
       @format   = "rdoc"
     end
-
-    #
-    def noharm?  ; @noharm  ; end
-
-    #
-    def verbose? ; @verbose ; end
 
     #
     def notes
@@ -102,12 +64,7 @@ module DNote
       @counts
     end
 
-    #
-    #def templates
-    #  @templates ||= Dir[File.join(File.dirname(__FILE__), 'template/*')]
-    #end
-
-    # Scans source code for developer notes and writes them to 
+    # Scans source code for developer notes and writes them to
     # well organized files.
     #
     def display(format)
@@ -154,22 +111,6 @@ module DNote
       end
     end
 
-    # Reset output directory, marking it as out-of-date.
-    #def reset
-    #  if File.directory?(output)
-    #    File.utime(0,0,output)
-    #    puts "marked #{output}"
-    #  end
-    #end
-
-    # Remove output directory.
-    #def clean
-    #  if File.directory?(output)
-    #    fu.rm_r(output)
-    #    puts "removed #{output}"
-    #  end
-    #end
-
     #
     def labels=(labels)
       @labels = (
@@ -182,17 +123,9 @@ module DNote
       )
     end
 
-    #
-    #def output=(path)
-    #  raise "output cannot be root" if File.expand_path(output) == "/"
-    #  @output = Pathname.new(output)
-    #end
-
     # Gather and count notes. This returns two elements,
     # a hash in the form of label=>notes and a counts hash.
-
     def parse
-      #
       files = self.paths.map do |path|
         if File.directory?(path)
           Dir.glob(File.join(path, '**/*'))
@@ -256,9 +189,9 @@ module DNote
     end
 
     #
-    #def format_notes(notes, type=:rdoc)
-    #  send("format_#{type}", notes)
-    #end
+    def to(format)
+      __send__("to_#{format}")
+    end
 
     # Format notes in RDoc format.
     #
@@ -364,34 +297,6 @@ module DNote
     def to_json
       require 'json'
       notes.to_json
-    end
-
-    # Save notes.
-    #
-    def write(text, format)
-      if output.directory?
-        file = output + "notes.#{format}"
-      else
-        file = Pathname.new(output)
-      end
-      fu.mkdir_p(file.parent)
-      File.open(file, 'w') { |f| f << text } unless noharm?
-      file
-    end
-
-    #
-    def fu
-      @fu ||= (
-        if noop? and verbose?
-          FileUtils::DryRun
-        elsif noop
-          FileUtils::Noop
-        elsif verbose
-          FileUtils::Verbose
-        else
-          FileUtils
-        end
-      )
     end
 
     HTML_CSS = <<-HERE
