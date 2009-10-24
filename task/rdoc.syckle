@@ -1,7 +1,6 @@
 ---
 rdoc:
   service  : RDoc
-  templib  : rdazzle
   template : redfish
   include  : [ lib, plug, README.rdoc, LICENSE ]
   exclude  : [ "lib/dnote/template" ]
