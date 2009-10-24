@@ -58,9 +58,9 @@ module DNote
       opt.separator(" ")
       opt.separator("STANDARD OPTIONS:")
 
-      opt.on("--verbose", "-v", "extra verbose output") do
-        options[:verbose] = true
-      end
+      #opt.on("--verbose", "-v", "extra verbose output") do
+      #  options[:verbose] = true
+      #end
 
       opt.on("--debug", "debug mode") do
         $DEBUG = true
