@@ -1,0 +1,14 @@
+--- 
+TODO: 
+  lib/dnote/notes.rb: 
+  - - 19
+    - |-
+      TODO: Add ability to read header notes. They oftern
+      have a outline format, rather then the single line.
+  - - 22
+    - "TODO: Need good CSS file."
+  - - 24
+    - "TODO: Need XSL?"
+  plug/syckle/services/dnote.rb: 
+  - - 18
+    - "TODO: Should this service be part of the +site+ cycle?"
