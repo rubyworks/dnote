@@ -26,8 +26,9 @@ module DNote
 
     def initialize(paths, options)
       self.title   = options[:title]
-      self.output  = options[:output]
-      self.formats = options[:formats]
+
+      self.output  = options.delete(:output)
+      self.formats = options.delete(:formats)
 
       @notes = Notes.new(paths, options)
     end
@@ -35,13 +36,14 @@ module DNote
     #
     def initialize_defaults
       @output   = DEFAULT_OUTPUT
+      @title    = "Development Notes"
       @formats  = []
     end
 
     #
     def output=(path)
-      raise "output cannot be root" if File.expand_path(output) == "/"
-      @output = Pathname.new(output)
+      raise "output cannot be root" if File.expand_path(path) == "/"
+      @output = Pathname.new(path)
     end
 
     #
@@ -60,7 +62,7 @@ module DNote
       end
 
       # produce requested additional formats
-      foramts.each do |format|
+      formats.each do |format|
         text = notes.to(format)
         write("notes.#{format}", text)
       end
@@ -85,7 +87,7 @@ module DNote
     #
     def templates
       @templates ||= (
-        Dir[File.join(File.dirname(__FILE__), 'template/*')]
+        Dir[File.join(File.dirname(__FILE__), 'template/*')].select{ |f| File.file?(f) }
       )
     end
 

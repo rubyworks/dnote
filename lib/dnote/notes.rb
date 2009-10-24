@@ -265,6 +265,16 @@ module DNote
       html << %[<body>]
       html << %[<div class="main">]
       html << %[<h1><%= title %></h1>]
+      html << to_html_list
+      html << %[</div>]
+      html << %[</boby>]
+      html << %[</html>]
+      html.join("\n")
+    end
+
+    #
+    def to_html_list
+      html = []
       html << %[<div class="notes">]
       notes.each do |label, per_file|
         html << %[<h2>#{label}</h2>]
@@ -281,9 +291,6 @@ module DNote
         html << %[</ol>]
       end
       html << %[</div>]
-      html << %[</div>]
-      html << %[</boby>]
-      html << %[</html>]
       html.join("\n")
     end
 

@@ -61,13 +61,13 @@ module Syckle::Plugins
 
     #
     def dnote
-      @dnote ||= DNote::Site.new(files, :labels=>labels, :verbose=>verbose?, :formats=>formats, :output=>output)
+      @dnote ||= ::DNote::Site.new(files, :labels=>labels, :formats=>formats, :output=>output)
     end
 
     # Generate notes documents.
     def document
-      $NOOP = noop? # TODO:
-      @dnote.document
+      $NOOP = noop?  # TODO:
+      dnote.document
       #mkdir_p(output)
       #file = output + "index.html"
       #File.open(file, 'w'){ |f| f << dnote.to_html }

@@ -1,9 +1,9 @@
 ---
 notes:
-  service  : Notes
+  service  : DNote
   loadpath : ~
   labels   : ~
   output   : ~
   format   : ~
-  active   : false
+  active   : true
 
