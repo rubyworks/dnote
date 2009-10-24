@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Remove notes directory.
+full_name: Syckle::Plugins::DNote#clean
+is_singleton: false
+name: clean
+params: ()
+visibility: public

@@ -1,0 +1,11 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: Syckle::Plugins::DNote#initialize_defaults
+is_singleton: false
+name: initialize_defaults
+params: ()
+visibility: private

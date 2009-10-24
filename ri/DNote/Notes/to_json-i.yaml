@@ -1,0 +1,11 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: DNote::Notes#to_json
+is_singleton: false
+name: to_json
+params: ()
+visibility: public

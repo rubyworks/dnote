@@ -1,0 +1,11 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: DNote::Notes#noharm?
+is_singleton: false
+name: noharm?
+params: ()
+visibility: public

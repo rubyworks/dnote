@@ -1,0 +1,14 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::VERB 
+  body: " Formats (xml, html, rdoc).\n"
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: attr_accessor :formats
+full_name: Syckle::Plugins::DNote#output=
+is_singleton: false
+name: output=
+params: (path)
+visibility: public

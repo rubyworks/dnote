@@ -1,0 +1,22 @@
+--- !ruby/object:RDoc::RI::ModuleDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: new
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: run
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: require 'reap/project/scm'
+constants: 
+- !ruby/object:RDoc::RI::Constant 
+  comment: 
+  name: VERSION
+  value: "\"0.9\""
+full_name: DNote
+includes: []
+
+instance_methods: []
+
+name: DNote

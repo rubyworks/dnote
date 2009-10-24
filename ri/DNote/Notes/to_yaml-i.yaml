@@ -1,0 +1,11 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: DNote::Notes#to_yaml
+is_singleton: false
+name: to_yaml
+params: ()
+visibility: public

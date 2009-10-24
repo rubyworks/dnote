@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: HTML format.
+full_name: DNote::Notes#to_html
+is_singleton: false
+name: to_html
+params: ()
+visibility: public

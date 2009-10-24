@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Organize records in heirarchical form.
+full_name: DNote::Notes#organize
+is_singleton: false
+name: organize
+params: (records)
+visibility: public

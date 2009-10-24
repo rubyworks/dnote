@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+  <title>Module: DNote</title>
+
+  
+    <link rel="SHORTCUT ICON" href="./images/module.png">
+  
+
+  <link type="text/css" media="screen" rel="stylesheet" href="./rdoc.css" />
+
+  <script src="./js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/thickbox.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body class="module">
+
+  <div class="head">
+    <h1>
+      
+        <img src="./images/module.png" align="absmiddle">&nbsp;
+      
+      <a href="./index.html">D'Note</a>&nbsp;
+      <a href="/">DNote</a>
+    </h1>
+  </div>
+
+  <div id="metadata">
+    <div id="project-metadata">
+
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li class="file"><a href="./lib/dnote_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/dnote.rb">lib/dnote.rb</a></li>
+          
+            <li class="file"><a href="./lib/dnote/command_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/dnote/command.rb">lib/dnote/command.rb</a></li>
+          
+            <li class="file"><a href="./lib/dnote/notes_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/dnote/notes.rb">lib/dnote/notes.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      <!-- What about Git info, or Hg info? This seems almost silly, albeit kind of cool. -->
+
+      
+    </div>
+
+    <div id="class-metadata">
+
+      <!-- Parent Class -->
+      
+
+      <!-- Namespace Contents -->
+      
+      <div id="namespace-list-section" class="section">
+        <h3 class="section-header">Namespace</h3>
+        <ul class="link-list">
+          
+          <li class="module"><a href="DNote/Notes.html">DNote::Notes</a></li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Method Quickref -->
+      
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li class="method"><a href="#M000000">::new</a></li>
+          
+          <li class="method"><a href="#M000001">::run</a></li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Included Modules -->
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Files</h3>
+        <ul>
+        
+          <li class="file"><a href="./LICENSE.html">LICENSE</a></li>
+        
+          <li class="file"><a href="./README_rdoc.html">README.rdoc</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="./images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <!-- classpage.html : classes -->
+        <ul class="link-list">
+        
+          <li class="module"><a href="./Syckle.html">Syckle</a></li>
+        
+          <li class="module"><a href="./Syckle/Plugins.html">Syckle::Plugins</a></li>
+        
+          <li class="class"><a href="./Syckle/Plugins/DNote.html">Syckle::Plugins::DNote</a></li>
+        
+          <li class="module"><a href="./DNote.html">DNote</a></li>
+        
+          <li class="class"><a href="./DNote/Notes.html">DNote::Notes</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+
+    <div id="validator-badges">
+      Generated with <a href="http://github.com/proutils/rdazzle">Razzle Dazzle Redfish</a><br/><br/>
+      <a href="http://validator.w3.org/check/referer">[Validate]</a>
+    </div>
+  </div>
+
+  <div id="documentation">
+
+    <div id="description">
+      
+        <h1>DNote</h1>
+      
+
+      <p>
+require &#8216;reap/project/scm&#8216;
+</p>
+
+    </div>
+
+    <!-- Constants -->
+    
+    <div id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt><a name="VERSION">VERSION</a></dt>
+        
+        <dd class="description missing-docs">(Not documented)</dd>
+        
+      
+      </dl>
+    </div>
+    
+
+    <!-- Attributes -->
+    
+
+    <!-- Methods -->
+    
+    <div id="public-class-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="new-method" class="method-detail ">
+        <a name="M000000"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">new</span><span
+            class="method-args">(*args)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="new-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote.rb, line 6</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+    <span class="ruby-constant">Notes</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="run-method" class="method-detail ">
+        <a name="M000001"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">run</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="run-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote/command.rb, line 7</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">run</span>
+    <span class="ruby-identifier">options</span> = {}
+    <span class="ruby-identifier">format</span>  = <span class="ruby-value str">'rdoc'</span>
+
+    <span class="ruby-identifier">opts</span> = <span class="ruby-constant">OptionParser</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">opt</span><span class="ruby-operator">|</span>
+
+      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">banner</span> = <span class="ruby-value str">&quot;Usage: dnote [OPTIONS] path1 [path2 ...]&quot;</span>
+
+      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">separator</span>(<span class="ruby-value str">&quot; &quot;</span>)
+      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">separator</span>(<span class="ruby-value str">&quot;OUTPUT FORMAT: (choose one)&quot;</span>)
+
+      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--rdoc&quot;</span>, <span class="ruby-value str">&quot;RDoc comment format&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">format</span> = <span class="ruby-value str">'rdoc'</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--markdown&quot;</span>, <span class="ruby-value str">&quot;Markdown wiki format&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">format</span> = <span class="ruby-value str">'markdown'</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--xml&quot;</span>, <span class="ruby-value str">&quot;XML markup format&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">format</span> = <span class="ruby-value str">'xml'</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--html&quot;</span>, <span class="ruby-value str">&quot;HTML markup format&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">format</span> = <span class="ruby-value str">'html'</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--yaml&quot;</span>, <span class="ruby-value str">&quot;YAML serialization format&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">format</span> = <span class="ruby-value str">'yaml'</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--json&quot;</span>, <span class="ruby-value str">&quot;JSON serialization format&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">format</span> = <span class="ruby-value str">'json'</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">separator</span>(<span class="ruby-value str">&quot; &quot;</span>)
+      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">separator</span>(<span class="ruby-value str">&quot;OTHER OPTIONS:&quot;</span>)
+
+      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--label&quot;</span>, <span class="ruby-value str">&quot;labels to collect&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">lbl</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:labels</span>] <span class="ruby-operator">||=</span> []
+        <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:labels</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">lbl</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--title&quot;</span>, <span class="ruby-value str">&quot;-t [TITLE]&quot;</span>, <span class="ruby-value str">&quot;title to use in headers&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">title</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:title</span>] = <span class="ruby-identifier">title</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-comment cmt">#opt.on(&quot;--output&quot;, &quot;-o [FILE]&quot;, &quot;name of file to store output (w/o extension)&quot;) do |out|</span>
+      <span class="ruby-comment cmt">#  options[:output] = out</span>
+      <span class="ruby-comment cmt">#end</span>
+
+      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">separator</span>(<span class="ruby-value str">&quot; &quot;</span>)
+      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">separator</span>(<span class="ruby-value str">&quot;STANDARD OPTIONS:&quot;</span>)
+
+      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--verbose&quot;</span>, <span class="ruby-value str">&quot;-v&quot;</span>, <span class="ruby-value str">&quot;extra verbose output&quot;</span>) <span class="ruby-keyword kw">do</span>
+        <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:verbose</span>] = <span class="ruby-keyword kw">true</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--debug&quot;</span>, <span class="ruby-value str">&quot;debug mode&quot;</span>) <span class="ruby-keyword kw">do</span>
+        <span class="ruby-identifier">$DEBUG</span> = <span class="ruby-keyword kw">true</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-comment cmt">#opt.on(&quot;--quiet&quot;, &quot;-q&quot;, &quot;surpress non-essential output&quot;) do</span>
+      <span class="ruby-comment cmt">#  options[:quiet] = true</span>
+      <span class="ruby-comment cmt">#end</span>
+
+      <span class="ruby-comment cmt">#opt.on(&quot;--noharm&quot;, &quot;-n&quot;, &quot;only pretend to write to disk&quot;) do</span>
+      <span class="ruby-comment cmt">#  options[:noharm] = true</span>
+      <span class="ruby-comment cmt">#end</span>
+
+      <span class="ruby-comment cmt">#opt.on(&quot;--dryrun&quot;, &quot;noharm and verbose modes combined&quot;) do</span>
+      <span class="ruby-comment cmt">#  options[:verbose] = true</span>
+      <span class="ruby-comment cmt">#  options[:noharm] = true</span>
+      <span class="ruby-comment cmt">#end</span>
+
+      <span class="ruby-comment cmt">#opt.on(&quot;--trace&quot;, &quot;debug and verbose modes combined&quot;) do</span>
+      <span class="ruby-comment cmt">#  $DEBUG = true</span>
+      <span class="ruby-comment cmt">#  options[:verbose] = true</span>
+      <span class="ruby-comment cmt">#end</span>
+
+      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on_tail</span>(<span class="ruby-value str">'--help'</span>, <span class="ruby-value str">'-h'</span>, <span class="ruby-value str">&quot;show this help information&quot;</span>) <span class="ruby-keyword kw">do</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-identifier">opt</span>
+        <span class="ruby-identifier">exit</span>
+      <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">parse!</span>
+
+    <span class="ruby-identifier">paths</span> = <span class="ruby-constant">ARGV</span>.<span class="ruby-identifier">dup</span>
+    <span class="ruby-identifier">dnote</span> = <span class="ruby-constant">DNote</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">paths</span>, <span class="ruby-identifier">options</span>)
+    <span class="ruby-identifier">dnote</span>.<span class="ruby-identifier">display</span>(<span class="ruby-identifier">format</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+
+  </div>
+
+
+  <div id="rdoc-debugging-section-dump" class="debugging-section">
+  
+    <p>Disabled; run with --debug to generate this.</p>
+  
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+--- !ruby/object:RDoc::RI::ClassDescription 
+attributes: 
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Paths to search.
+  name: files
+  rw: RW
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: "Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE."
+  name: labels
+  rw: RW
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Directory to save output. Defaults to standard log directory.
+  name: output
+  rw: RW
+class_methods: []
+
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::H 
+  level: 1
+  text: Developmer's Notes Plugin
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: "This plugin goes through you source files and compiles an lit of any labeled comments. Labels are single word prefixes to a comment ending in a colon. For example, you might note somewhere in your code:"
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: By default this label supports the TODO, FIXME, OPTIMIZE and DEPRECATE.
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Output is a set of files in HTML, XML and RDoc's simple markup format. This plugin can run automatically if there is a <tt>notes/</tt> directory in the project's log directory.
+- !ruby/struct:RDoc::Markup::Flow::RULE 
+  width: 
+- !ruby/struct:RDoc::Markup::Flow::H 
+  level: 1
+  text: Developmer's Notes Plugin
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: "This plugin goes through you source files and compiles an lit of any labeled comments. Labels are single word prefixes to a comment ending in a colon. For example, you might note somewhere in your code:"
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: By default this label supports the TODO, FIXME, OPTIMIZE and DEPRECATE.
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Output is a set of files in HTML, XML and RDoc's simple markup format. This plugin can run automatically if there is a <tt>notes/</tt> directory in the project's log directory.
+- !ruby/struct:RDoc::Markup::Flow::RULE 
+  width: 
+- !ruby/struct:RDoc::Markup::Flow::H 
+  level: 1
+  text: Developmer's Notes Plugin
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: "This plugin goes through you source files and compiles an lit of any labeled comments. Labels are single word prefixes to a comment ending in a colon. For example, you might note somewhere in your code:"
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: By default this label supports the TODO, FIXME, OPTIMIZE and DEPRECATE.
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Output is a set of files in HTML, XML and RDoc's simple markup format. This plugin can run automatically if there is a <tt>notes/</tt> directory in the project's log directory.
+constants: 
+- !ruby/object:RDoc::RI::Constant 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Default note labels to looked for in source code.
+  name: DEFAULT_LABELS
+  value: "['TODO', 'FIXME', 'OPTIMIZE', 'DEPRECATE']"
+full_name: Syckle::Plugins::DNote
+includes: []
+
+instance_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: clean
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: dnote
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: document
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: initialize_defaults
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: output=
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: reset
+name: DNote
+superclass: Service

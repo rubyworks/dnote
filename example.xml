@@ -1,0 +1,13 @@
+<notes>
+<set label="TODO">
+<file src="lib/dnote/notes.rb">
+<note line="19" type="TODO">TODO: Add ability to read header notes. They oftern
+have a outline format, rather then the single line.</note>
+<note line="22" type="TODO">TODO: Need good CSS file.</note>
+<note line="24" type="TODO">TODO: Need XSL?</note>
+</file>
+<file src="plug/syckle/services/dnote.rb">
+<note line="18" type="TODO">TODO: Should this service be part of the +site+ cycle?</note>
+</file>
+</set>
+</notes>

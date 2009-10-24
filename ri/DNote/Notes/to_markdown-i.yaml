@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Format notes in RDoc format.
+full_name: DNote::Notes#to_markdown
+is_singleton: false
+name: to_markdown
+params: ()
+visibility: public

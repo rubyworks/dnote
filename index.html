@@ -1,0 +1,188 @@
+<HTML>
+<HEAD>
+  <TITLE>D'Note</TITLE>
+  <link REL="SHORTCUT ICON" HREF="assets/images/logo.jpg"/>
+  <style>
+    html { font-size: 12px; }
+    body {
+      padding: 0; 
+      margin: 0;
+      color: black;
+      font: 1em sans-serif;
+      text-align: justify;
+      /* background: url(../img/fade_yellow_up.jpg) bottom repeat-y; */
+    }
+    p { font-size: 100%; color: silver; font-weight: bold; text-align: justify; margin: 20px 0; }
+    a  { text-decoration: none; font-size: 10pt; color: silver;  font-weight: bold; }
+    a:hover { text-decoration: underline; }
+    h1 { font-size: 100px; margin: 30px 0px; color: #222222; }
+    h2 { padding-top: 20px; }
+    ul { margin: 0 auto; list-style-type: none; width: 300px; }
+    li { float: left; padding: 10px; text-align: center; }
+    pre { font-size: 95%; background: #eeeeee; padding: 15px 10px 0 10px; -moz-border-radius: 10px; color: #222222; font-weight: bold; font-family: courier, monospace; }
+    code { font-family: courier, monospace; color: #ecc; }
+
+    .menu { padding: 20px 20px 20px 0; text-align: center; background: #222222; }
+    .head { height: 250px; text-align: center; border-top: 2px solid silver; border-bottom: 2px solid silver; }
+    .title { text-align: left; margin: 0 auto; width: 800px; }
+    .body { background: #222222; color: white; border-bottom: 2px solid silver; }
+    .doc { padding: 20px; text-align: justify; margin: 0 auto; width: 800px; }
+    .doc a { color: fee; }
+    .foot { padding: 20px; text-align: center; margin: 0 auto; width: 800px; }
+    .foot p { color: #222222; text-align: center; }
+  </style>
+</HEAD>
+<BODY>
+
+<div class="nav">
+  <div class="menu">
+    <a href="rdoc/index.html">API Documents</a> &nbsp;&nbsp;
+    <!-- <a href="qedoc/index.html">QEDocs</a> &nbsp;&nbsp; -->
+    <a href="http://wiki.github.com/proutils/dnote">Wiki-Wiki</a> &nbsp;&nbsp;
+    <a href="http://googlegroups.com/group/proutils">Mailing List</a> &nbsp;&nbsp;
+    <a href="http://github.com/proutils/dnote">Source Code</a> &nbsp;&nbsp;
+  </div>
+</div>
+
+<div class="head">
+  <div class="title">
+    <img src="assets/images/logo.jpg" style="height: 250px;" align="right"/><br/>
+    <h1>D'Note</h1>
+  </div>
+</div>
+
+<div class="body">
+  <div class="doc">
+
+  <p>Developer's take note! All those TODO: and FIXME: notes floating around your source code are rotting away.
+  They are trapped and in desparate need of your attention. No worries. D'Note is here to liberate them.
+  D'Note scans your source code for labeled comments, collects, collates and sorts them, and then 
+  saves them in a format of your choosing.</p>
+
+
+  <h2>Note Structure</h2>
+
+  <p>D'Note uses a commonly used pattern of "LABEL:". The colon helps D'Note separate developer notes
+  from other documentation. To be more specific, developer's notes in the source code must follow
+  these simple set of rules:</p>
+
+  <p>1) Notes start with a label puctuated with a colon and followed by the note text.</p>
+
+  <pre>
+  # LABEL: description ...
+  </pre>
+
+  <p>2) Any note that requires more than one line must remain flush to the left
+  margin (the margin is set by the first line). This is done because RDoc will mistake
+  the note for a <tt>&lt;pre&gt;</tt> block if it is indented.</p>
+
+  <pre>
+  # LABEL: description ...
+  # continue ...
+  </pre>
+
+  <p>3) An alternative to the last rule is to make the whole note a <tt>&lt;pre&gt;</tt> block,
+  by indenting it. Then the text layout is free-form.</p>
+
+  <pre>
+  # This is a description of something...
+  #
+  #   LABEL: description ...
+  #          continue ...
+  </pre>
+
+  <p>4) All consecutive notes must be separated by at least one blank line.</p>
+
+  <pre>
+  # LABEL: description ...
+  # 
+  # LABEL: description ...
+  </pre>
+
+  <p>Without the blank line the second note will be taken to be part of the first.</p>
+
+  <p>That's all there is to it. In future we plan to relax the last rule, and if we can
+  convince the developers of RDoc to recognize labels, we may eventually be able to relax
+  the flush rule too.</p>
+ 
+
+  <h2>Generating Notes</h2>
+
+  <p>As you can see the commandline interface is quite straight-forward.</p>
+
+  <pre>
+  Usage: dnote [OPTIONS] path1 [path2 ...]
+   
+  OUTPUT FORMAT: (choose one)
+          --rdoc                       RDoc comment format
+          --markdown                   Markdown wiki format
+          --xml                        XML markup format
+          --html                       HTML markup format
+          --yaml                       YAML serialization format
+          --json                       JSON serialization format
+   
+  OTHER OPTIONS:
+          --label                      labels to collect
+      -t, --title [TITLE]              title to use in headers
+   
+  STANDARD OPTIONS:
+      -v, --verbose                    extra verbose output
+          --debug                      debug mode
+      -h, --help                       show this help information
+  </pre>
+
+  <p>The default path is <code>lib/</code> and the default format <code>--rdoc</code>. 
+  Here is an example of DNote's current notes in RDoc format:</p>
+
+  <pre>
+  = Development Notes
+
+  == TODO
+
+  === file://lib/dnote/notes.rb
+
+  * TODO: Add ability to read header notes. They oftern
+  have a outline format, rather then the single line. (19)
+  * TODO: Need good CSS file. (22)
+  * TODO: Need XSL? (24)
+
+  === file://plug/syckle/services/dnote.rb
+
+  * TODO: Should this service be part of the +site+ cycle? (18)
+
+  (4 TODOs)
+  </pre>
+
+  <p>As you can see by the command help a variety of formats are available, here are examples of the
+  <a href="example.xml">XML</a>, <a href="example.html">HTML</a> and <a href="example.yaml">YAML</a>
+  formats.</p>
+
+  <p>In the future the Notes class will model things a bit better (so the YAML output will improve),
+  and the parsing will be made more flexible. For instance, it would be nice if page-top outlined notes
+  could be parsed as well.</p>
+
+  </div>
+</div>
+
+<div class="foot">
+  <script type="text/javascript"><!--
+  google_ad_client = "pub-1126154564663472";
+  /* PROUTILS 09-10-14 728x90 */
+  google_ad_slot = "0711173189";
+  google_ad_width = 728;
+  google_ad_height = 90;
+  //-->
+  </script>
+  <script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+  </script>
+
+  <br/><br/>
+
+  <p>Copyright (c) 2009 Thomas Sawyer</p>
+</div>
+
+
+</BODY>
+</HTML>
+
