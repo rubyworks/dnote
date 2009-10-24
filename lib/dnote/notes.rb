@@ -29,13 +29,13 @@ module DNote
     DEFAULT_LABELS = ['TODO', 'FIXME', 'OPTIMIZE', 'DEPRECATE']
 
     #
-    DEFAULT_OUTPUT = Pathname.new('log/notes')
+    #DEFAULT_OUTPUT = Pathname.new('log/notes')
 
     #
     attr_accessor :title
 
     # Non-Operative
-    attr_accessor :noop
+    #attr_accessor :noharm
 
     # Verbose
     attr_accessor :verbose
@@ -46,12 +46,12 @@ module DNote
     # Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
     attr_accessor :labels
 
-    # Directory to save output. Defaults to standard log directory.
-    attr_accessor :output
+    # Directory or file to save output.
+    # Defaults is current working directory.
+    #attr_accessor :output
 
     # Format (xml, html, text).
-    # TODO: HTML format is not usable yet.
-    #attr_accessor :format
+    attr_accessor :format
 
     #
     def initialize(paths, options={})
@@ -77,22 +77,18 @@ module DNote
 
     #
     def initialize_defaults
-      @paths    = ['lib']
+      @paths    = ["lib"]
       #@output   = DEFAULT_OUTPUT
       @labels   = DEFAULT_LABELS
       @title    = "Developer's Notes"
-      #@format   = 'xml'
+      @format   = "rdoc"
     end
 
     #
-    def noop?
-      @noop
-    end
+    def noharm?  ; @noharm  ; end
 
     #
-    def verbose?
-      @verbose
-    end
+    def verbose? ; @verbose ; end
 
     #
     def notes
@@ -105,16 +101,16 @@ module DNote
     end
 
     #
-    def templates
-      Dir[File.join(File.dirname(__FILE__), 'template/*')]
-    end
+    #def templates
+    #  @templates ||= Dir[File.join(File.dirname(__FILE__), 'template/*')]
+    #end
 
     # Scans source code for developer notes and writes them to 
     # well organized files.
     #
     def document
       paths    = self.paths
-      output   = self.output
+      #output   = self.output
 
       parse
 
@@ -136,41 +132,41 @@ module DNote
       if notes.empty?
         puts "No #{labels.join(', ')} notes."
       else
-        if output
-          templates.each do |template|
-            erb  = ERB.new(File.read(template))
-            text = erb.result(binding)
-            #text = format_notes(notes, format)
-            file = write(File.basename(template), text)
-            #file = file #Pathname.new(file).relative_path_from(Pathname.pwd) #project.root
-            puts "Updated #{file}"
-          end
-        else
-          temp = templates.find{ |f| /rdoc$/ =~ f }
-          erb  = ERB.new(File.read(temp))
-          text = erb.result(binding)
+        #temp = templates.find{ |f| /#{format}$/ =~ f }
+        #erb  = ERB.new(File.read(temp))
+        #text = erb.result(binding)
+
+        text = __send__("to_#{format}")
+
+        #if output
+        #  #templates.each do |template|
+        #    #text = format_notes(notes, format)
+        #    file = write(txt, format)
+        #    #file = file #Pathname.new(file).relative_path_from(Pathname.pwd) #project.root
+        #    puts "Updated #{file}"
+        #  #end
+        #else
           puts text
-          puts
-        end
-        puts(counts.map{|l,n| "#{n} #{l}s"}.join(', '))
+        #end
+        $stderr << "\n(" + counts.map{|l,n| "#{n} #{l}s"}.join(', ') + ")\n"
       end
     end
 
     # Reset output directory, marking it as out-of-date.
-    def reset
-      if File.directory?(output)
-        File.utime(0,0,output)
-        puts "marked #{output}"
-      end
-    end
+    #def reset
+    #  if File.directory?(output)
+    #    File.utime(0,0,output)
+    #    puts "marked #{output}"
+    #  end
+    #end
 
     # Remove output directory.
-    def clean
-      if File.directory?(output)
-        fu.rm_r(output)
-        puts "removed #{output}"
-      end
-    end
+    #def clean
+    #  if File.directory?(output)
+    #    fu.rm_r(output)
+    #    puts "removed #{output}"
+    #  end
+    #end
 
     #
     def labels=(labels)
@@ -185,16 +181,14 @@ module DNote
     end
 
     #
-    def output=(output)
-      raise "output cannot be root" if File.expand_path(output) == "/"
-      @output = Pathname.new(output)
-    end
-
-  private
+    #def output=(path)
+    #  raise "output cannot be root" if File.expand_path(output) == "/"
+    #  @output = Pathname.new(output)
+    #end
 
     # Gather and count notes. This returns two elements,
     # a hash in the form of label=>notes and a counts hash.
-    #
+
     def parse
       #
       files = self.paths.map do |path|
@@ -264,9 +258,45 @@ module DNote
     #  send("format_#{type}", notes)
     #end
 
+    # Format notes in RDoc format.
+    #
+    def to_rdoc
+      out = []
+      out << "= Development Notes"
+      notes.each do |label, per_file|
+        out << %[\n== #{label}]
+        per_file.each do |file, line_notes|
+          out << %[\n=== file://#{file}\n]
+          line_notes.sort!{ |a,b| a[0] <=> b[0] }
+          line_notes.each do |line, note|
+            out << %[* #{note} (#{line})]
+          end
+        end
+      end
+      return out.join("\n")
+    end
+
+    # Format notes in RDoc format.
+    #
+    def to_markdown
+      out = []
+      out << "# Development Notes"
+      notes.each do |label, per_file|
+        out << %[\n## #{label}]
+        per_file.each do |file, line_notes|
+          out << %[\n### file://#{file}\n]
+          line_notes.sort!{ |a,b| a[0] <=> b[0] }
+          line_notes.each do |line, note|
+            out << %[* #{note} (#{line})]
+          end
+        end
+      end
+      return out.join("\n")
+    end
+
     # Format notes in XML format.
     #
-    def notes_xml
+    def to_xml
       xml = []
       xml << "<notes>"
       notes.each do |label, per_file|
@@ -286,53 +316,64 @@ module DNote
       return xml.join("\n")
     end
 
-    # Format notes in RDoc format.
-    #
-    def notes_rdoc
-      out = []
-      out << "= Development Notes"
-      notes.each do |label, per_file|
-        out << %[\n== #{label}]
-        per_file.each do |file, line_notes|
-          out << %[\n=== file://#{file}\n]
-          line_notes.sort!{ |a,b| a[0] <=> b[0] }
-          line_notes.each do |line, note|
-            out << %[* #{note} (#{line})]
-          end
-        end
-      end
-      return out.join("\n")
-    end
-
     # HTML format.
     #
-    def notes_html
-      xml = []
-      xml << %[<div class="notes">]
+    def to_html
+      html = []
+      html << %[<html>]
+      html << %[<head>]
+      html << %[<title><%= title %></title>]
+      html << %[<style>]
+      html << HTML_CSS
+      html << %[</style>]
+      html << %[</head>]
+      html << %[<body>]
+      html << %[<div class="main">]
+      html << %[<h1><%= title %></h1>]
+      html << %[<div class="notes">]
       notes.each do |label, per_file|
-        xml << %[<h2>#{label}</h2>]
-        xml << %[<ol class="set #{label.downcase}">]
+        html << %[<h2>#{label}</h2>]
+        html << %[<ol class="set #{label.downcase}">]
         per_file.each do |file, line_notes|
-          xml << %[<li><h3><a href="#{file}">#{file}</a></h3><ol class="file" href="#{file}">]
+          html << %[<li><h3><a href="#{file}">#{file}</a></h3><ol class="file" href="#{file}">]
           line_notes.sort!{ |a,b| a[0] <=> b[0] }
           line_notes.each do |line, note|
             note = REXML::Text.normalize(note)
-            xml << %[<li class="note #{label.downcase}" ref="#{line}">#{note} <sup>#{line}</sup></li>]
+            html << %[<li class="note #{label.downcase}" ref="#{line}">#{note} <sup>#{line}</sup></li>]
           end
-          xml << %[</ol></li>]
+          html << %[</ol></li>]
         end
-        xml << %[</ol>]
+        html << %[</ol>]
       end
-      xml << "</div>"
-      return xml.join("\n")
+      html << %[</div>]
+      html << %[</div>]
+      html << %[</boby>]
+      html << %[</html>]
+      html.join("\n")
+    end
+
+    #
+    def to_yaml
+      require 'yaml'
+      notes.to_yaml
+    end
+
+    #
+    def to_json
+      require 'json'
+      notes.to_json
     end
 
     # Save notes.
     #
-    def write(file, text)
-      file = output + file
-      fu.mkdir_p(output)
-      File.open(file, 'w') { |f| f << text } unless noop?
+    def write(text, format)
+      if output.directory?
+        file = output + "notes.#{format}"
+      else
+        file = Pathname.new(output)
+      end
+      fu.mkdir_p(file.parent)
+      File.open(file, 'w') { |f| f << text } unless noharm?
       file
     end
 
@@ -350,6 +391,17 @@ module DNote
         end
       )
     end
+
+    HTML_CSS = <<-HERE
+      body { margin: 0; padding: 0; }
+      .main { width: 800px; margin: 0 auto; border: 1px solid #ccc; padding: 0 20px 20px 20px; }
+      h1 { margin: 25px 0; }
+      h2,h3,h4 { margin: 5px 0; padding: 0; color: 880044; }
+      h3 { color: 004488; }
+      h4 { color: 888844; }
+      ul { margin: 0; padding: 0; text-align: left; }
+      li { margin: 0; padding: 0; text-align: left; }
+    HERE
 
   end
 
