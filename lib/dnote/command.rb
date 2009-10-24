@@ -6,6 +6,7 @@ module DNote
 
   def self.run
     options = {}
+    format  = 'rdoc'
 
     opts = OptionParser.new do |opt|
 
@@ -15,27 +16,27 @@ module DNote
       opt.separator("OUTPUT FORMAT: (choose one)")
 
       opt.on("--rdoc", "RDoc comment format") do |format|
-        options[:format] = 'rdoc'
+        format = 'rdoc'
       end
 
       opt.on("--markdown", "Markdown wiki format") do |format|
-        options[:format] = 'markdown'
+        format = 'markdown'
       end
 
       opt.on("--xml", "XML markup format") do |format|
-        options[:format] = 'xml'
+        format = 'xml'
       end
 
       opt.on("--html", "HTML markup format") do |format|
-        options[:format] = 'html'
+        format = 'html'
       end
 
       opt.on("--yaml", "YAML serialization format") do |format|
-        options[:format] = 'yaml'
+        format = 'yaml'
       end
 
       opt.on("--json", "JSON serialization format") do |format|
-        options[:format] = 'json'
+        format = 'json'
       end
 
       opt.separator(" ")
@@ -94,7 +95,7 @@ module DNote
 
     paths = ARGV.dup
     dnote = DNote.new(paths, options)
-    dnote.document
+    dnote.display(format)
   end
 
 end

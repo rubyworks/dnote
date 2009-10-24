@@ -51,7 +51,7 @@ module DNote
     #attr_accessor :output
 
     # Format (xml, html, text).
-    attr_accessor :format
+    #attr_accessor :format
 
     #
     def initialize(paths, options={})
@@ -73,6 +73,8 @@ module DNote
       options.each do |k, v|
         __send__("#{k}=", v)
       end
+
+      parse
     end
 
     #
@@ -108,11 +110,11 @@ module DNote
     # Scans source code for developer notes and writes them to 
     # well organized files.
     #
-    def document
-      paths    = self.paths
+    def display(format)
+      #paths    = self.paths
       #output   = self.output
 
-      parse
+      #parse
 
       #paths  = paths.to_list
 
@@ -130,7 +132,7 @@ module DNote
       #end
 
       if notes.empty?
-        puts "No #{labels.join(', ')} notes."
+        $stderr << "No #{labels.join(', ')} notes.\n"
       else
         #temp = templates.find{ |f| /#{format}$/ =~ f }
         #erb  = ERB.new(File.read(temp))
