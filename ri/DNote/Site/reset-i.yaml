@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Reset output directory, marking it as out-of-date.
+full_name: DNote::Site#reset
+is_singleton: false
+name: reset
+params: ()
+visibility: public

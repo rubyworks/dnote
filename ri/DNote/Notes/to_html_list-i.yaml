@@ -4,8 +4,8 @@ aliases: []
 block_params: 
 comment: []
 
-full_name: DNote::Notes#fu
+full_name: DNote::Notes#to_html_list
 is_singleton: false
-name: fu
+name: to_html_list
 params: ()
 visibility: public

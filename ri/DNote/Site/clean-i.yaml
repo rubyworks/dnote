@@ -2,10 +2,11 @@
 aliases: []
 
 block_params: 
-comment: []
-
-full_name: DNote::Notes#noharm?
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Remove output directory.
+full_name: DNote::Site#clean
 is_singleton: false
-name: noharm?
+name: clean
 params: ()
 visibility: public

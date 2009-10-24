@@ -75,17 +75,17 @@
         <h3 class="section-header">Methods</h3>
         <ul class="link-list">
           
-          <li class="method"><a href="#M000014">#clean</a></li>
+          <li class="method"><a href="#M000023">#clean</a></li>
           
-          <li class="method"><a href="#M000010">#dnote</a></li>
+          <li class="method"><a href="#M000020">#dnote</a></li>
           
-          <li class="method"><a href="#M000011">#document</a></li>
+          <li class="method"><a href="#M000021">#document</a></li>
           
-          <li class="method"><a href="#M000016">#initialize_defaults</a></li>
+          <li class="method"><a href="#M000025">#initialize_defaults</a></li>
           
-          <li class="method"><a href="#M000009">#output=</a></li>
+          <li class="method"><a href="#M000019">#output=</a></li>
           
-          <li class="method"><a href="#M000013">#reset</a></li>
+          <li class="method"><a href="#M000022">#reset</a></li>
           
         </ul>
       </div>
@@ -126,15 +126,17 @@
         <!-- classpage.html : classes -->
         <ul class="link-list">
         
+          <li class="module"><a href="../../DNote.html">DNote</a></li>
+        
+          <li class="class"><a href="../../DNote/Notes.html">DNote::Notes</a></li>
+        
+          <li class="class"><a href="../../DNote/Site.html">DNote::Site</a></li>
+        
           <li class="module"><a href="../../Syckle.html">Syckle</a></li>
         
           <li class="module"><a href="../../Syckle/Plugins.html">Syckle::Plugins</a></li>
         
           <li class="class"><a href="../../Syckle/Plugins/DNote.html">Syckle::Plugins::DNote</a></li>
-        
-          <li class="module"><a href="../../DNote.html">DNote</a></li>
-        
-          <li class="class"><a href="../../DNote/Notes.html">DNote::Notes</a></li>
         
         </ul>
         <div id="no-class-search-results" style="display: none;">No matching classes.</div>
@@ -245,7 +247,27 @@ Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
         <div class="method-description">
         
         <p>
-Directory to save output. Defaults to standard log directory.
+Directory to save output. Defaults to <tt>dnote/</tt> under project log
+directory.
+</p>
+        
+        </div>
+      </div>
+      
+      <div id="formats-attribute-method" class="method-detail">
+        <a name="formats"></a>
+        
+        <a name="formats="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">formats</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>
+Formats (xml, html, rdoc).
 </p>
         
         </div>
@@ -261,7 +283,7 @@ Directory to save output. Defaults to standard log directory.
 
     
       <div id="clean-method" class="method-detail ">
-        <a name="M000014"></a>
+        <a name="M000023"></a>
 
         <div class="method-heading">
         
@@ -282,9 +304,9 @@ Remove notes directory.
           <div class="method-source-code"
             id="clean-source">
 <pre>
-<span class="ruby-comment cmt"># File plug/syckle/services/dnote.rb, line 79</span>
+<span class="ruby-comment cmt"># File plug/syckle/services/dnote.rb, line 83</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clean</span>
-      <span class="ruby-identifier">dnote</span>.<span class="ruby-identifier">clean</span>
+      <span class="ruby-comment cmt">#dnote.clean</span>
     <span class="ruby-keyword kw">end</span></pre>
           </div>
           
@@ -295,7 +317,7 @@ Remove notes directory.
 
     
       <div id="dnote-method" class="method-detail ">
-        <a name="M000010"></a>
+        <a name="M000020"></a>
 
         <div class="method-heading">
         
@@ -314,9 +336,9 @@ Remove notes directory.
           <div class="method-source-code"
             id="dnote-source">
 <pre>
-<span class="ruby-comment cmt"># File plug/syckle/services/dnote.rb, line 61</span>
+<span class="ruby-comment cmt"># File plug/syckle/services/dnote.rb, line 63</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dnote</span>
-      <span class="ruby-ivar">@dnote</span> <span class="ruby-operator">||=</span> <span class="ruby-operator">::</span><span class="ruby-constant">DNote</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">files</span>, <span class="ruby-identifier">:labels=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">labels</span>, <span class="ruby-identifier">:verbose=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">verbose?</span>)
+      <span class="ruby-ivar">@dnote</span> <span class="ruby-operator">||=</span> <span class="ruby-operator">::</span><span class="ruby-constant">DNote</span><span class="ruby-operator">::</span><span class="ruby-constant">Site</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">files</span>, <span class="ruby-identifier">:labels=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">labels</span>, <span class="ruby-identifier">:formats=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">formats</span>, <span class="ruby-identifier">:output=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">output</span>)
     <span class="ruby-keyword kw">end</span></pre>
           </div>
           
@@ -327,7 +349,7 @@ Remove notes directory.
 
     
       <div id="document-method" class="method-detail ">
-        <a name="M000011"></a>
+        <a name="M000021"></a>
 
         <div class="method-heading">
         
@@ -348,12 +370,14 @@ Generate notes documents.
           <div class="method-source-code"
             id="document-source">
 <pre>
-<span class="ruby-comment cmt"># File plug/syckle/services/dnote.rb, line 66</span>
+<span class="ruby-comment cmt"># File plug/syckle/services/dnote.rb, line 68</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">document</span>
-      <span class="ruby-identifier">mkdir_p</span>(<span class="ruby-identifier">output</span>)
-      <span class="ruby-identifier">file</span> = <span class="ruby-identifier">output</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;index.html&quot;</span>
-      <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file</span>, <span class="ruby-value str">'w'</span>){ <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">f</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">dnote</span>.<span class="ruby-identifier">to_html</span> }
-      <span class="ruby-identifier">report</span> <span class="ruby-node">&quot;Updated #{file.to_s.sub(Dir.pwd+'/','')}&quot;</span>
+      <span class="ruby-identifier">$NOOP</span> = <span class="ruby-identifier">noop?</span>  <span class="ruby-comment cmt"># TODO:</span>
+      <span class="ruby-identifier">dnote</span>.<span class="ruby-identifier">document</span>
+      <span class="ruby-comment cmt">#mkdir_p(output)</span>
+      <span class="ruby-comment cmt">#file = output + &quot;index.html&quot;</span>
+      <span class="ruby-comment cmt">#File.open(file, 'w'){ |f| f &lt;&lt; dnote.to_html }</span>
+      <span class="ruby-identifier">report</span> <span class="ruby-node">&quot;Updated #{output.to_s.sub(Dir.pwd+'/','')}&quot;</span>
     <span class="ruby-keyword kw">end</span></pre>
           </div>
           
@@ -364,7 +388,7 @@ Generate notes documents.
 
     
       <div id="output--method" class="method-detail ">
-        <a name="M000009"></a>
+        <a name="M000019"></a>
 
         <div class="method-heading">
         
@@ -376,19 +400,14 @@ Generate notes documents.
 
         <div class="method-description">
           
-          <pre>
- Formats (xml, html, rdoc).
-</pre>
-<p>
-attr_accessor :formats
-</p>
+          
           
 
           
           <div class="method-source-code"
             id="output--source">
 <pre>
-<span class="ruby-comment cmt"># File plug/syckle/services/dnote.rb, line 56</span>
+<span class="ruby-comment cmt"># File plug/syckle/services/dnote.rb, line 58</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">output=</span>(<span class="ruby-identifier">path</span>)
       <span class="ruby-ivar">@output</span> = <span class="ruby-constant">Pathname</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">path</span>)
     <span class="ruby-keyword kw">end</span></pre>
@@ -401,7 +420,7 @@ attr_accessor :formats
 
     
       <div id="reset-method" class="method-detail ">
-        <a name="M000013"></a>
+        <a name="M000022"></a>
 
         <div class="method-heading">
         
@@ -422,9 +441,9 @@ Mark notes documents as out-of-date.
           <div class="method-source-code"
             id="reset-source">
 <pre>
-<span class="ruby-comment cmt"># File plug/syckle/services/dnote.rb, line 74</span>
+<span class="ruby-comment cmt"># File plug/syckle/services/dnote.rb, line 78</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reset</span>
-      <span class="ruby-identifier">dnote</span>.<span class="ruby-identifier">reset</span>
+      <span class="ruby-comment cmt">#dnote.reset</span>
     <span class="ruby-keyword kw">end</span></pre>
           </div>
           
@@ -441,7 +460,7 @@ Mark notes documents as out-of-date.
 
     
       <div id="initialize-defaults-method" class="method-detail ">
-        <a name="M000016"></a>
+        <a name="M000025"></a>
 
         <div class="method-heading">
         
@@ -453,18 +472,21 @@ Mark notes documents as out-of-date.
 
         <div class="method-description">
           
-          
+          <p>
+TODO: maybe files default of *<b>/</b>.rb is better?
+</p>
           
 
           
           <div class="method-source-code"
             id="initialize-defaults-source">
 <pre>
-<span class="ruby-comment cmt"># File plug/syckle/services/dnote.rb, line 86</span>
+<span class="ruby-comment cmt"># File plug/syckle/services/dnote.rb, line 90</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize_defaults</span>
-      <span class="ruby-ivar">@files</span>  = <span class="ruby-identifier">metadata</span>.<span class="ruby-identifier">loadpath</span> <span class="ruby-operator">||</span> <span class="ruby-value str">'lib'</span>
-      <span class="ruby-ivar">@output</span> = <span class="ruby-identifier">project</span>.<span class="ruby-identifier">log</span> <span class="ruby-operator">+</span> <span class="ruby-value str">'dnote'</span>
-      <span class="ruby-ivar">@labels</span> = <span class="ruby-constant">DEFAULT_LABELS</span>
+      <span class="ruby-ivar">@files</span>   = <span class="ruby-identifier">metadata</span>.<span class="ruby-identifier">loadpath</span> <span class="ruby-operator">||</span> <span class="ruby-value str">'lib'</span>
+      <span class="ruby-ivar">@output</span>  = <span class="ruby-identifier">project</span>.<span class="ruby-identifier">log</span> <span class="ruby-operator">+</span> <span class="ruby-value str">'dnote'</span>
+      <span class="ruby-ivar">@formats</span> = []
+      <span class="ruby-ivar">@labels</span>  = <span class="ruby-constant">DEFAULT_LABELS</span>
     <span class="ruby-keyword kw">end</span></pre>
           </div>
           

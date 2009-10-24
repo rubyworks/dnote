@@ -4,8 +4,8 @@ aliases: []
 block_params: 
 comment: []
 
-full_name: DNote::Notes#verbose?
+full_name: DNote::Notes#to
 is_singleton: false
-name: verbose?
-params: ()
+name: to
+params: (format)
 visibility: public

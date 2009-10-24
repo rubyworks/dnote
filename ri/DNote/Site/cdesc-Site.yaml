@@ -1,0 +1,67 @@
+--- !ruby/object:RDoc::RI::ClassDescription 
+attributes: 
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Additional Formats to supply besided the html (xml, rdoc, markdown, etc.)
+  name: formats
+  rw: RW
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Notes object.
+  name: notes
+  rw: R
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Directory to save output.
+  name: output
+  rw: RW
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Title to use in any headers.
+  name: title
+  rw: RW
+class_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Site class is used to build a &quot;pretty&quot; output set. The template files are saved to the <tt>output</tt> directory. Additional <tt>formats</tt> can be saved the the directory as well.
+- !ruby/struct:RDoc::Markup::Flow::RULE 
+  width: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Site class is used to build a &quot;pretty&quot; output set. The template files are saved to the <tt>output</tt> directory. Additional <tt>formats</tt> can be saved the the directory as well.
+constants: 
+- !ruby/object:RDoc::RI::Constant 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Default output directory is <tt>dnote/</tt>.
+  name: DEFAULT_OUTPUT
+  value: Pathname.new('dnote')
+full_name: DNote::Site
+includes: []
+
+instance_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: __DIR__
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: clean
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: document
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: fu
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: initialize_defaults
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: output=
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: reset
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: templates
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: write
+name: Site
+superclass: Object

@@ -75,41 +75,37 @@
         <h3 class="section-header">Methods</h3>
         <ul class="link-list">
           
-          <li class="method"><a href="#M000002">::new</a></li>
+          <li class="method"><a href="#M000012">::new</a></li>
           
-          <li class="method"><a href="#M000007">#counts</a></li>
+          <li class="method"><a href="#M000015">#counts</a></li>
           
-          <li class="method"><a href="#M000008">#display</a></li>
+          <li class="method"><a href="#M000016">#display</a></li>
           
-          <li class="method"><a href="#M000025">#fu</a></li>
+          <li class="method"><a href="#M000013">#initialize_defaults</a></li>
           
-          <li class="method"><a href="#M000003">#initialize_defaults</a></li>
+          <li class="method"><a href="#M000017">#labels=</a></li>
           
-          <li class="method"><a href="#M000012">#labels=</a></li>
+          <li class="method"><a href="#M000014">#notes</a></li>
           
-          <li class="method"><a href="#M000004">#noharm?</a></li>
+          <li class="method"><a href="#M000024">#organize</a></li>
           
-          <li class="method"><a href="#M000006">#notes</a></li>
+          <li class="method"><a href="#M000018">#parse</a></li>
           
-          <li class="method"><a href="#M000017">#organize</a></li>
+          <li class="method"><a href="#M000026">#to</a></li>
           
-          <li class="method"><a href="#M000015">#parse</a></li>
+          <li class="method"><a href="#M000030">#to_html</a></li>
           
-          <li class="method"><a href="#M000021">#to_html</a></li>
+          <li class="method"><a href="#M000031">#to_html_list</a></li>
           
-          <li class="method"><a href="#M000023">#to_json</a></li>
+          <li class="method"><a href="#M000033">#to_json</a></li>
           
-          <li class="method"><a href="#M000019">#to_markdown</a></li>
+          <li class="method"><a href="#M000028">#to_markdown</a></li>
           
-          <li class="method"><a href="#M000018">#to_rdoc</a></li>
+          <li class="method"><a href="#M000027">#to_rdoc</a></li>
           
-          <li class="method"><a href="#M000020">#to_xml</a></li>
+          <li class="method"><a href="#M000029">#to_xml</a></li>
           
-          <li class="method"><a href="#M000022">#to_yaml</a></li>
-          
-          <li class="method"><a href="#M000005">#verbose?</a></li>
-          
-          <li class="method"><a href="#M000024">#write</a></li>
+          <li class="method"><a href="#M000032">#to_yaml</a></li>
           
         </ul>
       </div>
@@ -150,15 +146,17 @@
         <!-- classpage.html : classes -->
         <ul class="link-list">
         
+          <li class="module"><a href="../DNote.html">DNote</a></li>
+        
+          <li class="class"><a href="../DNote/Notes.html">DNote::Notes</a></li>
+        
+          <li class="class"><a href="../DNote/Site.html">DNote::Site</a></li>
+        
           <li class="module"><a href="../Syckle.html">Syckle</a></li>
         
           <li class="module"><a href="../Syckle/Plugins.html">Syckle::Plugins</a></li>
         
           <li class="class"><a href="../Syckle/Plugins/DNote.html">Syckle::Plugins::DNote</a></li>
-        
-          <li class="module"><a href="../DNote.html">DNote</a></li>
-        
-          <li class="class"><a href="../DNote/Notes.html">DNote::Notes</a></li>
         
         </ul>
         <div id="no-class-search-results" style="display: none;">No matching classes.</div>
@@ -246,25 +244,6 @@ Default note labels to look for in source code.
         </div>
       </div>
       
-      <div id="verbose-attribute-method" class="method-detail">
-        <a name="verbose"></a>
-        
-        <a name="verbose="></a>
-        
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">verbose</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>
-Verbose
-</p>
-        
-        </div>
-      </div>
-      
       <div id="paths-attribute-method" class="method-detail">
         <a name="paths"></a>
         
@@ -313,7 +292,7 @@ Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
 
     
       <div id="new-method" class="method-detail ">
-        <a name="M000002"></a>
+        <a name="M000012"></a>
 
         <div class="method-heading">
         
@@ -332,27 +311,13 @@ Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
           <div class="method-source-code"
             id="new-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 57</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 40</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">paths</span>, <span class="ruby-identifier">options</span>={})
       <span class="ruby-identifier">initialize_defaults</span>
-
-      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">paths</span>.<span class="ruby-identifier">empty?</span>
-        <span class="ruby-comment cmt">#if file = File.exist?('meta/loadpath')</span>
-        <span class="ruby-comment cmt">#  paths = YAML.load(File.new(file)).to_list</span>
-        <span class="ruby-comment cmt">#  paths = Array === paths ? paths : paths.split(/\s+/)</span>
-        <span class="ruby-comment cmt">#elsif file = File.exist?('lib')</span>
-        <span class="ruby-comment cmt">#  paths = ['lib']</span>
-        <span class="ruby-comment cmt">#else</span>
-          <span class="ruby-identifier">paths</span> = [<span class="ruby-value str">'**/*.rb'</span>]
-        <span class="ruby-comment cmt">#end</span>
-      <span class="ruby-keyword kw">end</span>
-
-      <span class="ruby-ivar">@paths</span> = <span class="ruby-identifier">paths</span>
-
       <span class="ruby-identifier">options</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
         <span class="ruby-identifier">__send__</span>(<span class="ruby-node">&quot;#{k}=&quot;</span>, <span class="ruby-identifier">v</span>)
       <span class="ruby-keyword kw">end</span>
-
+      <span class="ruby-comment cmt">#@paths = ['**/*.rb'] if @paths.empty?</span>
       <span class="ruby-identifier">parse</span>
     <span class="ruby-keyword kw">end</span></pre>
           </div>
@@ -370,7 +335,7 @@ Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
 
     
       <div id="counts-method" class="method-detail ">
-        <a name="M000007"></a>
+        <a name="M000015"></a>
 
         <div class="method-heading">
         
@@ -389,7 +354,7 @@ Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
           <div class="method-source-code"
             id="counts-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 101</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 63</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">counts</span>
       <span class="ruby-ivar">@counts</span>
     <span class="ruby-keyword kw">end</span></pre>
@@ -402,7 +367,7 @@ Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
 
     
       <div id="display-method" class="method-detail ">
-        <a name="M000008"></a>
+        <a name="M000016"></a>
 
         <div class="method-heading">
         
@@ -424,7 +389,7 @@ files.
           <div class="method-source-code"
             id="display-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 113</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 70</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">display</span>(<span class="ruby-identifier">format</span>)
       <span class="ruby-comment cmt">#paths    = self.paths</span>
       <span class="ruby-comment cmt">#output   = self.output</span>
@@ -476,50 +441,8 @@ files.
       </div>
 
     
-      <div id="fu-method" class="method-detail ">
-        <a name="M000025"></a>
-
-        <div class="method-heading">
-        
-          <span class="method-name">fu</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        
-        </div>
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code"
-            id="fu-source">
-<pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 383</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fu</span>
-      <span class="ruby-ivar">@fu</span> <span class="ruby-operator">||=</span> (
-        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">noop?</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">verbose?</span>
-          <span class="ruby-constant">FileUtils</span><span class="ruby-operator">::</span><span class="ruby-constant">DryRun</span>
-        <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">noop</span>
-          <span class="ruby-constant">FileUtils</span><span class="ruby-operator">::</span><span class="ruby-constant">Noop</span>
-        <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">verbose</span>
-          <span class="ruby-constant">FileUtils</span><span class="ruby-operator">::</span><span class="ruby-constant">Verbose</span>
-        <span class="ruby-keyword kw">else</span>
-          <span class="ruby-constant">FileUtils</span>
-        <span class="ruby-keyword kw">end</span>
-      )
-    <span class="ruby-keyword kw">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-      </div>
-
-    
       <div id="initialize-defaults-method" class="method-detail ">
-        <a name="M000003"></a>
+        <a name="M000013"></a>
 
         <div class="method-heading">
         
@@ -538,11 +461,10 @@ files.
           <div class="method-source-code"
             id="initialize-defaults-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 81</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 50</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize_defaults</span>
-      <span class="ruby-ivar">@paths</span>    = [<span class="ruby-value str">&quot;lib&quot;</span>]
-      <span class="ruby-comment cmt">#@output   = DEFAULT_OUTPUT</span>
       <span class="ruby-ivar">@labels</span>   = <span class="ruby-constant">DEFAULT_LABELS</span>
+      <span class="ruby-ivar">@paths</span>    = [<span class="ruby-value str">&quot;**/*.rb&quot;</span>]
       <span class="ruby-ivar">@title</span>    = <span class="ruby-value str">&quot;Developer's Notes&quot;</span>
       <span class="ruby-ivar">@format</span>   = <span class="ruby-value str">&quot;rdoc&quot;</span>
     <span class="ruby-keyword kw">end</span></pre>
@@ -555,7 +477,7 @@ files.
 
     
       <div id="labels--method" class="method-detail ">
-        <a name="M000012"></a>
+        <a name="M000017"></a>
 
         <div class="method-heading">
         
@@ -574,7 +496,7 @@ files.
           <div class="method-source-code"
             id="labels--source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 174</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 115</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">labels=</span>(<span class="ruby-identifier">labels</span>)
       <span class="ruby-ivar">@labels</span> = (
         <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">labels</span>
@@ -593,38 +515,8 @@ files.
       </div>
 
     
-      <div id="noharm--method" class="method-detail ">
-        <a name="M000004"></a>
-
-        <div class="method-heading">
-        
-          <span class="method-name">noharm?</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        
-        </div>
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code"
-            id="noharm--source">
-<pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 90</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">noharm?</span>  ; <span class="ruby-ivar">@noharm</span>  ; <span class="ruby-keyword kw">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-      </div>
-
-    
       <div id="notes-method" class="method-detail ">
-        <a name="M000006"></a>
+        <a name="M000014"></a>
 
         <div class="method-heading">
         
@@ -643,7 +535,7 @@ files.
           <div class="method-source-code"
             id="notes-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 96</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 58</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">notes</span>
       <span class="ruby-ivar">@notes</span>
     <span class="ruby-keyword kw">end</span></pre>
@@ -656,7 +548,7 @@ files.
 
     
       <div id="organize-method" class="method-detail ">
-        <a name="M000017"></a>
+        <a name="M000024"></a>
 
         <div class="method-heading">
         
@@ -677,7 +569,7 @@ Organize records in heirarchical form.
           <div class="method-source-code"
             id="organize-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 244</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 177</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">organize</span>(<span class="ruby-identifier">records</span>)
       <span class="ruby-identifier">orecs</span> = {}
       <span class="ruby-identifier">records</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">record</span><span class="ruby-operator">|</span>
@@ -700,7 +592,7 @@ Organize records in heirarchical form.
 
     
       <div id="parse-method" class="method-detail ">
-        <a name="M000015"></a>
+        <a name="M000018"></a>
 
         <div class="method-heading">
         
@@ -722,9 +614,8 @@ label=>notes and a counts hash.
           <div class="method-source-code"
             id="parse-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 194</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 128</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parse</span>
-      <span class="ruby-comment cmt">#</span>
       <span class="ruby-identifier">files</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">paths</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
         <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span>(<span class="ruby-identifier">path</span>)
           <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">path</span>, <span class="ruby-value str">'**/*'</span>))
@@ -778,8 +669,40 @@ label=>notes and a counts hash.
       </div>
 
     
+      <div id="to-method" class="method-detail ">
+        <a name="M000026"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">to</span><span
+            class="method-args">(format)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="to-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 192</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to</span>(<span class="ruby-identifier">format</span>)
+      <span class="ruby-identifier">__send__</span>(<span class="ruby-node">&quot;to_#{format}&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
       <div id="to-html-method" class="method-detail ">
-        <a name="M000021"></a>
+        <a name="M000030"></a>
 
         <div class="method-heading">
         
@@ -800,7 +723,7 @@ HTML format.
           <div class="method-source-code"
             id="to-html-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 323</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 256</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_html</span>
       <span class="ruby-identifier">html</span> = []
       <span class="ruby-identifier">html</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">%[&lt;html&gt;]</span>
@@ -813,6 +736,43 @@ HTML format.
       <span class="ruby-identifier">html</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">%[&lt;body&gt;]</span>
       <span class="ruby-identifier">html</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">%[&lt;div class=&quot;main&quot;&gt;]</span>
       <span class="ruby-identifier">html</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">%[&lt;h1&gt;&lt;%= title %&gt;&lt;/h1&gt;]</span>
+      <span class="ruby-identifier">html</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">to_html_list</span>
+      <span class="ruby-identifier">html</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">%[&lt;/div&gt;]</span>
+      <span class="ruby-identifier">html</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">%[&lt;/boby&gt;]</span>
+      <span class="ruby-identifier">html</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">%[&lt;/html&gt;]</span>
+      <span class="ruby-identifier">html</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;\n&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="to-html-list-method" class="method-detail ">
+        <a name="M000031"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">to_html_list</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="to-html-list-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 276</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_html_list</span>
+      <span class="ruby-identifier">html</span> = []
       <span class="ruby-identifier">html</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">%[&lt;div class=&quot;notes&quot;&gt;]</span>
       <span class="ruby-identifier">notes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">label</span>, <span class="ruby-identifier">per_file</span><span class="ruby-operator">|</span>
         <span class="ruby-identifier">html</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">%[&lt;h2&gt;#{label}&lt;/h2&gt;]</span>
@@ -829,9 +789,6 @@ HTML format.
         <span class="ruby-identifier">html</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">%[&lt;/ol&gt;]</span>
       <span class="ruby-keyword kw">end</span>
       <span class="ruby-identifier">html</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">%[&lt;/div&gt;]</span>
-      <span class="ruby-identifier">html</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">%[&lt;/div&gt;]</span>
-      <span class="ruby-identifier">html</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">%[&lt;/boby&gt;]</span>
-      <span class="ruby-identifier">html</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">%[&lt;/html&gt;]</span>
       <span class="ruby-identifier">html</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;\n&quot;</span>)
     <span class="ruby-keyword kw">end</span></pre>
           </div>
@@ -843,7 +800,7 @@ HTML format.
 
     
       <div id="to-json-method" class="method-detail ">
-        <a name="M000023"></a>
+        <a name="M000033"></a>
 
         <div class="method-heading">
         
@@ -862,7 +819,7 @@ HTML format.
           <div class="method-source-code"
             id="to-json-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 364</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 304</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_json</span>
       <span class="ruby-identifier">require</span> <span class="ruby-value str">'json'</span>
       <span class="ruby-identifier">notes</span>.<span class="ruby-identifier">to_json</span>
@@ -876,7 +833,7 @@ HTML format.
 
     
       <div id="to-markdown-method" class="method-detail ">
-        <a name="M000019"></a>
+        <a name="M000028"></a>
 
         <div class="method-heading">
         
@@ -897,7 +854,7 @@ Format notes in RDoc format.
           <div class="method-source-code"
             id="to-markdown-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 283</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 216</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_markdown</span>
       <span class="ruby-identifier">out</span> = []
       <span class="ruby-identifier">out</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;# Development Notes&quot;</span>
@@ -922,7 +879,7 @@ Format notes in RDoc format.
 
     
       <div id="to-rdoc-method" class="method-detail ">
-        <a name="M000018"></a>
+        <a name="M000027"></a>
 
         <div class="method-heading">
         
@@ -943,7 +900,7 @@ Format notes in RDoc format.
           <div class="method-source-code"
             id="to-rdoc-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 265</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 198</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_rdoc</span>
       <span class="ruby-identifier">out</span> = []
       <span class="ruby-identifier">out</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;= Development Notes&quot;</span>
@@ -968,7 +925,7 @@ Format notes in RDoc format.
 
     
       <div id="to-xml-method" class="method-detail ">
-        <a name="M000020"></a>
+        <a name="M000029"></a>
 
         <div class="method-heading">
         
@@ -989,7 +946,7 @@ Format notes in XML format.
           <div class="method-source-code"
             id="to-xml-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 301</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 234</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_xml</span>
       <span class="ruby-identifier">xml</span> = []
       <span class="ruby-identifier">xml</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;&lt;notes&gt;&quot;</span>
@@ -1018,7 +975,7 @@ Format notes in XML format.
 
     
       <div id="to-yaml-method" class="method-detail ">
-        <a name="M000022"></a>
+        <a name="M000032"></a>
 
         <div class="method-heading">
         
@@ -1037,81 +994,10 @@ Format notes in XML format.
           <div class="method-source-code"
             id="to-yaml-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 358</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 298</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_yaml</span>
       <span class="ruby-identifier">require</span> <span class="ruby-value str">'yaml'</span>
       <span class="ruby-identifier">notes</span>.<span class="ruby-identifier">to_yaml</span>
-    <span class="ruby-keyword kw">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-      </div>
-
-    
-      <div id="verbose--method" class="method-detail ">
-        <a name="M000005"></a>
-
-        <div class="method-heading">
-        
-          <span class="method-name">verbose?</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        
-        </div>
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code"
-            id="verbose--source">
-<pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 93</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verbose?</span> ; <span class="ruby-ivar">@verbose</span> ; <span class="ruby-keyword kw">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-      </div>
-
-    
-      <div id="write-method" class="method-detail ">
-        <a name="M000024"></a>
-
-        <div class="method-heading">
-        
-          <span class="method-name">write</span><span
-            class="method-args">(text, format)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        
-        </div>
-
-        <div class="method-description">
-          
-          <p>
-Save notes.
-</p>
-          
-
-          
-          <div class="method-source-code"
-            id="write-source">
-<pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 371</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">write</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">format</span>)
-      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">output</span>.<span class="ruby-identifier">directory?</span>
-        <span class="ruby-identifier">file</span> = <span class="ruby-identifier">output</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot;notes.#{format}&quot;</span>
-      <span class="ruby-keyword kw">else</span>
-        <span class="ruby-identifier">file</span> = <span class="ruby-constant">Pathname</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">output</span>)
-      <span class="ruby-keyword kw">end</span>
-      <span class="ruby-identifier">fu</span>.<span class="ruby-identifier">mkdir_p</span>(<span class="ruby-identifier">file</span>.<span class="ruby-identifier">parent</span>)
-      <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file</span>, <span class="ruby-value str">'w'</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">f</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">text</span> } <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">noharm?</span>
-      <span class="ruby-identifier">file</span>
     <span class="ruby-keyword kw">end</span></pre>
           </div>
           

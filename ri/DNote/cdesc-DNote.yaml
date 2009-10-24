@@ -7,8 +7,6 @@ class_methods:
 - !ruby/object:RDoc::RI::MethodSummary 
   name: run
 comment: 
-- !ruby/struct:RDoc::Markup::Flow::P 
-  body: require 'reap/project/scm'
 constants: 
 - !ruby/object:RDoc::RI::Constant 
   comment: 

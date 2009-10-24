@@ -9,13 +9,19 @@ attributes:
 - !ruby/object:RDoc::RI::Attribute 
   comment: 
   - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Formats (xml, html, rdoc).
+  name: formats
+  rw: RW
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
     body: "Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE."
   name: labels
   rw: RW
 - !ruby/object:RDoc::RI::Attribute 
   comment: 
   - !ruby/struct:RDoc::Markup::Flow::P 
-    body: Directory to save output. Defaults to standard log directory.
+    body: Directory to save output. Defaults to <tt>dnote/</tt> under project log directory.
   name: output
   rw: RW
 class_methods: []

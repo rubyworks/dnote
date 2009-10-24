@@ -60,15 +60,17 @@
 
         <ul class="link-list">
         
+          <li class="module"><a href="./DNote.html">DNote</a></li>
+        
+          <li class="class"><a href="./DNote/Notes.html">DNote::Notes</a></li>
+        
+          <li class="class"><a href="./DNote/Site.html">DNote::Site</a></li>
+        
           <li class="module"><a href="./Syckle.html">Syckle</a></li>
         
           <li class="module"><a href="./Syckle/Plugins.html">Syckle::Plugins</a></li>
         
           <li class="class"><a href="./Syckle/Plugins/DNote.html">Syckle::Plugins::DNote</a></li>
-        
-          <li class="module"><a href="./DNote.html">DNote</a></li>
-        
-          <li class="class"><a href="./DNote/Notes.html">DNote::Notes</a></li>
         
         </ul>
         <div id="no-class-search-results" style="display: none;">No matching classes.</div>
@@ -86,54 +88,79 @@
   <div id="documentation">
     <h1>D&#8217;Note</h1>
 <ul>
-<li><a href="http://proutils.github.com/dnote">proutils.github.com/dnote</a>
+<li>home: <a
+href="http://proutils.github.com/dnote">proutils.github.com/dnote</a>
 
 </li>
-<li><a href="http://github.com/proutils/dnote">github.com/proutils/dnote</a>
+<li>source: <a
+href="http://github.com/proutils/dnote">github.com/proutils/dnote</a>
+
+</li>
+<li>forum: <a
+href="http://googlegroups.com/group/proutils">googlegroups.com/group/proutils</a>
 
 </li>
 </ul>
 <h2>DESCRIPTION</h2>
 <p>
-Extract developement notes from source code and make some pretty RDoc
-and/or HTML formatted files out of them.
+Extract developement notes from source code and generate some nice output
+formats for them.
 </p>
 <h2>SYNOPSIS</h2>
 <p>
-Developer notes it the source code must be formate as follows:
+Developer notes it the source code must be formatted as follows:
 </p>
 <pre>
-  # TYPE: description ...
-  #       ... cont ...
+  # LABEL: description ...
 </pre>
 <p>
-All notes must be separated by a blank line. Eg.
+Any description that takes up more than one line must remain flush to the
+left margin (if the first line is flush to the left margin too) b/c RDoc
+will mistake of formatting the remaining lines as a <tt>pre</tt> block it
+if is not. So&#8230;
 </p>
 <pre>
-  # TYPE: description ...
-  #
-  # TYPE: description ...
-</pre>
-<p>
-Without the blank line the second note will be taken to be part of the
-first. Any description that takes up more than one line must remain flush
-to the left margin (if the first line is flush to the left margin too) b/c
-RDoc will mistake of formatting the remaining lines as a <tt>pre</tt> block
-it if is not. So&#8230;
-</p>
-<pre>
-  # TYPE: ... description ...
+  # LABEL: ... description ...
   # continue ...
 </pre>
 <p>
-Alternately the whole note can be a <tt>pre</tt> block by indenting them.
-Then the layout if freed-up.
+All consecutive notes must be separated by a blank lines.
+</p>
+<pre>
+  # LABEL: description ...
+  #
+  # LABEL: description ...
+</pre>
+<p>
+Without the blank line the second note will be taken to be part of the
+first.
+</p>
+<p>
+Alternately the whole note can be made a <tt>pre</tt> block by indention.
+Then the layout if freed-form.
 </p>
 <pre>
   # This is a description of something...
   #
-  #   TYPE: description ...
-  #         continued ...
+  #   LABEL: description ...
+  #          continued ...
+</pre>
+<p>
+With properly formatted notes, we then use the <tt>dnote</tt> command line
+tool.
+</p>
+<pre>
+  $ dnote
+</pre>
+<p>
+And lo! Pretty output. See <tt>dnote --help</tt> for more options.
+</p>
+<h2>INSTALLATION</h2>
+<p>
+The usual RubyGem&#8217;s command:
+</p>
+<pre>
+  $ sudo gem install dnote
 </pre>
 <h2>COPYRIGHTS</h2>
 <p>

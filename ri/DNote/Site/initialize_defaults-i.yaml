@@ -4,8 +4,8 @@ aliases: []
 block_params: 
 comment: []
 
-full_name: Syckle::Plugins::DNote#output=
+full_name: DNote::Site#initialize_defaults
 is_singleton: false
-name: output=
-params: (path)
+name: initialize_defaults
+params: ()
 visibility: public

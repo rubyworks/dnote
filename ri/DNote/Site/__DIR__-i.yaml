@@ -3,10 +3,8 @@ aliases: []
 
 block_params: 
 comment: 
-- !ruby/struct:RDoc::Markup::Flow::P 
-  body: Save notes.
-full_name: DNote::Notes#write
+full_name: DNote::Site#__DIR__
 is_singleton: false
-name: write
-params: (text, format)
+name: __DIR__
+params: ()
 visibility: public
