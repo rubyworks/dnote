@@ -65,9 +65,15 @@ instance_methods:
 - !ruby/object:RDoc::RI::MethodSummary 
   name: display
 - !ruby/object:RDoc::RI::MethodSummary 
+  name: files
+- !ruby/object:RDoc::RI::MethodSummary 
   name: initialize_defaults
 - !ruby/object:RDoc::RI::MethodSummary 
   name: labels=
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: match_arbitrary
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: match_common
 - !ruby/object:RDoc::RI::MethodSummary 
   name: notes
 - !ruby/object:RDoc::RI::MethodSummary 
