@@ -125,42 +125,31 @@ module DNote
 
     # Gather and count notes. This returns two elements,
     # a hash in the form of label=>notes and a counts hash.
+
     def parse
-      files = self.paths.map do |path|
-        if File.directory?(path)
-          Dir.glob(File.join(path, '**/*'))
-        else
-          Dir.glob(path)
-        end
-      end.flatten.uniq
-
-      #
       records, counts = [], Hash.new(0)
-
-      # iterate through files extracting notes
       files.each do |fname|
         next unless File.file?(fname)
-        #next unless fname =~ /\.rb$/      # TODO should this be done?
+        #next unless fname =~ /\.rb$/      # TODO: should this be done?
         File.open(fname) do |f|
-          line_no, save, text = 0, nil, nil
+          lineno, save, text = 0, nil, nil
           while line = f.gets
-            line_no += 1
-            labels.each do |label|
-              if line =~ /^\s*#\s*#{Regexp.escape(label)}[:]?\s*(.*?)$/
-                file = fname
-                text = ''
-                save = {'label'=>label,'file'=>file,'line'=>line_no,'note'=>text}
-                records << save
-                counts[label] += 1
-              end
-            end
-            if text
-              if line =~ /^\s*[#]{0,1}\s*$/ or line !~ /^\s*#/ or line =~ /^\s*#[+][+]/
-                text.strip!
-                text = nil
-                #records << save
-              else
-                text << line.gsub(/^\s*#\s*/,'')
+            lineno += 1
+            save = match_common(line, lineno, fname) || match_arbitrary(line, lineno, fname)
+            if save
+              #file = fname
+              text = save['note']
+              #save = {'label'=>label,'file'=>file,'line'=>line_no,'note'=>text}
+              records << save
+              counts[save['label']] += 1
+            else
+              if text
+                if line =~ /^\s*[#]{0,1}\s*$/ or line !~ /^\s*#/ or line =~ /^\s*#[+][+]/
+                  text.strip!
+                  text = nil
+                else
+                  text << ' ' << line.gsub(/^\s*#\s*/,'')
+                end
               end
             end
           end
@@ -170,6 +159,43 @@ module DNote
       notes = organize(records)
       #
       @notes, @counts = notes, counts
+    end
+
+    #
+    def files
+      @files ||= (
+        self.paths.map do |path|
+          if File.directory?(path)
+            Dir.glob(File.join(path, '**/*'))
+          else
+            Dir.glob(path)
+          end
+        end.flatten.uniq
+      )
+    end
+
+    #
+    def match_common(line, lineno, file)
+      rec = nil
+      labels.each do |label|
+        if md = /^\s*#\s*#{Regexp.escape(label)}[:]?\s*(.*?)$/.match(line)
+          text = md[1]
+          rec = {'label'=>label,'file'=>file,'line'=>lineno,'note'=>text}
+        end
+      end
+      return rec
+    end
+
+    #
+    def match_arbitrary(line, lineno, file)
+      rec = nil
+      labels.each do |label|
+        if md = /^\s*#\s*([A-Z]+)[:]\s*(.*?)$/.match(line)
+          label, text = md[1], md[2]
+          rec = {'label'=>label,'file'=>file,'line'=>lineno,'note'=>text}
+        end
+      end
+      return rec
     end
 
     # Organize records in heirarchical form.
@@ -302,7 +328,7 @@ module DNote
 
     #
     def to_json
-      require 'json'
+      require 'json'  # TODO: fallback to json_pure
       notes.to_json
     end
 

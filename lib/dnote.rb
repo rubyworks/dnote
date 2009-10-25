@@ -8,3 +8,5 @@ module DNote
   end
 end
 
+# TEST: This is a test of arbitraty note labels.
+

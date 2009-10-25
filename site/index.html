@@ -55,24 +55,32 @@
   <div class="doc">
 
   <p>Developer's take note! All those TODO: and FIXME: notes floating around your source code are rotting away.
-  They are trapped and in desparate need of your attention. No worries. D'Note is here to liberate them.
-  D'Note scans your source code for labeled comments, collects, collates and sorts them, and then 
-  saves them in a format of your choosing.</p>
+  They are trapped and in desparate need of your attention.</p>
+
+  <p>Not to fret. D'Note can help you liberate them. D'Note scans source code for labeled comments, collects,
+  collates and sorts them, and then returns them in a format of your choosing.</p>
 
 
   <h2>Note Structure</h2>
 
-  <p>D'Note uses a commonly used pattern of "LABEL:". The colon helps D'Note separate developer notes
-  from other documentation. To be more specific, developer's notes in the source code must follow
-  these simple set of rules:</p>
+  <p>D'Note scans for the common noting pattern used by develepors of many laguages of an all-caps label
+  followed bt a colon. To be more specific, for D'Note to recogznie a note, it needs ot follow this 
+  simple set of rules:</p>
 
-  <p>1) Notes start with a label puctuated with a colon and followed by the note text.</p>
+  <p>1) Notes start with an all-caps label puctuated with a colon, followed by the note's text.</p>
 
   <pre>
   # LABEL: description ...
   </pre>
 
-  <p>2) Any note that requires more than one line must remain flush to the left
+  <p>2) Specially designated notes can omit the colon. By default these are <code>TODO</code>,
+  <code>FIXME</code> and <code>OPTIMIZE</code>. Eg.</p>
+
+  <pre>
+  # TODO description ...
+  </pre>
+
+  <p>3) Any note that requires more than one line must remain flush to the left
   margin (the margin is set by the first line). This is done because RDoc will mistake
   the note for a <tt>&lt;pre&gt;</tt> block if it is indented.</p>
 
@@ -81,8 +89,8 @@
   # continue ...
   </pre>
 
-  <p>3) An alternative to the last rule is to make the whole note a <tt>&lt;pre&gt;</tt> block,
-  by indenting it. Then the text layout is free-form.</p>
+  <p>3) An alternative to the limitation of the last rule is to indent the whole note, making it 
+  a <tt>&lt;pre&gt;</tt> block. Then the text layout is free-form.</p>
 
   <pre>
   # This is a description of something...
@@ -91,19 +99,8 @@
   #          continue ...
   </pre>
 
-  <p>4) All consecutive notes must be separated by at least one blank line.</p>
-
-  <pre>
-  # LABEL: description ...
-  # 
-  # LABEL: description ...
-  </pre>
-
-  <p>Without the blank line the second note will be taken to be part of the first.</p>
-
-  <p>That's all there is to it. In future we plan to relax the last rule, and if we can
-  convince the developers of RDoc to recognize labels, we may eventually be able to relax
-  the flush rule too.</p>
+  <p>That's all there is to it, if I can convince the developers of RDoc to add recognize labels,
+  we may eventually be able to relax the flush rule, which would be very nice.</p>
  
 
   <h2>Generating Notes</h2>
@@ -131,7 +128,7 @@
       -h, --help                       show this help information
   </pre>
 
-  <p>The default path is <code>lib/</code> and the default format <code>--rdoc</code>. 
+  <p>The default path is <code>**/*.rb</code> and the default format <code>--rdoc</code>. 
   Here is an example of DNote's current notes in RDoc format:</p>
 
   <pre>
@@ -181,7 +178,6 @@
 
   <p>Copyright (c) 2009 Thomas Sawyer</p>
 </div>
-
 
 </BODY>
 </HTML>
