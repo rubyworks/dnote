@@ -1,7 +1,7 @@
 require 'dnote/notes'
 
 module DNote
-  VERSION = "0.9"  #:till: VERSION = "<%= version %>"
+  VERSION = "1.0"  #:till: VERSION = "<%= version %>"
 
   def self.new(*args)
     Notes.new(*args)

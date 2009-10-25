@@ -178,7 +178,7 @@ module DNote
     def match_common(line, lineno, file)
       rec = nil
       labels.each do |label|
-        if md = /^\s*#\s*#{Regexp.escape(label)}[:]?\s*(.*?)$/.match(line)
+        if md = /\#\s*#{Regexp.escape(label)}[:]?\s*(.*?)$/.match(line)
           text = md[1]
           rec = {'label'=>label,'file'=>file,'line'=>lineno,'note'=>text}
         end
@@ -190,7 +190,7 @@ module DNote
     def match_arbitrary(line, lineno, file)
       rec = nil
       labels.each do |label|
-        if md = /^\s*#\s*([A-Z]+)[:]\s*(.*?)$/.match(line)
+        if md = /\#\s*([A-Z]+)[:]\s*(.*?)$/.match(line)
           label, text = md[1], md[2]
           rec = {'label'=>label,'file'=>file,'line'=>lineno,'note'=>text}
         end
