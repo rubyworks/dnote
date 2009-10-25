@@ -75,13 +75,13 @@
         <h3 class="section-header">Methods</h3>
         <ul class="link-list">
           
-          <li class="method"><a href="#M000010">::new</a></li>
+          <li class="method"><a href="#M000011">::new</a></li>
           
           <li class="method"><a href="#M000015">#counts</a></li>
           
           <li class="method"><a href="#M000016">#display</a></li>
           
-          <li class="method"><a href="#M000024">#files</a></li>
+          <li class="method"><a href="#M000025">#files</a></li>
           
           <li class="method"><a href="#M000013">#initialize_defaults</a></li>
           
@@ -298,7 +298,7 @@ Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
 
     
       <div id="new-method" class="method-detail ">
-        <a name="M000010"></a>
+        <a name="M000011"></a>
 
         <div class="method-heading">
         
@@ -448,7 +448,7 @@ files.
 
     
       <div id="files-method" class="method-detail ">
-        <a name="M000024"></a>
+        <a name="M000025"></a>
 
         <div class="method-heading">
         
@@ -585,7 +585,7 @@ files.
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">match_arbitrary</span>(<span class="ruby-identifier">line</span>, <span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">file</span>)
       <span class="ruby-identifier">rec</span> = <span class="ruby-keyword kw">nil</span>
       <span class="ruby-identifier">labels</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">label</span><span class="ruby-operator">|</span>
-        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">md</span> = <span class="ruby-regexp re">/^\s*#\s*([A-Z]+)[:]\s*(.*?)$/</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">line</span>)
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">md</span> = <span class="ruby-regexp re">/\#\s*([A-Z]+)[:]\s*(.*?)$/</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">line</span>)
           <span class="ruby-identifier">label</span>, <span class="ruby-identifier">text</span> = <span class="ruby-identifier">md</span>[<span class="ruby-value">1</span>], <span class="ruby-identifier">md</span>[<span class="ruby-value">2</span>]
           <span class="ruby-identifier">rec</span> = {<span class="ruby-value str">'label'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">label</span>,<span class="ruby-value str">'file'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">file</span>,<span class="ruby-value str">'line'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">lineno</span>,<span class="ruby-value str">'note'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">text</span>}
         <span class="ruby-keyword kw">end</span>
@@ -624,7 +624,7 @@ files.
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">match_common</span>(<span class="ruby-identifier">line</span>, <span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">file</span>)
       <span class="ruby-identifier">rec</span> = <span class="ruby-keyword kw">nil</span>
       <span class="ruby-identifier">labels</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">label</span><span class="ruby-operator">|</span>
-        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">md</span> = <span class="ruby-node">/^\s*#\s*#{Regexp.escape(label)}[:]?\s*(.*?)$/</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">line</span>)
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">md</span> = <span class="ruby-node">/\#\s*#{Regexp.escape(label)}[:]?\s*(.*?)$/</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">line</span>)
           <span class="ruby-identifier">text</span> = <span class="ruby-identifier">md</span>[<span class="ruby-value">1</span>]
           <span class="ruby-identifier">rec</span> = {<span class="ruby-value str">'label'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">label</span>,<span class="ruby-value str">'file'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">file</span>,<span class="ruby-value str">'line'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">lineno</span>,<span class="ruby-value str">'note'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">text</span>}
         <span class="ruby-keyword kw">end</span>
