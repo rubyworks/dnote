@@ -1,8 +1,8 @@
 = D'Note
 
 * home: http://proutils.github.com/dnote
-* source: http://github.com/proutils/dnote
 * forum: http://googlegroups.com/group/proutils
+* source: http://github.com/proutils/dnote
 
 
 == DESCRIPTION
