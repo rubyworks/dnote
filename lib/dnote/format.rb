@@ -38,7 +38,7 @@ module DNote
     #
     def initialize(notes, options={})
       @notes  = notes
-      @format = :rdoc
+      @format = :gnu
       @title  = "Developer's Notes"
       options.each do |k,v|
         __send__("#{k}=", v) if v
@@ -47,8 +47,12 @@ module DNote
 
     #
     def render
-      raise ArgumentError unless respond_to?("render_#{format}")
-      __send__("render_#{format}")
+      if notes.empty?
+        $stderr << "No #{notes.labels.join(', ')} notes.\n"
+      else
+        raise ArgumentError unless respond_to?("render_#{format}")
+        __send__("render_#{format}")
+      end
     end
 
     # S E R I A L I Z A T I O N
@@ -95,6 +99,12 @@ module DNote
 
     # W I K I  M A R K U P
 
+    def render_gnu
+      template = File.join(File.dirname(__FILE__), 'templates/gnu.erb')
+      result = erb(template)
+      publish(result)
+    end
+
     def render_rdoc
       template = File.join(File.dirname(__FILE__), 'templates/rdoc.erb')
       result = erb(template)
@@ -129,6 +139,7 @@ module DNote
       else
         puts(result)
       end
+      $stderr << "\n(" + notes.counts.map{|l,n| "#{n} #{l}s"}.join(', ') + ")\n"
     end
 
     #

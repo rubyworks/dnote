@@ -1,24 +1,20 @@
-#require 'rexml/text'
-#require 'erb'
 require 'pathname'
-
 
 module DNote
 
   # = Developer Notes
   #
-  # This class goes through you source files and compiles
-  # an list of any labeled comments. Labels are single word
-  # prefixes to a comment ending in a colon.
+  # This class goes through you source files and compiles a list
+  # of any labeled comments. Labels are single word prefixes to
+  # a comment ending in a colon.
   #
-  # By default the labels supported are TODO, FIXME, OPTIMIZE and DEPRECATE.
+  # By default the labels supported are TODO, FIXME, OPTIMIZE
+  # and DEPRECATE.
   #
-  # Output is a set of files in XML and RDoc's simple
-  # markup format.
-  #
+  #--
   #   TODO: Add ability to read header notes. They often
   #         have a outline format, rather then the single line.
-  #
+  #++
   class Notes
     include Enumerable
 
@@ -56,51 +52,9 @@ module DNote
       notes.each(&block)
     end
 
-    # Scans source code for developer notes and writes them to
-    # well organized files.
     #
-    def display(format)
-      #paths    = self.paths
-      #output   = self.output
-
-      #parse
-
-      #paths  = paths.to_list
-
-      #labels = labels.split(',') if String === labels
-      #labels = [labels].flatten.compact
-
-      #records, counts = extract(labels, loadpath)
-      #records = organize(records)
-
-      #case format.to_s
-      #when 'rdoc', 'txt', 'text'
-      #  text = format_rd(records)
-      #else
-      #  text = format_xml(records)
-      #end
-
-      if notes.empty?
-        $stderr << "No #{labels.join(', ')} notes.\n"
-      else
-        #temp = templates.find{ |f| /#{format}$/ =~ f }
-        #erb  = ERB.new(File.read(temp))
-        #text = erb.result(binding)
-
-        text = __send__("to_#{format}")
-
-        #if output
-        #  #templates.each do |template|
-        #    #text = format_notes(notes, format)
-        #    file = write(txt, format)
-        #    #file = file #Pathname.new(file).relative_path_from(Pathname.pwd) #project.root
-        #    puts "Updated #{file}"
-        #  #end
-        #else
-          puts text
-        #end
-        $stderr << "\n(" + counts.map{|l,n| "#{n} #{l}s"}.join(', ') + ")\n"
-      end
+    def empty?
+      notes.empty?
     end
 
     #
@@ -238,112 +192,6 @@ module DNote
       require 'xoxo'
       notes.to_xoxo
     end
-
-=begin
-    # Format notes in RDoc format.
-    #
-    def to_rdoc
-      out = []
-      out << "= Development Notes"
-      notes.each do |label, per_file|
-        out << %[\n== #{label}]
-        per_file.each do |file, line_notes|
-          out << %[\n=== file://#{file}\n]
-          line_notes.sort!{ |a,b| a[0] <=> b[0] }
-          line_notes.each do |line, note|
-            out << %[* #{note} (#{line})]
-          end
-        end
-      end
-      return out.join("\n")
-    end
-
-    # Format notes in RDoc format.
-    #
-    def to_markdown
-      out = []
-      out << "# Development Notes"
-      notes.each do |label, per_file|
-        out << %[\n## #{label}]
-        per_file.each do |file, line_notes|
-          out << %[\n### file://#{file}\n]
-          line_notes.sort!{ |a,b| a[0] <=> b[0] }
-          line_notes.each do |line, note|
-            out << %[* #{note} (#{line})]
-          end
-        end
-      end
-      return out.join("\n")
-    end
-=end
-
-
-=begin
-    # Format notes in XML format.
-    #
-    def to_xml
-      xml = []
-      xml << "<notes>"
-      notes.each do |label, per_file|
-        xml << %[<set label="#{label}">]
-        per_file.each do |file, line_notes|
-          xml << %[<file src="#{file}">]
-          line_notes.sort!{ |a,b| a[0] <=> b[0] }
-          line_notes.each do |line, note|
-            note = REXML::Text.normalize(note)
-            xml << %[<note line="#{line}" type="#{label}">#{note}</note>]
-          end
-          xml << %[</file>]
-        end
-        xml << %[</set>]
-      end
-      xml << "</notes>"
-      return xml.join("\n")
-    end
-
-    # HTML format.
-    #
-    def to_html
-      html = []
-      html << %[<html>]
-      html << %[<head>]
-      html << %[<title>#{title}</title>]
-      html << %[<style>]
-      html << HTML_CSS
-      html << %[</style>]
-      html << %[</head>]
-      html << %[<body>]
-      html << %[<div class="main">]
-      html << %[<h1>#{title}</h1>]
-      html << to_html_list
-      html << %[</div>]
-      html << %[</boby>]
-      html << %[</html>]
-      html.join("\n")
-    end
-
-    #
-    def to_html_list
-      html = []
-      html << %[<div class="notes">]
-      notes.each do |label, per_file|
-        html << %[<h2>#{label}</h2>]
-        html << %[<ol class="set #{label.downcase}">]
-        per_file.each do |file, line_notes|
-          html << %[<li><h3><a href="#{file}">#{file}</a></h3><ol class="file" href="#{file}">]
-          line_notes.sort!{ |a,b| a[0] <=> b[0] }
-          line_notes.each do |line, note|
-            note = REXML::Text.normalize(note)
-            html << %[<li class="note #{label.downcase}" ref="#{line}">#{note} <sup>#{line}</sup></li>]
-          end
-          html << %[</ol></li>]
-        end
-        html << %[</ol>]
-      end
-      html << %[</div>]
-      html.join("\n")
-    end
-=end
 
   end
 
