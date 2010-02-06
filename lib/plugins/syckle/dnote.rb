@@ -55,6 +55,9 @@ module Syckle::Plugins
     # Formats (xml, html, rdoc).
     attr_accessor :formats
 
+    # Title to use if temaplte can use it.
+    attr_accessor :title
+
     #
     def output=(path)
       @output = Pathname.new(path)
@@ -70,16 +73,15 @@ module Syckle::Plugins
     # TODO: Is #trial? correct?
     #++
     def document
-      notes  = ::DNote::Notes.new(files, labels)
-
+      notes = ::DNote::Notes.new(files, labels)
       [formats].flatten.each do |format|
         if format == 'index'
           format = 'html'
-          output = File.join(output, 'index.html')
+          output = File.join(self.output, 'index.html')
         end
-        format = ::DNote::Format.new(notes, :format=>format, :output=>output.to_s, :title=>title, :dryrun=>trial? )
+        format = ::DNote::Format.new(notes, :format=>format, :output=>output.to_s, :title=>title, :dryrun=>trial?)
         format.render
-        report "Updated #{output.to_s.sub(Dir.pwd+'/','')}"
+        report "Updated #{output.to_s.sub(Dir.pwd+'/','')}" unless trial?
       end
     end
 
