@@ -1,0 +1,81 @@
+---
+email:
+  service : Email
+  file    : ~
+  subject : ~
+  mailto  : ruby-talk@ruby-lang.org
+  from    : <%= ENV[EMAIL_ACCOUNT'] %>
+  server  : <%= ENV[EMAIL_SERVER'] %>
+  port    : <%= ENV[EMAIL_PORT'] %>
+  account : <%= ENV[EMAIL_ACCOUNT'] %>
+  domain  : <%= ENV[EMAIL_DOMAIN'] %>
+  login   : <%= ENV[EMAIL_LOGIN'] %>
+  secure  : <%= ENV[EMAIL_SECURE'] %>
+  active  : true
+
+gemcutter:
+  service: GemCutter
+  active: true
+
+box:
+  service: Box
+  active : true
+  types  : [gem, gz]
+  include: [bin, demo, lib, meta, plug, test, "[A-Z]*"]
+  exclude: ~
+  master : true
+
+syntax:
+  service  : Syntax
+  loadpath : ~
+  exclude  : ~
+  active   : false
+
+#lemon:
+#  service  : lemon
+#  tests    : ~
+#  exclude  : ~
+#  loadpath : ~
+#  requires : ~
+#  live     : false   
+#  active   : false
+
+rdoc:
+  service  : RDoc
+  template : redfish
+  include  : [ lib, README.rdoc, LICENSE ]
+  exclude  : [ "lib/dnote/templates" ]
+  main     : ~
+  extra    : ~
+  active   : true
+
+ridoc:
+  service: RIDoc
+  include: ~
+  exclude: ~
+  active : true
+
+dnote:
+  service  : DNote
+  files    : ~
+  labels   : ~
+  output   : ~
+  format   : ~
+  active   : true
+
+stats:
+  service  : Stats
+  title    : ~
+  loadpath : ~
+  exclude  : ~
+  output   : ~
+  active   : true
+
+vclog:
+  service  : VClog
+  format   : html   # xml, txt
+  layout   : rel    # gnu
+  typed    : false
+  output   : ~
+  active   : false
+
