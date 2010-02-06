@@ -1,0 +1,8 @@
+<%= title %>
+
+<% notes.each do |label, per_file| %>
+    <%= label %>:
+<%   per_file.each do |file, line_notes| %>
+<% line_notes.sort!{ |a,b| a[0] <=> b[0] } %><% line_notes.each do |line, note| %>
+        * <%= note %> (<%= file %>:<%= line %>)
+<% end; end; end %>

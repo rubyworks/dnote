@@ -16,6 +16,10 @@ module DNote
       opt.separator(" ")
       opt.separator("OUTPUT FORMAT: (choose one)")
 
+      opt.on("--gnu", "Plain text format (default)") do
+        options[:format] = 'gnu'
+      end
+
       opt.on("--rdoc", "RDoc comment format") do
         options[:format] = 'rdoc'
       end
