@@ -219,14 +219,18 @@ module DNote
 
     #
     def to_json
-      require 'json'  # TODO: fallback to json_pure
+      begin
+        require 'json'
+      rescue LoadError
+        require 'json_pure'
+      end
       notes.to_json
     end
 
     # Soap envelope XML.
     def to_soap
-      require 'soap/marhsal'
-      SOAP::Marshal.marshal(self)
+      require 'soap/marshal'
+      SOAP::Marshal.marshal(notes)
     end
 
     # XOXO microformat.

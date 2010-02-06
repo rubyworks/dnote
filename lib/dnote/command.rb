@@ -24,6 +24,14 @@ module DNote
         options[:format] = 'markdown'
       end
 
+      opt.on("--soap", "SOAP XML envelope format") do
+        options[:format] = 'soap'
+      end
+
+      opt.on("--xoxo", "XOXO microformat format") do
+        options[:format] = 'xoxo'
+      end
+
       opt.on("--xml", "XML markup format") do
         options[:format] = 'xml'
       end
