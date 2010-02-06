@@ -118,7 +118,7 @@ module DNote
         when String
           labels.split(/[:;,]/)
         else
-          labels = [labels].flatten.compact.uniq
+          labels = [labels].flatten.compact.uniq.map{ |s| s.to_s }
         end
       )
     end
