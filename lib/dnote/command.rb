@@ -69,7 +69,7 @@ module DNote
         options[:title] = title
       end
 
-      opt.on("--output", "-o [PATH]", "name of file (w/o extension) or directory") do |path|
+      opt.on("--output", "-o [PATH]", "name of file or directory") do |path|
         options[:output] = path
       end
 
