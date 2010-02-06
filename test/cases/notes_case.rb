@@ -17,16 +17,17 @@ Case DNote::Notes do
     notes.labels.assert == ['CHOICE']
   end
 
-  Unit :title => 'returns the title attribute' do
-    notes = DNote::Notes.new([], :title => "WHATFORE")
-    notes.assert.title == "WHATFORE"
+  Unit :paths => 'returns the paths attribute' do
+    notes = DNote::Notes.new(["example1.rb"])
+    notes.assert.paths == ["example1.rb"]
+    notes = DNote::Notes.new([], :paths => ["example2.rb"])
+    notes.assert.paths == ["example2.rb"]
   end
 
-  Unit :title= => 'changes the title attribute' do
-    notes = DNote::Notes.new([], :title => "WHATFORE")
-    notes.assert.title == "WHATFORE"
-    notes.title = "WHATSUP"
-    notes.assert.title == "WHATSUP"
+  Unit :paths= => 'changes the paths attribute' do
+    notes = DNote::Notes.new([])
+    notes.paths = ["example1.rb"]
+    notes.assert.paths == ["example1.rb"]
   end
 
   Unit :files
@@ -39,24 +40,16 @@ Case DNote::Notes do
   end
 
   Unit :match_common
-  Unit :to_rdoc
   Unit :to_xml
   Unit :notes
   Unit :to
   Unit :initialize_defaults
-  Unit :to_markdown
-  Unit :paths=
   Unit :parse
   Unit :to_yaml
   Unit :to_json
   Unit :counts
-  Unit :to_html
   Unit :organize
   Unit :display
-
-  Unit :to_html_list do
-    raise
-  end
 
 end
 
