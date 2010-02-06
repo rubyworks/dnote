@@ -21,8 +21,14 @@ attributes:
 - !ruby/object:RDoc::RI::Attribute 
   comment: 
   - !ruby/struct:RDoc::Markup::Flow::P 
-    body: Directory to save output. Defaults to <tt>dnote/</tt> under project log directory.
+    body: Output directory to save notes file. Defaults to <tt>dnote/</tt> under the project log directory (eg. <tt>log/dnote/</tt>).
   name: output
+  rw: RW
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Title to use if temaplte can use it.
+  name: title
   rw: RW
 class_methods: []
 
@@ -58,21 +64,14 @@ comment:
   body: By default this label supports the TODO, FIXME, OPTIMIZE and DEPRECATE.
 - !ruby/struct:RDoc::Markup::Flow::P 
   body: Output is a set of files in HTML, XML and RDoc's simple markup format. This plugin can run automatically if there is a <tt>notes/</tt> directory in the project's log directory.
-constants: 
-- !ruby/object:RDoc::RI::Constant 
-  comment: 
-  - !ruby/struct:RDoc::Markup::Flow::P 
-    body: Default note labels to looked for in source code.
-  name: DEFAULT_LABELS
-  value: "['TODO', 'FIXME', 'OPTIMIZE', 'DEPRECATE']"
+constants: []
+
 full_name: Syckle::Plugins::DNote
 includes: []
 
 instance_methods: 
 - !ruby/object:RDoc::RI::MethodSummary 
   name: clean
-- !ruby/object:RDoc::RI::MethodSummary 
-  name: dnote
 - !ruby/object:RDoc::RI::MethodSummary 
   name: document
 - !ruby/object:RDoc::RI::MethodSummary 

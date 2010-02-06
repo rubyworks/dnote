@@ -1,0 +1,1106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+  <title>Class: DNote::Format</title>
+
+  
+    <link rel="SHORTCUT ICON" href="../../assets/icon/class.png">
+  
+
+  <link type="text/css" rel="stylesheet" href="../../assets/rdoc.css" media="screen" />
+  <link type="text/css" rel="stylesheet" href="../../assets/highlight/styles/github.css" title="GitHub" />
+
+  <script type="text/javascript" charset="utf-8" src="../../assets/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../assets/highlight/highlight.pack.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../assets/quicksearch.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../assets/main.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function() {
+      hookHighlightSyntax();
+	    hookSourceViews();
+	    hookDebuggingToggle();
+	    hookQuickSearch();
+	    highlightLocationTarget();
+
+	    $('ul.link-list a').bind("click", highlightClickTarget);
+    });
+  </script>
+</head>
+<body class="class">
+<div id="main">
+
+  <div class="head">
+    <h1>
+      
+        <img src="../../assets/icon/class.png" align="absmiddle">&nbsp;
+      
+      <a href="../../index.html">Dnote</a>&nbsp;
+      <a href="/">DNote::Format</a>
+    </h1>
+  </div>
+
+  <div id="metadata">
+    <div id="project-metadata">
+
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li class="file"><a href="../../files/lib/dnote/format_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/dnote/format.rb">lib/dnote/format.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      <!-- What about Git info, or Hg info? This seems almost silly, albeit kind of cool. -->
+      <!-- TODO: generalize this for all SCMs -->
+
+      
+    </div>
+
+    <div id="class-metadata">
+
+      <!-- Parent Class -->
+      
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        <ul>
+          
+          <li class="class">Object</li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Namespace Contents -->
+      
+      <div id="namespace-list-section" class="section">
+        <h3 class="section-header">Namespace</h3>
+        <ul class="link-list">
+          
+          <li class="class"><a href="Format/ErbScope.html">DNote::Format::ErbScope</a></li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Method Quickref -->
+      
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+            
+            <li class="singleton">
+              <a href="#M000011">::new</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000038">#debug?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000036">#dryrun?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000031">#erb</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000039">#fu</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000032">#publish</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000012">#render</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000030">#render_custom</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000026">#render_gnu</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000022">#render_html</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000023">#render_index</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000014">#render_json</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000029">#render_markdown</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000028">#render_rdoc</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000015">#render_soap</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000018">#render_xml</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000017">#render_xoxo</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000013">#render_yaml</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000033">#write</a>
+            </li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Included Modules -->
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Information</h3>
+        <ul>
+        
+          <li class="file"><a href="../../files/LICENSE.html">LICENSE</a></li>
+        
+          <li class="file"><a href="../../files/README_rdoc.html">README.rdoc</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="../../assets/icon/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <!-- classpage.html : classes -->
+        <ul class="link-list">
+        
+          <li class="module"><a href="../../classes/DNote.html">DNote</a></li>
+        
+          <li class="class"><a href="../../classes/DNote/Format.html">DNote::Format</a></li>
+        
+          <li class="class"><a href="../../classes/DNote/Format/ErbScope.html">DNote::Format::ErbScope</a></li>
+        
+          <li class="class"><a href="../../classes/DNote/Notes.html">DNote::Notes</a></li>
+        
+          <li class="class"><a href="../../classes/DNote/Site.html">DNote::Site</a></li>
+        
+          <li class="module"><a href="../../classes/Syckle.html">Syckle</a></li>
+        
+          <li class="module"><a href="../../classes/Syckle/Plugins.html">Syckle::Plugins</a></li>
+        
+          <li class="class"><a href="../../classes/Syckle/Plugins/DNote.html">Syckle::Plugins::DNote</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+    </div>
+
+    <div id="validator-badges">
+      
+      <div style="float: right; margin-right: 5px;">
+        <a href="http://validator.w3.org/check/referer"><img src="../../assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
+      </div>
+      Generated with <a href="http://github.com/proutils/webri">WebRI Redfish</a> 1.1
+      <br/><br/>
+    </div>
+  </div>
+
+  <div id="documentation">
+
+    <div id="description">
+      
+
+      <h1><a href="Notes.html">Notes</a> Formatter</h1>
+
+    </div>
+
+    <!-- Constants -->
+    
+    <div id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt><a name="EXTENSIONS">EXTENSIONS</a></dt>
+        
+        <dd class="description"><p>
+DEFAULT_OUTPUT_DIR = &#8220;log/dnote&#8220;
+</p></dd>
+        
+      
+      </dl>
+    </div>
+    
+
+    <!-- Attributes -->
+    
+    <div id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="notes-attribute-method" class="method-detail">
+        <a name="notes"></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">notes</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="format-attribute-method" class="method-detail">
+        <a name="format"></a>
+        
+        <a name="format="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">format</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="output-attribute-method" class="method-detail">
+        <a name="output"></a>
+        
+        <a name="output="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">output</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="template-attribute-method" class="method-detail">
+        <a name="template"></a>
+        
+        <a name="template="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">template</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="title-attribute-method" class="method-detail">
+        <a name="title"></a>
+        
+        <a name="title="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">title</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="dryrun-attribute-method" class="method-detail">
+        <a name="dryrun"></a>
+        
+        <a name="dryrun="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">dryrun</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- Methods -->
+    
+    <div id="public-class-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="new-method" class="method-detail ">
+        <a name="M000011"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">new</span><span
+            class="method-args">(notes, options={})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="new-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 39</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">notes</span>, <span class="ruby-identifier">options</span>={})
+      <span class="ruby-ivar">@notes</span>  = <span class="ruby-identifier">notes</span>
+      <span class="ruby-ivar">@format</span> = <span class="ruby-identifier">:gnu</span>
+      <span class="ruby-ivar">@title</span>  = <span class="ruby-value str">&quot;Developer's Notes&quot;</span>
+      <span class="ruby-identifier">options</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">__send__</span>(<span class="ruby-node">&quot;#{k}=&quot;</span>, <span class="ruby-identifier">v</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">v</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+    <div id="public-instance-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="render-method" class="method-detail ">
+        <a name="M000012"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">render</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="render-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 49</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">render</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">notes</span>.<span class="ruby-identifier">empty?</span>
+        <span class="ruby-identifier">$stderr</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;No #{notes.labels.join(', ')} notes.\n&quot;</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">respond_to?</span>(<span class="ruby-node">&quot;render_#{format}&quot;</span>)
+        <span class="ruby-identifier">__send__</span>(<span class="ruby-node">&quot;render_#{format}&quot;</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="render-custom-method" class="method-detail ">
+        <a name="M000030"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">render_custom</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+C U S T O M T E M P L A T E
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="render-custom-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 122</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">render_custom</span>
+      <span class="ruby-identifier">result</span> = <span class="ruby-identifier">erb</span>(<span class="ruby-identifier">template</span>)
+      <span class="ruby-identifier">publish</span>(<span class="ruby-identifier">result</span>)    
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="render-gnu-method" class="method-detail ">
+        <a name="M000026"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">render_gnu</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+W I K I M A R K U P
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="render-gnu-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 102</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">render_gnu</span>
+      <span class="ruby-identifier">template</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword kw">__FILE__</span>), <span class="ruby-value str">'templates/gnu.erb'</span>)
+      <span class="ruby-identifier">result</span> = <span class="ruby-identifier">erb</span>(<span class="ruby-identifier">template</span>)
+      <span class="ruby-identifier">publish</span>(<span class="ruby-identifier">result</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="render-html-method" class="method-detail ">
+        <a name="M000022"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">render_html</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="render-html-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 88</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">render_html</span>
+      <span class="ruby-identifier">template</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword kw">__FILE__</span>), <span class="ruby-value str">'templates/html.erb'</span>)
+      <span class="ruby-identifier">result</span> = <span class="ruby-identifier">erb</span>(<span class="ruby-identifier">template</span>)
+      <span class="ruby-identifier">publish</span>(<span class="ruby-identifier">result</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="render-index-method" class="method-detail ">
+        <a name="M000023"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">render_index</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="render-index-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 94</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">render_index</span>
+      <span class="ruby-identifier">template</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword kw">__FILE__</span>), <span class="ruby-value str">'templates/html.erb'</span>)
+      <span class="ruby-identifier">result</span> = <span class="ruby-identifier">erb</span>(<span class="ruby-identifier">template</span>)
+      <span class="ruby-identifier">publish</span>(<span class="ruby-identifier">result</span>, <span class="ruby-value str">'index.html'</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="render-json-method" class="method-detail ">
+        <a name="M000014"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">render_json</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="render-json-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 65</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">render_json</span>
+      <span class="ruby-identifier">result</span> = <span class="ruby-identifier">notes</span>.<span class="ruby-identifier">to_json</span>
+      <span class="ruby-identifier">publish</span>(<span class="ruby-identifier">result</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="render-markdown-method" class="method-detail ">
+        <a name="M000029"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">render_markdown</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="render-markdown-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 114</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">render_markdown</span>
+      <span class="ruby-identifier">template</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword kw">__FILE__</span>), <span class="ruby-value str">'templates/markdown.erb'</span>)
+      <span class="ruby-identifier">result</span> = <span class="ruby-identifier">erb</span>(<span class="ruby-identifier">template</span>)
+      <span class="ruby-identifier">publish</span>(<span class="ruby-identifier">result</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="render-rdoc-method" class="method-detail ">
+        <a name="M000028"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">render_rdoc</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="render-rdoc-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 108</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">render_rdoc</span>
+      <span class="ruby-identifier">template</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword kw">__FILE__</span>), <span class="ruby-value str">'templates/rdoc.erb'</span>)
+      <span class="ruby-identifier">result</span> = <span class="ruby-identifier">erb</span>(<span class="ruby-identifier">template</span>)
+      <span class="ruby-identifier">publish</span>(<span class="ruby-identifier">result</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="render-soap-method" class="method-detail ">
+        <a name="M000015"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">render_soap</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+M L M A R K U P
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="render-soap-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 72</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">render_soap</span>
+      <span class="ruby-identifier">result</span> = <span class="ruby-identifier">notes</span>.<span class="ruby-identifier">to_soap</span>
+      <span class="ruby-identifier">publish</span>(<span class="ruby-identifier">result</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="render-xml-method" class="method-detail ">
+        <a name="M000018"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">render_xml</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="render-xml-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 82</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">render_xml</span>
+      <span class="ruby-identifier">template</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword kw">__FILE__</span>), <span class="ruby-value str">'templates/xml.erb'</span>)
+      <span class="ruby-identifier">result</span> = <span class="ruby-identifier">erb</span>(<span class="ruby-identifier">template</span>)
+      <span class="ruby-identifier">publish</span>(<span class="ruby-identifier">result</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="render-xoxo-method" class="method-detail ">
+        <a name="M000017"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">render_xoxo</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="render-xoxo-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 77</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">render_xoxo</span>
+      <span class="ruby-identifier">result</span> = <span class="ruby-identifier">notes</span>.<span class="ruby-identifier">to_xoxo</span>
+      <span class="ruby-identifier">publish</span>(<span class="ruby-identifier">result</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="render-yaml-method" class="method-detail ">
+        <a name="M000013"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">render_yaml</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+S E R I A L I Z A T I O N
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="render-yaml-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 60</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">render_yaml</span>
+      <span class="ruby-identifier">result</span> = <span class="ruby-identifier">notes</span>.<span class="ruby-identifier">to_yaml</span>
+      <span class="ruby-identifier">publish</span>(<span class="ruby-identifier">result</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+    <div id="private-instance-method-details" class="method-section section">
+      <h3 class="section-header">Private Instance Methods</h3>
+
+    
+      <div id="debug--method" class="method-detail ">
+        <a name="M000038"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">debug?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="debug--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 170</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">debug?</span>
+      <span class="ruby-identifier">$DEBUG</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="dryrun--method" class="method-detail ">
+        <a name="M000036"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">dryrun?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="dryrun--source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 165</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dryrun?</span>
+      <span class="ruby-ivar">@dryrun</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="erb-method" class="method-detail ">
+        <a name="M000031"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">erb</span><span
+            class="method-args">(file)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="erb-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 130</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">erb</span>(<span class="ruby-identifier">file</span>)
+      <span class="ruby-identifier">scope</span> = <span class="ruby-constant">ErbScope</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:notes=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">notes</span>, <span class="ruby-identifier">:title=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">title</span>)
+      <span class="ruby-identifier">scope</span>.<span class="ruby-identifier">render</span>(<span class="ruby-identifier">file</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="fu-method" class="method-detail ">
+        <a name="M000039"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">fu</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="fu-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 175</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fu</span>
+      <span class="ruby-ivar">@fu</span> <span class="ruby-operator">||=</span> (
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dryrun?</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">debug?</span>
+          <span class="ruby-constant">FileUtils</span><span class="ruby-operator">::</span><span class="ruby-constant">DryRun</span>
+        <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">dryrun?</span>
+          <span class="ruby-constant">FileUtils</span><span class="ruby-operator">::</span><span class="ruby-constant">Noop</span>
+        <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">debug?</span>
+          <span class="ruby-constant">FileUtils</span><span class="ruby-operator">::</span><span class="ruby-constant">Verbose</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-constant">FileUtils</span>
+        <span class="ruby-keyword kw">end</span>
+      )
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="publish-method" class="method-detail ">
+        <a name="M000032"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">publish</span><span
+            class="method-args">(result, fname=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="publish-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 136</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">publish</span>(<span class="ruby-identifier">result</span>, <span class="ruby-identifier">fname</span>=<span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">output</span>
+        <span class="ruby-identifier">write</span>(<span class="ruby-identifier">result</span>, <span class="ruby-identifier">fname</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">puts</span>(<span class="ruby-identifier">result</span>)
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">$stderr</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;\n(&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">notes</span>.<span class="ruby-identifier">counts</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">l</span>,<span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{n} #{l}s&quot;</span>}.<span class="ruby-identifier">join</span>(<span class="ruby-value str">', '</span>) <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;)\n&quot;</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="write-method" class="method-detail ">
+        <a name="M000033"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">write</span><span
+            class="method-args">(result, fname=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="write-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 146</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">write</span>(<span class="ruby-identifier">result</span>, <span class="ruby-identifier">fname</span>=<span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">output</span>.<span class="ruby-identifier">end_with?</span>(<span class="ruby-value str">'/'</span>) <span class="ruby-operator">||</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span>(<span class="ruby-identifier">output</span>)
+        <span class="ruby-identifier">ext</span>  = <span class="ruby-constant">EXTENSIONS</span>[<span class="ruby-identifier">format</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">format</span>
+        <span class="ruby-identifier">file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">output</span>, <span class="ruby-identifier">fname</span> <span class="ruby-operator">||</span> <span class="ruby-node">&quot;notes.#{ext}&quot;</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">file</span> = <span class="ruby-identifier">output</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dryrun?</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;mkdir: #{File.dirname(file)}&quot;</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;write: #{file}&quot;</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">dir</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">file</span>)
+        <span class="ruby-identifier">fu</span>.<span class="ruby-identifier">mkdir</span>(<span class="ruby-identifier">dir</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">dir</span>)
+        <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file</span>, <span class="ruby-value str">'w'</span>){ <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">f</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">result</span> }
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">file</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+
+  </div>
+
+
+  <div id="rdoc-debugging-section-dump" class="debugging-section">
+  
+    <p>Disabled; run with --debug to generate this.</p>
+  
+  </div>
+
+</main>
+</body>
+</html>
+

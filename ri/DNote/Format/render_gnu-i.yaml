@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: W I K I M A R K U P
+full_name: DNote::Format#render_gnu
+is_singleton: false
+name: render_gnu
+params: ()
+visibility: public

@@ -1,0 +1,11 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: DNote::Format::ErbScope#h
+is_singleton: false
+name: h
+params: (string)
+visibility: public

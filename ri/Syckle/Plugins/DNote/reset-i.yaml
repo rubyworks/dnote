@@ -4,7 +4,7 @@ aliases: []
 block_params: 
 comment: 
 - !ruby/struct:RDoc::Markup::Flow::P 
-  body: Mark notes documents as out-of-date.
+  body: Reset output directory, marking it as out-of-date.
 full_name: Syckle::Plugins::DNote#reset
 is_singleton: false
 name: reset

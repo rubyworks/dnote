@@ -1,0 +1,10 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: DNote::Format#render_xoxo
+is_singleton: false
+name: render_xoxo
+params: ()
+visibility: public

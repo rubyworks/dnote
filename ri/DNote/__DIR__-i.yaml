@@ -1,0 +1,10 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: DNote#__DIR__
+is_singleton: false
+name: __DIR__
+params: ()
+visibility: public

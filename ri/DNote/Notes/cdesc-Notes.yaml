@@ -12,11 +12,6 @@ attributes:
     body: Paths to search.
   name: paths
   rw: RW
-- !ruby/object:RDoc::RI::Attribute 
-  comment: []
-
-  name: title
-  rw: RW
 class_methods: 
 - !ruby/object:RDoc::RI::MethodSummary 
   name: new
@@ -25,26 +20,18 @@ comment:
   level: 1
   text: Developer Notes
 - !ruby/struct:RDoc::Markup::Flow::P 
-  body: This class goes through you source files and compiles an list of any labeled comments. Labels are single word prefixes to a comment ending in a colon.
+  body: This class goes through you source files and compiles a list of any labeled comments. Labels are single word prefixes to a comment ending in a colon.
 - !ruby/struct:RDoc::Markup::Flow::P 
   body: By default the labels supported are TODO, FIXME, OPTIMIZE and DEPRECATE.
-- !ruby/struct:RDoc::Markup::Flow::P 
-  body: Output is a set of files in XML and RDoc's simple markup format.
-- !ruby/struct:RDoc::Markup::Flow::VERB 
-  body: "  TODO: Add ability to read header notes. They oftern\n        have a outline format, rather then the single line.\n\n  TODO: Need good CSS file.\n\n  TODO: Need XSL?\n"
 - !ruby/struct:RDoc::Markup::Flow::RULE 
   width: 
 - !ruby/struct:RDoc::Markup::Flow::H 
   level: 1
   text: Developer Notes
 - !ruby/struct:RDoc::Markup::Flow::P 
-  body: This class goes through you source files and compiles an list of any labeled comments. Labels are single word prefixes to a comment ending in a colon.
+  body: This class goes through you source files and compiles a list of any labeled comments. Labels are single word prefixes to a comment ending in a colon.
 - !ruby/struct:RDoc::Markup::Flow::P 
   body: By default the labels supported are TODO, FIXME, OPTIMIZE and DEPRECATE.
-- !ruby/struct:RDoc::Markup::Flow::P 
-  body: Output is a set of files in XML and RDoc's simple markup format.
-- !ruby/struct:RDoc::Markup::Flow::VERB 
-  body: "  TODO: Add ability to read header notes. They oftern\n        have a outline format, rather then the single line.\n\n  TODO: Need good CSS file.\n\n  TODO: Need XSL?\n"
 constants: 
 - !ruby/object:RDoc::RI::Constant 
   comment: 
@@ -54,20 +41,23 @@ constants:
   value: "['TODO', 'FIXME', 'OPTIMIZE', 'DEPRECATE']"
 - !ruby/object:RDoc::RI::Constant 
   comment: 
-  name: HTML_CSS
-  value: "<<-HERE       body { margin: 0; padding: 0; }       .main { width: 800px; margin: 0 auto; border: 1px solid #ccc; padding: 0 20px 20px 20px; }       h1 { margin: 25px 0; }       h2,h3,h4 { margin: 5px 0; padding: 0; color: 880044; }       h3 { color: 004488; }       h4 { color: 888844; }       ul { margin: 0; padding: 0; text-align: left; }       li { margin: 0; padding: 0; text-align: left; }     HERE"
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Default paths (all ruby scripts).
+  name: DEFAULT_PATHS
+  value: "[\"**/*.rb\"]"
 full_name: DNote::Notes
-includes: []
-
+includes: 
+- !ruby/object:RDoc::RI::IncludedModule 
+  name: Enumerable
 instance_methods: 
 - !ruby/object:RDoc::RI::MethodSummary 
   name: counts
 - !ruby/object:RDoc::RI::MethodSummary 
-  name: display
+  name: each
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: empty?
 - !ruby/object:RDoc::RI::MethodSummary 
   name: files
-- !ruby/object:RDoc::RI::MethodSummary 
-  name: initialize_defaults
 - !ruby/object:RDoc::RI::MethodSummary 
   name: labels=
 - !ruby/object:RDoc::RI::MethodSummary 
@@ -83,17 +73,11 @@ instance_methods:
 - !ruby/object:RDoc::RI::MethodSummary 
   name: to
 - !ruby/object:RDoc::RI::MethodSummary 
-  name: to_html
-- !ruby/object:RDoc::RI::MethodSummary 
-  name: to_html_list
-- !ruby/object:RDoc::RI::MethodSummary 
   name: to_json
 - !ruby/object:RDoc::RI::MethodSummary 
-  name: to_markdown
+  name: to_soap
 - !ruby/object:RDoc::RI::MethodSummary 
-  name: to_rdoc
-- !ruby/object:RDoc::RI::MethodSummary 
-  name: to_xml
+  name: to_xoxo
 - !ruby/object:RDoc::RI::MethodSummary 
   name: to_yaml
 name: Notes

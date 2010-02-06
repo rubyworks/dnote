@@ -2,9 +2,8 @@
 aliases: []
 
 block_params: 
-comment: 
-- !ruby/struct:RDoc::Markup::Flow::P 
-  body: "TODO: maybe files default of *<b>/</b>.rb is better?"
+comment: []
+
 full_name: Syckle::Plugins::DNote#initialize_defaults
 is_singleton: false
 name: initialize_defaults

@@ -7,5 +7,5 @@ comment: []
 full_name: DNote::Notes::new
 is_singleton: true
 name: new
-params: (paths, options={})
+params: (paths, labels=nil)
 visibility: public

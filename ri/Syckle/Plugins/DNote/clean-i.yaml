@@ -4,7 +4,7 @@ aliases: []
 block_params: 
 comment: 
 - !ruby/struct:RDoc::Markup::Flow::P 
-  body: Remove notes directory.
+  body: Remove output files.
 full_name: Syckle::Plugins::DNote#clean
 is_singleton: false
 name: clean
