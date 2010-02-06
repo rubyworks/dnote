@@ -36,11 +36,11 @@
 
 <div class="nav">
   <div class="menu">
-    <a href="rdoc/index.html">API Documents</a> &nbsp;&nbsp;
-    <!-- <a href="qedoc/index.html">QEDocs</a> &nbsp;&nbsp; -->
-    <a href="http://wiki.github.com/proutils/dnote">Wiki-Wiki</a> &nbsp;&nbsp;
+    <a href="http://wiki.github.com/proutils/dnote">Documentation</a> &nbsp;&nbsp;
+    <!-- <a href="qedoc/index.html">Demostrandum</a> &nbsp;&nbsp; -->
+    <a href="rdoc/index.html">API Reference</a> &nbsp;&nbsp;
     <a href="http://googlegroups.com/group/proutils">Mailing List</a> &nbsp;&nbsp;
-    <a href="http://github.com/proutils/dnote">Source Code</a> &nbsp;&nbsp;
+    <a href="http://github.com/proutils/dnote">Development</a> &nbsp;&nbsp;
   </div>
 </div>
 
@@ -111,24 +111,29 @@
   Usage: dnote [OPTIONS] path1 [path2 ...]
    
   OUTPUT FORMAT: (choose one)
+          --gnu                        Plain text format (default)
           --rdoc                       RDoc comment format
           --markdown                   Markdown wiki format
+          --soap                       SOAP XML envelope format
+          --xoxo                       XOXO microformat format
           --xml                        XML markup format
           --html                       HTML markup format
           --yaml                       YAML serialization format
           --json                       JSON serialization format
+      -t, --template FILE              Use a custom Erb template
    
   OTHER OPTIONS:
           --label                      labels to collect
-      -t, --title [TITLE]              title to use in headers
+          --title [TITLE]              title to use in headers
+      -o, --output [PATH]              name of file (w/o extension) or directory
    
   STANDARD OPTIONS:
-      -v, --verbose                    extra verbose output
           --debug                      debug mode
+      -n, --dryrun                     do not actually write to disk
       -h, --help                       show this help information
   </pre>
 
-  <p>The default path is <code>**/*.rb</code> and the default format <code>--rdoc</code>. 
+  <p>The default path is <code>**/*.rb</code> and the default format <code>--gnu</code>. 
   Here is an example of DNote's current notes in RDoc format:</p>
 
   <pre>
