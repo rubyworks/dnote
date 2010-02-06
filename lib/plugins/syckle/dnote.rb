@@ -26,7 +26,8 @@ module Syckle::Plugins
     # not that this is necessary, but ...
     available do |project|
       begin
-        require 'dnote/site'
+        require 'dnote'
+        require 'dnote/format'
         true
       rescue LoadError
         false
@@ -35,11 +36,11 @@ module Syckle::Plugins
 
     # autorun if log/notes exists
     autorun do |project|
-      (project.log + 'notes').exist?
+      (project.log + 'dnote').exist?
     end
 
     # Default note labels to looked for in source code.
-    DEFAULT_LABELS = ['TODO', 'FIXME', 'OPTIMIZE', 'DEPRECATE']
+    #DEFAULT_LABELS = ['TODO', 'FIXME', 'OPTIMIZE', 'DEPRECATE']
 
     # Paths to search.
     attr_accessor :files
@@ -47,8 +48,8 @@ module Syckle::Plugins
     # Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
     attr_accessor :labels
 
-    # Directory to save output. Defaults to <tt>dnote/</tt> under project
-    # log directory.
+    # Output directory to save notes file. Defaults to <tt>dnote/</tt> under
+    # the project log directory (eg. <tt>log/dnote/</tt>).
     attr_accessor :output
 
     # Formats (xml, html, rdoc).
@@ -60,38 +61,56 @@ module Syckle::Plugins
     end
 
     #
-    def dnote
-      @dnote ||= ::DNote::Site.new(files, :labels=>labels, :formats=>formats, :output=>output)
-    end
+    #def dnote
+    #  @dnote ||= ::DNote::Site.new(files, :labels=>labels, :formats=>formats, :output=>output)
+    #end
 
     # Generate notes documents.
+    #--
+    # TODO: Is #trial? correct?
+    #++
     def document
-      $NOOP = noop?  # TODO:
-      dnote.document
-      #mkdir_p(output)
-      #file = output + "index.html"
-      #File.open(file, 'w'){ |f| f << dnote.to_html }
-      report "Updated #{output.to_s.sub(Dir.pwd+'/','')}"
+      notes  = ::DNote::Notes.new(files, labels)
+
+      [formats].flatten.each do |format|
+        if format == 'index'
+          format = 'html'
+          output = File.join(output, 'index.html')
+        end
+        format = ::DNote::Format.new(notes, :format=>format, :output=>output.to_s, :title=>title, :dryrun=>trial? )
+        format.render
+        report "Updated #{output.to_s.sub(Dir.pwd+'/','')}"
+      end
     end
 
-    # Mark notes documents as out-of-date.
+    # Reset output directory, marking it as out-of-date.
     def reset
-      #dnote.reset
+      if File.directory?(output)
+        File.utime(0,0,output) unless $NOOP
+        puts "Marked #{output}"
+      end
     end
 
-    # Remove notes directory.
+    # Remove output files.
     def clean
-      #dnote.clean
+      if File.directory?(output)
+        formats.each do |format|
+          ext = ::DNote::Format::EXTENSIONS[format] || format
+          file = (output + "notes.#{ext}").to_s
+          rm(file)
+          report "Removed #{output}"
+        end
+      end
     end
 
   private
 
-    # TODO: maybe files default of **/*.rb is better?
+    #
     def initialize_defaults
-      @files   = metadata.loadpath || 'lib'
+      @files   = "**/*.rb"
       @output  = project.log + 'dnote'
-      @formats = []
-      @labels  = DEFAULT_LABELS
+      @formats = ['index']
+      @labels  = nil #DEFAULT_LABELS
     end
 
   end

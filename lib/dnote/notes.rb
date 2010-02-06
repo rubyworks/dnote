@@ -1,6 +1,7 @@
-require 'rexml/text'
+#require 'rexml/text'
+#require 'erb'
 require 'pathname'
-require 'erb'
+
 
 module DNote
 
@@ -15,20 +16,17 @@ module DNote
   # Output is a set of files in XML and RDoc's simple
   # markup format.
   #
-  #   TODO: Add ability to read header notes. They oftern
+  #   TODO: Add ability to read header notes. They often
   #         have a outline format, rather then the single line.
   #
-  #   TODO: Need good CSS file.
-  #
-  #   TODO: Need XSL?
-  #
   class Notes
+    include Enumerable
+
+    # Default paths (all ruby scripts).
+    DEFAULT_PATHS  = ["**/*.rb"]
 
     # Default note labels to look for in source code.
     DEFAULT_LABELS = ['TODO', 'FIXME', 'OPTIMIZE', 'DEPRECATE']
-
-    #
-    attr_accessor :title
 
     # Paths to search.
     attr_accessor :paths
@@ -37,21 +35,10 @@ module DNote
     attr_accessor :labels
 
     #
-    def initialize(paths, options={})
-      initialize_defaults
-      options.each do |k, v|
-        __send__("#{k}=", v)
-      end
-      #@paths = ['**/*.rb'] if @paths.empty?
+    def initialize(paths, labels=nil)
+      @paths  = [paths  || DEFAULT_PATHS ].flatten
+      @labels = [labels || DEFAULT_LABELS].flatten
       parse
-    end
-
-    #
-    def initialize_defaults
-      @labels   = DEFAULT_LABELS
-      @paths    = ["**/*.rb"]
-      @title    = "Developer's Notes"
-      @format   = "rdoc"
     end
 
     #
@@ -62,6 +49,11 @@ module DNote
     #
     def counts
       @counts
+    end
+
+    #
+    def each(&block)
+      notes.each(&block)
     end
 
     # Scans source code for developer notes and writes them to
@@ -164,7 +156,7 @@ module DNote
     #
     def files
       @files ||= (
-        self.paths.map do |path|
+        [self.paths].flatten.map do |path|
           if File.directory?(path)
             Dir.glob(File.join(path, '**/*'))
           else
@@ -219,6 +211,31 @@ module DNote
       __send__("to_#{format}")
     end
 
+    #
+    def to_yaml
+      require 'yaml'
+      notes.to_yaml
+    end
+
+    #
+    def to_json
+      require 'json'  # TODO: fallback to json_pure
+      notes.to_json
+    end
+
+    # Soap envelope XML.
+    def to_soap
+      require 'soap/marhsal'
+      SOAP::Marshal.marshal(self)
+    end
+
+    # XOXO microformat.
+    def to_xoxo
+      require 'xoxo'
+      notes.to_xoxo
+    end
+
+=begin
     # Format notes in RDoc format.
     #
     def to_rdoc
@@ -254,7 +271,10 @@ module DNote
       end
       return out.join("\n")
     end
+=end
 
+
+=begin
     # Format notes in XML format.
     #
     def to_xml
@@ -283,14 +303,14 @@ module DNote
       html = []
       html << %[<html>]
       html << %[<head>]
-      html << %[<title><%= title %></title>]
+      html << %[<title>#{title}</title>]
       html << %[<style>]
       html << HTML_CSS
       html << %[</style>]
       html << %[</head>]
       html << %[<body>]
       html << %[<div class="main">]
-      html << %[<h1><%= title %></h1>]
+      html << %[<h1>#{title}</h1>]
       html << to_html_list
       html << %[</div>]
       html << %[</boby>]
@@ -319,77 +339,9 @@ module DNote
       html << %[</div>]
       html.join("\n")
     end
-
-    #
-    def to_yaml
-      require 'yaml'
-      notes.to_yaml
-    end
-
-    #
-    def to_json
-      require 'json'  # TODO: fallback to json_pure
-      notes.to_json
-    end
-
-    HTML_CSS = <<-HERE
-      body { margin: 0; padding: 0; }
-      .main { width: 800px; margin: 0 auto; border: 1px solid #ccc; padding: 0 20px 20px 20px; }
-      h1 { margin: 25px 0; }
-      h2,h3,h4 { margin: 5px 0; padding: 0; color: 880044; }
-      h3 { color: 004488; }
-      h4 { color: 888844; }
-      ul { margin: 0; padding: 0; text-align: left; }
-      li { margin: 0; padding: 0; text-align: left; }
-    HERE
+=end
 
   end
 
 end
-
-  #     out = ''
-  #
-  #     case format
-  #     when 'yaml'
-  #       out << records.to_yaml
-  #     when 'list'
-  #       records.each do |record|
-  #         out << "* #{record['note']}\n"
-  #       end
-  #     else #when 'rdoc'
-  #       labels.each do |label|
-  #         recs = records.select{ |r| r['label'] == label }
-  #         next if recs.empty?
-  #         out << "\n= #{label}\n"
-  #         last_file = nil
-  #         recs.sort!{ |a,b| a['file'] <=> b['file'] }
-  #         recs.each do |record|
-  #           if last_file != record['file']
-  #             out << "\n"
-  #             last_file = record['file']
-  #             out << "file://#{record['file']}\n"
-  #           end
-  #           out << "* #{record['note'].rstrip} (#{record['line']})\n"
-  #         end
-  #       end
-  #       out << "\n---\n"
-  #       out << counts.collect{|l,n| "#{n} #{l}s"}.join(' ')
-  #       out << "\n"
-  #     end
-
-  #     # List TODO notes. Same as notes --label=TODO.
-  #
-  #     def todo( options={} )
-  #       options = options.to_openhash
-  #       options.label = 'TODO'
-  #       notes(options)
-  #     end
-  #
-  #     # List FIXME notes.  Same as notes --label=FIXME.
-  #
-  #     def fixme( options={} )
-  #       options = options.to_openhash
-  #       options.label = 'FIXME'
-  #       notes(options)
-  #     end
 

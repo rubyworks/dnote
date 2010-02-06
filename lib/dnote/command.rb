@@ -3,6 +3,7 @@
 module DNote
   require 'optparse'
   require 'dnote'
+  require 'dnote/format'
 
   def self.run
     options = {}
@@ -15,28 +16,33 @@ module DNote
       opt.separator(" ")
       opt.separator("OUTPUT FORMAT: (choose one)")
 
-      opt.on("--rdoc", "RDoc comment format") do |format|
-        format = 'rdoc'
+      opt.on("--rdoc", "RDoc comment format") do
+        options[:format] = 'rdoc'
       end
 
-      opt.on("--markdown", "Markdown wiki format") do |format|
-        format = 'markdown'
+      opt.on("--markdown", "Markdown wiki format") do
+        options[:format] = 'markdown'
       end
 
-      opt.on("--xml", "XML markup format") do |format|
-        format = 'xml'
+      opt.on("--xml", "XML markup format") do
+        options[:format] = 'xml'
       end
 
-      opt.on("--html", "HTML markup format") do |format|
-        format = 'html'
+      opt.on("--html", "HTML markup format") do
+        options[:format] = 'html'
       end
 
-      opt.on("--yaml", "YAML serialization format") do |format|
-        format = 'yaml'
+      opt.on("--yaml", "YAML serialization format") do
+        options[:format] = 'yaml'
       end
 
-      opt.on("--json", "JSON serialization format") do |format|
-        format = 'json'
+      opt.on("--json", "JSON serialization format") do
+        options[:format] = 'json'
+      end
+
+      opt.on("--template", "-t FILE", "Use a custom Erb template") do |file|
+        options[:format] = 'custom'
+        options[:template] = file
       end
 
       opt.separator(" ")
@@ -51,9 +57,9 @@ module DNote
         options[:title] = title
       end
 
-      #opt.on("--output", "-o [FILE]", "name of file to store output (w/o extension)") do |out|
-      #  options[:output] = out
-      #end
+      opt.on("--output", "-o [PATH]", "name of file (w/o extension) or directory") do |path|
+        options[:output] = path
+      end
 
       opt.separator(" ")
       opt.separator("STANDARD OPTIONS:")
@@ -74,10 +80,9 @@ module DNote
       #  options[:noharm] = true
       #end
 
-      #opt.on("--dryrun", "noharm and verbose modes combined") do
-      #  options[:verbose] = true
-      #  options[:noharm] = true
-      #end
+      opt.on("--dryrun", "-n", "do not actually write to disk") do
+        options[:dryrun] = true
+      end
 
       #opt.on("--trace", "debug and verbose modes combined") do
       #  $DEBUG = true
@@ -91,11 +96,27 @@ module DNote
 
     end
 
-    opts.parse!
+    begin
+      opts.parse!
+    rescue => err
+      puts err
+      exit 1
+    end
 
     paths = ARGV.dup
-    dnote = DNote.new(paths, options)
-    dnote.display(format)
+    paths = ['**/*.rb'] if paths.empty?
+
+    notes  = Notes.new(paths, options[:labels])
+    format = Format.new(notes, options)
+    format.render
+
+    # NOTE: If DNote were a class.
+
+    #if output
+    #  dnote.save(format, output)
+    #else
+    #  dnote.display(format)
+    #end
   end
 
 end

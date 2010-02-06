@@ -4,13 +4,13 @@ module DNote
 
   # Site class is used to build a "pretty" output set.
   # The template files are saved to the +output+ directory.
-  # Additional +formats+ can be saved the the directory
+  # Additional +formats+ can be saved to the directory
   # as well.
 
   class Site
 
-    # Default output directory is +dnote/+.
-    DEFAULT_OUTPUT = Pathname.new('dnote')
+    # Default output directory is +log/dnote/+.
+    DEFAULT_OUTPUT = Pathname.new('log/dnote')
 
     # Title to use in any headers.
     attr_accessor :title
@@ -18,17 +18,19 @@ module DNote
     # Directory to save output.
     attr_accessor :output
 
-    # Additional Formats to supply besided the html (xml, rdoc, markdown, etc.)
+    # Additional Formats to supply besides the html (xml, rdoc, markdown, etc.)
     attr_accessor :formats
 
     # Notes object.
     attr_reader :notes
 
     def initialize(paths, options)
-      self.title   = options[:title]
+      initialize_defaults
 
-      self.output  = options.delete(:output)
-      self.formats = options.delete(:formats)
+      self.title   = options[:title]          if options[:title]
+
+      self.output  = options.delete(:output)  if options[:output]
+      self.formats = options.delete(:formats) if options[:formats]
 
       @notes = Notes.new(paths, options)
     end
@@ -37,7 +39,7 @@ module DNote
     def initialize_defaults
       @output   = DEFAULT_OUTPUT
       @title    = "Development Notes"
-      @formats  = []
+      @formats  = ['html']
     end
 
     #
@@ -50,19 +52,27 @@ module DNote
     def document
       fu.mkdir_p(output)
 
-      # copy the whole template directory over
-      fu.cp_r("#{__DIR__}/template/", "#{output}/")
-
-      # (re)write the erb templates
-      templates.each do |temp|
-        erb  = ERB.new(File.read(temp))
-        text = erb.result(binding)
-        file = File.basename(temp)
-        write(file, text)
-      end
-
       # produce requested additional formats
       formats.each do |format|
+=begin
+        tdir = tempdir(format)
+
+        # copy non-erb files
+        files = Dir.entries(tdir) - ['.', '..']
+        files = files.reject{ |file| File.extname(file) == '.erb' }
+        files.each do |file|
+          dest = File.dirname(file).sub(tdir, '')
+          fu.cp_r(File.join(tdir, file), output)
+        end
+
+        # write the erb templates
+        templates(format).each do |temp|
+          file = File.join(tdir, temp)
+          erb  = ERB.new(File.read(file))
+          text = erb.result(binding)
+          write(temp.chomp('.erb'), text)
+        end
+=end
         text = notes.to(format)
         write("notes.#{format}", text)
       end
@@ -85,10 +95,17 @@ module DNote
     end
 
     #
-    def templates
-      @templates ||= (
-        Dir[File.join(File.dirname(__FILE__), 'template/*')].select{ |f| File.file?(f) }
-      )
+    tempdir(format)
+      "#{__DIR__}/templates/#{format}"
+    end
+
+    # TODO: Don't use chdir.
+    def templates(format)
+      temps = []
+      Dir.chdir(tempdir(format)) do
+        temps = Dir['**/*.erb']
+      end
+      temps
     end
 
     # Save file to output.
