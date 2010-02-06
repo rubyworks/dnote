@@ -1,16 +1,20 @@
 = RELEASE HISTORY
 
-== 1.1 / 2010-02-05
+== 1.1 / 2010-02-06
 
-Minor release fixes tow issues. First it ensures
-labels are handled as strings (not symbols). And
-second, it renames the lib/plugin directory to
-lib/plugins (plural) per the new convention of
-the latest Plugin gem.
+This relase primarily adjusts the way output it rendered
+underthehood. Serialization formats are rendered as
+before but markup formats now use Erb. In the process
+two new serialization formats have been added: soap and xoxo.
+
+Also, this release renames the lib/plugin directory to
+lib/plugins (plural) per the new convention of the latest
+Plugin gem. This only matters to Syckle users.
 
 Changes:
 
-* Ensure labels are String.
+* Add Soap and XOXO formats.
+* Add actual --output option.
 * Move lib/plugin to lib/plugins.
 
 
