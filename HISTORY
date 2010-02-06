@@ -1,5 +1,19 @@
 = RELEASE HISTORY
 
+== 1.1 / 2010-02-05
+
+Minor release fixes tow issues. First it ensures
+labels are handled as strings (not symbols). And
+second, it renames the lib/plugin directory to
+lib/plugins (plural) per the new convention of
+the latest Plugin gem.
+
+Changes:
+
+* Ensure labels are String.
+* Move lib/plugin to lib/plugins.
+
+
 == 1.0 / 2009-10-25
 
 This relase adds support for arbitrary note labels.
