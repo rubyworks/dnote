@@ -90,22 +90,22 @@
           
             
             <li class="singleton">
-              <a href="#M000016">::new</a>
+              <a href="#M000018">::new</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000020">#counts</a>
+              <a href="#M000021">#counts</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000021">#each</a>
+              <a href="#M000022">#each</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000024">#empty?</a>
+              <a href="#M000025">#empty?</a>
             </li>
           
             
@@ -115,22 +115,22 @@
           
             
             <li class="method">
-              <a href="#M000025">#labels=</a>
+              <a href="#M000026">#labels=</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000040">#match_arbitrary</a>
+              <a href="#M000042">#match_arbitrary</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000038">#match_common</a>
+              <a href="#M000036">#match_common</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000019">#notes</a>
+              <a href="#M000020">#notes</a>
             </li>
           
             
@@ -140,7 +140,7 @@
           
             
             <li class="method">
-              <a href="#M000027">#parse</a>
+              <a href="#M000028">#parse</a>
             </li>
           
             
@@ -155,12 +155,12 @@
           
             
             <li class="method">
-              <a href="#M000048">#to_soap</a>
+              <a href="#M000049">#to_soap</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000049">#to_xoxo</a>
+              <a href="#M000050">#to_xoxo</a>
             </li>
           
             
@@ -233,6 +233,10 @@
           <li class="module"><a href="../../classes/Syckle/Plugins.html">Syckle::Plugins</a></li>
         
           <li class="class"><a href="../../classes/Syckle/Plugins/DNote.html">Syckle::Plugins::DNote</a></li>
+        
+          <li class="class"><a href="../../classes/Xacto.html">Xacto</a></li>
+        
+          <li class="module"><a href="../../classes/Xacto/String.html">Xacto::String</a></li>
         
         </ul>
         <div id="no-class-search-results" style="display: none;">No matching classes.</div>
@@ -343,7 +347,7 @@ Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
 
     
       <div id="new-method" class="method-detail ">
-        <a name="M000016"></a>
+        <a name="M000018"></a>
 
         <div class="method-heading">
         
@@ -383,7 +387,7 @@ Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
 
     
       <div id="counts-method" class="method-detail ">
-        <a name="M000020"></a>
+        <a name="M000021"></a>
 
         <div class="method-heading">
         
@@ -415,7 +419,7 @@ Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
 
     
       <div id="each-method" class="method-detail ">
-        <a name="M000021"></a>
+        <a name="M000022"></a>
 
         <div class="method-heading">
         
@@ -447,7 +451,7 @@ Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
 
     
       <div id="empty--method" class="method-detail ">
-        <a name="M000024"></a>
+        <a name="M000025"></a>
 
         <div class="method-heading">
         
@@ -498,7 +502,7 @@ Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
           <div class="method-source-code"
             id="files-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 111</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 115</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">files</span>
       <span class="ruby-ivar">@files</span> <span class="ruby-operator">||=</span> (
         [<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">paths</span>].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
@@ -519,7 +523,7 @@ Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
 
     
       <div id="labels--method" class="method-detail ">
-        <a name="M000025"></a>
+        <a name="M000026"></a>
 
         <div class="method-heading">
         
@@ -558,7 +562,7 @@ Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
 
     
       <div id="match-arbitrary-method" class="method-detail ">
-        <a name="M000040"></a>
+        <a name="M000042"></a>
 
         <div class="method-heading">
         
@@ -577,7 +581,7 @@ Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
           <div class="method-source-code"
             id="match-arbitrary-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 136</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 140</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">match_arbitrary</span>(<span class="ruby-identifier">line</span>, <span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">file</span>)
       <span class="ruby-identifier">rec</span> = <span class="ruby-keyword kw">nil</span>
       <span class="ruby-identifier">labels</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">label</span><span class="ruby-operator">|</span>
@@ -597,7 +601,7 @@ Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
 
     
       <div id="match-common-method" class="method-detail ">
-        <a name="M000038"></a>
+        <a name="M000036"></a>
 
         <div class="method-heading">
         
@@ -616,7 +620,7 @@ Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
           <div class="method-source-code"
             id="match-common-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 124</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 128</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">match_common</span>(<span class="ruby-identifier">line</span>, <span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">file</span>)
       <span class="ruby-identifier">rec</span> = <span class="ruby-keyword kw">nil</span>
       <span class="ruby-identifier">labels</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">label</span><span class="ruby-operator">|</span>
@@ -636,7 +640,7 @@ Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
 
     
       <div id="notes-method" class="method-detail ">
-        <a name="M000019"></a>
+        <a name="M000020"></a>
 
         <div class="method-heading">
         
@@ -689,7 +693,7 @@ Organize records in heirarchical form.
           <div class="method-source-code"
             id="organize-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 149</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 153</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">organize</span>(<span class="ruby-identifier">records</span>)
       <span class="ruby-identifier">orecs</span> = {}
       <span class="ruby-identifier">records</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">record</span><span class="ruby-operator">|</span>
@@ -712,7 +716,7 @@ Organize records in heirarchical form.
 
     
       <div id="parse-method" class="method-detail ">
-        <a name="M000027"></a>
+        <a name="M000028"></a>
 
         <div class="method-heading">
         
@@ -757,7 +761,11 @@ label=>notes and a counts hash.
                   <span class="ruby-identifier">text</span>.<span class="ruby-identifier">strip!</span>
                   <span class="ruby-identifier">text</span> = <span class="ruby-keyword kw">nil</span>
                 <span class="ruby-keyword kw">else</span>
-                  <span class="ruby-identifier">text</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">' '</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">line</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/^\s*#\s*/</span>,<span class="ruby-value str">''</span>)
+                  <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">text</span>[<span class="ruby-value">-1</span>,<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;\n&quot;</span>
+                    <span class="ruby-identifier">text</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">line</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/^\s*#\s*/</span>,<span class="ruby-value str">''</span>)
+                  <span class="ruby-keyword kw">else</span>
+                    <span class="ruby-identifier">text</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;\n&quot;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">line</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/^\s*#\s*/</span>,<span class="ruby-value str">''</span>)
+                  <span class="ruby-keyword kw">end</span>
                 <span class="ruby-keyword kw">end</span>
               <span class="ruby-keyword kw">end</span>
             <span class="ruby-keyword kw">end</span>
@@ -797,7 +805,7 @@ label=>notes and a counts hash.
           <div class="method-source-code"
             id="to-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 164</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 168</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to</span>(<span class="ruby-identifier">format</span>)
       <span class="ruby-identifier">__send__</span>(<span class="ruby-node">&quot;to_#{format}&quot;</span>)
     <span class="ruby-keyword kw">end</span></pre>
@@ -829,7 +837,7 @@ label=>notes and a counts hash.
           <div class="method-source-code"
             id="to-json-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 175</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 179</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_json</span>
       <span class="ruby-keyword kw">begin</span>
         <span class="ruby-identifier">require</span> <span class="ruby-value str">'json'</span>
@@ -847,7 +855,7 @@ label=>notes and a counts hash.
 
     
       <div id="to-soap-method" class="method-detail ">
-        <a name="M000048"></a>
+        <a name="M000049"></a>
 
         <div class="method-heading">
         
@@ -868,7 +876,7 @@ Soap envelope XML.
           <div class="method-source-code"
             id="to-soap-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 185</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 189</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_soap</span>
       <span class="ruby-identifier">require</span> <span class="ruby-value str">'soap/marshal'</span>
       <span class="ruby-constant">SOAP</span><span class="ruby-operator">::</span><span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">marshal</span>(<span class="ruby-identifier">notes</span>)
@@ -882,7 +890,7 @@ Soap envelope XML.
 
     
       <div id="to-xoxo-method" class="method-detail ">
-        <a name="M000049"></a>
+        <a name="M000050"></a>
 
         <div class="method-heading">
         
@@ -903,7 +911,7 @@ XOXO microformat.
           <div class="method-source-code"
             id="to-xoxo-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 191</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 195</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_xoxo</span>
       <span class="ruby-identifier">require</span> <span class="ruby-value str">'xoxo'</span>
       <span class="ruby-identifier">notes</span>.<span class="ruby-identifier">to_xoxo</span>
@@ -936,7 +944,7 @@ XOXO microformat.
           <div class="method-source-code"
             id="to-yaml-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 169</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 173</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_yaml</span>
       <span class="ruby-identifier">require</span> <span class="ruby-value str">'yaml'</span>
       <span class="ruby-identifier">notes</span>.<span class="ruby-identifier">to_yaml</span>

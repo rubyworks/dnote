@@ -95,7 +95,7 @@
           
             
             <li class="method">
-              <a href="#M000042">#h</a>
+              <a href="#M000041">#h</a>
             </li>
           
             
@@ -105,7 +105,7 @@
           
             
             <li class="method">
-              <a href="#M000041">#render</a>
+              <a href="#M000040">#render</a>
             </li>
           
         </ul>
@@ -162,6 +162,10 @@
           <li class="module"><a href="../../../classes/Syckle/Plugins.html">Syckle::Plugins</a></li>
         
           <li class="class"><a href="../../../classes/Syckle/Plugins/DNote.html">Syckle::Plugins::DNote</a></li>
+        
+          <li class="class"><a href="../../../classes/Xacto.html">Xacto</a></li>
+        
+          <li class="module"><a href="../../../classes/Xacto/String.html">Xacto::String</a></li>
         
         </ul>
         <div id="no-class-search-results" style="display: none;">No matching classes.</div>
@@ -220,7 +224,7 @@
           <div class="method-source-code"
             id="new-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 192</span>
+<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 193</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">data</span>={})
         <span class="ruby-ivar">@data</span> = <span class="ruby-identifier">data</span>
       <span class="ruby-keyword kw">end</span></pre>
@@ -239,7 +243,7 @@
 
     
       <div id="h-method" class="method-detail ">
-        <a name="M000042"></a>
+        <a name="M000041"></a>
 
         <div class="method-heading">
         
@@ -258,7 +262,7 @@
           <div class="method-source-code"
             id="h-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 201</span>
+<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 202</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">h</span>(<span class="ruby-identifier">string</span>)
         <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Text</span>.<span class="ruby-identifier">normalize</span>(<span class="ruby-identifier">string</span>)
       <span class="ruby-keyword kw">end</span></pre>
@@ -290,7 +294,7 @@
           <div class="method-source-code"
             id="method-missing-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 205</span>
+<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 206</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">s</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">a</span>)
         <span class="ruby-ivar">@data</span>[<span class="ruby-identifier">s</span>.<span class="ruby-identifier">to_sym</span>]
       <span class="ruby-keyword kw">end</span></pre>
@@ -303,7 +307,7 @@
 
     
       <div id="render-method" class="method-detail ">
-        <a name="M000041"></a>
+        <a name="M000040"></a>
 
         <div class="method-heading">
         
@@ -322,7 +326,7 @@
           <div class="method-source-code"
             id="render-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 196</span>
+<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 197</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">file</span>)
         <span class="ruby-identifier">erb</span> = <span class="ruby-constant">ERB</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">file</span>), <span class="ruby-keyword kw">nil</span>, <span class="ruby-value str">'&lt;&gt;'</span>)
         <span class="ruby-identifier">erb</span>.<span class="ruby-identifier">result</span>(<span class="ruby-identifier">binding</span>)

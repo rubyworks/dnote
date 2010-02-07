@@ -1,0 +1,15 @@
+--- !ruby/object:RDoc::RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Xacto
+includes: []
+
+instance_methods: []
+
+name: Xacto
+superclass: Object
