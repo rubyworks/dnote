@@ -3,7 +3,6 @@
 module DNote
   require 'optparse'
   require 'dnote'
-  require 'dnote/format'
 
   def self.run
     options = {}

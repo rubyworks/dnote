@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
-load "dnote/command"
+require "dnote/command"
 DNote.run
 

@@ -1,7 +1,8 @@
 module DNote
-  VERSION = "1.1.2"  #:till: VERSION = "<%= version %>"
+  VERSION = "1.1.3"  #:till: VERSION = "<%= version %>"
 
   require 'dnote/notes'
+  require 'dnote/format'
 
   # NOTE: Toying with the idea of making DNote a class.
 
