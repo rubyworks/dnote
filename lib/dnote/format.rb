@@ -12,6 +12,7 @@ module DNote
     require 'fileutils'
     require 'erb'
     require 'rexml/text'
+    require 'dnote/string'
 
     #DEFAULT_OUTPUT_DIR = "log/dnote"
 

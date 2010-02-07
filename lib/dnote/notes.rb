@@ -94,7 +94,11 @@ module DNote
                   text.strip!
                   text = nil
                 else
-                  text << ' ' << line.gsub(/^\s*#\s*/,'')
+                  if text[-1,1] == "\n"
+                    text << line.gsub(/^\s*#\s*/,'')
+                  else
+                    text << "\n" << line.gsub(/^\s*#\s*/,'')
+                  end
                 end
               end
             end
