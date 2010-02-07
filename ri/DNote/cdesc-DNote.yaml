@@ -9,7 +9,7 @@ constants:
 - !ruby/object:RDoc::RI::Constant 
   comment: 
   name: VERSION
-  value: "\"1.1\""
+  value: "\"1.1.1\""
 full_name: DNote
 includes: []
 
