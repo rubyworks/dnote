@@ -6,6 +6,6 @@
 ### file://<%= file %>
 
 <% line_notes.sort!{ |a,b| a[0] <=> b[0] } %><% line_notes.each do |line, note| %>
-* <%= note %> (<%= line %>)
+* <%= note.gsub("\n", ' ') %> (<%= line %>)
 <% end; end; end %>
 

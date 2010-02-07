@@ -139,7 +139,7 @@ module DNote
       else
         puts(result)
       end
-      $stderr << "\n(" + notes.counts.map{|l,n| "#{n} #{l}s"}.join(', ') + ")\n"
+      $stderr << "(" + notes.counts.map{|l,n| "#{n} #{l}s"}.join(', ') + ")\n"
     end
 
     #
