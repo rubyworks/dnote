@@ -124,7 +124,7 @@ module DNote
       )
     end
 
-    #
+    # TODO: ruby-1.9.1-p378 reports: notes.rb:131:in `match': invalid byte sequence in UTF-8 
     def match_common(line, lineno, file)
       rec = nil
       labels.each do |label|
