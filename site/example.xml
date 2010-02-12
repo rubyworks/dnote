@@ -1,13 +1,49 @@
+<?xml version="1.0" ?>
 <notes>
-<set label="TODO">
-<file src="lib/dnote/notes.rb">
-<note line="19" type="TODO">TODO: Add ability to read header notes. They oftern
+    <set label="CREDIT">
+        <file src="lib/dnote/string.rb">
+            <note line="19" type="CREDIT">Trans</note>
+            <note line="37" type="CREDIT">Gavin Sinclair</note>
+            <note line="50" type="CREDIT">Gavin Sinclair</note>
+            <note line="51" type="CREDIT">Trans</note>
+        </file>
+    </set>
+    <set label="TODO">
+        <file src="lib/dnote/site.rb">
+            <note line="102" type="TODO">Don&apos;t use chdir.</note>
+        </file>
+        <file src="test/cases/notes_case.rb">
+            <note line="37" type="TODO">Do something or another!&quot;, 1, &quot;foo.rb&quot;</note>
+        </file>
+        <file src="lib/dnote/notes.rb">
+            <note line="15" type="TODO">Add ability to read header notes. They often
 have a outline format, rather then the single line.</note>
-<note line="22" type="TODO">TODO: Need good CSS file.</note>
-<note line="24" type="TODO">TODO: Need XSL?</note>
-</file>
-<file src="plug/syckle/services/dnote.rb">
-<note line="18" type="TODO">TODO: Should this service be part of the +site+ cycle?</note>
-</file>
-</set>
+            <note line="79" type="TODO">should this be done?</note>
+            <note line="127" type="TODO">ruby-1.9.1-p378 reports: notes.rb:131:in `match&apos;: invalid byte sequence in UTF-8</note>
+        </file>
+        <file src="lib/plugins/syckle/dnote.rb">
+            <note line="18" type="TODO">Should this service be part of the +site+ cycle?</note>
+            <note line="73" type="TODO">Is #trial? correct?</note>
+        </file>
+        <file src="lib/dnote/format.rb">
+            <note line="6" type="TODO">Need good CSS file.</note>
+            <note line="8" type="TODO">Need XSL?</note>
+        </file>
+    </set>
+    <set label="TEST">
+        <file src="lib/dnote.rb">
+            <note line="32" type="TEST">This is a test of arbitraty labels.</note>
+        </file>
+    </set>
+    <set label="NOTE">
+        <file src="lib/dnote/command.rb">
+            <note line="124" type="NOTE">If DNote were a class.</note>
+        </file>
+        <file src="lib/dnote.rb">
+            <note line="7" type="NOTE">Toying with the idea of making DNote a class.</note>
+        </file>
+        <file src="lib/dnote/string.rb">
+            <note line="17" type="NOTE">This may still need a bit of tweaking.</note>
+        </file>
+    </set>
 </notes>
