@@ -1,14 +1,51 @@
 --- 
-TODO: 
-  lib/dnote/notes.rb: 
+CREDIT: 
+  lib/dnote/string.rb: 
   - - 19
+    - Trans
+  - - 37
+    - Gavin Sinclair
+  - - 50
+    - Gavin Sinclair
+  - - 51
+    - Trans
+TODO: 
+  lib/dnote/site.rb: 
+  - - 102
+    - Don't use chdir.
+  test/cases/notes_case.rb: 
+  - - 37
+    - Do something or another!", 1, "foo.rb"
+  lib/dnote/notes.rb: 
+  - - 15
     - |-
-      TODO: Add ability to read header notes. They oftern
+      Add ability to read header notes. They often
       have a outline format, rather then the single line.
-  - - 22
-    - "TODO: Need good CSS file."
-  - - 24
-    - "TODO: Need XSL?"
-  plug/syckle/services/dnote.rb: 
+  - - 79
+    - should this be done?
+  - - 127
+    - "ruby-1.9.1-p378 reports: notes.rb:131:in `match': invalid byte sequence in UTF-8"
+  lib/plugins/syckle/dnote.rb: 
   - - 18
-    - "TODO: Should this service be part of the +site+ cycle?"
+    - Should this service be part of the +site+ cycle?
+  - - 73
+    - "Is #trial? correct?"
+  lib/dnote/format.rb: 
+  - - 6
+    - Need good CSS file.
+  - - 8
+    - Need XSL?
+TEST: 
+  lib/dnote.rb: 
+  - - 32
+    - This is a test of arbitraty labels.
+NOTE: 
+  lib/dnote/command.rb: 
+  - - 124
+    - If DNote were a class.
+  lib/dnote.rb: 
+  - - 7
+    - Toying with the idea of making DNote a class.
+  lib/dnote/string.rb: 
+  - - 17
+    - This may still need a bit of tweaking.
