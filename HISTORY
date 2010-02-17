@@ -1,5 +1,24 @@
 = RELEASE HISTORY
 
+== 1.2 / 2010-02-17
+
+By request of a few users this release adds additional formats,
+allowing notes to be sorted by filename as well a label. In addition,
+paths can now be excluded from the search. To implement these changes
+it was necessary to makes some signifficant under-the-hood adjustments,
+and this required making some adjustments to the design of the templates.
+If are using any of your own custom templates you will have to make
+adjustments accordingly --which basically entails exchanging +notes.each+
+for +notes.by_label_file.each+. Also, the serialization formats have
+changed accordingly to match the improved underlying model.
+
+Changes:
+
+* Improved underlying model by adding a Note class.
+* Add new formats and rename a couple old formats.
+* Add --exclude and --ignore options.
+
+
 == 1.1 / 2010-02-06
 
 This relase primarily adjusts the way output it rendered
