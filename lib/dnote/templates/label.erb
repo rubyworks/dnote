@@ -1,0 +1,11 @@
+<%= title %>
+
+<% notes.by_label.each do |label, line_notes| %>
+
+<%= label %>
+
+
+<% line_notes.each_with_index do |note, i| %>
+<%= note.text.indent(6).sub(' ' * 6,(" %3s. " % [i+1])) %> (<%= note.file %>:<%= note.line %>)
+<% end; end %>
+

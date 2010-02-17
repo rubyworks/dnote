@@ -1,0 +1,10 @@
+<%= title %>
+
+<% notes.by_file.each do |file, line_notes| %>
+
+<%= file %>:
+
+<% line_notes.sort!{ |a,b| a.line <=> b.line } %><% line_notes.each do |note| %>
+<%= note.to_s.indent(10).sub(' ' * 10,'        * ') %> (<%= note.line %>)
+<% end; end %>
+

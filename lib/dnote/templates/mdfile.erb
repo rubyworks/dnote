@@ -1,0 +1,13 @@
+<%= title %>
+
+<%= '=' * title.size %>
+
+<% notes.by_file.each do |file, list| %>
+
+file://<%= file %>
+<%= '-' * (file.size + 7) %>
+
+<% list.each do |note| %>
+* <%= note %> (<%= note.line %>)
+<% end; end %>
+

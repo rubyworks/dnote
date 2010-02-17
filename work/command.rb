@@ -19,6 +19,10 @@ module DNote
         options[:format] = 'gnu'
       end
 
+      opt.on("--gnufile", "Plain text format by file") do
+        options[:format] = 'gnufile'
+      end
+
       opt.on("--rdoc", "RDoc comment format") do
         options[:format] = 'rdoc'
       end
@@ -51,6 +55,11 @@ module DNote
         options[:format] = 'json'
       end
 
+      # TODO
+      opt.on("--format", "-f NAME", "Select a format") do |format|
+        options[:format] = format
+      end
+
       opt.on("--template", "-t FILE", "Use a custom Erb template") do |file|
         options[:format] = 'custom'
         options[:template] = file
@@ -64,11 +73,17 @@ module DNote
         options[:labels] << lbl
       end
 
-      opt.on("--title", "-t [TITLE]", "title to use in headers") do |title|
+      # TODO
+      opt.on("--exclude", "-x PATH", "exclude file or directory") do |path|
+        options[:exclude] ||= []
+        options[:exclude] << path
+      end
+
+      opt.on("--title", "-T TITLE", "title to use in headers") do |title|
         options[:title] = title
       end
 
-      opt.on("--output", "-o [PATH]", "name of file or directory") do |path|
+      opt.on("--output", "-o PATH", "name of file or directory") do |path|
         options[:output] = path
       end
 

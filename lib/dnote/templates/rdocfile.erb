@@ -1,0 +1,9 @@
+= <%= title %>
+<% notes.by_file.each do |file, list| %>
+
+== file://<%= file %>
+
+<% list.each do |note| %>
+* <%= note %> (<%= note.line %>)
+<% end; end %>
+

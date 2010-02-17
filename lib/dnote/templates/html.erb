@@ -22,14 +22,14 @@
 <div class="main">
   <h1><%= title %></h1>
   <div class="notes">
-<% notes.each do |label, per_file| %>
+<% notes.by_label_file.each do |label, per_file| %>
     <h2><%= label %></h2>
     <ol class="set <%= label.downcase %>">
 <% per_file.each do |file, line_notes| %>
       <li><h3><a href="<%= file %>"><%= file %></a></h3><ol class="file" href="<%= file %>">
-<% line_notes.sort!{ |a,b| a[0] <=> b[0] } %>
-<% line_notes.each do |line, note| %>
-        <li class="note <%= label.downcase %>" ref="<%= line %>"><%= h note %> <sup><%= line %></sup></li>
+<% line_notes.sort!{ |a,b| a.line <=> b.line } %>
+<% line_notes.each do |note| %>
+        <li class="note <%= label.downcase %>" ref="<%= note.line %>"><%= h note.text %> <sup><%= note.line %></sup></li>
 <% end %>
       </ol></li>
 <% end %>

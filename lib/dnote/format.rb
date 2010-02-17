@@ -41,9 +41,8 @@ module DNote
       @notes  = notes
       @format = :gnu
       @title  = "Developer's Notes"
-      options.each do |k,v|
-        __send__("#{k}=", v) if v
-      end
+      options.each{ |k,v| __send__("#{k}=", v) if v }
+      yield(self) if block_given?
     end
 
     #
@@ -51,8 +50,20 @@ module DNote
       if notes.empty?
         $stderr << "No #{notes.labels.join(', ')} notes.\n"
       else
-        raise ArgumentError unless respond_to?("render_#{format}")
-        __send__("render_#{format}")
+        case format
+        when 'yaml'
+          render_yaml
+        when 'json'
+          render_json
+        when 'soap'
+          render_soap
+        when 'xoxo'
+          render_xoxo
+        when 'custom'
+          render_custom
+        else
+          render_template
+        end
       end
     end
 
@@ -68,8 +79,6 @@ module DNote
       publish(result)
     end
 
-    # M L  M A R K U P
-
     def render_soap
       result = notes.to_soap
       publish(result)
@@ -80,49 +89,23 @@ module DNote
       publish(result)
     end
 
-    def render_xml
-      template = File.join(File.dirname(__FILE__), 'templates/xml.erb')
-      result = erb(template)
-      publish(result)
-    end
+    # C U S T O M
 
-    def render_html
-      template = File.join(File.dirname(__FILE__), 'templates/html.erb')
-      result = erb(template)
-      publish(result)
-    end
-
-    def render_index
-      template = File.join(File.dirname(__FILE__), 'templates/html.erb')
-      result = erb(template)
-      publish(result, 'index.html')
-    end
-
-    # W I K I  M A R K U P
-
-    def render_gnu
-      template = File.join(File.dirname(__FILE__), 'templates/gnu.erb')
-      result = erb(template)
-      publish(result)
-    end
-
-    def render_rdoc
-      template = File.join(File.dirname(__FILE__), 'templates/rdoc.erb')
-      result = erb(template)
-      publish(result)
-    end
-
-    def render_markdown
-      template = File.join(File.dirname(__FILE__), 'templates/markdown.erb')
-      result = erb(template)
-      publish(result)
-    end
-
-    # C U S T O M  T E M P L A T E
-
+    #
     def render_custom
+      #raise ArgumentError unless File.exist?(template)
       result = erb(template)
       publish(result)    
+    end
+
+    # T E M P L A T E
+
+    #
+    def render_template
+      template = File.join(File.dirname(__FILE__), 'templates', "#{format}.erb")
+      raise "No such file or directory - #{template}" unless File.exist?(template)
+      result = erb(template)
+      publish(result)  
     end
 
   private

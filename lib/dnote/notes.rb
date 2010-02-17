@@ -1,4 +1,5 @@
 require 'pathname'
+require 'dnote/note'
 
 module DNote
 
@@ -24,15 +25,15 @@ module DNote
     # Default note labels to look for in source code.
     DEFAULT_LABELS = ['TODO', 'FIXME', 'OPTIMIZE', 'DEPRECATE']
 
-    # Paths to search.
-    attr_accessor :paths
+    # Files to search for notes.
+    attr_accessor :files
 
     # Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
     attr_accessor :labels
 
     #
-    def initialize(paths, labels=nil)
-      @paths  = [paths  || DEFAULT_PATHS ].flatten
+    def initialize(files, labels=nil)
+      @files  = [files].flatten
       @labels = [labels || DEFAULT_LABELS].flatten
       parse
     end
@@ -74,9 +75,11 @@ module DNote
 
     def parse
       records, counts = [], Hash.new(0)
+
       files.each do |fname|
         next unless File.file?(fname)
         #next unless fname =~ /\.rb$/      # TODO: should this be done?
+
         File.open(fname) do |f|
           lineno, save, text = 0, nil, nil
           while line = f.gets
@@ -84,10 +87,10 @@ module DNote
             save = match_common(line, lineno, fname) || match_arbitrary(line, lineno, fname)
             if save
               #file = fname
-              text = save['note']
+              text = save.text
               #save = {'label'=>label,'file'=>file,'line'=>line_no,'note'=>text}
               records << save
-              counts[save['label']] += 1
+              counts[save.label] += 1
             else
               if text
                 if line =~ /^\s*[#]{0,1}\s*$/ or line !~ /^\s*#/ or line =~ /^\s*#[+][+]/
@@ -105,24 +108,22 @@ module DNote
           end
         end
       end
-      # organize the notes
-      notes = organize(records)
-      #
-      @notes, @counts = notes, counts
+      @notes  = records.sort
+      @counts = counts
     end
 
     #
-    def files
-      @files ||= (
-        [self.paths].flatten.map do |path|
-          if File.directory?(path)
-            Dir.glob(File.join(path, '**/*'))
-          else
-            Dir.glob(path)
-          end
-        end.flatten.uniq
-      )
-    end
+    #def files
+    #  @files ||= (
+    #    [self.paths].flatten.map do |path|
+    #      if File.directory?(path)
+    #        Dir.glob(File.join(path, '**/*'))
+    #      else
+    #        Dir.glob(path)
+    #      end
+    #    end.flatten.uniq
+    #  )
+    #end
 
     # TODO: ruby-1.9.1-p378 reports: notes.rb:131:in `match': invalid byte sequence in UTF-8 
     def match_common(line, lineno, file)
@@ -130,10 +131,11 @@ module DNote
       labels.each do |label|
         if md = /\#\s*#{Regexp.escape(label)}[:]?\s*(.*?)$/.match(line)
           text = md[1]
-          rec = {'label'=>label,'file'=>file,'line'=>lineno,'note'=>text}
+          #rec = {'label'=>label,'file'=>file,'line'=>lineno,'note'=>text}
+          rec = Note.new(file, label, lineno, text)
         end
       end
-      return rec
+      rec
     end
 
     #
@@ -142,7 +144,8 @@ module DNote
       labels.each do |label|
         if md = /\#\s*([A-Z]+)[:]\s*(.*?)$/.match(line)
           label, text = md[1], md[2]
-          rec = {'label'=>label,'file'=>file,'line'=>lineno,'note'=>text}
+          #rec = {'label'=>label,'file'=>file,'line'=>lineno,'note'=>text}
+          rec = Note.new(file, label, lineno, text)
         end
       end
       return rec
@@ -150,18 +153,72 @@ module DNote
 
     # Organize records in heirarchical form.
     #
-    def organize(records)
-      orecs = {}
-      records.each do |record|
-        label = record['label']
-        file  = record['file']
-        line  = record['line']
-        note  = record['note'].rstrip
-        orecs[label] ||= {}
-        orecs[label][file] ||= []
-        orecs[label][file] << [line, note]
-      end
-      orecs
+    #def organize(records)
+    #  orecs = {}
+    #  records.each do |record|
+    #    label = record['label']
+    #    file  = record['file']
+    #    line  = record['line']
+    #    note  = record['note'].rstrip
+    #    orecs[label] ||= {}
+    #    orecs[label][file] ||= []
+    #    orecs[label][file] << [line, note]
+    #  end
+    #  orecs
+    #end
+
+    #
+    def by_label
+      @by_label ||= (
+        list = {}
+        notes.each do |note|
+          list[note.label] ||= []
+          list[note.label] << note
+          list[note.label].sort #!{ |a,b| a.line <=> b.line }
+        end
+        list
+      )
+    end
+
+    #
+    def by_file
+      @by_file ||= (
+        list = {}
+        notes.each do |note|
+          list[note.file] ||= []
+          list[note.file] << note
+          list[note.file].sort! #!{ |a,b| a.line <=> b.line }
+        end
+        list
+      )
+    end
+
+    #
+    def by_label_file
+      @by_label ||= (
+        list = {}
+        notes.each do |note|
+          list[note.label] ||= {}
+          list[note.label][note.file] ||= []
+          list[note.label][note.file] << note
+          list[note.label][note.file].sort! #{ |a,b| a.line <=> b.line }
+        end
+        list
+      )
+    end
+
+    #
+    def by_file_label
+      @by_file ||= (
+        list = {}
+        notes.each do |note|
+          list[note.file] ||= {}
+          list[note.file][note.label] ||= []
+          list[note.file][note.label] << note
+          list[note.file][note.label].sort! #{ |a,b| a.line <=> b.line }
+        end
+        list
+      )
     end
 
     #

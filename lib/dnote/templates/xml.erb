@@ -1,12 +1,12 @@
 <?xml version="1.0" ?>
 <notes>
-<% notes.each do |label, per_file| %>
+<% notes.by_label_file.each do |label, per_file| %>
     <set label="<%= label %>">
 <% per_file.each do |file, line_notes| %>
         <file src="<%= file %>">
-<% line_notes.sort!{ |a,b| a[0] <=> b[0] } %>
-<% line_notes.each do |line, note| %>
-            <note line="<%= line %>" type="<%= label %>"><%= h note %></note>
+<% line_notes.sort!{ |a,b| a.line <=> b.line } %>
+<% line_notes.each do |note| %>
+            <note line="<%= note.line %>" type="<%= label %>"><%= h note.text %></note>
 <% end %>
         </file>
 <% end %>
