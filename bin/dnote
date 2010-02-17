@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
-require "dnote/command"
-DNote.run
+require "dnote"
+DNote::Session.main(*ARGV)
 
