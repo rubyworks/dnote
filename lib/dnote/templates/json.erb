@@ -1,0 +1,8 @@
+<%= 
+begin
+  require 'json'
+rescue LoadError
+  require 'json_pure'
+end
+notes.map{ |n| n.to_h_raw }.to_json
+%>

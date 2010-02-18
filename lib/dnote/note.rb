@@ -19,6 +19,16 @@ module DNote
       "#{label}: #{text}"
     end
 
+    #
+    def to_str
+      "#{label}: #{text}"
+    end
+
+    #
+    def textline
+      text.gsub("\n", " ")
+    end
+
     # Sort by file name and line number.
     def <=>(other)
       s = file <=> other.file
@@ -27,6 +37,10 @@ module DNote
     end
 
     def to_h
+      { 'label'=>label, 'text'=>textline, 'file'=>file, 'line'=>line }
+    end
+
+    def to_h_raw
       { 'label'=>label, 'text'=>text, 'file'=>file, 'line'=>line }
     end
 

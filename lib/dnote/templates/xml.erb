@@ -6,7 +6,7 @@
         <file src="<%= file %>">
 <% line_notes.sort!{ |a,b| a.line <=> b.line } %>
 <% line_notes.each do |note| %>
-            <note line="<%= note.line %>" type="<%= label %>"><%= h note.text %></note>
+            <note line="<%= note.line %>" type="<%= label %>"><%= h note.textline %></note>
 <% end %>
         </file>
 <% end %>

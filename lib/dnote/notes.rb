@@ -210,35 +210,35 @@ module DNote
     end
 
     # Convert to array of hashes then to YAML.
-    def to_yaml
-      require 'yaml'
-      to_a.to_yaml
-    end
+    #def to_yaml
+    #  require 'yaml'
+    #  to_a.to_yaml
+    #end
 
     # Convert to array of hashes then to JSON.
-    def to_json
-      begin
-        require 'json'
-      rescue LoadError
-        require 'json_pure'
-      end
-      to_a.to_json
-    end
+    #def to_json
+    #  begin
+    #    require 'json'
+    #  rescue LoadError
+    #    require 'json_pure'
+    #  end
+    #  to_a.to_json
+    #end
 
     # Convert to array of hashes then to a SOAP XML envelope.
-    def to_soap
-      require 'soap/marshal'
-      SOAP::Marshal.marshal(to_a)
-    end
+    #def to_soap
+    #  require 'soap/marshal'
+    #  SOAP::Marshal.marshal(to_a)
+    #end
 
     # XOXO microformat.
     #--
     # TODO: Would to_xoxo be better organized by label and or file?
     #++
-    def to_xoxo
-      require 'xoxo'
-      to_a.to_xoxo
-    end
+    #def to_xoxo
+    #  require 'xoxo'
+    #  to_a.to_xoxo
+    #end
 
   end
 

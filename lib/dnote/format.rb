@@ -51,42 +51,12 @@ module DNote
         $stderr << "No #{notes.labels.join(', ')} notes.\n"
       else
         case format
-        when 'yaml'
-          render_yaml
-        when 'json'
-          render_json
-        when 'soap'
-          render_soap
-        when 'xoxo'
-          render_xoxo
         when 'custom'
           render_custom
         else
           render_template
         end
       end
-    end
-
-    # S E R I A L I Z A T I O N
-
-    def render_yaml
-      result = notes.to_yaml
-      publish(result)
-    end
-
-    def render_json
-      result = notes.to_json
-      publish(result)
-    end
-
-    def render_soap
-      result = notes.to_soap
-      publish(result)
-    end
-
-    def render_xoxo
-      result = notes.to_xoxo
-      publish(result)
     end
 
     # C U S T O M
