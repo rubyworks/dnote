@@ -11,6 +11,8 @@ module DNote
   #
   class Session
 
+    # Directory relative to this script. This is used
+    # to lookup the available format templates.
     DIR = File.dirname(__FILE__)
 
     # Default format.
@@ -20,17 +22,17 @@ module DNote
     DEFAULT_TITLE = "Developer's Notes"
 
     # Paths to include.
-    attr :paths
+    attr_accessor :paths
 
     # Paths to exclude (match by pathname).
-    attr :exclude
+    attr_accessor :exclude
 
     # Paths to ignore (match by basename).
-    attr :ignore
+    attr_accessor :ignore
 
-    # Special labels that are looked for without a separating colon.
+    # Labels to lookup.
     # By default these are TODO, FIXME and OPTIMIZE.
-    attr :labels
+    attr_accessor :labels
 
     # Selected labels can optionally do without the colon.
     attr_accessor :colon
@@ -48,19 +50,40 @@ module DNote
     # Output to a file instead of STDOUT.
     attr_accessor :output
 
-    #
-    #attr_accessor :dryrun
+    # If output path given, don't actually write to disk.
+    attr_accessor :dryrun
 
-    #
+  private
+
+    # New Session.
     def initialize(options={})
+      options ||= {}
+      initialize_defaults
+      options.each{ |k,v| __send__("#{k}=", v) }
+      yield(self) if block_given?
+    end
+
+    # Set default values for attributes.
+    def initialize_defaults
       @paths   = []
       @labels  = []
       @exclude = []
       @ignore  = []
       @format  = DEFAULT_FORMAT
       @title   = DEFAULT_TITLE
-      options.each{ |k,v| __send__("#{k}=", v) }
-      yield(self) if block_given?
+      @dryrun  = false
+    end
+
+  public
+
+    # Set exclude list ensuring that the value is an array.
+    def exclude=(list)
+      @exclude = [list].flatten.compact
+    end
+
+    # Set ignore list ensuring that the value is an array.
+    def ignore=(list)
+      @ignore = [list].flatten.compact
     end
 
     # Run session.
@@ -76,6 +99,8 @@ module DNote
     end
 
     # Collect path globs and remove exclusions.
+    # This method uses #paths, #exclude and #ignore to
+    # compile the list of files.
     def files
       list = [paths].flatten.compact
       list = ['**/*.rb'] if list.empty?
@@ -206,14 +231,14 @@ module DNote
           session.output = path
         end
 
+        opt.on("--dryrun", "-n", "do not actually write to disk") do
+          session.dryrun = true
+        end
+
         opt.on("--debug", "debug mode") do
           $DEBUG = true
           $VERBOSE = true
         end
-
-        #opt.on("--dryrun", "-n", "do not actually write to disk") do
-        #  session.dryrun = true
-        #end
 
         opt.separator(" ")
         opt.separator("COMMAND OPTIONS:")

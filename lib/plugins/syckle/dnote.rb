@@ -40,13 +40,19 @@ module Syckle::Plugins
     end
 
     # Default note labels to looked for in source code.
-    #DEFAULT_LABELS = ['TODO', 'FIXME', 'OPTIMIZE', 'DEPRECATE']
+    DEFAULT_LABELS = ['TODO', 'FIXME', 'OPTIMIZE', 'DEPRECATE']
 
-    # Paths to search.
+    # File paths to search.
     attr_accessor :files
 
     # Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
     attr_accessor :labels
+
+    # Exclude paths.
+    attr_accessor :exclude
+
+    # Ignore paths based on any part of pathname.
+    attr_accessor :ignore
 
     # Output directory to save notes file. Defaults to <tt>dnote/</tt> under
     # the project log directory (eg. <tt>log/dnote/</tt>).
@@ -73,16 +79,37 @@ module Syckle::Plugins
     # TODO: Is #trial? correct?
     #++
     def document
-      notes = ::DNote::Notes.new(files, labels)
-      [formats].flatten.each do |format|
+      session = ::DNote::Session.new do |s|
+        s.paths   = files
+        s.exclude = exclude
+        s.ignore  = ignore
+        s.labels  = labels #|| DEFAULT_LABELS   
+        s.title   = title
+        s.output  = output
+        s.dryrun  = trial?
+      end
+      formats.each do |format|
         if format == 'index'
-          format = 'html'
-          output = File.join(self.output, 'index.html')
+          session.format = 'html'
+          session.output = File.join(self.output, 'index.html')
+        else
+          session.format = format
         end
-        format = ::DNote::Format.new(notes, :format=>format, :output=>output.to_s, :title=>title, :dryrun=>trial?)
-        format.render
+        session.run
         report "Updated #{output.to_s.sub(Dir.pwd+'/','')}" unless trial?
       end
+
+      #files = files.map{ |f| Dir[f] }.flatten
+      #notes = ::DNote::Notes.new(files, :labels=>labels)
+      #[formats].flatten.each do |format|
+      #  if format == 'index'
+      #    format = 'html'
+      #    output = File.join(self.output, 'index.html')
+      #  end
+      #  format = ::DNote::Format.new(notes, :format=>format, :output=>output.to_s, :title=>title, :dryrun=>trial?)
+      #  format.render
+      #  report "Updated #{output.to_s.sub(Dir.pwd+'/','')}" unless trial?
+      #end
     end
 
     # Reset output directory, marking it as out-of-date.
