@@ -1,0 +1,6 @@
+= <%= title %>
+
+<% notes.each_with_index do |note, index| %>
+* <%= note.label %>: <%= h note.textline %> (<%= note.file %>: <%= note.line %>)
+<% end %>
+

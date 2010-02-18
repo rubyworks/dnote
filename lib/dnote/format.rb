@@ -25,6 +25,9 @@ module DNote
     attr_accessor :format
 
     #
+    attr_accessor :subtype
+
+    #
     attr_accessor :output
 
     #
@@ -38,9 +41,10 @@ module DNote
 
     #
     def initialize(notes, options={})
-      @notes  = notes
-      @format = :gnu
-      @title  = "Developer's Notes"
+      @notes   = notes
+      @format  = 'text'
+      @subtype = 'label'
+      @title   = "Developer's Notes"
       options.each{ |k,v| __send__("#{k}=", v) if v }
       yield(self) if block_given?
     end
@@ -73,7 +77,7 @@ module DNote
     #
     def render_template
       template = File.join(File.dirname(__FILE__), 'templates', "#{format}.erb")
-      raise "No such file or directory - #{template}" unless File.exist?(template)
+      raise "No such format - #{format}" unless File.exist?(template)
       result = erb(template)
       publish(result)  
     end

@@ -44,9 +44,13 @@ module DNote
       { 'label'=>label, 'text'=>text, 'file'=>file, 'line'=>line }
     end
 
-    #def to_yaml(*args)
-    #  to_h.to_yaml(*args)
-    #end
+    def to_json(*args)
+      to_h_raw.to_json(*args)
+    end
+
+    def to_yaml(*args)
+      to_h_raw.to_yaml(*args)
+    end
   end
 
 end

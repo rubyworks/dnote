@@ -1,0 +1,8 @@
+<%= 
+begin
+  require 'json'
+rescue LoadError
+  require 'json_pure'
+end
+notes.by_label.to_json
+%>

@@ -1,0 +1,6 @@
+<%=
+  require 'xoxo'
+  notes.map{ |n|
+    { 'label'=>n.label, 'text'=>n.textline, 'file'=>n.file, 'line'=>n.line }
+  }.to_xoxo
+%>

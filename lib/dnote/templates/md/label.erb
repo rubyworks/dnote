@@ -1,0 +1,18 @@
+<%= title %>
+
+<%= '=' * title.size %>
+
+<% notes.by_label_file.each do |label, per_file| %>
+
+<%= label %>
+
+<%= '-' * (label.size) %>
+
+<%   per_file.each do |file, line_notes| %>
+
+### file://<%= file %>
+
+<% line_notes.each do |note| %>
+* <%= note %> (<%= note.line %>)
+<% end; end; end %>
+

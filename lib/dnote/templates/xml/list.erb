@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<notes>
+<% notes.each do |note| %>
+  <note file="<%= note.file %>" line="<%= note.line %>" type="<%= label %>"><%= h note.textline %></note>
+<% end %>
+</notes>

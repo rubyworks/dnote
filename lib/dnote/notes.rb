@@ -22,7 +22,7 @@ module DNote
     # Default paths (all ruby scripts).
     DEFAULT_PATHS  = ["**/*.rb"]
 
-    # Default note labels to look for in source code.
+    # Default note labels to look for in source code. (NOT CURRENTLY USED!)
     DEFAULT_LABELS = ['TODO', 'FIXME', 'OPTIMIZE', 'DEPRECATE']
 
     # Files to search for notes.
@@ -31,10 +31,14 @@ module DNote
     # Labels to document. Defaults are: +TODO+, +FIXME+, +OPTIMIZE+ and +DEPRECATE+.
     attr_accessor :labels
 
+    # Require label colon? Default is +true+.
+    attr_accessor :colon
+
     # New set of notes for give +files+ and optional special labels.
-    def initialize(files, labels=nil)
+    def initialize(files, options={})
       @files  = [files].flatten
-      @labels = [labels || DEFAULT_LABELS].flatten
+      @labels = [options[:labels]].flatten.compact
+      @colon  = options[:colon].nil? ? true : options[:colon]
       parse
     end
 
@@ -64,31 +68,20 @@ module DNote
       notes.empty?
     end
 
-    # Set special labels.
-    def labels=(labels)
-      @labels = (
-        case labels
-        when String
-          labels.split(/[:;,]/)
-        else
-          labels = [labels].flatten.compact.uniq.map{ |s| s.to_s }
-        end
-      )
-    end
-
     # Gather notes.
+    #--
+    # TODO: Play gold with Notes#parse.
+    #++
     def parse
       records = []
-
       files.each do |fname|
         next unless File.file?(fname)
         #next unless fname =~ /\.rb$/      # TODO: should this be done?
-
         File.open(fname) do |f|
           lineno, save, text = 0, nil, nil
           while line = f.gets
             lineno += 1
-            save = match_common(line, lineno, fname) || match_arbitrary(line, lineno, fname)
+            save = match(line, lineno, fname)
             if save
               #file = fname
               text = save.text
@@ -111,17 +104,24 @@ module DNote
           end
         end
       end
+
       @notes  = records.sort
     end
 
-    # Match special notes, which do not need a colon.
-    #--
-    # TODO: ruby-1.9.1-p378 reports: notes.rb:131:in `match': invalid byte sequence in UTF-8 
-    #++
-    def match_common(line, lineno, file)
+    #
+    def match(line, lineno, file)
+      if labels.empty?
+        match_general(line, lineno, file)
+      else
+        match_special(line, lineno, file)
+      end
+    end
+
+    # Match special notes.
+    def match_special(line, lineno, file)
       rec = nil
       labels.each do |label|
-        if md = /\#\s*#{Regexp.escape(label)}[:]?\s*(.*?)$/.match(line)
+        if md = match_special_regex(label).match(line)
           text = md[1]
           #rec = {'label'=>label,'file'=>file,'line'=>lineno,'note'=>text}
           rec = Note.new(file, label, lineno, text)
@@ -130,17 +130,35 @@ module DNote
       rec
     end
 
+    #--
+    # TODO: ruby-1.9.1-p378 reports: `match': invalid byte sequence in UTF-8 
+    #++
+    def match_special_regex(label)
+      if colon
+        /\#\s*#{Regexp.escape(label)}[:]\s*(.*?)$/
+      else
+        /\#\s*#{Regexp.escape(label)}[:]?\s*(.*?)$/
+      end
+    end
+
     # Match notes that are labeled with a colon.
-    def match_arbitrary(line, lineno, file)
+    def match_general(line, lineno, file)
       rec = nil
-      labels.each do |label|
-        if md = /\#\s*([A-Z]+)[:]\s+(.*?)$/.match(line)
-          label, text = md[1], md[2]
-          #rec = {'label'=>label,'file'=>file,'line'=>lineno,'note'=>text}
-          rec = Note.new(file, label, lineno, text)
-        end
+      if md = match_general_regex.match(line)
+        label, text = md[1], md[2]
+        #rec = {'label'=>label,'file'=>file,'line'=>lineno,'note'=>text}
+        rec = Note.new(file, label, lineno, text)
       end
       return rec
+    end
+
+    #
+    def match_general_regex
+      if colon
+        /\#\s*([A-Z]+)[:]\s+(.*?)$/
+      else
+        /\#\s*([A-Z]+)[:]?\s+(.*?)$/
+      end
     end
 
     # Organize notes into a hash with labels for keys.
