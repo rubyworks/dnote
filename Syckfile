@@ -23,7 +23,7 @@ box:
   types  : [gem, gz]
   include: [bin, demo, lib, meta, plug, test, "[A-Z]*"]
   exclude: [Syckfile]
-  master : true
+  master : false
 
 syntax:
   service  : Syntax
