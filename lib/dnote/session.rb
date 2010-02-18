@@ -11,6 +11,8 @@ module DNote
   #
   class Session
 
+    DIR = File.dirname(__FILE__)
+
     # Default format.
     DEFAULT_FORMAT = "label"
 
@@ -188,6 +190,12 @@ module DNote
           session.dryrun = true
         end
 
+        opt.on_tail('--list', "list all available templated formats") do
+          list = Dir[File.join(DIR, 'templates', '*')].map{ |f| File.basename(f).chomp('.erb') }
+          puts list.sort.join("\n")
+          exit
+        end
+
         opt.on_tail('--help', '-h', "show this help information") do
           puts opt
           exit
@@ -198,7 +206,8 @@ module DNote
         opts.parse!(argv)
         session.paths.replace(argv)
         session.run
-      rescue Exception => err
+      rescue => err
+        raise err if $DEBUG
         puts err
         exit 1
       end
