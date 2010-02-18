@@ -30,9 +30,9 @@ module DNote
       { 'label'=>label, 'text'=>text, 'file'=>file, 'line'=>line }
     end
 
-    def to_yaml(*args)
-      to_h.to_yaml(*args)
-    end
+    #def to_yaml(*args)
+    #  to_h.to_yaml(*args)
+    #end
   end
 
 end
