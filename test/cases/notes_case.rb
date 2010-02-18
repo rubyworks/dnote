@@ -2,17 +2,11 @@ require 'dnote/notes'
 
 Case DNote::Notes do
 
-  Concern "Full coverage of DNote::Notes class."
+  Concern "Basic coverage of DNote::Notes class."
 
   Unit :labels => 'returns the list of labels' do
-    notes = DNote::Notes.new([])
-    notes.labels.assert == DNote::Notes::DEFAULT_LABELS
-  end
-
-  Unit :labels= => 'changes the list of labels' do
-    notes = DNote::Notes.new([])
-    notes.labels = [:CHOICE]
-    notes.labels.assert == ['CHOICE']
+    notes = DNote::Notes.new([], :labels=>['TODO'])
+    notes.labels.assert == ['TODO'] #DNote::Notes::DEFAULT_LABELS
   end
 
   Unit :files => 'returns the files attribute' do
@@ -28,22 +22,23 @@ Case DNote::Notes do
     notes.assert.files == ["example1.rb"]
   end
 
-  Unit :match_arbitrary => '' do
+  Unit :match_general => '' do
     notes = DNote::Notes.new([])
     line, lineno, file = "# TODO: Do something or another!", 1, "foo.rb"
-    rec = notes.match_arbitrary(line, lineno, file)
+    rec = notes.match_general(line, lineno, file)
     rec.to_h.assert == {'label'=>"TODO",'file'=>file,'line'=>lineno,'text'=>"Do something or another!"}
   end
 
-  Unit :match_common
-  Unit :to_xml
-  Unit :notes
-  Unit :to
-  Unit :initialize_defaults
-  Unit :parse
-  Unit :to_yaml
-  Unit :to_json
+  Unit :match_specail => '' do
+    notes = DNote::Notes.new([], :labels=>['TODO'])
+    line, lineno, file = "# TODO: Do something or another!", 1, "foo.rb"
+    rec = notes.match_special(line, lineno, file)
+    rec.to_h.assert == {'label'=>"TODO",'file'=>file,'line'=>lineno,'text'=>"Do something or another!"}
+  end
+
   Unit :counts
+  Unit :notes
+  Unit :parse
 
 end
 
