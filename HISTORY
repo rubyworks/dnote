@@ -1,22 +1,32 @@
 = RELEASE HISTORY
 
-== 1.2 / 2010-02-17
+== 1.2 / 2010-02-18
 
-By request of a few users this release adds additional formats,
-allowing notes to be sorted by filename as well a label. In addition,
-paths can now be excluded from the search. To implement these changes
-it was necessary to makes some signifficant under-the-hood adjustments,
-and this required making some adjustments to the design of the templates.
+By request this release adds additional formats, allowing notes to be
+sorted by filename as well a label. In addition, paths can now be
+excluded from the search. To implement these changes it was necessary
+to makes some significant under-the-hood adjustments, and this required
+making some adjustments to the design of the templates and the
+command-line interface.
+
 If are using any of your own custom templates you will have to make
 adjustments accordingly --which basically entails exchanging +notes.each+
-for +notes.by_label_file.each+. Also, the serialization formats have
-changed accordingly to match the improved underlying model.
+for +notes.by_label_file.each+. Also, notice that the serialization formats
+have changed accordingly to match the improved underlying model.
+
+On the command-line, the format type itself is no longer used as the
+option name, e.g. "--yaml", but instead use "-f", e.g. "-f yaml". This
+opens DNote up to many more templates. Use "-T" to get a list of all
+template format available.
 
 Changes:
 
-* Improved underlying model by adding a Note class.
-* Add new formats and rename a couple old formats.
+* Improve underlying model by adding a Note class.
 * Add --exclude and --ignore options.
+* Add new formats and rename "gnu" formats to "text".
+* Use --format/-f to designate formats.
+* Renamed --template/-t option to --custom/-c.
+* Add --templates/-T to list all format templates.
 
 
 == 1.1 / 2010-02-06
