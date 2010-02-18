@@ -2,8 +2,9 @@
 aliases: []
 
 block_params: 
-comment: []
-
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Notes counts by label.
 full_name: DNote::Notes#counts
 is_singleton: false
 name: counts

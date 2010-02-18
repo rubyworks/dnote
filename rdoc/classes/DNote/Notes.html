@@ -90,82 +90,87 @@
           
             
             <li class="singleton">
-              <a href="#M000023">::new</a>
+              <a href="#M000016">::new</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000027">#counts</a>
+              <a href="#M000035">#by_file</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000028">#each</a>
+              <a href="#M000039">#by_file_label</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000030">#empty?</a>
+              <a href="#M000034">#by_label</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000041">#files</a>
+              <a href="#M000037">#by_label_file</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000031">#labels=</a>
+              <a href="#M000018">#counts</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000043">#match_arbitrary</a>
+              <a href="#M000022">#each</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000042">#match_common</a>
+              <a href="#M000023">#empty?</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000026">#notes</a>
+              <a href="#M000029">#match</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000045">#organize</a>
+              <a href="#M000032">#match_general</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000033">#parse</a>
+              <a href="#M000033">#match_general_regex</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000046">#to</a>
+              <a href="#M000030">#match_special</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000049">#to_json</a>
+              <a href="#M000031">#match_special_regex</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000051">#to_soap</a>
+              <a href="#M000017">#notes</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000052">#to_xoxo</a>
+              <a href="#M000024">#parse</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000048">#to_yaml</a>
+              <a href="#M000043">#to_a</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000044">#to_h</a>
             </li>
           
         </ul>
@@ -224,9 +229,11 @@
         
           <li class="class"><a href="../../classes/DNote/Format/ErbScope.html">DNote::Format::ErbScope</a></li>
         
+          <li class="class"><a href="../../classes/DNote/Note.html">DNote::Note</a></li>
+        
           <li class="class"><a href="../../classes/DNote/Notes.html">DNote::Notes</a></li>
         
-          <li class="class"><a href="../../classes/DNote/Site.html">DNote::Site</a></li>
+          <li class="class"><a href="../../classes/DNote/Session.html">DNote::Session</a></li>
         
           <li class="module"><a href="../../classes/Syckle.html">Syckle</a></li>
         
@@ -261,10 +268,12 @@
       <h1>Developer <a href="Notes.html">Notes</a></h1>
 <p>
 This class goes through you source files and compiles a list of any labeled
-comments. Labels are single word prefixes to a comment ending in a colon.
+comments. Labels are all-cap single word prefixes to a comment ending in a
+colon.
 </p>
 <p>
-By default the labels supported are TODO, FIXME, OPTIMIZE and DEPRECATE.
+Special labels do require the colon. By default these are <tt>TODO</tt>,
+<tt>FIXME</tt>, <tt>OPTIMIZE</tt> and <tt>DEPRECATE</tt>.
 </p>
 
     </div>
@@ -285,7 +294,7 @@ Default paths (all ruby scripts).
         <dt><a name="DEFAULT_LABELS">DEFAULT_LABELS</a></dt>
         
         <dd class="description"><p>
-Default note labels to look for in source code.
+Default note labels to look for in source code. (NOT CURRENTLY USED!)
 </p></dd>
         
       
@@ -299,20 +308,20 @@ Default note labels to look for in source code.
       <h3 class="section-header">Attributes</h3>
 
       
-      <div id="paths-attribute-method" class="method-detail">
-        <a name="paths"></a>
+      <div id="files-attribute-method" class="method-detail">
+        <a name="files"></a>
         
-        <a name="paths="></a>
+        <a name="files="></a>
         
         <div class="method-heading attribute-method-heading">
-          <span class="method-name">paths</span><span
+          <span class="method-name">files</span><span
             class="attribute-access-type">[RW]</span>
         </div>
 
         <div class="method-description">
         
         <p>
-Paths to search.
+Files to search for notes.
 </p>
         
         </div>
@@ -331,7 +340,27 @@ Paths to search.
         <div class="method-description">
         
         <p>
-Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
+Labels to document. Defaults are: <tt>TODO</tt>, <tt>FIXME</tt>,
+<tt>OPTIMIZE</tt> and <tt>DEPRECATE</tt>.
+</p>
+        
+        </div>
+      </div>
+      
+      <div id="colon-attribute-method" class="method-detail">
+        <a name="colon"></a>
+        
+        <a name="colon="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">colon</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>
+Require label colon? Default is <tt>true</tt>.
 </p>
         
         </div>
@@ -347,29 +376,32 @@ Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
 
     
       <div id="new-method" class="method-detail ">
-        <a name="M000023"></a>
+        <a name="M000016"></a>
 
         <div class="method-heading">
         
           <span class="method-name">new</span><span
-            class="method-args">(paths, labels=nil)</span>
+            class="method-args">(files, options={})</span>
           <span class="method-click-advice">click to toggle source</span>
         
         </div>
 
         <div class="method-description">
           
-          
+          <p>
+New set of notes for give <tt>files</tt> and optional special labels.
+</p>
           
 
           
           <div class="method-source-code"
             id="new-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 34</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">paths</span>, <span class="ruby-identifier">labels</span>=<span class="ruby-keyword kw">nil</span>)
-      <span class="ruby-ivar">@paths</span>  = [<span class="ruby-identifier">paths</span>  <span class="ruby-operator">||</span> <span class="ruby-constant">DEFAULT_PATHS</span> ].<span class="ruby-identifier">flatten</span>
-      <span class="ruby-ivar">@labels</span> = [<span class="ruby-identifier">labels</span> <span class="ruby-operator">||</span> <span class="ruby-constant">DEFAULT_LABELS</span>].<span class="ruby-identifier">flatten</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 38</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">files</span>, <span class="ruby-identifier">options</span>={})
+      <span class="ruby-ivar">@files</span>  = [<span class="ruby-identifier">files</span>].<span class="ruby-identifier">flatten</span>
+      <span class="ruby-ivar">@labels</span> = [<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:labels</span>]].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">compact</span>
+      <span class="ruby-ivar">@colon</span>  = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:colon</span>].<span class="ruby-identifier">nil?</span> <span class="ruby-value">? </span><span class="ruby-keyword kw">true</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:colon</span>]
       <span class="ruby-identifier">parse</span>
     <span class="ruby-keyword kw">end</span></pre>
           </div>
@@ -386,8 +418,180 @@ Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
       <h3 class="section-header">Public Instance Methods</h3>
 
     
+      <div id="by-file-method" class="method-detail ">
+        <a name="M000035"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">by_file</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Organize notes into a hash with filename for keys.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="by-file-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 178</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">by_file</span>
+      <span class="ruby-ivar">@by_file</span> <span class="ruby-operator">||=</span> (
+        <span class="ruby-identifier">list</span> = {}
+        <span class="ruby-identifier">notes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">note</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">list</span>[<span class="ruby-identifier">note</span>.<span class="ruby-identifier">file</span>] <span class="ruby-operator">||=</span> []
+          <span class="ruby-identifier">list</span>[<span class="ruby-identifier">note</span>.<span class="ruby-identifier">file</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">note</span>
+          <span class="ruby-identifier">list</span>[<span class="ruby-identifier">note</span>.<span class="ruby-identifier">file</span>].<span class="ruby-identifier">sort!</span> <span class="ruby-comment cmt">#!{ |a,b| a.line &lt;=&gt; b.line }</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">list</span>
+      )
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="by-file-label-method" class="method-detail ">
+        <a name="M000039"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">by_file_label</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Organize notes into a hash with filenames for keys, followed by a hash with
+labels for keys.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="by-file-label-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 207</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">by_file_label</span>
+      <span class="ruby-ivar">@by_file</span> <span class="ruby-operator">||=</span> (
+        <span class="ruby-identifier">list</span> = {}
+        <span class="ruby-identifier">notes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">note</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">list</span>[<span class="ruby-identifier">note</span>.<span class="ruby-identifier">file</span>] <span class="ruby-operator">||=</span> {}
+          <span class="ruby-identifier">list</span>[<span class="ruby-identifier">note</span>.<span class="ruby-identifier">file</span>][<span class="ruby-identifier">note</span>.<span class="ruby-identifier">label</span>] <span class="ruby-operator">||=</span> []
+          <span class="ruby-identifier">list</span>[<span class="ruby-identifier">note</span>.<span class="ruby-identifier">file</span>][<span class="ruby-identifier">note</span>.<span class="ruby-identifier">label</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">note</span>
+          <span class="ruby-identifier">list</span>[<span class="ruby-identifier">note</span>.<span class="ruby-identifier">file</span>][<span class="ruby-identifier">note</span>.<span class="ruby-identifier">label</span>].<span class="ruby-identifier">sort!</span> <span class="ruby-comment cmt">#{ |a,b| a.line &lt;=&gt; b.line }</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">list</span>
+      )
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="by-label-method" class="method-detail ">
+        <a name="M000034"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">by_label</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Organize notes into a hash with labels for keys.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="by-label-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 165</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">by_label</span>
+      <span class="ruby-ivar">@by_label</span> <span class="ruby-operator">||=</span> (
+        <span class="ruby-identifier">list</span> = {}
+        <span class="ruby-identifier">notes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">note</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">list</span>[<span class="ruby-identifier">note</span>.<span class="ruby-identifier">label</span>] <span class="ruby-operator">||=</span> []
+          <span class="ruby-identifier">list</span>[<span class="ruby-identifier">note</span>.<span class="ruby-identifier">label</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">note</span>
+          <span class="ruby-identifier">list</span>[<span class="ruby-identifier">note</span>.<span class="ruby-identifier">label</span>].<span class="ruby-identifier">sort</span> <span class="ruby-comment cmt">#!{ |a,b| a.line &lt;=&gt; b.line }</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">list</span>
+      )
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="by-label-file-method" class="method-detail ">
+        <a name="M000037"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">by_label_file</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Organize notes into a hash with labels for keys, followed by a hash with
+filename for keys.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="by-label-file-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 192</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">by_label_file</span>
+      <span class="ruby-ivar">@by_label</span> <span class="ruby-operator">||=</span> (
+        <span class="ruby-identifier">list</span> = {}
+        <span class="ruby-identifier">notes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">note</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">list</span>[<span class="ruby-identifier">note</span>.<span class="ruby-identifier">label</span>] <span class="ruby-operator">||=</span> {}
+          <span class="ruby-identifier">list</span>[<span class="ruby-identifier">note</span>.<span class="ruby-identifier">label</span>][<span class="ruby-identifier">note</span>.<span class="ruby-identifier">file</span>] <span class="ruby-operator">||=</span> []
+          <span class="ruby-identifier">list</span>[<span class="ruby-identifier">note</span>.<span class="ruby-identifier">label</span>][<span class="ruby-identifier">note</span>.<span class="ruby-identifier">file</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">note</span>
+          <span class="ruby-identifier">list</span>[<span class="ruby-identifier">note</span>.<span class="ruby-identifier">label</span>][<span class="ruby-identifier">note</span>.<span class="ruby-identifier">file</span>].<span class="ruby-identifier">sort!</span> <span class="ruby-comment cmt">#{ |a,b| a.line &lt;=&gt; b.line }</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">list</span>
+      )
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
       <div id="counts-method" class="method-detail ">
-        <a name="M000027"></a>
+        <a name="M000018"></a>
 
         <div class="method-heading">
         
@@ -399,16 +603,24 @@ Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
 
         <div class="method-description">
           
-          
+          <p>
+<a href="Notes.html">Notes</a> counts by label.
+</p>
           
 
           
           <div class="method-source-code"
             id="counts-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 46</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 51</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">counts</span>
-      <span class="ruby-ivar">@counts</span>
+      <span class="ruby-ivar">@counts</span> <span class="ruby-operator">||=</span> (
+        <span class="ruby-identifier">h</span> = {}
+        <span class="ruby-identifier">by_label</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">label</span>, <span class="ruby-identifier">notes</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">h</span>[<span class="ruby-identifier">label</span>] = <span class="ruby-identifier">notes</span>.<span class="ruby-identifier">size</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">h</span>
+      )
     <span class="ruby-keyword kw">end</span></pre>
           </div>
           
@@ -419,7 +631,7 @@ Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
 
     
       <div id="each-method" class="method-detail ">
-        <a name="M000028"></a>
+        <a name="M000022"></a>
 
         <div class="method-heading">
         
@@ -431,14 +643,16 @@ Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
 
         <div class="method-description">
           
-          
+          <p>
+Iterate through notes.
+</p>
           
 
           
           <div class="method-source-code"
             id="each-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 51</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 62</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
       <span class="ruby-identifier">notes</span>.<span class="ruby-identifier">each</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
     <span class="ruby-keyword kw">end</span></pre>
@@ -451,7 +665,7 @@ Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
 
     
       <div id="empty--method" class="method-detail ">
-        <a name="M000030"></a>
+        <a name="M000023"></a>
 
         <div class="method-heading">
         
@@ -463,14 +677,16 @@ Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
 
         <div class="method-description">
           
-          
+          <p>
+No notes?
+</p>
           
 
           
           <div class="method-source-code"
             id="empty--source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 56</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 67</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">empty?</span>
       <span class="ruby-identifier">notes</span>.<span class="ruby-identifier">empty?</span>
     <span class="ruby-keyword kw">end</span></pre>
@@ -482,12 +698,88 @@ Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
       </div>
 
     
-      <div id="files-method" class="method-detail ">
-        <a name="M000041"></a>
+      <div id="match-method" class="method-detail ">
+        <a name="M000029"></a>
 
         <div class="method-heading">
         
-          <span class="method-name">files</span><span
+          <span class="method-name">match</span><span
+            class="method-args">(line, lineno, file)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="match-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 112</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">match</span>(<span class="ruby-identifier">line</span>, <span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">file</span>)
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">labels</span>.<span class="ruby-identifier">empty?</span>
+        <span class="ruby-identifier">match_general</span>(<span class="ruby-identifier">line</span>, <span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">file</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">match_special</span>(<span class="ruby-identifier">line</span>, <span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">file</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="match-general-method" class="method-detail ">
+        <a name="M000032"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">match_general</span><span
+            class="method-args">(line, lineno, file)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Match notes that are labeled with a colon.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="match-general-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 145</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">match_general</span>(<span class="ruby-identifier">line</span>, <span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">file</span>)
+      <span class="ruby-identifier">rec</span> = <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">md</span> = <span class="ruby-identifier">match_general_regex</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">line</span>)
+        <span class="ruby-identifier">label</span>, <span class="ruby-identifier">text</span> = <span class="ruby-identifier">md</span>[<span class="ruby-value">1</span>], <span class="ruby-identifier">md</span>[<span class="ruby-value">2</span>]
+        <span class="ruby-comment cmt">#rec = {'label'=&gt;label,'file'=&gt;file,'line'=&gt;lineno,'note'=&gt;text}</span>
+        <span class="ruby-identifier">rec</span> = <span class="ruby-constant">Note</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">label</span>, <span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">text</span>)
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">rec</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="match-general-regex-method" class="method-detail ">
+        <a name="M000033"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">match_general_regex</span><span
             class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         
@@ -500,97 +792,15 @@ Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
 
           
           <div class="method-source-code"
-            id="files-source">
+            id="match-general-regex-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 115</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">files</span>
-      <span class="ruby-ivar">@files</span> <span class="ruby-operator">||=</span> (
-        [<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">paths</span>].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
-          <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span>(<span class="ruby-identifier">path</span>)
-            <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">path</span>, <span class="ruby-value str">'**/*'</span>))
-          <span class="ruby-keyword kw">else</span>
-            <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-identifier">path</span>)
-          <span class="ruby-keyword kw">end</span>
-        <span class="ruby-keyword kw">end</span>.<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">uniq</span>
-      )
-    <span class="ruby-keyword kw">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-      </div>
-
-    
-      <div id="labels--method" class="method-detail ">
-        <a name="M000031"></a>
-
-        <div class="method-heading">
-        
-          <span class="method-name">labels=</span><span
-            class="method-args">(labels)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        
-        </div>
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code"
-            id="labels--source">
-<pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 61</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">labels=</span>(<span class="ruby-identifier">labels</span>)
-      <span class="ruby-ivar">@labels</span> = (
-        <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">labels</span>
-        <span class="ruby-keyword kw">when</span> <span class="ruby-constant">String</span>
-          <span class="ruby-identifier">labels</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/[:;,]/</span>)
-        <span class="ruby-keyword kw">else</span>
-          <span class="ruby-identifier">labels</span> = [<span class="ruby-identifier">labels</span>].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">uniq</span>.<span class="ruby-identifier">map</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">to_s</span> }
-        <span class="ruby-keyword kw">end</span>
-      )
-    <span class="ruby-keyword kw">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-      </div>
-
-    
-      <div id="match-arbitrary-method" class="method-detail ">
-        <a name="M000043"></a>
-
-        <div class="method-heading">
-        
-          <span class="method-name">match_arbitrary</span><span
-            class="method-args">(line, lineno, file)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        
-        </div>
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code"
-            id="match-arbitrary-source">
-<pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 140</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">match_arbitrary</span>(<span class="ruby-identifier">line</span>, <span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">file</span>)
-      <span class="ruby-identifier">rec</span> = <span class="ruby-keyword kw">nil</span>
-      <span class="ruby-identifier">labels</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">label</span><span class="ruby-operator">|</span>
-        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">md</span> = <span class="ruby-regexp re">/\#\s*([A-Z]+)[:]\s*(.*?)$/</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">line</span>)
-          <span class="ruby-identifier">label</span>, <span class="ruby-identifier">text</span> = <span class="ruby-identifier">md</span>[<span class="ruby-value">1</span>], <span class="ruby-identifier">md</span>[<span class="ruby-value">2</span>]
-          <span class="ruby-identifier">rec</span> = {<span class="ruby-value str">'label'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">label</span>,<span class="ruby-value str">'file'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">file</span>,<span class="ruby-value str">'line'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">lineno</span>,<span class="ruby-value str">'note'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">text</span>}
-        <span class="ruby-keyword kw">end</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 156</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">match_general_regex</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">colon</span>
+        <span class="ruby-regexp re">/\#\s*([A-Z]+)[:]\s+(.*?)$/</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-regexp re">/\#\s*([A-Z]+)[:]?\s+(.*?)$/</span>
       <span class="ruby-keyword kw">end</span>
-      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">rec</span>
     <span class="ruby-keyword kw">end</span></pre>
           </div>
           
@@ -600,12 +810,12 @@ Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
       </div>
 
     
-      <div id="match-common-method" class="method-detail ">
-        <a name="M000042"></a>
+      <div id="match-special-method" class="method-detail ">
+        <a name="M000030"></a>
 
         <div class="method-heading">
         
-          <span class="method-name">match_common</span><span
+          <span class="method-name">match_special</span><span
             class="method-args">(line, lineno, file)</span>
           <span class="method-click-advice">click to toggle source</span>
         
@@ -614,25 +824,61 @@ Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.
         <div class="method-description">
           
           <p>
-TODO: ruby-1.9.1-p378 reports: notes.rb:131:in `match&#8217;: invalid byte
-sequence in UTF-8
+Match special notes.
 </p>
           
 
           
           <div class="method-source-code"
-            id="match-common-source">
+            id="match-special-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 128</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">match_common</span>(<span class="ruby-identifier">line</span>, <span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">file</span>)
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 121</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">match_special</span>(<span class="ruby-identifier">line</span>, <span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">file</span>)
       <span class="ruby-identifier">rec</span> = <span class="ruby-keyword kw">nil</span>
       <span class="ruby-identifier">labels</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">label</span><span class="ruby-operator">|</span>
-        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">md</span> = <span class="ruby-node">/\#\s*#{Regexp.escape(label)}[:]?\s*(.*?)$/</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">line</span>)
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">md</span> = <span class="ruby-identifier">match_special_regex</span>(<span class="ruby-identifier">label</span>).<span class="ruby-identifier">match</span>(<span class="ruby-identifier">line</span>)
           <span class="ruby-identifier">text</span> = <span class="ruby-identifier">md</span>[<span class="ruby-value">1</span>]
-          <span class="ruby-identifier">rec</span> = {<span class="ruby-value str">'label'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">label</span>,<span class="ruby-value str">'file'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">file</span>,<span class="ruby-value str">'line'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">lineno</span>,<span class="ruby-value str">'note'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">text</span>}
+          <span class="ruby-comment cmt">#rec = {'label'=&gt;label,'file'=&gt;file,'line'=&gt;lineno,'note'=&gt;text}</span>
+          <span class="ruby-identifier">rec</span> = <span class="ruby-constant">Note</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">label</span>, <span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">text</span>)
         <span class="ruby-keyword kw">end</span>
       <span class="ruby-keyword kw">end</span>
-      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">rec</span>
+      <span class="ruby-identifier">rec</span>
+    <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="match-special-regex-method" class="method-detail ">
+        <a name="M000031"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">match_special_regex</span><span
+            class="method-args">(label)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="match-special-regex-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 136</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">match_special_regex</span>(<span class="ruby-identifier">label</span>)
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">colon</span>
+        <span class="ruby-node">/\#\s*#{Regexp.escape(label)}[:]\s*(.*?)$/</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-node">/\#\s*#{Regexp.escape(label)}[:]?\s*(.*?)$/</span>
+      <span class="ruby-keyword kw">end</span>
     <span class="ruby-keyword kw">end</span></pre>
           </div>
           
@@ -643,7 +889,7 @@ sequence in UTF-8
 
     
       <div id="notes-method" class="method-detail ">
-        <a name="M000026"></a>
+        <a name="M000017"></a>
 
         <div class="method-heading">
         
@@ -655,14 +901,16 @@ sequence in UTF-8
 
         <div class="method-description">
           
-          
+          <p>
+Array of notes.
+</p>
           
 
           
           <div class="method-source-code"
             id="notes-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 41</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 46</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">notes</span>
       <span class="ruby-ivar">@notes</span>
     <span class="ruby-keyword kw">end</span></pre>
@@ -674,52 +922,8 @@ sequence in UTF-8
       </div>
 
     
-      <div id="organize-method" class="method-detail ">
-        <a name="M000045"></a>
-
-        <div class="method-heading">
-        
-          <span class="method-name">organize</span><span
-            class="method-args">(records)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        
-        </div>
-
-        <div class="method-description">
-          
-          <p>
-Organize records in heirarchical form.
-</p>
-          
-
-          
-          <div class="method-source-code"
-            id="organize-source">
-<pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 153</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">organize</span>(<span class="ruby-identifier">records</span>)
-      <span class="ruby-identifier">orecs</span> = {}
-      <span class="ruby-identifier">records</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">record</span><span class="ruby-operator">|</span>
-        <span class="ruby-identifier">label</span> = <span class="ruby-identifier">record</span>[<span class="ruby-value str">'label'</span>]
-        <span class="ruby-identifier">file</span>  = <span class="ruby-identifier">record</span>[<span class="ruby-value str">'file'</span>]
-        <span class="ruby-identifier">line</span>  = <span class="ruby-identifier">record</span>[<span class="ruby-value str">'line'</span>]
-        <span class="ruby-identifier">note</span>  = <span class="ruby-identifier">record</span>[<span class="ruby-value str">'note'</span>].<span class="ruby-identifier">rstrip</span>
-        <span class="ruby-identifier">orecs</span>[<span class="ruby-identifier">label</span>] <span class="ruby-operator">||=</span> {}
-        <span class="ruby-identifier">orecs</span>[<span class="ruby-identifier">label</span>][<span class="ruby-identifier">file</span>] <span class="ruby-operator">||=</span> []
-        <span class="ruby-identifier">orecs</span>[<span class="ruby-identifier">label</span>][<span class="ruby-identifier">file</span>] <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">line</span>, <span class="ruby-identifier">note</span>]
-      <span class="ruby-keyword kw">end</span>
-      <span class="ruby-identifier">orecs</span>
-    <span class="ruby-keyword kw">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-      </div>
-
-    
       <div id="parse-method" class="method-detail ">
-        <a name="M000033"></a>
+        <a name="M000024"></a>
 
         <div class="method-heading">
         
@@ -732,8 +936,7 @@ Organize records in heirarchical form.
         <div class="method-description">
           
           <p>
-Gather and count notes. This returns two elements, a hash in the form of
-label=>notes and a counts hash.
+Gather notes.
 </p>
           
 
@@ -743,7 +946,7 @@ label=>notes and a counts hash.
 <pre>
 <span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 75</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parse</span>
-      <span class="ruby-identifier">records</span>, <span class="ruby-identifier">counts</span> = [], <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">0</span>)
+      <span class="ruby-identifier">records</span> = []
       <span class="ruby-identifier">files</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">fname</span><span class="ruby-operator">|</span>
         <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>(<span class="ruby-identifier">fname</span>)
         <span class="ruby-comment cmt">#next unless fname =~ /\.rb$/      # TODO: should this be done?</span>
@@ -751,13 +954,12 @@ label=>notes and a counts hash.
           <span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">save</span>, <span class="ruby-identifier">text</span> = <span class="ruby-value">0</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>
           <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">line</span> = <span class="ruby-identifier">f</span>.<span class="ruby-identifier">gets</span>
             <span class="ruby-identifier">lineno</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
-            <span class="ruby-identifier">save</span> = <span class="ruby-identifier">match_common</span>(<span class="ruby-identifier">line</span>, <span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">fname</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">match_arbitrary</span>(<span class="ruby-identifier">line</span>, <span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">fname</span>)
+            <span class="ruby-identifier">save</span> = <span class="ruby-identifier">match</span>(<span class="ruby-identifier">line</span>, <span class="ruby-identifier">lineno</span>, <span class="ruby-identifier">fname</span>)
             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">save</span>
               <span class="ruby-comment cmt">#file = fname</span>
-              <span class="ruby-identifier">text</span> = <span class="ruby-identifier">save</span>[<span class="ruby-value str">'note'</span>]
+              <span class="ruby-identifier">text</span> = <span class="ruby-identifier">save</span>.<span class="ruby-identifier">text</span>
               <span class="ruby-comment cmt">#save = {'label'=&gt;label,'file'=&gt;file,'line'=&gt;line_no,'note'=&gt;text}</span>
               <span class="ruby-identifier">records</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">save</span>
-              <span class="ruby-identifier">counts</span>[<span class="ruby-identifier">save</span>[<span class="ruby-value str">'label'</span>]] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
             <span class="ruby-keyword kw">else</span>
               <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">text</span>
                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">line</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^\s*[#]{0,1}\s*$/</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">line</span> <span class="ruby-operator">!~</span> <span class="ruby-regexp re">/^\s*#/</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">line</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^\s*#[+][+]/</span>
@@ -775,10 +977,8 @@ label=>notes and a counts hash.
           <span class="ruby-keyword kw">end</span>
         <span class="ruby-keyword kw">end</span>
       <span class="ruby-keyword kw">end</span>
-      <span class="ruby-comment cmt"># organize the notes</span>
-      <span class="ruby-identifier">notes</span> = <span class="ruby-identifier">organize</span>(<span class="ruby-identifier">records</span>)
-      <span class="ruby-comment cmt">#</span>
-      <span class="ruby-ivar">@notes</span>, <span class="ruby-ivar">@counts</span> = <span class="ruby-identifier">notes</span>, <span class="ruby-identifier">counts</span>
+
+      <span class="ruby-ivar">@notes</span>  = <span class="ruby-identifier">records</span>.<span class="ruby-identifier">sort</span>
     <span class="ruby-keyword kw">end</span></pre>
           </div>
           
@@ -788,81 +988,12 @@ label=>notes and a counts hash.
       </div>
 
     
-      <div id="to-method" class="method-detail ">
-        <a name="M000046"></a>
+      <div id="to-a-method" class="method-detail ">
+        <a name="M000043"></a>
 
         <div class="method-heading">
         
-          <span class="method-name">to</span><span
-            class="method-args">(format)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        
-        </div>
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code"
-            id="to-source">
-<pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 168</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to</span>(<span class="ruby-identifier">format</span>)
-      <span class="ruby-identifier">__send__</span>(<span class="ruby-node">&quot;to_#{format}&quot;</span>)
-    <span class="ruby-keyword kw">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-      </div>
-
-    
-      <div id="to-json-method" class="method-detail ">
-        <a name="M000049"></a>
-
-        <div class="method-heading">
-        
-          <span class="method-name">to_json</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        
-        </div>
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code"
-            id="to-json-source">
-<pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 179</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_json</span>
-      <span class="ruby-keyword kw">begin</span>
-        <span class="ruby-identifier">require</span> <span class="ruby-value str">'json'</span>
-      <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">LoadError</span>
-        <span class="ruby-identifier">require</span> <span class="ruby-value str">'json_pure'</span>
-      <span class="ruby-keyword kw">end</span>
-      <span class="ruby-identifier">notes</span>.<span class="ruby-identifier">to_json</span>
-    <span class="ruby-keyword kw">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-      </div>
-
-    
-      <div id="to-soap-method" class="method-detail ">
-        <a name="M000051"></a>
-
-        <div class="method-heading">
-        
-          <span class="method-name">to_soap</span><span
+          <span class="method-name">to_a</span><span
             class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         
@@ -871,18 +1002,17 @@ label=>notes and a counts hash.
         <div class="method-description">
           
           <p>
-Soap envelope XML.
+Convert to an array of hashes.
 </p>
           
 
           
           <div class="method-source-code"
-            id="to-soap-source">
+            id="to-a-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 189</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_soap</span>
-      <span class="ruby-identifier">require</span> <span class="ruby-value str">'soap/marshal'</span>
-      <span class="ruby-constant">SOAP</span><span class="ruby-operator">::</span><span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">marshal</span>(<span class="ruby-identifier">notes</span>)
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 221</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_a</span>
+      <span class="ruby-identifier">notes</span>.<span class="ruby-identifier">map</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">to_h</span> }
     <span class="ruby-keyword kw">end</span></pre>
           </div>
           
@@ -892,12 +1022,12 @@ Soap envelope XML.
       </div>
 
     
-      <div id="to-xoxo-method" class="method-detail ">
-        <a name="M000052"></a>
+      <div id="to-h-method" class="method-detail ">
+        <a name="M000044"></a>
 
         <div class="method-heading">
         
-          <span class="method-name">to_xoxo</span><span
+          <span class="method-name">to_h</span><span
             class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         
@@ -906,51 +1036,17 @@ Soap envelope XML.
         <div class="method-description">
           
           <p>
-XOXO microformat.
+Same as <a href="Notes.html#M000034">by_label</a>.
 </p>
           
 
           
           <div class="method-source-code"
-            id="to-xoxo-source">
+            id="to-h-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 195</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_xoxo</span>
-      <span class="ruby-identifier">require</span> <span class="ruby-value str">'xoxo'</span>
-      <span class="ruby-identifier">notes</span>.<span class="ruby-identifier">to_xoxo</span>
-    <span class="ruby-keyword kw">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-      </div>
-
-    
-      <div id="to-yaml-method" class="method-detail ">
-        <a name="M000048"></a>
-
-        <div class="method-heading">
-        
-          <span class="method-name">to_yaml</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        
-        </div>
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code"
-            id="to-yaml-source">
-<pre>
-<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 173</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_yaml</span>
-      <span class="ruby-identifier">require</span> <span class="ruby-value str">'yaml'</span>
-      <span class="ruby-identifier">notes</span>.<span class="ruby-identifier">to_yaml</span>
+<span class="ruby-comment cmt"># File lib/dnote/notes.rb, line 226</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_h</span>
+      <span class="ruby-identifier">by_label</span>
     <span class="ruby-keyword kw">end</span></pre>
           </div>
           

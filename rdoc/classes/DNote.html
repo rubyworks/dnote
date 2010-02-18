@@ -55,17 +55,17 @@
             <li class="file"><a href="../files/lib/dnote_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
               class="thickbox" title="lib/dnote.rb">lib/dnote.rb</a></li>
           
-            <li class="file"><a href="../files/lib/dnote/command_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-              class="thickbox" title="lib/dnote/command.rb">lib/dnote/command.rb</a></li>
-          
-            <li class="file"><a href="../files/lib/dnote/site_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-              class="thickbox" title="lib/dnote/site.rb">lib/dnote/site.rb</a></li>
+            <li class="file"><a href="../files/lib/dnote/note_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/dnote/note.rb">lib/dnote/note.rb</a></li>
           
             <li class="file"><a href="../files/lib/dnote/format_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
               class="thickbox" title="lib/dnote/format.rb">lib/dnote/format.rb</a></li>
           
             <li class="file"><a href="../files/lib/dnote/notes_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
               class="thickbox" title="lib/dnote/notes.rb">lib/dnote/notes.rb</a></li>
+          
+            <li class="file"><a href="../files/lib/dnote/session_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/dnote/session.rb">lib/dnote/session.rb</a></li>
           
           </ul>
         </div>
@@ -90,47 +90,17 @@
           
           <li class="class"><a href="DNote/Format.html">DNote::Format</a></li>
           
+          <li class="class"><a href="DNote/Note.html">DNote::Note</a></li>
+          
           <li class="class"><a href="DNote/Notes.html">DNote::Notes</a></li>
           
-          <li class="class"><a href="DNote/Site.html">DNote::Site</a></li>
+          <li class="class"><a href="DNote/Session.html">DNote::Session</a></li>
           
         </ul>
       </div>
       
 
       <!-- Method Quickref -->
-      
-      <div id="method-list-section" class="section">
-        <h3 class="section-header">Methods</h3>
-        <ul class="link-list">
-          
-            
-            <li class="singleton">
-              <a href="#M000000">::run</a>
-            </li>
-          
-            
-            <li class="method">
-              <a href="#M000009">#__DIR__</a>
-            </li>
-          
-            
-            <li class="method">
-              <a href="#M000010">#fu</a>
-            </li>
-          
-            
-            <li class="method">
-              <a href="#M000007">#templates</a>
-            </li>
-          
-            
-            <li class="method">
-              <a href="#M000008">#write</a>
-            </li>
-          
-        </ul>
-      </div>
       
 
       <!-- Included Modules -->
@@ -174,9 +144,11 @@
         
           <li class="class"><a href="../classes/DNote/Format/ErbScope.html">DNote::Format::ErbScope</a></li>
         
+          <li class="class"><a href="../classes/DNote/Note.html">DNote::Note</a></li>
+        
           <li class="class"><a href="../classes/DNote/Notes.html">DNote::Notes</a></li>
         
-          <li class="class"><a href="../classes/DNote/Site.html">DNote::Site</a></li>
+          <li class="class"><a href="../classes/DNote/Session.html">DNote::Session</a></li>
         
           <li class="module"><a href="../classes/Syckle.html">Syckle</a></li>
         
@@ -233,320 +205,6 @@
 
     <!-- Methods -->
     
-    <div id="public-class-method-details" class="method-section section">
-      <h3 class="section-header">Public Class Methods</h3>
-
-    
-      <div id="run-method" class="method-detail ">
-        <a name="M000000"></a>
-
-        <div class="method-heading">
-        
-          <span class="method-name">run</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        
-        </div>
-
-        <div class="method-description">
-          
-          <p class="missing-docs">(Not documented)</p>
-          
-
-          
-          <div class="method-source-code"
-            id="run-source">
-<pre>
-<span class="ruby-comment cmt"># File lib/dnote/command.rb, line 7</span>
-  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">run</span>
-    <span class="ruby-identifier">options</span> = {}
-    <span class="ruby-identifier">format</span>  = <span class="ruby-value str">'rdoc'</span>
-
-    <span class="ruby-identifier">opts</span> = <span class="ruby-constant">OptionParser</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">opt</span><span class="ruby-operator">|</span>
-
-      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">banner</span> = <span class="ruby-value str">&quot;Usage: dnote [OPTIONS] path1 [path2 ...]&quot;</span>
-
-      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">separator</span>(<span class="ruby-value str">&quot; &quot;</span>)
-      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">separator</span>(<span class="ruby-value str">&quot;OUTPUT FORMAT: (choose one)&quot;</span>)
-
-      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--gnu&quot;</span>, <span class="ruby-value str">&quot;Plain text format (default)&quot;</span>) <span class="ruby-keyword kw">do</span>
-        <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:format</span>] = <span class="ruby-value str">'gnu'</span>
-      <span class="ruby-keyword kw">end</span>
-
-      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--rdoc&quot;</span>, <span class="ruby-value str">&quot;RDoc comment format&quot;</span>) <span class="ruby-keyword kw">do</span>
-        <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:format</span>] = <span class="ruby-value str">'rdoc'</span>
-      <span class="ruby-keyword kw">end</span>
-
-      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--markdown&quot;</span>, <span class="ruby-value str">&quot;Markdown wiki format&quot;</span>) <span class="ruby-keyword kw">do</span>
-        <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:format</span>] = <span class="ruby-value str">'markdown'</span>
-      <span class="ruby-keyword kw">end</span>
-
-      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--soap&quot;</span>, <span class="ruby-value str">&quot;SOAP XML envelope format&quot;</span>) <span class="ruby-keyword kw">do</span>
-        <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:format</span>] = <span class="ruby-value str">'soap'</span>
-      <span class="ruby-keyword kw">end</span>
-
-      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--xoxo&quot;</span>, <span class="ruby-value str">&quot;XOXO microformat format&quot;</span>) <span class="ruby-keyword kw">do</span>
-        <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:format</span>] = <span class="ruby-value str">'xoxo'</span>
-      <span class="ruby-keyword kw">end</span>
-
-      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--xml&quot;</span>, <span class="ruby-value str">&quot;XML markup format&quot;</span>) <span class="ruby-keyword kw">do</span>
-        <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:format</span>] = <span class="ruby-value str">'xml'</span>
-      <span class="ruby-keyword kw">end</span>
-
-      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--html&quot;</span>, <span class="ruby-value str">&quot;HTML markup format&quot;</span>) <span class="ruby-keyword kw">do</span>
-        <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:format</span>] = <span class="ruby-value str">'html'</span>
-      <span class="ruby-keyword kw">end</span>
-
-      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--yaml&quot;</span>, <span class="ruby-value str">&quot;YAML serialization format&quot;</span>) <span class="ruby-keyword kw">do</span>
-        <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:format</span>] = <span class="ruby-value str">'yaml'</span>
-      <span class="ruby-keyword kw">end</span>
-
-      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--json&quot;</span>, <span class="ruby-value str">&quot;JSON serialization format&quot;</span>) <span class="ruby-keyword kw">do</span>
-        <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:format</span>] = <span class="ruby-value str">'json'</span>
-      <span class="ruby-keyword kw">end</span>
-
-      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--template&quot;</span>, <span class="ruby-value str">&quot;-t FILE&quot;</span>, <span class="ruby-value str">&quot;Use a custom Erb template&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
-        <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:format</span>] = <span class="ruby-value str">'custom'</span>
-        <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:template</span>] = <span class="ruby-identifier">file</span>
-      <span class="ruby-keyword kw">end</span>
-
-      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">separator</span>(<span class="ruby-value str">&quot; &quot;</span>)
-      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">separator</span>(<span class="ruby-value str">&quot;OTHER OPTIONS:&quot;</span>)
-
-      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--label&quot;</span>, <span class="ruby-value str">&quot;labels to collect&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">lbl</span><span class="ruby-operator">|</span>
-        <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:labels</span>] <span class="ruby-operator">||=</span> []
-        <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:labels</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">lbl</span>
-      <span class="ruby-keyword kw">end</span>
-
-      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--title&quot;</span>, <span class="ruby-value str">&quot;-t [TITLE]&quot;</span>, <span class="ruby-value str">&quot;title to use in headers&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">title</span><span class="ruby-operator">|</span>
-        <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:title</span>] = <span class="ruby-identifier">title</span>
-      <span class="ruby-keyword kw">end</span>
-
-      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--output&quot;</span>, <span class="ruby-value str">&quot;-o [PATH]&quot;</span>, <span class="ruby-value str">&quot;name of file or directory&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
-        <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:output</span>] = <span class="ruby-identifier">path</span>
-      <span class="ruby-keyword kw">end</span>
-
-      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">separator</span>(<span class="ruby-value str">&quot; &quot;</span>)
-      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">separator</span>(<span class="ruby-value str">&quot;STANDARD OPTIONS:&quot;</span>)
-
-      <span class="ruby-comment cmt">#opt.on(&quot;--verbose&quot;, &quot;-v&quot;, &quot;extra verbose output&quot;) do</span>
-      <span class="ruby-comment cmt">#  options[:verbose] = true</span>
-      <span class="ruby-comment cmt">#end</span>
-
-      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--debug&quot;</span>, <span class="ruby-value str">&quot;debug mode&quot;</span>) <span class="ruby-keyword kw">do</span>
-        <span class="ruby-identifier">$DEBUG</span> = <span class="ruby-keyword kw">true</span>
-      <span class="ruby-keyword kw">end</span>
-
-      <span class="ruby-comment cmt">#opt.on(&quot;--quiet&quot;, &quot;-q&quot;, &quot;surpress non-essential output&quot;) do</span>
-      <span class="ruby-comment cmt">#  options[:quiet] = true</span>
-      <span class="ruby-comment cmt">#end</span>
-
-      <span class="ruby-comment cmt">#opt.on(&quot;--noharm&quot;, &quot;-n&quot;, &quot;only pretend to write to disk&quot;) do</span>
-      <span class="ruby-comment cmt">#  options[:noharm] = true</span>
-      <span class="ruby-comment cmt">#end</span>
-
-      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--dryrun&quot;</span>, <span class="ruby-value str">&quot;-n&quot;</span>, <span class="ruby-value str">&quot;do not actually write to disk&quot;</span>) <span class="ruby-keyword kw">do</span>
-        <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:dryrun</span>] = <span class="ruby-keyword kw">true</span>
-      <span class="ruby-keyword kw">end</span>
-
-      <span class="ruby-comment cmt">#opt.on(&quot;--trace&quot;, &quot;debug and verbose modes combined&quot;) do</span>
-      <span class="ruby-comment cmt">#  $DEBUG = true</span>
-      <span class="ruby-comment cmt">#  options[:verbose] = true</span>
-      <span class="ruby-comment cmt">#end</span>
-
-      <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on_tail</span>(<span class="ruby-value str">'--help'</span>, <span class="ruby-value str">'-h'</span>, <span class="ruby-value str">&quot;show this help information&quot;</span>) <span class="ruby-keyword kw">do</span>
-        <span class="ruby-identifier">puts</span> <span class="ruby-identifier">opt</span>
-        <span class="ruby-identifier">exit</span>
-      <span class="ruby-keyword kw">end</span>
-
-    <span class="ruby-keyword kw">end</span>
-
-    <span class="ruby-keyword kw">begin</span>
-      <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">parse!</span>
-    <span class="ruby-keyword kw">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">err</span>
-      <span class="ruby-identifier">puts</span> <span class="ruby-identifier">err</span>
-      <span class="ruby-identifier">exit</span> <span class="ruby-value">1</span>
-    <span class="ruby-keyword kw">end</span>
-
-    <span class="ruby-identifier">paths</span> = <span class="ruby-constant">ARGV</span>.<span class="ruby-identifier">dup</span>
-    <span class="ruby-identifier">paths</span> = [<span class="ruby-value str">'**/*.rb'</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">paths</span>.<span class="ruby-identifier">empty?</span>
-
-    <span class="ruby-identifier">notes</span>  = <span class="ruby-constant">Notes</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">paths</span>, <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:labels</span>])
-    <span class="ruby-identifier">format</span> = <span class="ruby-constant">Format</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">notes</span>, <span class="ruby-identifier">options</span>)
-    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">render</span>
-
-    <span class="ruby-comment cmt"># NOTE: If DNote were a class.</span>
-
-    <span class="ruby-comment cmt">#if output</span>
-    <span class="ruby-comment cmt">#  dnote.save(format, output)</span>
-    <span class="ruby-comment cmt">#else</span>
-    <span class="ruby-comment cmt">#  dnote.display(format)</span>
-    <span class="ruby-comment cmt">#end</span>
-  <span class="ruby-keyword kw">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-      </div>
-
-    
-    </div>
-  
-    <div id="public-instance-method-details" class="method-section section">
-      <h3 class="section-header">Public Instance Methods</h3>
-
-    
-      <div id="--method" class="method-detail ">
-        <a name="M000009"></a>
-
-        <div class="method-heading">
-        
-          <span class="method-name">__DIR__</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        
-        </div>
-
-        <div class="method-description">
-          
-          <p class="missing-docs">(Not documented)</p>
-          
-
-          
-          <div class="method-source-code"
-            id="--source">
-<pre>
-<span class="ruby-comment cmt"># File lib/dnote/site.rb, line 119</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">__DIR__</span>
-      <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword kw">__FILE__</span>)
-    <span class="ruby-keyword kw">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-      </div>
-
-    
-      <div id="fu-method" class="method-detail ">
-        <a name="M000010"></a>
-
-        <div class="method-heading">
-        
-          <span class="method-name">fu</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        
-        </div>
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code"
-            id="fu-source">
-<pre>
-<span class="ruby-comment cmt"># File lib/dnote/site.rb, line 124</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fu</span>
-      <span class="ruby-ivar">@fu</span> <span class="ruby-operator">||=</span> (
-        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">$NOOP</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">$DEBUG</span>
-          <span class="ruby-constant">FileUtils</span><span class="ruby-operator">::</span><span class="ruby-constant">DryRun</span>
-        <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">$NOOP</span>
-          <span class="ruby-constant">FileUtils</span><span class="ruby-operator">::</span><span class="ruby-constant">Noop</span>
-        <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">$DEBUG</span>
-          <span class="ruby-constant">FileUtils</span><span class="ruby-operator">::</span><span class="ruby-constant">Verbose</span>
-        <span class="ruby-keyword kw">else</span>
-          <span class="ruby-constant">FileUtils</span>
-        <span class="ruby-keyword kw">end</span>
-      )
-    <span class="ruby-keyword kw">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-      </div>
-
-    
-      <div id="templates-method" class="method-detail ">
-        <a name="M000007"></a>
-
-        <div class="method-heading">
-        
-          <span class="method-name">templates</span><span
-            class="method-args">(format)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        
-        </div>
-
-        <div class="method-description">
-          
-          <p>
-TODO: Don&#8217;t use chdir.
-</p>
-          
-
-          
-          <div class="method-source-code"
-            id="templates-source">
-<pre>
-<span class="ruby-comment cmt"># File lib/dnote/site.rb, line 103</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">templates</span>(<span class="ruby-identifier">format</span>)
-      <span class="ruby-identifier">temps</span> = []
-      <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">chdir</span>(<span class="ruby-identifier">tempdir</span>(<span class="ruby-identifier">format</span>)) <span class="ruby-keyword kw">do</span>
-        <span class="ruby-identifier">temps</span> = <span class="ruby-constant">Dir</span>[<span class="ruby-value str">'**/*.erb'</span>]
-      <span class="ruby-keyword kw">end</span>
-      <span class="ruby-identifier">temps</span>
-    <span class="ruby-keyword kw">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-      </div>
-
-    
-      <div id="write-method" class="method-detail ">
-        <a name="M000008"></a>
-
-        <div class="method-heading">
-        
-          <span class="method-name">write</span><span
-            class="method-args">(fname, text)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        
-        </div>
-
-        <div class="method-description">
-          
-          <p>
-Save file to output.
-</p>
-          
-
-          
-          <div class="method-source-code"
-            id="write-source">
-<pre>
-<span class="ruby-comment cmt"># File lib/dnote/site.rb, line 113</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">write</span>(<span class="ruby-identifier">fname</span>, <span class="ruby-identifier">text</span>)
-      <span class="ruby-identifier">file</span> = <span class="ruby-identifier">output</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">fname</span>
-      <span class="ruby-identifier">fu</span>.<span class="ruby-identifier">mkdir_p</span>(<span class="ruby-identifier">file</span>.<span class="ruby-identifier">parent</span>)
-      <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file</span>, <span class="ruby-value str">'w'</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">f</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">text</span> } <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">$NOOP</span>
-    <span class="ruby-keyword kw">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-      </div>
-
-    
-    </div>
-  
 
   </div>
 

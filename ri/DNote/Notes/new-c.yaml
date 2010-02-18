@@ -2,10 +2,11 @@
 aliases: []
 
 block_params: 
-comment: []
-
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: New set of notes for give <tt>files</tt> and optional special labels.
 full_name: DNote::Notes::new
 is_singleton: true
 name: new
-params: (paths, labels=nil)
+params: (files, options={})
 visibility: public

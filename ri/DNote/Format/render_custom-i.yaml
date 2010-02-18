@@ -2,9 +2,8 @@
 aliases: []
 
 block_params: 
-comment: 
-- !ruby/struct:RDoc::Markup::Flow::P 
-  body: C U S T O M T E M P L A T E
+comment: []
+
 full_name: DNote::Format#render_custom
 is_singleton: false
 name: render_custom

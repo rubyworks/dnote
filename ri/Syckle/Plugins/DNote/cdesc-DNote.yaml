@@ -3,7 +3,13 @@ attributes:
 - !ruby/object:RDoc::RI::Attribute 
   comment: 
   - !ruby/struct:RDoc::Markup::Flow::P 
-    body: Paths to search.
+    body: Exclude paths.
+  name: exclude
+  rw: RW
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: File paths to search.
   name: files
   rw: RW
 - !ruby/object:RDoc::RI::Attribute 
@@ -11,6 +17,12 @@ attributes:
   - !ruby/struct:RDoc::Markup::Flow::P 
     body: Formats (xml, html, rdoc).
   name: formats
+  rw: RW
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Ignore paths based on any part of pathname.
+  name: ignore
   rw: RW
 - !ruby/object:RDoc::RI::Attribute 
   comment: 
@@ -64,8 +76,13 @@ comment:
   body: By default this label supports the TODO, FIXME, OPTIMIZE and DEPRECATE.
 - !ruby/struct:RDoc::Markup::Flow::P 
   body: Output is a set of files in HTML, XML and RDoc's simple markup format. This plugin can run automatically if there is a <tt>notes/</tt> directory in the project's log directory.
-constants: []
-
+constants: 
+- !ruby/object:RDoc::RI::Constant 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: Default note labels to looked for in source code.
+  name: DEFAULT_LABELS
+  value: "['TODO', 'FIXME', 'OPTIMIZE', 'DEPRECATE']"
 full_name: Syckle::Plugins::DNote
 includes: []
 

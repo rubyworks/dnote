@@ -2,8 +2,9 @@
 aliases: []
 
 block_params: 
-comment: []
-
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: No notes?
 full_name: DNote::Notes#empty?
 is_singleton: false
 name: empty?

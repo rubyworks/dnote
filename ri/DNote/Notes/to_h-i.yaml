@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: "Same as #by_label."
+full_name: DNote::Notes#to_h
+is_singleton: false
+name: to_h
+params: ()
+visibility: public

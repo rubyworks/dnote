@@ -1,0 +1,47 @@
+--- !ruby/object:RDoc::RI::ClassDescription 
+attributes: 
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  name: file
+  rw: R
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  name: label
+  rw: R
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  name: line
+  rw: R
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  name: text
+  rw: R
+class_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: new
+comment: []
+
+constants: []
+
+full_name: DNote::Note
+includes: []
+
+instance_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: <=>
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: textline
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: to_h
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: to_h_raw
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: to_json
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: to_s
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: to_str
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: to_yaml
+name: Note
+superclass: Object

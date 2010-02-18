@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: (self)
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: New Session.
+full_name: DNote::Session::new
+is_singleton: true
+name: new
+params: (options={}) {|self| ...}
+visibility: public

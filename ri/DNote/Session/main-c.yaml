@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Commandline interface.
+full_name: DNote::Session::main
+is_singleton: true
+name: main
+params: (*argv)
+visibility: public

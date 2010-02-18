@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Set default values for attributes.
+full_name: DNote::Session#initialize_defaults
+is_singleton: false
+name: initialize_defaults
+params: ()
+visibility: private

@@ -1,0 +1,11 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: DNote::Notes#match_general_regex
+is_singleton: false
+name: match_general_regex
+params: ()
+visibility: public

@@ -74,14 +74,16 @@
   # LABEL: description ...
   </pre>
 
+<!--
   <p>2) Specially designated notes can omit the colon. By default these are <code>TODO</code>,
   <code>FIXME</code> and <code>OPTIMIZE</code>. Eg.</p>
 
   <pre>
   # TODO description ...
   </pre>
+-->
 
-  <p>3) Any note that requires more than one line must remain flush to the left
+  <p>2) Any note that requires more than one line must remain flush to the left
   margin (the margin is set by the first line). This is done because RDoc will mistake
   the second line for a <tt>&lt;pre&gt;</tt> block if it is indented.</p>
 
@@ -90,7 +92,7 @@
   # continue ...
   </pre>
 
-  <p>4) An alternative to the limitation of the last rule is to indent the whole note (making
+  <p>3) An alternative to the limitation of the last rule is to indent the whole note (making
   the whole note a <tt>&lt;pre&gt;</tt> block with regards to RDoc). Then the text layout is
   free-form.</p>
 
@@ -104,43 +106,46 @@
   <p>That's all there is to it. If I can convince the developers of RDoc to add recognition of
   labels, we may eventually be able to relax the flush rule too, which would be very nice.</p>
  
+  <p>There is also a command-line option, <code>--no-colon</code>, which deactives the need for
+  a colon after the note label. However this often produces false positives, so it's use is
+  discouraged.</p>
 
   <h2>Generating Notes</h2>
 
   <p>As you can see the commandline interface is quite straight-forward.</p>
 
   <pre>
-  Usage: dnote [OPTIONS] path1 [path2 ...]
+  USAGE:
+
+    dnote [OPTIONS] path1 [path2 ...]
    
   OUTPUT FORMAT: (choose one)
-          --gnu                        Plain text format (default)
-          --rdoc                       RDoc comment format
-          --markdown                   Markdown wiki format
-          --soap                       SOAP XML envelope format
-          --xoxo                       XOXO microformat format
-          --xml                        XML markup format
-          --html                       HTML markup format
-          --yaml                       YAML serialization format
-          --json                       JSON serialization format
-      -t, --template FILE              Use a custom Erb template
+      -f, --format NAME                select a format [text]
+      -c, --custom FILE                use a custom ERB template
+          --file                       shortcut for text/file format
+          --list                       shortcut for text/list format
    
   OTHER OPTIONS:
-          --label                      labels to collect
-          --title [TITLE]              title to use in headers
-      -o, --output [PATH]              name of file or directory
-   
-  STANDARD OPTIONS:
-          --debug                      debug mode
+      -l, --label LABEL                labels to collect
+          --[no-]colon                 match labels with/without colon suffix
+      -x, --exclude PATH               exclude file or directory
+      -i, --ignore NAME                ignore based on any part of the pathname
+      -t, --title TITLE                title to use in header
+      -o, --output PATH                name of file or directory
       -n, --dryrun                     do not actually write to disk
+          --debug                      debug mode
+   
+  COMMAND OPTIONS:
+      -T, --templates                  list available format templates
       -h, --help                       show this help information
   </pre>
 
-  <p>As you can see by the command help a variety of formats are available, here are examples of the
+  <p>There are a variety of formats are available, here are examples of some of the
   <a href="example.xml">XML</a>, <a href="example.html">HTML</a> and <a href="example.yaml">YAML</a>
-  formats.</p>
+  formats. You can get a list of all available format templates using the <code>-T</code> option.</p>
 
-  <p>The default path is <code>**/*.rb</code> and the default format <code>--gnu</code>. 
-  Here is an example of D'Note's own notes in RDoc format:</p>
+  <p>The default path is <code>**/*.rb</code> and the default format <code>-f text</code>. 
+  Here is an example of DNote's own notes in <code>-f rdoc</code> format:</p>
 
   <pre>
   = Development Notes
@@ -161,9 +166,7 @@
   (4 TODOs)
   </pre>
 
-  <p>In the future the Notes class will model things a bit better (so the YAML output will improve),
-  and the parsing will be made more flexible. For instance, it would be nice if page-top outlined notes
-  could be parsed as well.</p>
+  <p>In the future the parsing may imnprove to allow page-top outlined notes as well.</p>
 
   </div>
 </div>

@@ -90,22 +90,22 @@
           
             
             <li class="singleton">
-              <a href="#M000037">::new</a>
+              <a href="#M000025">::new</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000039">#h</a>
+              <a href="#M000027">#h</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000040">#method_missing</a>
+              <a href="#M000028">#method_missing</a>
             </li>
           
             
             <li class="method">
-              <a href="#M000038">#render</a>
+              <a href="#M000026">#render</a>
             </li>
           
         </ul>
@@ -153,9 +153,11 @@
         
           <li class="class"><a href="../../../classes/DNote/Format/ErbScope.html">DNote::Format::ErbScope</a></li>
         
+          <li class="class"><a href="../../../classes/DNote/Note.html">DNote::Note</a></li>
+        
           <li class="class"><a href="../../../classes/DNote/Notes.html">DNote::Notes</a></li>
         
-          <li class="class"><a href="../../../classes/DNote/Site.html">DNote::Site</a></li>
+          <li class="class"><a href="../../../classes/DNote/Session.html">DNote::Session</a></li>
         
           <li class="module"><a href="../../../classes/Syckle.html">Syckle</a></li>
         
@@ -205,7 +207,7 @@
 
     
       <div id="new-method" class="method-detail ">
-        <a name="M000037"></a>
+        <a name="M000025"></a>
 
         <div class="method-heading">
         
@@ -224,7 +226,7 @@
           <div class="method-source-code"
             id="new-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 193</span>
+<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 150</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">data</span>={})
         <span class="ruby-ivar">@data</span> = <span class="ruby-identifier">data</span>
       <span class="ruby-keyword kw">end</span></pre>
@@ -243,7 +245,7 @@
 
     
       <div id="h-method" class="method-detail ">
-        <a name="M000039"></a>
+        <a name="M000027"></a>
 
         <div class="method-heading">
         
@@ -262,7 +264,7 @@
           <div class="method-source-code"
             id="h-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 202</span>
+<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 159</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">h</span>(<span class="ruby-identifier">string</span>)
         <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Text</span>.<span class="ruby-identifier">normalize</span>(<span class="ruby-identifier">string</span>)
       <span class="ruby-keyword kw">end</span></pre>
@@ -275,7 +277,7 @@
 
     
       <div id="method-missing-method" class="method-detail ">
-        <a name="M000040"></a>
+        <a name="M000028"></a>
 
         <div class="method-heading">
         
@@ -294,7 +296,7 @@
           <div class="method-source-code"
             id="method-missing-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 206</span>
+<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 163</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">s</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">a</span>)
         <span class="ruby-ivar">@data</span>[<span class="ruby-identifier">s</span>.<span class="ruby-identifier">to_sym</span>]
       <span class="ruby-keyword kw">end</span></pre>
@@ -307,7 +309,7 @@
 
     
       <div id="render-method" class="method-detail ">
-        <a name="M000038"></a>
+        <a name="M000026"></a>
 
         <div class="method-heading">
         
@@ -326,7 +328,7 @@
           <div class="method-source-code"
             id="render-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 197</span>
+<span class="ruby-comment cmt"># File lib/dnote/format.rb, line 154</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">file</span>)
         <span class="ruby-identifier">erb</span> = <span class="ruby-constant">ERB</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">file</span>), <span class="ruby-keyword kw">nil</span>, <span class="ruby-value str">'&lt;&gt;'</span>)
         <span class="ruby-identifier">erb</span>.<span class="ruby-identifier">result</span>(<span class="ruby-identifier">binding</span>)

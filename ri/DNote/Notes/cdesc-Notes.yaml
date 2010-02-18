@@ -3,14 +3,20 @@ attributes:
 - !ruby/object:RDoc::RI::Attribute 
   comment: 
   - !ruby/struct:RDoc::Markup::Flow::P 
-    body: "Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE."
-  name: labels
+    body: Require label colon? Default is <tt>true</tt>.
+  name: colon
   rw: RW
 - !ruby/object:RDoc::RI::Attribute 
   comment: 
   - !ruby/struct:RDoc::Markup::Flow::P 
-    body: Paths to search.
-  name: paths
+    body: Files to search for notes.
+  name: files
+  rw: RW
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    body: "Labels to document. Defaults are: <tt>TODO</tt>, <tt>FIXME</tt>, <tt>OPTIMIZE</tt> and <tt>DEPRECATE</tt>."
+  name: labels
   rw: RW
 class_methods: 
 - !ruby/object:RDoc::RI::MethodSummary 
@@ -20,23 +26,23 @@ comment:
   level: 1
   text: Developer Notes
 - !ruby/struct:RDoc::Markup::Flow::P 
-  body: This class goes through you source files and compiles a list of any labeled comments. Labels are single word prefixes to a comment ending in a colon.
+  body: This class goes through you source files and compiles a list of any labeled comments. Labels are all-cap single word prefixes to a comment ending in a colon.
 - !ruby/struct:RDoc::Markup::Flow::P 
-  body: By default the labels supported are TODO, FIXME, OPTIMIZE and DEPRECATE.
+  body: Special labels do require the colon. By default these are <tt>TODO</tt>, <tt>FIXME</tt>, <tt>OPTIMIZE</tt> and <tt>DEPRECATE</tt>.
 - !ruby/struct:RDoc::Markup::Flow::RULE 
   width: 
 - !ruby/struct:RDoc::Markup::Flow::H 
   level: 1
   text: Developer Notes
 - !ruby/struct:RDoc::Markup::Flow::P 
-  body: This class goes through you source files and compiles a list of any labeled comments. Labels are single word prefixes to a comment ending in a colon.
+  body: This class goes through you source files and compiles a list of any labeled comments. Labels are all-cap single word prefixes to a comment ending in a colon.
 - !ruby/struct:RDoc::Markup::Flow::P 
-  body: By default the labels supported are TODO, FIXME, OPTIMIZE and DEPRECATE.
+  body: Special labels do require the colon. By default these are <tt>TODO</tt>, <tt>FIXME</tt>, <tt>OPTIMIZE</tt> and <tt>DEPRECATE</tt>.
 constants: 
 - !ruby/object:RDoc::RI::Constant 
   comment: 
   - !ruby/struct:RDoc::Markup::Flow::P 
-    body: Default note labels to look for in source code.
+    body: Default note labels to look for in source code. (NOT CURRENTLY USED!)
   name: DEFAULT_LABELS
   value: "['TODO', 'FIXME', 'OPTIMIZE', 'DEPRECATE']"
 - !ruby/object:RDoc::RI::Constant 
@@ -51,34 +57,36 @@ includes:
   name: Enumerable
 instance_methods: 
 - !ruby/object:RDoc::RI::MethodSummary 
+  name: by_file
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: by_file_label
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: by_label
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: by_label_file
+- !ruby/object:RDoc::RI::MethodSummary 
   name: counts
 - !ruby/object:RDoc::RI::MethodSummary 
   name: each
 - !ruby/object:RDoc::RI::MethodSummary 
   name: empty?
 - !ruby/object:RDoc::RI::MethodSummary 
-  name: files
+  name: match
 - !ruby/object:RDoc::RI::MethodSummary 
-  name: labels=
+  name: match_general
 - !ruby/object:RDoc::RI::MethodSummary 
-  name: match_arbitrary
+  name: match_general_regex
 - !ruby/object:RDoc::RI::MethodSummary 
-  name: match_common
+  name: match_special
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: match_special_regex
 - !ruby/object:RDoc::RI::MethodSummary 
   name: notes
 - !ruby/object:RDoc::RI::MethodSummary 
-  name: organize
-- !ruby/object:RDoc::RI::MethodSummary 
   name: parse
 - !ruby/object:RDoc::RI::MethodSummary 
-  name: to
+  name: to_a
 - !ruby/object:RDoc::RI::MethodSummary 
-  name: to_json
-- !ruby/object:RDoc::RI::MethodSummary 
-  name: to_soap
-- !ruby/object:RDoc::RI::MethodSummary 
-  name: to_xoxo
-- !ruby/object:RDoc::RI::MethodSummary 
-  name: to_yaml
+  name: to_h
 name: Notes
 superclass: Object

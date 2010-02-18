@@ -1,25 +1,17 @@
 --- !ruby/object:RDoc::RI::ModuleDescription 
 attributes: []
 
-class_methods: 
-- !ruby/object:RDoc::RI::MethodSummary 
-  name: run
+class_methods: []
+
 comment: 
 constants: 
 - !ruby/object:RDoc::RI::Constant 
   comment: 
   name: VERSION
-  value: "\"1.1.3\""
+  value: "\"1.2.0\""
 full_name: DNote
 includes: []
 
-instance_methods: 
-- !ruby/object:RDoc::RI::MethodSummary 
-  name: __DIR__
-- !ruby/object:RDoc::RI::MethodSummary 
-  name: fu
-- !ruby/object:RDoc::RI::MethodSummary 
-  name: templates
-- !ruby/object:RDoc::RI::MethodSummary 
-  name: write
+instance_methods: []
+
 name: DNote

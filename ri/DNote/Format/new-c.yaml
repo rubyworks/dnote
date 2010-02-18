@@ -1,11 +1,11 @@
 --- !ruby/object:RDoc::RI::MethodDescription 
 aliases: []
 
-block_params: 
+block_params: (self)
 comment: []
 
 full_name: DNote::Format::new
 is_singleton: true
 name: new
-params: (notes, options={})
+params: (notes, options={}) {|self| ...}
 visibility: public

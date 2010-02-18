@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Set ignore list ensuring that the value is an array.
+full_name: DNote::Session#ignore=
+is_singleton: false
+name: ignore=
+params: (list)
+visibility: public

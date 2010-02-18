@@ -4,7 +4,7 @@ aliases: []
 block_params: 
 comment: 
 - !ruby/struct:RDoc::Markup::Flow::P 
-  body: Gather and count notes. This returns two elements, a hash in the form of label=&gt;notes and a counts hash.
+  body: Gather notes.
 full_name: DNote::Notes#parse
 is_singleton: false
 name: parse

@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Organize notes into a hash with labels for keys, followed by a hash with filename for keys.
+full_name: DNote::Notes#by_label_file
+is_singleton: false
+name: by_label_file
+params: ()
+visibility: public
