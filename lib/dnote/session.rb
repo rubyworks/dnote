@@ -51,6 +51,7 @@ module DNote
     #
     def initialize(options={})
       @paths   = []
+      @labels  = []
       @exclude = []
       @ignore  = []
       @format  = DEFAULT_FORMAT
