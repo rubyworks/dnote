@@ -69,7 +69,7 @@ As you can see the commandline interface is pretty straight-forward.
           --debug                      debug mode
       -h, --help                       show this help information
 
-The default path is <tt>**/*.rb</tt> and the default format is <tt>--rdoc</tt>. 
+The default path is <tt>**/*.rb</tt> and the default format is <tt>-f rdoc</tt>. 
 Here is an example of DNote's current notes in RDoc format:
 
   = Development Notes
