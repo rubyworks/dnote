@@ -23,19 +23,14 @@ it needs to follow this simple set of rules:
 
   # LABEL: description ...
 
-2) Specially designated notes can omit the colon. By default these are +TODO+,
-+FIXME+ and +OPTIMIZE+.
-
-  # TODO description ...
-
-3) Any note that requires more than one line must remain flush to the left
+2) Any note that requires more than one line must remain flush to the left
 margin (the margin is set by the first line). This is done because RDoc will mistake
 the note for a <tt>&lt;pre&gt;</tt> block if it is indented.
 
   # LABEL: description ...
   # continue ...
 
-4) An alternative to the previous limitation is to indent the whole note, making it 
+3) An alternative to the previous limitation is to indent the whole note, making it 
 a <tt>&lt;pre&gt;</tt> block when rendered by RDoc. Then the text layout is free-form.
 
   # This is a description of something...
@@ -45,6 +40,10 @@ a <tt>&lt;pre&gt;</tt> block when rendered by RDoc. Then the text layout is free
 
 That's all there is to it, if I can convince the developers of RDoc to recognize labels,
 we may eventually be able to relax the flush rule too, which would be very nice.
+
+There is also a command-line option, <code>--no-colon</code>, which deactives the need for
+a colon after the note label. However this often produces false positives, so it's use is
+discouraged.
 
 
 === Generating Notes
