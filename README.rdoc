@@ -50,23 +50,28 @@ discouraged.
 
 As you can see the commandline interface is pretty straight-forward.
 
-  Usage: dnote [OPTIONS] path1 [path2 ...]
+  USAGE:
+
+    dnote [OPTIONS] path1 [path2 ...]
    
   OUTPUT FORMAT: (choose one)
-          --rdoc                       RDoc comment format
-          --markdown                   Markdown wiki format
-          --xml                        XML markup format
-          --html                       HTML markup format
-          --yaml                       YAML serialization format
-          --json                       JSON serialization format
+      -f, --format NAME                select a format [text]
+      -c, --custom FILE                use a custom ERB template
+          --file                       shortcut for text/file format
+          --list                       shortcut for text/list format
    
   OTHER OPTIONS:
-          --label                      labels to collect
-      -t, --title [TITLE]              title to use in headers
-   
-  STANDARD OPTIONS:
-      -v, --verbose                    extra verbose output
+      -l, --label LABEL                labels to collect
+          --[no-]colon                 match labels with/without colon suffix
+      -x, --exclude PATH               exclude file or directory
+      -i, --ignore NAME                ignore based on any part of the pathname
+      -t, --title TITLE                title to use in header
+      -o, --output PATH                name of file or directory
+      -n, --dryrun                     do not actually write to disk
           --debug                      debug mode
+   
+  COMMAND OPTIONS:
+      -T, --templates                  list available format templates
       -h, --help                       show this help information
 
 The default path is <tt>**/*.rb</tt> and the default format is <tt>-f rdoc</tt>. 
