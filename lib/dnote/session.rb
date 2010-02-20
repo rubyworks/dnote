@@ -219,7 +219,7 @@ module DNote
           session.exclude << path
         end
 
-        opt.on("--ignore", "-i NAME", "ignore based on any part of the pathname") do |name|
+        opt.on("--ignore", "-i NAME", "ignore file based on any part of pathname") do |name|
           session.ignore << name
         end
 
@@ -227,7 +227,7 @@ module DNote
           session.title = title
         end
 
-        opt.on("--output", "-o PATH", "name of file or directory") do |path|
+        opt.on("--output", "-o PATH", "save to file or directory") do |path|
           session.output = path
         end
 

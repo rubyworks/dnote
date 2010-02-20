@@ -16,7 +16,7 @@ module DNote
 
     #DEFAULT_OUTPUT_DIR = "log/dnote"
 
-    EXTENSIONS = { 'soap'=>'xml', 'xoxo'=>'xml' }
+    EXTENSIONS = { 'text'=>'txt', 'soap'=>'xml', 'xoxo'=>'xml' }
 
     #
     attr :notes
@@ -103,7 +103,8 @@ module DNote
     #
     def write(result, fname=nil)
       if output.end_with?('/') || File.directory?(output)
-        ext  = EXTENSIONS[format] || format
+        fmt  = format.split('/').first
+        ext  = EXTENSIONS[fmt] || fmt
         file = File.join(output, fname || "notes.#{ext}")
       else
         file = output
