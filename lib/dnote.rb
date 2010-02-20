@@ -1,5 +1,5 @@
 module DNote
-  VERSION = "1.2.0"  #:till: VERSION = "<%= version %>"
+  VERSION = "1.2.1"  #:till: VERSION = "<%= version %>"
 
   require 'dnote/session'
 
