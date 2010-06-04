@@ -1,5 +1,15 @@
 = RELEASE HISTORY
 
+== 1.3 / 2010-06-04
+
+This release adds support for alternate comment markers. Simply
+supply the marker with the -m option.
+
+Changes:
+
+* Add support for languages other than Ruby.
+
+
 == 1.2 / 2010-02-18
 
 By request this release adds additional formats, allowing notes to be
