@@ -2,7 +2,7 @@ require 'dnote/notes'
 
 Case DNote::Notes do
 
-  Concern "Basic coverage of DNote::Notes class."
+  Concern "Coverage of DNote::Notes class."
 
   Unit :labels => 'returns the list of labels' do
     notes = DNote::Notes.new([], :labels=>['TODO'])
