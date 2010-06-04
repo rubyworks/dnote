@@ -34,10 +34,10 @@ module Syckle::Plugins
       end
     end
 
-    # autorun if log/notes exists
-    autorun do |project|
-      (project.log + 'dnote').exist?
-    end
+    ## autorun if log/notes exists
+    #autorun do |project|
+    #  (project.log + 'dnote').exist?
+    #end
 
     # Default note labels to looked for in source code.
     DEFAULT_LABELS = ['TODO', 'FIXME', 'OPTIMIZE', 'DEPRECATE']

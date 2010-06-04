@@ -34,11 +34,15 @@ module DNote
     # Require label colon? Default is +true+.
     attr_accessor :colon
 
+    # Alternate remark marker. Default is '#'.
+    attr_accessor :marker
+
     # New set of notes for give +files+ and optional special labels.
     def initialize(files, options={})
       @files  = [files].flatten
-      @labels = [options[:labels]].flatten.compact
+      @labels = [options[:labels] || DEFAULT_LABELS].flatten.compact
       @colon  = options[:colon].nil? ? true : options[:colon]
+      @marker = options[:marker] || '#'
       parse
     end
 
@@ -89,14 +93,15 @@ module DNote
               records << save
             else
               if text
-                if line =~ /^\s*[#]{0,1}\s*$/ or line !~ /^\s*#/ or line =~ /^\s*#[+][+]/
+                case line
+                when /^\s*#{remark}+\s*$/, /(?!^\s*#{remark})/, /^\s*#{remark}[+][+]/
                   text.strip!
                   text = nil
                 else
                   if text[-1,1] == "\n"
-                    text << line.gsub(/^\s*#\s*/,'')
+                    text << line.gsub(/^\s*#{remark}\s*/,'')
                   else
-                    text << "\n" << line.gsub(/^\s*#\s*/,'')
+                    text << "\n" << line.gsub(/^\s*#{remark}\s*/,'')
                   end
                 end
               end
@@ -135,9 +140,9 @@ module DNote
     #++
     def match_special_regex(label)
       if colon
-        /\#\s*#{Regexp.escape(label)}[:]\s*(.*?)$/
+        /#{remark}\s*#{Regexp.escape(label)}[:]\s*(.*?)$/
       else
-        /\#\s*#{Regexp.escape(label)}[:]?\s*(.*?)$/
+        /#{remark}\s*#{Regexp.escape(label)}[:]?\s*(.*?)$/
       end
     end
 
@@ -155,9 +160,9 @@ module DNote
     #
     def match_general_regex
       if colon
-        /\#\s*([A-Z]+)[:]\s+(.*?)$/
+        /#{remark}\s*([A-Z]+)[:]\s+(.*?)$/
       else
-        /\#\s*([A-Z]+)[:]?\s+(.*?)$/
+        /#{remark}\s*([A-Z]+)[:]?\s+(.*?)$/
       end
     end
 
@@ -225,6 +230,11 @@ module DNote
     # Same as #by_label.
     def to_h
       by_label
+    end
+
+    #
+    def remark
+      @remark ||= Regexp.escape(marker)
     end
 
     # Convert to array of hashes then to YAML.

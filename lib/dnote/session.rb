@@ -37,6 +37,9 @@ module DNote
     # Selected labels can optionally do without the colon.
     attr_accessor :colon
 
+    # Alternate remark marker. Useful to other languages besides Ruby.
+    attr_accessor :marker
+
     # Output format.
     attr_accessor :format
 
@@ -72,6 +75,7 @@ module DNote
       @format  = DEFAULT_FORMAT
       @title   = DEFAULT_TITLE
       @dryrun  = false
+      @marker  = '#'
     end
 
   public
@@ -88,7 +92,7 @@ module DNote
 
     # Run session.
     def run
-      notes = Notes.new(files, :labels=>labels, :colon=>colon)
+      notes = Notes.new(files, :labels=>labels, :colon=>colon, :marker=>marker)
       formatter = Format.new(notes) do |f|
         f.format   = format
         f.template = template
@@ -151,41 +155,9 @@ module DNote
         opt.separator(" ")
         opt.separator("OUTPUT FORMAT: (choose one)")
 
-        #opt.on("--default", "Plain text format (default)") do
-        #  session.format = 'label'
-        #end
-
-        #opt.on("--yaml", "YAML serialization format") do
-        #  session.format = 'yaml'
-        #end
-
-        #opt.on("--json", "JSON serialization format") do
-        #  session.format = 'json'
-        #end
-
-        #opt.on("--soap", "SOAP XML envelope format") do
-        #  session.format = 'soap'
-        #end
-
-        #opt.on("--xoxo", "XOXO microformat format") do
-        #  session.format = 'xoxo'
-        #end
-
-        #opt.on("--xml", "XML markup format") do
-        #  session.format = 'xml'
-        #end
-
-        #opt.on("--html", "HTML markup format") do
-        #  session.format = 'html'
-        #end
-
-        #opt.on("--rdoc", "rdoc comment format") do
-        #  session.format = 'rdoc'
-        #end
-
-        #opt.on("--markdown", "markdown wiki format") do
-        #  session.format = 'md'
-        #end
+        opt.on("--marker", '-m MARK', "Alternative remark marker") do |mark|
+           session.marker = mark 
+        end
 
         opt.on("--format", "-f NAME", "select a format [text]") do |format|
           session.format = format
