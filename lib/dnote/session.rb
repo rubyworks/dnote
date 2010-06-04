@@ -155,10 +155,6 @@ module DNote
         opt.separator(" ")
         opt.separator("OUTPUT FORMAT: (choose one)")
 
-        opt.on("--marker", '-m MARK', "Alternative remark marker") do |mark|
-           session.marker = mark 
-        end
-
         opt.on("--format", "-f NAME", "select a format [text]") do |format|
           session.format = format
         end
@@ -185,6 +181,10 @@ module DNote
 
         opt.on("--[no-]colon", "match labels with/without colon suffix") do |val|
           session.colon = val
+        end
+
+        opt.on("--marker", '-m MARK', "Alternative remark marker") do |mark|
+           session.marker = mark 
         end
 
         opt.on("--exclude", "-x PATH", "exclude file or directory") do |path|
