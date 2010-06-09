@@ -1,3 +1,5 @@
+require 'yaml'
+
 module DNote
   DIRECTORY = File.dirname(__FILE__) + '/dnote'
 
@@ -7,11 +9,12 @@ module DNote
   VERSION = verfile.values_at('major','minor','patch','state','build').compact.join('.')
 
   #
-  def const_missing(name)
-    if verfile.key?(name.downcase)
-      verfile[name.downcase]
-    elsif profile.key?(name.downcase)
-      profile[name.downcase]
+  def self.const_missing(name)
+    key = name.to_s.downcase
+    if verfile.key?(key)
+      verfile[key]
+    elsif profile.key?(key)
+      profile[key]
     else
       super(name)
     end
