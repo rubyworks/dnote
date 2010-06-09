@@ -1,5 +1,6 @@
 module DNote
 
+  require 'dnote/core_ext'
   require 'dnote/notes'
   require 'dnote/format'
 
@@ -221,7 +222,7 @@ module DNote
           tnames = tfiles.map{ |tname| tname.sub(tdir+'/', '').chomp('.erb') }
           groups = tnames.group_by{ |tname| tname.split('/').first }
           groups.sort.each do |(type, names)|
-            puts ("%-18s " * names.size) % names.sort
+            puts("%-18s " * names.size) % names.sort
           end
           exit
         end
