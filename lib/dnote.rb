@@ -1,32 +1,24 @@
 module DNote
-  VERSION = "1.2.1"  #:till: VERSION = "<%= version %>"
+  DIRECTORY = File.dirname(__FILE__) + '/dnote'
 
-  require 'dnote/session'
+  profile = YAML.load(File.new(DIRECTORY + '/profile.yml'))
+  verfile = YAML.load(File.new(DIRECTORY + '/version.yml'))
 
-  # NOTE: Toying with the idea of making DNote a class.
+  VERSION = verfile.values_at('major','minor','patch','state','build').compact.join('.')
 
-  #attr :notes
   #
-  #def initialize(paths, options={})
-  #  labels = options[:labels] || options['labels']
-  #  @notes = Notes.new(paths, labels)
-  #end
-  #
-  #
-  #def save(format, output, options)
-  #  options = options.merge({ :format=>format, :output=>output })
-  #  format = Format.new(notes, options)
-  #  format.render
-  #end
-  #
-  #
-  #def display(format, options)
-  #  options = options.merge({ :format=>format, :output=>nil })
-  #  format  = Format.new(@notes, options)
-  #  format.render
-  #end
-
+  def const_missing(name)
+    if verfile.key?(name.downcase)
+      verfile[name.downcase]
+    elsif profile.key?(name.downcase)
+      profile[name.downcase]
+    else
+      super(name)
+    end
+  end
 end
+
+require 'dnote/session'
 
 # TEST: This is a test of arbitraty labels.
 
