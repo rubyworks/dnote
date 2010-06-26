@@ -9,8 +9,8 @@ module DNote
   # of any labeled comments. Labels are all-cap single word prefixes
   # to a comment ending in a colon.
   #
-  # Special labels do require the colon. By default these are +TODO+,
-  # +FIXME+, +OPTIMIZE+ and +DEPRECATE+.
+  # Special labels do not require the colon. By default these are
+  # +TODO+, +FIXME+, +OPTIMIZE+, +THINK+ and +DEPRECATE+.
   #
   #--
   #   TODO: Add ability to read header notes. They often
@@ -23,7 +23,7 @@ module DNote
     DEFAULT_PATHS  = ["**/*.rb"]
 
     # Default note labels to look for in source code. (NOT CURRENTLY USED!)
-    DEFAULT_LABELS = ['TODO', 'FIXME', 'OPTIMIZE', 'DEPRECATE']
+    DEFAULT_LABELS = ['TODO', 'FIXME', 'OPTIMIZE', 'THINK', 'DEPRECATE']
 
     # Files to search for notes.
     attr_accessor :files
@@ -42,7 +42,8 @@ module DNote
       @files  = [files].flatten
       @labels = [options[:labels] || DEFAULT_LABELS].flatten.compact
       @colon  = options[:colon].nil? ? true : options[:colon]
-      @marker = options[:marker] || '#'
+      @marker = options[:marker] #|| '#'
+      @remark = {}
       parse
     end
 
@@ -81,6 +82,7 @@ module DNote
       files.each do |fname|
         next unless File.file?(fname)
         #next unless fname =~ /\.rb$/      # TODO: should this be done?
+        mark = remark(fname)
         File.open(fname) do |f|
           lineno, save, text = 0, nil, nil
           while line = f.gets
@@ -94,14 +96,14 @@ module DNote
             else
               if text
                 case line
-                when /^\s*#{remark}+\s*$/, /(?!^\s*#{remark})/, /^\s*#{remark}[+][+]/
+                when /^\s*#{mark}+\s*$/, /(?!^\s*#{mark})/, /^\s*#{mark}[+][+]/
                   text.strip!
                   text = nil
                 else
                   if text[-1,1] == "\n"
-                    text << line.gsub(/^\s*#{remark}\s*/,'')
+                    text << line.gsub(/^\s*#{mark}\s*/,'')
                   else
-                    text << "\n" << line.gsub(/^\s*#{remark}\s*/,'')
+                    text << "\n" << line.gsub(/^\s*#{mark}\s*/,'')
                   end
                 end
               end
@@ -126,7 +128,7 @@ module DNote
     def match_special(line, lineno, file)
       rec = nil
       labels.each do |label|
-        if md = match_special_regex(label).match(line)
+        if md = match_special_regex(label, file).match(line)
           text = md[1]
           #rec = {'label'=>label,'file'=>file,'line'=>lineno,'note'=>text}
           rec = Note.new(file, label, lineno, text)
@@ -138,18 +140,19 @@ module DNote
     #--
     # TODO: ruby-1.9.1-p378 reports: `match': invalid byte sequence in UTF-8 
     #++
-    def match_special_regex(label)
+    def match_special_regex(label, file)
+      mark = remark(file)
       if colon
-        /#{remark}\s*#{Regexp.escape(label)}[:]\s*(.*?)$/
+        /#{mark}\s*#{Regexp.escape(label)}[:]\s*(.*?)$/
       else
-        /#{remark}\s*#{Regexp.escape(label)}[:]?\s*(.*?)$/
+        /#{mark}\s*#{Regexp.escape(label)}[:]?\s*(.*?)$/
       end
     end
 
     # Match notes that are labeled with a colon.
     def match_general(line, lineno, file)
       rec = nil
-      if md = match_general_regex.match(line)
+      if md = match_general_regex(file).match(line)
         label, text = md[1], md[2]
         #rec = {'label'=>label,'file'=>file,'line'=>lineno,'note'=>text}
         rec = Note.new(file, label, lineno, text)
@@ -158,11 +161,12 @@ module DNote
     end
 
     #
-    def match_general_regex
+    def match_general_regex(file)
+      mark = remark(file)
       if colon
-        /#{remark}\s*([A-Z]+)[:]\s+(.*?)$/
+        /#{mark}\s*([A-Z]+)[:]\s+(.*?)$/
       else
-        /#{remark}\s*([A-Z]+)[:]?\s+(.*?)$/
+        /#{mark}\s*([A-Z]+)[:]?\s+(.*?)$/
       end
     end
 
@@ -233,8 +237,31 @@ module DNote
     end
 
     #
-    def remark
-      @remark ||= Regexp.escape(marker)
+    def remark(file)
+      @remark[File.extname(file)] ||= (
+        mark = guess_marker(file)
+        Regexp.escape(mark)
+      )
+    end
+
+    # Guess marker based on file extension. Fallsback to '#'
+    # if the extension is unknown.
+    #
+    # TODO: Continue to add comment types.
+    def guess_marker(file)
+      return @marker if @marker # forced marker
+      case File.extname(file)
+      when '.js', '.c', 'cpp', '.css'
+        '//'
+      when '.bas'
+        "'"
+      when '.sql', '.ada'
+        '--'
+      when '.asm'
+        ';'
+      else
+        '#'        
+      end
     end
 
     # Convert to array of hashes then to YAML.

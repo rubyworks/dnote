@@ -76,7 +76,7 @@ module DNote
       @format  = DEFAULT_FORMAT
       @title   = DEFAULT_TITLE
       @dryrun  = false
-      @marker  = '#'
+      @marker  = nil
     end
 
   public
