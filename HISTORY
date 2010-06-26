@@ -1,5 +1,19 @@
 = RELEASE HISTORY
 
+== 1.4.0 / 2010-06-26
+
+This release adds auto-determination of marker based on file
+extension. This means DNote can now scan multiple file types
+in a single pass. The supported types are fairly small at this
+point, but cover the command cases and will expand in the future.
+The fallback marker is '#'. You can still force a particular
+marker using the --marker option.
+
+Changes:
+
+* Support for automatic markers.
+
+
 == 1.3.1 / 2010-06-11
 
 This release fixes a simple bug. Some version of Ruby do not have
