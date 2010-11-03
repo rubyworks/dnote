@@ -21,15 +21,22 @@
 <body>
 <div class="main">
   <h1><%= title %></h1>
+  <ol> 
+        <% notes.dup.counts.each_pair do |l, n| %>
+        <li><a href="#<%= l %>"><%= l %></a></li>
+        <% end %>
+  </ol>
   <div class="notes">
 <% notes.by_label_file.each do |label, per_file| %>
-    <h2><%= label %></h2>
+    <h2 id="<%= label %>"><%= label %></h2>
     <ol class="set <%= label.downcase %>">
 <% per_file.each do |file, line_notes| %>
       <li><h3><a href="<%= file %>"><%= file %></a></h3><ol class="file" href="<%= file %>">
 <% line_notes.sort!{ |a,b| a.line <=> b.line } %>
 <% line_notes.each do |note| %>
-        <li class="note <%= label.downcase %>" ref="<%= note.line %>"><%= h note.text %> <sup><%= note.line %></sup></li>
+        <li class="note <%= label.downcase %>" ref="<%= note.line %>"><%= h note.text %> <sup><%= note.line %></sup>
+        <pre><%= note.capture.join %></pre>
+        </li>
 <% end %>
       </ol></li>
 <% end %>

@@ -85,6 +85,7 @@ module DNote
         mark = remark(fname)
         File.open(fname) do |f|
           lineno, save, text = 0, nil, nil
+          capture = 0
           while line = f.gets
             lineno += 1
             save = match(line, lineno, fname)
@@ -99,7 +100,8 @@ module DNote
                 when /^\s*#{mark}+\s*$/, /(?!^\s*#{mark})/, /^\s*#{mark}[+][+]/
                   text.strip!
                   text = nil
-                else
+                  capture = 5
+                else                  
                   if text[-1,1] == "\n"
                     text << line.gsub(/^\s*#{mark}\s*/,'')
                   else
@@ -107,6 +109,10 @@ module DNote
                   end
                 end
               end
+            end
+            if capture > 0
+              records.last.capture << line 
+              capture = capture -= 1  
             end
           end
         end

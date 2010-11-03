@@ -6,12 +6,14 @@ module DNote
     attr :label
     attr :line
     attr :text
+    attr :capture
 
     def initialize(file, label, line, text)
       @file  = file
       @label = label
       @line  = line
       @text  = text.rstrip
+      @capture = []
     end
 
     #
