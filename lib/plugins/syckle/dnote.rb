@@ -24,15 +24,15 @@ module Syckle::Plugins
     cycle :main, :clean
 
     # not that this is necessary, but ...
-    available do |project|
-      begin
-        require 'dnote'
-        require 'dnote/format'
-        true
-      rescue LoadError
-        false
-      end
-    end
+    #available do |project|
+    #  begin
+    #    require 'dnote'
+    #    require 'dnote/format'
+    #    true
+    #  rescue LoadError
+    #    false
+    #  end
+    #end
 
     ## autorun if log/notes exists
     #autorun do |project|
@@ -56,7 +56,7 @@ module Syckle::Plugins
 
     # Output directory to save notes file. Defaults to <tt>dnote/</tt> under
     # the project log directory (eg. <tt>log/dnote/</tt>).
-    attr_accessor :output
+    attr_reader :output
 
     # Formats (xml, html, rdoc).
     attr_accessor :formats
@@ -133,6 +133,12 @@ module Syckle::Plugins
     end
 
   private
+
+    #
+    def initialize_requires
+      require 'dnote'
+      require 'dnote/format'
+    end
 
     #
     def initialize_defaults

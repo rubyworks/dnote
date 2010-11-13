@@ -26,10 +26,10 @@ module DNote
     attr_accessor :paths
 
     # Paths to exclude (match by pathname).
-    attr_accessor :exclude
+    attr_reader :exclude
 
     # Paths to ignore (match by basename).
-    attr_accessor :ignore
+    attr_reader :ignore
 
     # Labels to lookup.
     # By default these are TODO, FIXME and OPTIMIZE.

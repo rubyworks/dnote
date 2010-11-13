@@ -1,0 +1,9 @@
+---
+name    : dnote
+date    : 2010-06-26
+version : 1.4.0
+
+requires:
+  - syckle (build)
+  - lemon  (test)
+
