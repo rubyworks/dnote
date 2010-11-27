@@ -1,7 +1,7 @@
 ---
 name    : dnote
-date    : 2010-06-26
-version : 1.4.0
+date    : 2010-11-27
+version : 1.5.0
 
 requires:
   - syckle (build)
