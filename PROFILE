@@ -1,23 +1,23 @@
 --- 
 title  : DNote
-suite  : proutils
+suite  : rubyworks
 summary: Extract developer's notes from source code
 contact: trans <transfire@gmail.com>
 created: 2009-10-09
 authors: Thomas Sawyer
 
 description:
-  Dnote makes it easy to extract developer's
+  DNote makes it easy to extract developer's
   notes from source code, and supports almost
   any language.
 
 resources:
-  home: http://proutils.github.com/dnote
-  code: http://github.com/proutils/dnote
-  wiki: http://wiki.github.com/proutils/dnote
-  api : http://proutils.github.com/dnote/rdoc
-  mail: http://groups.google.com/group/proutils
-  repo: git://github.com/proutils/dnote.git
+  home: http://rubyworks.github.com/dnote
+  code: http://github.com/rubyworks/dnote
+  wiki: http://wiki.github.com/rubyworks/dnote
+  api : http://rubyworks.github.com/dnote/rdoc
+  mail: http://groups.google.com/group/rubyworks-mailinglist
+  repo: git://github.com/rubyworks/dnote.git
 
 copyright: Copyright (c) 2009 Thomas Sawyer
 
