@@ -2,16 +2,28 @@ module DNote
 
   #
   class Note
+
+    #
+    CONTEXT_DEPTH = 3
+
+    # Set of notes to which this note belongs.
+    attr :notes
+
     attr :file
     attr :label
     attr :line
     attr :text
+    attr :mark
 
-    def initialize(file, label, line, text)
-      @file  = file
-      @label = label
-      @line  = line
-      @text  = text.rstrip
+    #
+    def initialize(notes, file, label, line, text, mark)
+      @notes   = notes
+
+      @file    = file
+      @label   = label
+      @line    = line
+      @text    = text.rstrip
+      @mark    = mark
     end
 
     #
@@ -51,7 +63,32 @@ module DNote
     def to_yaml(*args)
       to_h_raw.to_yaml(*args)
     end
+
+    #
+    def link
+      if notes.link
+        notes.link % [file, line]
+      else
+        file
+      end
+    end
+
+    # DEPRECATE: URL solution is better.
+    def context
+      @context ||= (
+        lines = file_cache(file) #.lines.to_a
+        count = line()
+        count +=1 while /^\s*#{mark}/ =~ lines[count]
+        lines[count, CONTEXT_DEPTH]
+      )
+    end
+
+    #
+    def file_cache(file)
+      @@file_cache ||= {}
+      @@file_cache[file] ||= File.read(file).lines.to_a
+    end
+
   end
 
 end
-

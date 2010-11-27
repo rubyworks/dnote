@@ -6,7 +6,7 @@
     .main {
       width: 800px;
       margin: 0 auto;
-      border: 1px solid #ccc;
+      border: 0px solid #ccc;
       padding: 0 20px 20px 20px;
     }
     h1 { margin: 25px 0; }
@@ -15,6 +15,8 @@
     h4 { color: 888844; }
     ul { margin: 0; padding: 0; text-align: left; }
     li { margin: 0; padding: 0; text-align: left; }
+     a { color: #4488ff; }
+   sup { font-size: 0.8em; }
   </style>
   <link rel="stylesheet" href="notes.css" type="text/css">
 </head>
@@ -29,7 +31,9 @@
       <li><h3><a href="<%= file %>"><%= file %></a></h3><ol class="file" href="<%= file %>">
 <% line_notes.sort!{ |a,b| a.line <=> b.line } %>
 <% line_notes.each do |note| %>
-        <li class="note <%= label.downcase %>" ref="<%= note.line %>"><%= h note.text %> <sup><%= note.line %></sup></li>
+        <li class="note <%= label.downcase %>" ref="<%= note.line %>">
+          <%= h note.text %> <sup><a href="<%= note.link %>"><%= note.line %></a></sup>
+        </li>
 <% end %>
       </ol></li>
 <% end %>

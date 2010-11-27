@@ -34,8 +34,11 @@ module DNote
     # Require label colon? Default is +true+.
     attr_accessor :colon
 
-    # Alternate remark marker. Default is '#'.
+    # Specific remark marker (+nil+ for auto).
     attr_accessor :marker
+
+    # Link template.
+    attr_accessor :link
 
     # New set of notes for give +files+ and optional special labels.
     def initialize(files, options={})
@@ -43,6 +46,7 @@ module DNote
       @labels = [options[:labels] || DEFAULT_LABELS].flatten.compact
       @colon  = options[:colon].nil? ? true : options[:colon]
       @marker = options[:marker] #|| '#'
+      @link   = options[:link]
       @remark = {}
       parse
     end
@@ -83,9 +87,9 @@ module DNote
         next unless File.file?(fname)
         #next unless fname =~ /\.rb$/      # TODO: should this be done?
         mark = remark(fname)
-        File.open(fname) do |f|
-          lineno, save, text = 0, nil, nil
-          while line = f.gets
+        lineno, save, text = 0, nil, nil
+        File.readlines(fname).each do |line|
+          #while line = f.gets
             lineno += 1
             save = match(line, lineno, fname)
             if save
@@ -96,19 +100,22 @@ module DNote
             else
               if text
                 case line
-                when /^\s*#{mark}+\s*$/, /(?!^\s*#{mark})/, /^\s*#{mark}[+][+]/
+                when /^\s*#{mark}+\s*$/, /^\s*#{mark}\-\-/, /^\s*#{mark}\+\+/
                   text.strip!
                   text = nil
-                else
+                when /^\s*#{mark}/
                   if text[-1,1] == "\n"
                     text << line.gsub(/^\s*#{mark}\s*/,'')
                   else
                     text << "\n" << line.gsub(/^\s*#{mark}\s*/,'')
                   end
+                else
+                  text.strip!
+                  text = nil
                 end
               end
             end
-          end
+          #end
         end
       end
 
@@ -131,7 +138,7 @@ module DNote
         if md = match_special_regex(label, file).match(line)
           text = md[1]
           #rec = {'label'=>label,'file'=>file,'line'=>lineno,'note'=>text}
-          rec = Note.new(file, label, lineno, text)
+          rec = Note.new(self, file, label, lineno, text, remark(file))
         end
       end
       rec
@@ -155,7 +162,7 @@ module DNote
       if md = match_general_regex(file).match(line)
         label, text = md[1], md[2]
         #rec = {'label'=>label,'file'=>file,'line'=>lineno,'note'=>text}
-        rec = Note.new(file, label, lineno, text)
+        rec = Note.new(self, file, label, lineno, text, remark(file))
       end
       return rec
     end

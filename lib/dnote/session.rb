@@ -57,6 +57,13 @@ module DNote
     # If output path given, don't actually write to disk.
     attr_accessor :dryrun
 
+    # String template for line URLs (mainly for HTML format). For example,
+    # DNote uses GitHub so we could use a link template:
+    # 
+    #   "https://github.com/rubyworks/dnote/blob/master/%s#L%s"
+    #
+    attr_accessor :link
+
   private
 
     # New Session.
@@ -93,7 +100,7 @@ module DNote
 
     # Run session.
     def run
-      notes = Notes.new(files, :labels=>labels, :colon=>colon, :marker=>marker)
+      notes = Notes.new(files, :labels=>labels, :colon=>colon, :marker=>marker, :link=>link)
       formatter = Format.new(notes) do |f|
         f.format   = format
         f.template = template
@@ -186,6 +193,10 @@ module DNote
 
         opt.on("--marker", '-m MARK', "Alternative remark marker") do |mark|
            session.marker = mark 
+        end
+
+        opt.on("--link TEMPLATE", "Link template for line entries (for HTML)") do |temp|
+           session.link = temp
         end
 
         opt.on("--exclude", "-x PATH", "exclude file or directory") do |path|
