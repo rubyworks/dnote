@@ -38,7 +38,7 @@ module DNote
     attr_accessor :marker
 
     # Link template.
-    attr_accessor :link
+    attr_accessor :url
 
     # New set of notes for give +files+ and optional special labels.
     def initialize(files, options={})
@@ -46,7 +46,7 @@ module DNote
       @labels = [options[:labels] || DEFAULT_LABELS].flatten.compact
       @colon  = options[:colon].nil? ? true : options[:colon]
       @marker = options[:marker] #|| '#'
-      @link   = options[:link]
+      @url    = options[:url]
       @remark = {}
       parse
     end
@@ -79,7 +79,7 @@ module DNote
 
     # Gather notes.
     #--
-    # TODO: Play gold with Notes#parse.
+    # TODO: Play golf with Notes#parse.
     #++
     def parse
       records = []

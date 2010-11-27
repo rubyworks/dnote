@@ -65,9 +65,9 @@ module DNote
     end
 
     #
-    def link
-      if notes.link
-        notes.link % [file, line]
+    def url
+      if notes.url
+        notes.url % [file, line]
       else
         file
       end

@@ -63,6 +63,8 @@ As you can see the commandline interface is pretty straight-forward.
   OTHER OPTIONS:
       -l, --label LABEL                labels to collect
           --[no-]colon                 match labels with/without colon suffix
+      -m, --marker MARK                alternative remark marker
+      -u  --url TEMPLATE               url template for line entries (for HTML)
       -x, --exclude PATH               exclude file or directory
       -i, --ignore NAME                ignore based on any part of the pathname
       -t, --title TITLE                title to use in header

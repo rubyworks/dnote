@@ -62,7 +62,7 @@ module DNote
     # 
     #   "https://github.com/rubyworks/dnote/blob/master/%s#L%s"
     #
-    attr_accessor :link
+    attr_accessor :url
 
   private
 
@@ -84,6 +84,7 @@ module DNote
       @title   = DEFAULT_TITLE
       @dryrun  = false
       @marker  = nil
+      @url     = nil
     end
 
   public
@@ -100,7 +101,7 @@ module DNote
 
     # Run session.
     def run
-      notes = Notes.new(files, :labels=>labels, :colon=>colon, :marker=>marker, :link=>link)
+      notes = Notes.new(files, :labels=>labels, :colon=>colon, :marker=>marker, :url=>url)
       formatter = Format.new(notes) do |f|
         f.format   = format
         f.template = template
@@ -191,12 +192,12 @@ module DNote
           session.colon = val
         end
 
-        opt.on("--marker", '-m MARK', "Alternative remark marker") do |mark|
+        opt.on("--marker", "-m MARK", "alternative remark marker") do |mark|
            session.marker = mark 
         end
 
-        opt.on("--link TEMPLATE", "Link template for line entries (for HTML)") do |temp|
-           session.link = temp
+        opt.on("--url", "-u TEMPLATE", "url template for line entries (for HTML)") do |temp|
+           session.url = temp
         end
 
         opt.on("--exclude", "-x PATH", "exclude file or directory") do |path|
