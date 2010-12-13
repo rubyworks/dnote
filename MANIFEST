@@ -1,13 +1,8 @@
-#!mast -x Syckfile bin demo lib meta test [A-Z]*
+#!mast -x Syckfile -x PROFILE .ruby bin lib meta test try [A-Z]*
+.ruby
 bin/dnote
-demo/sample.bas
-demo/sample.js
-demo/sample.rb
 lib/dnote/core_ext.rb
 lib/dnote/format.rb
-lib/dnote/meta/data.rb
-lib/dnote/meta/package
-lib/dnote/meta/profile
 lib/dnote/note.rb
 lib/dnote/notes.rb
 lib/dnote/session.rb
@@ -48,13 +43,15 @@ lib/dnote/templates/yaml/file.erb
 lib/dnote/templates/yaml/label.erb
 lib/dnote/templates/yaml/list.erb
 lib/dnote/templates/yaml.erb
+lib/dnote/version.rb
 lib/dnote.rb
 lib/plugins/rake/task.rb
 lib/plugins/syckle/dnote.rb
-meta/data.rb
-meta/package
-meta/profile
 test/notes_case.rb
+try/sample.bas
+try/sample.js
+try/sample.rb
 HISTORY.rdoc
-LICENSE
+LICENSE.txt
 README.rdoc
+VERSION

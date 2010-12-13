@@ -1,10 +1,12 @@
 --- 
-title  : DNote
-suite  : rubyworks
-summary: Extract developer's notes from source code
-contact: trans <transfire@gmail.com>
-created: 2009-10-09
-authors: Thomas Sawyer
+title   : DNote
+summary : Extract developer's notes from source code
+contact : trans <transfire@gmail.com>
+authors : Thomas Sawyer
+
+requires:
+  - syckle (build)
+  - lemon  (test)
 
 description:
   DNote makes it easy to extract developer's
@@ -17,7 +19,10 @@ resources:
   wiki: http://wiki.github.com/rubyworks/dnote
   api : http://rubyworks.github.com/dnote/rdoc
   mail: http://groups.google.com/group/rubyworks-mailinglist
-  repo: git://github.com/rubyworks/dnote.git
 
-copyright: Copyright (c) 2009 Thomas Sawyer
+repositories:
+  public: git://github.com/rubyworks/dnote.git
 
+created      : 2009-10-09
+organization : RubyWorks
+copyright    : Copyright (c) 2009 Thomas Sawyer

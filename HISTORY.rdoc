@@ -1,5 +1,17 @@
 = RELEASE HISTORY
 
+== 1.5.0 / 2010-11-27
+
+This release adds a `--url` option for defining a URL template
+string used in certain HTML/XML formats. In addition a parsing
+bug was corrected that limited some notes to one line.
+
+Changes:
+
+* Add support for configurable URLs.
+* Fix multi-line note parsing bug.
+
+
 == 1.4.0 / 2010-06-26
 
 This release adds auto-determination of marker based on file
@@ -11,7 +23,7 @@ marker using the --marker option.
 
 Changes:
 
-* Support for automatic markers.
+* Add support for automatic markers.
 
 
 == 1.3.1 / 2010-06-11

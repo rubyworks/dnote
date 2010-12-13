@@ -25,7 +25,7 @@ it needs to follow this simple set of rules:
 
 2) Any note that requires more than one line must remain flush to the left
 margin (the margin is set by the first line). This is done because RDoc will mistake
-the note for a <tt>&lt;pre&gt;</tt> block if it is indented.
+the note for a <code>pre</code> block if it is indented.
 
   # LABEL: description ...
   # continue ...
