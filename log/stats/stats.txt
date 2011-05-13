@@ -1,0 +1,14 @@
+DNote Statistics
+Fri May 13 11:28:26 -0400 2011
+
+TYPE       Total     Code  -%-     Docs  -%-    Blank  -%-    Files
+Source      1213      700  57%      313  25%      200  16%       10
+Test          44       34   2%        0   0%       10   0%        1
+Total       1257      734  58%      313  24%      210  16%       11
+
+RATIO     Code    Docs    Blank   Test   Total
+Code       1.0     2.2     3.5    15.9     0.6
+Docs       0.4     1.0     1.6     7.1     0.3
+Blank      0.3     0.6     1.0     4.5     0.2
+Test       0.1     0.1     0.2     1.0     0.0
+Total      1.7     3.9     6.1    27.6     1.0

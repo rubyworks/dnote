@@ -1,0 +1,13 @@
+Fri, 13 May 2011 11:25:51 -0400
+lib/dnote.rb	Fri, 26 Nov 2010 16:38:50 -0500
+lib/dnote/string.rb	Sun, 07 Feb 2010 11:16:58 -0500
+lib/plugins/redline/dnote.rb	Wed, 04 May 2011 17:11:22 -0400
+lib/dnote/session.rb	Sat, 27 Nov 2010 10:25:17 -0500
+lib/dnote/notes.rb	Sat, 27 Nov 2010 10:27:18 -0500
+lib/dnote/version.rb	Mon, 13 Dec 2010 04:33:21 -0500
+lib/dnote/note.rb	Sat, 27 Nov 2010 10:48:05 -0500
+lib/plugins/rake/task.rb	Fri, 19 Feb 2010 10:32:22 -0500
+LICENSE.txt	Fri, 12 Nov 2010 23:40:07 -0500
+README.rdoc	Sat, 27 Nov 2010 11:45:06 -0500
+lib/dnote/core_ext.rb	Wed, 09 Jun 2010 09:03:04 -0400
+lib/dnote/format.rb	Sat, 20 Feb 2010 07:16:24 -0500

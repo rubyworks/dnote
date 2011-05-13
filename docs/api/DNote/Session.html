@@ -1,0 +1,847 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>Class: DNote::Session</title>
+
+  
+    <link rel="SHORTCUT ICON" href="../assets/icon/class.png">
+  
+
+  <link type="text/css" rel="stylesheet" href="../assets/rdoc.css" media="screen" />
+  <link type="text/css" rel="stylesheet" href="../assets/highlight/styles/github.css" title="GitHub" />
+
+  <script type="text/javascript" charset="utf-8" src="../assets/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/highlight/highlight.pack.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/quicksearch.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/main.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function() {
+      $('#documentation pre').wrapInner('<code></code>');
+      hljs.tabReplace = '    ';
+      hljs.initHighlightingOnLoad('ruby');
+
+	    hookSourceViews();
+	    hookDebuggingToggle();
+	    hookQuickSearch();
+	    highlightLocationTarget();
+
+	    $('ul.link-list a').bind( "click", highlightClickTarget );
+    });
+  </script>
+</head>
+<body class="class">
+<div id="main">
+
+  <div class="head">
+    <h1>
+      
+        <img src="../assets/icon/class.png" align="absmiddle">&nbsp;
+      
+      <a href="../index.html">&quot;DNote&quot;</a>&nbsp;
+      <a href="/">DNote::Session</a>
+    </h1>
+  </div>
+
+  <div id="metadata">
+    <div id="project-metadata">
+
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li class="file"><a href="../lib/dnote/session_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/dnote/session.rb">lib/dnote/session.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      <!-- What about Git info, or Hg info? This seems almost silly, albeit kind of cool. -->
+      <!-- TODO: generalize this for all SCMs -->
+
+      
+    </div>
+
+    <div id="class-metadata">
+
+      <!-- Parent Class -->
+      
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        <ul>
+          
+            
+              <li class="class">Object</li>
+            
+          
+        </ul>
+      </div>
+      
+
+      <!-- Namespace Contents -->
+      
+
+      <!-- Method Quickref -->
+      
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+            
+            <li class="singleton">
+              <a href="#method-c-main">::main</a>
+            </li>
+          
+            
+            <li class="singleton">
+              <a href="#method-c-new">::new</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-exclude-3D">#exclude=</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-files">#files</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-glob">#glob</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-ignore-3D">#ignore=</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-run">#run</a>
+            </li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Included Modules -->
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Information</h3>
+        <ul>
+        
+          <li class="file"><a href="../LICENSE_txt.html">LICENSE.txt</a></li>
+        
+          <li class="file"><a href="../README_rdoc.html">README.rdoc</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="../assets/icon/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <!-- classpage.html : classes -->
+        <ul class="link-list">
+        
+          <li class="module"><a href="../DNote.html">DNote</a></li>
+        
+          <li class="class"><a href="../DNote/Format.html">DNote::Format</a></li>
+        
+          <li class="class"><a href="../DNote/Format/ErbScope.html">DNote::Format::ErbScope</a></li>
+        
+          <li class="class"><a href="../DNote/Note.html">DNote::Note</a></li>
+        
+          <li class="class"><a href="../DNote/Notes.html">DNote::Notes</a></li>
+        
+          <li class="class"><a href="../DNote/Session.html">DNote::Session</a></li>
+        
+          <li class="module"><a href="../Redline.html">Redline</a></li>
+        
+          <li class="module"><a href="../Redline/Plugins.html">Redline::Plugins</a></li>
+        
+          <li class="class"><a href="../Redline/Plugins/DNote.html">Redline::Plugins::DNote</a></li>
+        
+          <li class="class"><a href="../Xacto.html">Xacto</a></li>
+        
+          <li class="module"><a href="../Xacto/String.html">Xacto::String</a></li>
+        
+          <li class="class"><a href="../DNoteTask.html">DNoteTask</a></li>
+        
+          <li class="module"><a href="../Enumerable.html">Enumerable</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+    </div>
+
+    <div id="validator-badges">
+      
+      <div style="float: right; margin-right: 5px;">
+        <a href="http://validator.w3.org/check/referer"><img src="../assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
+      </div>
+      Generated with <a href="http://rubyworks.github.com/newfish">Newfish</a> 0.2.0
+      <br/><br/>
+    </div>
+  </div>
+
+  <div id="documentation">
+
+    <div id="description">
+      
+        <h1>Session</h1>
+      
+
+      
+<p>User session which is used by commandline interface.</p>
+
+<p>By making this a class it makes it easy for external libraries to use this
+library just as if they were calling the commandline, but without the need
+to shellout.</p>
+
+    </div>
+
+    <!-- Constants -->
+    
+    <div id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt><a name="DIR">DIR</a></dt>
+        
+        <dd class="description"><p>Directory relative to this script. This is used to lookup the available
+format templates.</p></dd>
+        
+      
+        <dt><a name="DEFAULT_FORMAT">DEFAULT_FORMAT</a></dt>
+        
+        <dd class="description"><p>Default format.</p></dd>
+        
+      
+        <dt><a name="DEFAULT_TITLE">DEFAULT_TITLE</a></dt>
+        
+        <dd class="description"><p>Default title.</p></dd>
+        
+      
+      </dl>
+    </div>
+    
+
+    <!-- Attributes -->
+    
+    <div id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="paths-attribute-method" class="method-detail">
+        <a name="paths"></a>
+        
+        <a name="paths="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">paths</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Paths to include.</p>
+        
+        </div>
+      </div>
+      
+      <div id="exclude-attribute-method" class="method-detail">
+        <a name="exclude"></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">exclude</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Paths to exclude (match by pathname).</p>
+        
+        </div>
+      </div>
+      
+      <div id="ignore-attribute-method" class="method-detail">
+        <a name="ignore"></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">ignore</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Paths to ignore (match by basename).</p>
+        
+        </div>
+      </div>
+      
+      <div id="labels-attribute-method" class="method-detail">
+        <a name="labels"></a>
+        
+        <a name="labels="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">labels</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Labels to lookup. By default these are TODO, FIXME and OPTIMIZE.</p>
+        
+        </div>
+      </div>
+      
+      <div id="colon-attribute-method" class="method-detail">
+        <a name="colon"></a>
+        
+        <a name="colon="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">colon</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Selected labels can optionally do without the colon.</p>
+        
+        </div>
+      </div>
+      
+      <div id="marker-attribute-method" class="method-detail">
+        <a name="marker"></a>
+        
+        <a name="marker="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">marker</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Alternate remark marker. Useful to other languages besides Ruby.</p>
+        
+        </div>
+      </div>
+      
+      <div id="format-attribute-method" class="method-detail">
+        <a name="format"></a>
+        
+        <a name="format="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">format</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Output format.</p>
+        
+        </div>
+      </div>
+      
+      <div id="template-attribute-method" class="method-detail">
+        <a name="template"></a>
+        
+        <a name="template="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">template</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>If custom format, specify template file.</p>
+        
+        </div>
+      </div>
+      
+      <div id="title-attribute-method" class="method-detail">
+        <a name="title"></a>
+        
+        <a name="title="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">title</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Some format put a title at the top of the output. The default is
+“Developer’s Notes”.</p>
+        
+        </div>
+      </div>
+      
+      <div id="output-attribute-method" class="method-detail">
+        <a name="output"></a>
+        
+        <a name="output="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">output</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Output to a file instead of STDOUT.</p>
+        
+        </div>
+      </div>
+      
+      <div id="dryrun-attribute-method" class="method-detail">
+        <a name="dryrun"></a>
+        
+        <a name="dryrun="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">dryrun</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>If output path given, don’t actually write to disk.</p>
+        
+        </div>
+      </div>
+      
+      <div id="url-attribute-method" class="method-detail">
+        <a name="url"></a>
+        
+        <a name="url="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">url</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>String template for line URLs (mainly for HTML format). For example, <a
+href="../DNote.html">DNote</a> uses GitHub so we could use a link template:</p>
+
+<pre>&quot;https://github.com/rubyworks/dnote/blob/master/%s#L%s&quot;</pre>
+        
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- Methods -->
+    
+    <div id="public-class-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="main-method" class="method-detail ">
+        <a name="method-c-main"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">main</span><span
+            class="method-args">(*argv)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Commandline interface.</p>
+          
+
+          
+          <div class="method-source-code"
+            id="main-source">
+<pre>
+<span class="ruby-comment"># File lib/dnote/session.rb, line 152</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">main</span>(*<span class="ruby-identifier">argv</span>)
+  <span class="ruby-identifier">require</span> <span class="ruby-string">'optparse'</span>
+
+  <span class="ruby-identifier">session</span> = <span class="ruby-constant">Session</span>.<span class="ruby-identifier">new</span>
+
+  <span class="ruby-identifier">opts</span> = <span class="ruby-constant">OptionParser</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">opt</span><span class="ruby-operator">|</span>
+
+    <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">banner</span> = <span class="ruby-node">&quot;DNote v#{DNote::VERSION}&quot;</span>
+
+    <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">separator</span>(<span class="ruby-string">&quot; &quot;</span>)
+    <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">separator</span>(<span class="ruby-string">&quot;USAGE:\n  dnote [OPTIONS] path1 [path2 ...]&quot;</span>)
+
+    <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">separator</span>(<span class="ruby-string">&quot; &quot;</span>)
+    <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">separator</span>(<span class="ruby-string">&quot;OUTPUT FORMAT: (choose one)&quot;</span>)
+
+    <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&quot;--format&quot;</span>, <span class="ruby-string">&quot;-f NAME&quot;</span>, <span class="ruby-string">&quot;select a format [text]&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">format</span> = <span class="ruby-identifier">format</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&quot;--custom&quot;</span>, <span class="ruby-string">&quot;-c FILE&quot;</span>, <span class="ruby-string">&quot;use a custom ERB template&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">format</span> = <span class="ruby-string">'custom'</span>
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">template</span> = <span class="ruby-identifier">file</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&quot;--file&quot;</span>, <span class="ruby-string">&quot;shortcut for text/file format&quot;</span>) <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">format</span> = <span class="ruby-string">'text/file'</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&quot;--list&quot;</span>, <span class="ruby-string">&quot;shortcut for text/list format&quot;</span>) <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">format</span> = <span class="ruby-string">'text/list'</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">separator</span>(<span class="ruby-string">&quot; &quot;</span>)
+    <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">separator</span>(<span class="ruby-string">&quot;OTHER OPTIONS:&quot;</span>)
+
+    <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&quot;--label&quot;</span>, <span class="ruby-string">&quot;-l LABEL&quot;</span>, <span class="ruby-string">&quot;labels to collect&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">lbl</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">labels</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">lbl</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">':'</span>))
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&quot;--[no-]colon&quot;</span>, <span class="ruby-string">&quot;match labels with/without colon suffix&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">colon</span> = <span class="ruby-identifier">val</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&quot;--marker&quot;</span>, <span class="ruby-string">&quot;-m MARK&quot;</span>, <span class="ruby-string">&quot;alternative remark marker&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">mark</span><span class="ruby-operator">|</span>
+       <span class="ruby-identifier">session</span>.<span class="ruby-identifier">marker</span> = <span class="ruby-identifier">mark</span> 
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&quot;--url&quot;</span>, <span class="ruby-string">&quot;-u TEMPLATE&quot;</span>, <span class="ruby-string">&quot;url template for line entries (for HTML)&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">temp</span><span class="ruby-operator">|</span>
+       <span class="ruby-identifier">session</span>.<span class="ruby-identifier">url</span> = <span class="ruby-identifier">temp</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&quot;--exclude&quot;</span>, <span class="ruby-string">&quot;-x PATH&quot;</span>, <span class="ruby-string">&quot;exclude file or directory&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">exclude</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">path</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&quot;--ignore&quot;</span>, <span class="ruby-string">&quot;-i NAME&quot;</span>, <span class="ruby-string">&quot;ignore file based on any part of pathname&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">ignore</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">name</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&quot;--title&quot;</span>, <span class="ruby-string">&quot;-t TITLE&quot;</span>, <span class="ruby-string">&quot;title to use in header&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">title</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">title</span> = <span class="ruby-identifier">title</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&quot;--output&quot;</span>, <span class="ruby-string">&quot;-o PATH&quot;</span>, <span class="ruby-string">&quot;save to file or directory&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">output</span> = <span class="ruby-identifier">path</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&quot;--dryrun&quot;</span>, <span class="ruby-string">&quot;-n&quot;</span>, <span class="ruby-string">&quot;do not actually write to disk&quot;</span>) <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">dryrun</span> = <span class="ruby-keyword">true</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&quot;--debug&quot;</span>, <span class="ruby-string">&quot;debug mode&quot;</span>) <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">$DEBUG</span> = <span class="ruby-keyword">true</span>
+      <span class="ruby-identifier">$VERBOSE</span> = <span class="ruby-keyword">true</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">separator</span>(<span class="ruby-string">&quot; &quot;</span>)
+    <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">separator</span>(<span class="ruby-string">&quot;COMMAND OPTIONS:&quot;</span>)
+
+    <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on_tail</span>(<span class="ruby-string">'--templates'</span>, <span class="ruby-string">&quot;-T&quot;</span>, <span class="ruby-string">&quot;list available format templates&quot;</span>) <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">tdir</span>   = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">DIR</span>, <span class="ruby-string">'templates'</span>)
+      <span class="ruby-identifier">tfiles</span> = <span class="ruby-constant">Dir</span>[<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">tdir</span>, <span class="ruby-string">'**/*.erb'</span>)]
+      <span class="ruby-identifier">tnames</span> = <span class="ruby-identifier">tfiles</span>.<span class="ruby-identifier">map</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">tname</span><span class="ruby-operator">|</span> <span class="ruby-identifier">tname</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-identifier">tdir</span><span class="ruby-operator">+</span><span class="ruby-string">'/'</span>, <span class="ruby-string">''</span>).<span class="ruby-identifier">chomp</span>(<span class="ruby-string">'.erb'</span>) }
+      <span class="ruby-identifier">groups</span> = <span class="ruby-identifier">tnames</span>.<span class="ruby-identifier">group_by</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">tname</span><span class="ruby-operator">|</span> <span class="ruby-identifier">tname</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">'/'</span>).<span class="ruby-identifier">first</span> }
+      <span class="ruby-identifier">groups</span>.<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span>(<span class="ruby-identifier">type</span>, <span class="ruby-identifier">names</span>)<span class="ruby-operator">|</span>
+        <span class="ruby-identifier">puts</span>(<span class="ruby-string">&quot;%-18s &quot;</span> * <span class="ruby-identifier">names</span>.<span class="ruby-identifier">size</span>) <span class="ruby-operator">%</span> <span class="ruby-identifier">names</span>.<span class="ruby-identifier">sort</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">exit</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">on_tail</span>(<span class="ruby-string">'--help'</span>, <span class="ruby-string">'-h'</span>, <span class="ruby-string">&quot;show this help information&quot;</span>) <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-identifier">opt</span>
+      <span class="ruby-identifier">exit</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">parse!</span>(<span class="ruby-identifier">argv</span>)
+    <span class="ruby-identifier">session</span>.<span class="ruby-identifier">paths</span>.<span class="ruby-identifier">replace</span>(<span class="ruby-identifier">argv</span>)
+    <span class="ruby-identifier">session</span>.<span class="ruby-identifier">run</span>
+  <span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">err</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-identifier">err</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">$DEBUG</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-identifier">err</span>
+    <span class="ruby-identifier">exit</span> <span class="ruby-value">1</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="new-method" class="method-detail ">
+        <a name="method-c-new"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">new</span><span
+            class="method-args">(options={})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>New <a href="Session.html">Session</a>.</p>
+          
+
+          
+          <div class="method-source-code"
+            id="new-source">
+<pre>
+<span class="ruby-comment"># File lib/dnote/session.rb, line 70</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">options</span>={})
+  <span class="ruby-identifier">options</span> <span class="ruby-operator">||=</span> {}
+  <span class="ruby-identifier">initialize_defaults</span>
+  <span class="ruby-identifier">options</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">__send__</span>(<span class="ruby-node">&quot;#{k}=&quot;</span>, <span class="ruby-identifier">v</span>) }
+  <span class="ruby-keyword">yield</span>(<span class="ruby-keyword">self</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+    <div id="public-instance-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="exclude-3D-method" class="method-detail ">
+        <a name="method-i-exclude-3D"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">exclude=</span><span
+            class="method-args">(list)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Set exclude list ensuring that the value is an array.</p>
+          
+
+          
+          <div class="method-source-code"
+            id="exclude-3D-source">
+<pre>
+<span class="ruby-comment"># File lib/dnote/session.rb, line 93</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">exclude=</span>(<span class="ruby-identifier">list</span>)
+  <span class="ruby-ivar">@exclude</span> = [<span class="ruby-identifier">list</span>].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">compact</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="files-method" class="method-detail ">
+        <a name="method-i-files"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">files</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Collect path globs and remove exclusions. This method uses <a
+href="Session.html#attribute-i-paths">paths</a>, <a
+href="Session.html#attribute-i-exclude">exclude</a> and <a
+href="Session.html#attribute-i-ignore">ignore</a> to compile the list of
+files.</p>
+          
+
+          
+          <div class="method-source-code"
+            id="files-source">
+<pre>
+<span class="ruby-comment"># File lib/dnote/session.rb, line 117</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">files</span>
+  <span class="ruby-identifier">list</span> = [<span class="ruby-identifier">paths</span>].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">compact</span>
+  <span class="ruby-identifier">list</span> = [<span class="ruby-string">'**/*.rb'</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">list</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-identifier">list</span> = <span class="ruby-identifier">glob</span>(<span class="ruby-identifier">list</span>)
+  <span class="ruby-identifier">list</span> = <span class="ruby-identifier">list</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">glob</span>(<span class="ruby-identifier">exclude</span>)
+  <span class="ruby-identifier">list</span>.<span class="ruby-identifier">reject</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">path</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">'/'</span>).<span class="ruby-identifier">any?</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">part</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ignore</span>.<span class="ruby-identifier">any?</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">ig</span><span class="ruby-operator">|</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">fnmatch?</span>(<span class="ruby-identifier">ig</span>, <span class="ruby-identifier">part</span>) } }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="glob-method" class="method-detail ">
+        <a name="method-i-glob"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">glob</span><span
+            class="method-args">(paths)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Collect the file glob of each path given. If  a path is a directory, inclue
+all content.</p>
+          
+
+          
+          <div class="method-source-code"
+            id="glob-source">
+<pre>
+<span class="ruby-comment"># File lib/dnote/session.rb, line 129</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">glob</span>(<span class="ruby-identifier">paths</span>)
+  <span class="ruby-identifier">paths</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span>(<span class="ruby-identifier">path</span>)
+      <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">path</span>, <span class="ruby-string">'**/*'</span>))
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-identifier">path</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>.<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">uniq</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="ignore-3D-method" class="method-detail ">
+        <a name="method-i-ignore-3D"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">ignore=</span><span
+            class="method-args">(list)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Set ignore list ensuring that the value is an array.</p>
+          
+
+          
+          <div class="method-source-code"
+            id="ignore-3D-source">
+<pre>
+<span class="ruby-comment"># File lib/dnote/session.rb, line 98</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">ignore=</span>(<span class="ruby-identifier">list</span>)
+  <span class="ruby-ivar">@ignore</span> = [<span class="ruby-identifier">list</span>].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">compact</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="run-method" class="method-detail ">
+        <a name="method-i-run"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">run</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Run session.</p>
+          
+
+          
+          <div class="method-source-code"
+            id="run-source">
+<pre>
+<span class="ruby-comment"># File lib/dnote/session.rb, line 103</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">run</span>
+  <span class="ruby-identifier">notes</span> = <span class="ruby-constant">Notes</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">files</span>, <span class="ruby-value">:labels=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">labels</span>, <span class="ruby-value">:colon=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">colon</span>, <span class="ruby-value">:marker=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">marker</span>, <span class="ruby-value">:url=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">url</span>)
+  <span class="ruby-identifier">formatter</span> = <span class="ruby-constant">Format</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">notes</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">format</span>   = <span class="ruby-identifier">format</span>
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">template</span> = <span class="ruby-identifier">template</span>
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">title</span>    = <span class="ruby-identifier">title</span>
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">output</span>   = <span class="ruby-identifier">output</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">formatter</span>.<span class="ruby-identifier">render</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+
+  </div>
+
+
+  <div id="rdoc-debugging-section-dump" class="debugging-section">
+  
+    <p>Disabled; run with --debug to generate this.</p>
+  
+  </div>
+
+</main>
+</body>
+</html>
+

@@ -1,9 +1,11 @@
 <HTML>
 <HEAD>
   <TITLE>D'Note</TITLE>
-  <link REL="SHORTCUT ICON" HREF="assets/images/logo.jpg"/>
+
+  <link REL="SHORTCUT ICON" HREF="assets/logo.jpg"/>
+
   <style>
-    html { font-size: 12px; }
+    html { font-size: 14px; }
     body {
       padding: 0; 
       margin: 0;
@@ -12,8 +14,8 @@
       text-align: justify;
       /* background: url(../img/fade_yellow_up.jpg) bottom repeat-y; */
     }
-    p { font-size: 100%; color: silver; font-weight: bold; text-align: justify; margin: 20px 0; }
-    a  { text-decoration: none; font-size: 10pt; color: silver;  font-weight: bold; }
+    p { font-size: 100%; color: silver; font-weight: normal; text-align: justify; margin: 20px 0; }
+    a  { text-decoration: none; font-size: 1em; color: silver;  font-weight: bold; }
     a:hover { text-decoration: underline; }
     h1 { font-size: 100px; margin: 30px 0px; color: #222222; }
     h2 { padding-top: 20px; }
@@ -22,30 +24,37 @@
     pre { font-size: 95%; background: #eeeeee; padding: 15px 10px 0 10px; -moz-border-radius: 10px; color: #222222; font-weight: bold; font-family: courier, monospace; }
     code { font-family: courier, monospace; color: #ecc; }
 
-    .menu { padding: 20px 20px 20px 0; text-align: center; background: #222222; }
-    .head { height: 250px; text-align: center; border-top: 2px solid silver; border-bottom: 2px solid silver; }
-    .title { text-align: left; margin: 0 auto; width: 800px; }
+    #nav { height: 56px; }
+    #nav .menu { padding: 20px 20px 20px 0; text-align: center; background: #222222; }
+
+    #header { height: 250px; text-align: center; border-top: 2px solid silver; border-bottom: 2px solid silver; }
+    #header .title { text-align: left; margin: 0 auto; width: 800px; }
+
     .body { background: #222222; color: white; border-bottom: 2px solid silver; }
+    .body p { line-height: 1.6em; }
     .doc { padding: 20px; text-align: justify; margin: 0 auto; width: 800px; }
     .doc a { color: fee; }
-    .foot { padding: 20px; text-align: center; margin: 0 auto; width: 800px; }
-    .foot p { color: #222222; text-align: center; }
+
+    #footer { padding: 20px; text-align: center; margin: 0 auto; width: 800px; }
+    #footer p { color: #222222; text-align: center; }
+
+    p.notice { font-size: 150%; line-height: 1.2em; }
   </style>
 </HEAD>
 <BODY>
 
-<div class="nav">
+<div id="nav">
   <div class="menu">
-    <a href="http://wiki.github.com/proutils/dnote">Documentation</a> &nbsp;&nbsp;
-    <!-- <a href="qedoc/index.html">Demostrandum</a> &nbsp;&nbsp; -->
-    <a href="rdoc/index.html">API Reference</a> &nbsp;&nbsp;
-    <a href="http://googlegroups.com/group/proutils">Mailing List</a> &nbsp;&nbsp;
-    <a href="http://github.com/proutils/dnote">Development</a> &nbsp;&nbsp;
-    <a href="http://gemcutter.org/gems/dnote">Distribution</a> &nbsp;&nbsp;
+    <a href="http://wiki.github.com/proutils/dnote">Documentation</a> &nbsp;&nbsp;&nbsp;
+    <!-- <a href="qedoc/index.html">Demostrandum</a> &nbsp;&nbsp;&nbsp; -->
+    <a href="rdoc/index.html">API Reference</a> &nbsp;&nbsp;&nbsp;
+    <a href="http://googlegroups.com/group/proutils">Mailing List</a> &nbsp;&nbsp;&nbsp;
+    <a href="http://github.com/proutils/dnote">Development</a> &nbsp;&nbsp;&nbsp;
+    <a href="http://gemcutter.org/gems/dnote">Distribution</a> &nbsp;
   </div>
 </div>
 
-<div class="head">
+<div id="header">
   <div class="title">
     <img src="assets/images/logo.jpg" style="height: 250px;" align="right"/><br/>
     <h1>D'Note</h1>
@@ -55,10 +64,10 @@
 <div class="body">
   <div class="doc">
 
-  <p style="font-size: 150%;">Developer's take note! All those TODO's and FIXME's floating around
+  <p class="notice">Developer's take note! All those TODO's and FIXME's floating around
   your source code are rotting away. They are trapped, and in desperate need of your attention.</p>
 
-  <p style="font-size: 150%;">But not to fret! D'Note will help you liberate them. D'Note will scan your
+  <p class="notice">But not to fret! D'Note will help you liberate them. D'Note will scan your
   source code for labeled comments; collect, collate and sort them; and then return them to you in a
   format of your choosing. Wunderbar!</p>
 
@@ -128,6 +137,7 @@
   OTHER OPTIONS:
       -l, --label LABEL                labels to collect
           --[no-]colon                 match labels with/without colon suffix
+      -m, --marker MARK                Alternative remark marker
       -x, --exclude PATH               exclude file or directory
       -i, --ignore NAME                ignore based on any part of the pathname
       -t, --title TITLE                title to use in header
@@ -171,11 +181,11 @@
   </div>
 </div>
 
-<div class="foot">
+<div id="footer">
   <script type="text/javascript"><!--
-  google_ad_client = "pub-1126154564663472";
-  /* PROUTILS 09-10-14 728x90 */
-  google_ad_slot = "0711173189";
+  google_ad_client = "ca-pub-1126154564663472";
+  /* RUBYWORKS 09-10-02 728x90 */
+  google_ad_slot = "0788888658";
   google_ad_width = 728;
   google_ad_height = 90;
   //-->
@@ -187,6 +197,16 @@
   <br/><br/>
 
   <p>Copyright (c) 2009 Thomas Sawyer</p>
+</div>
+
+<div style="position: absolute; top: 58px; right: 0;">
+  <a href="http://github.com/rubyworks/dnote"><img src="assets/fork-me.png"/></a>
+</div>
+
+<div id="rubyworks" style="position: fixed; bottom: 5px; right: 5px; padding: 0; opacity: 0.3;" }
+  <a href="http://rubyworks.github.com">
+    <img src="http://rubyworks.github.com/assets/images/seal.png" height="175px" />
+  </a>
 </div>
 
 </BODY>
