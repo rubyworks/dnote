@@ -19,9 +19,8 @@ gemcutter:
   service: GemCutter
   active: true
 
-box:
-  service: Box
-  types  : [gem]
+gem:
+  service: Gem
   active : true
 
 syntax:
@@ -41,16 +40,16 @@ syntax:
 
 rdoc:
   service  : RDoc
-  template : redfish
-  include  : [ lib, README.rdoc, LICENSE ]
+  format   : newfish
+  include  : [ lib, README.rdoc, LICENSE.txt ]
   exclude  : [ "lib/dnote/templates" ]
   main     : ~
   extra    : ~
   output   : site/docs/api
   active   : true
 
-ridoc:
-  service  : RIDoc
+ri:
+  service  : RI
   include  : ~
   exclude  : ~
   output   : ri
