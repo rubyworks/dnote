@@ -1,9 +1,9 @@
-module Syckle::Plugins
+module Redline::Plugins
 
   # = Developmer's Notes Plugin
   #
   # This plugin goes through you source files and compiles
-  # an lit of any labeled comments. Labels are single word
+  # a list of any labeled comments. Labels are single word
   # prefixes to a comment ending in a colon. For example,
   # you might note somewhere in your code:
   #
@@ -15,13 +15,13 @@ module Syckle::Plugins
   # is a +notes/+ directory in the project's log directory.
   #
   #--
-  # TODO: Should this service be part of the +site+ cycle?
+  # TODO: Should this service be part of the +site+ track?
   #++
   class DNote < Service
 
-    cycle :main, :document
-    cycle :main, :reset
-    cycle :main, :clean
+    stop :main, :document
+    stop :main, :reset
+    stop :main, :clean
 
     # not that this is necessary, but ...
     #available do |project|
