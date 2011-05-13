@@ -1,4 +1,5 @@
 --- 
+name    : dnote
 title   : DNote
 summary : Extract developer's notes from source code
 contact : trans <transfire@gmail.com>

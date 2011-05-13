@@ -1,4 +1,4 @@
-#!mast -x Syckfile -x PROFILE .ruby bin lib meta test try [A-Z]*
+#!mast -x PROFILE .ruby bin lib test try [A-Z]*
 .ruby
 bin/dnote
 lib/dnote/core_ext.rb
@@ -46,7 +46,7 @@ lib/dnote/templates/yaml.erb
 lib/dnote/version.rb
 lib/dnote.rb
 lib/plugins/rake/task.rb
-lib/plugins/syckle/dnote.rb
+lib/plugins/redline/dnote.rb
 test/notes_case.rb
 try/sample.bas
 try/sample.js
@@ -55,3 +55,4 @@ HISTORY.rdoc
 LICENSE.txt
 README.rdoc
 VERSION
+Redfile
