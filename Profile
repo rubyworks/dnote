@@ -6,7 +6,7 @@ contact : trans <transfire@gmail.com>
 authors : Thomas Sawyer
 
 requires:
-  - syckle (build)
+  - redline (build)
   - lemon  (test)
 
 description:
