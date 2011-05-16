@@ -23,6 +23,9 @@ gem:
   service: Gem
   active : true
 
+grancher:
+  active: true
+
 syntax:
   service  : Syntax
   loadpath : ~

@@ -1,4 +1,4 @@
-#!mast -x PROFILE .ruby bin lib test try [A-Z]*
+#!mast .ruby bin lib test try [A-Z][A-Z]*
 .ruby
 bin/dnote
 lib/dnote/core_ext.rb
@@ -52,7 +52,5 @@ try/sample.bas
 try/sample.js
 try/sample.rb
 HISTORY.rdoc
-LICENSE.txt
+APACHE2.txt
 README.rdoc
-VERSION
-Redfile
