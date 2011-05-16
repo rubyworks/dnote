@@ -150,9 +150,9 @@ module DNote
     def match_special_regex(label, file)
       mark = remark(file)
       if colon
-        /#{mark}\s*#{Regexp.escape(label)}[:]\s*(.*?)$/
+        /#{mark}\s*#{Regexp.escape(label)}[:]\s+(.*?)$/
       else
-        /#{mark}\s*#{Regexp.escape(label)}[:]?\s*(.*?)$/
+        /#{mark}\s*#{Regexp.escape(label)}[:]?\s+(.*?)$/
       end
     end
 
@@ -167,13 +167,14 @@ module DNote
       return rec
     end
 
-    #
+    # Keep in mind that general non-colon matches have a higher potential
+    # of false positives.
     def match_general_regex(file)
       mark = remark(file)
       if colon
         /#{mark}\s*([A-Z]+)[:]\s+(.*?)$/
-      else
-        /#{mark}\s*([A-Z]+)[:]?\s+(.*?)$/
+      else 
+        /#{mark}\s*([A-Z]+)\s+(.*?)$/
       end
     end
 

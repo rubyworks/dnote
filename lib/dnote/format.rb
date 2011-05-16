@@ -102,7 +102,7 @@ module DNote
 
     #
     def write(result, fname=nil)
-      if output.end_with?('/') || File.directory?(output)
+      if output.to_s[-1,1] == '/' || File.directory?(output)
         fmt  = format.split('/').first
         ext  = EXTENSIONS[fmt] || fmt
         file = File.join(output, fname || "notes.#{ext}")
