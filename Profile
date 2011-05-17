@@ -6,8 +6,9 @@ contact : trans <transfire@gmail.com>
 authors : Thomas Sawyer
 
 requires:
+  - lemon   (test)
   - redline (build)
-  - lemon  (test)
+  - reap    (build)
 
 description:
   DNote makes it easy to extract developer's

@@ -1,13 +1,13 @@
 --- !ruby/object:Gem::Specification 
 name: dnote
 version: !ruby/object:Gem::Version 
-  hash: 3
+  hash: 1
   prerelease: false
   segments: 
   - 1
   - 5
-  - 0
-  version: 1.5.0
+  - 1
+  version: 1.5.1
 platform: ruby
 authors: 
 - Thomas Sawyer
@@ -15,11 +15,11 @@ autorequire:
 bindir: bin
 cert_chain: []
 
-date: 2011-05-13 00:00:00 -04:00
+date: 2011-05-17 00:00:00 -04:00
 default_executable: 
 dependencies: 
 - !ruby/object:Gem::Dependency 
-  name: syckle
+  name: lemon
   prerelease: false
   requirement: &id001 !ruby/object:Gem::Requirement 
     none: false
@@ -33,7 +33,7 @@ dependencies:
   type: :development
   version_requirements: *id001
 - !ruby/object:Gem::Dependency 
-  name: lemon
+  name: redline
   prerelease: false
   requirement: &id002 !ruby/object:Gem::Requirement 
     none: false
@@ -46,6 +46,20 @@ dependencies:
         version: "0"
   type: :development
   version_requirements: *id002
+- !ruby/object:Gem::Dependency 
+  name: reap
+  prerelease: false
+  requirement: &id003 !ruby/object:Gem::Requirement 
+    none: false
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        hash: 3
+        segments: 
+        - 0
+        version: "0"
+  type: :development
+  version_requirements: *id003
 description: DNote makes it easy to extract developer's notes from source code, and supports almost any language.
 email: transfire@gmail.com
 executables: 
@@ -108,10 +122,8 @@ files:
 - try/sample.js
 - try/sample.rb
 - HISTORY.rdoc
-- LICENSE.txt
+- APACHE2.txt
 - README.rdoc
-- VERSION
-- Redfile
 has_rdoc: true
 homepage: http://rubyworks.github.com/dnote
 licenses: []

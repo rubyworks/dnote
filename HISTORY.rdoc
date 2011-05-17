@@ -1,5 +1,16 @@
 = RELEASE HISTORY
 
+== 1.5.1 / 2011-05-17
+
+This release simply fixes the false note match that can arise when
+a class or module name with double-colons starts a comment line.
+We have changed the regex to REQUIRE a space after the label colon.
+
+Changes:
+
+* Regex changed to REQUIRE space after label colon.
+
+
 == 1.5.0 / 2010-11-27
 
 This release adds a `--url` option for defining a URL template

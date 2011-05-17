@@ -23,15 +23,19 @@ maintainers: []
 
 requires: 
 - group: 
-  - build
-  name: syckle
-  version: 0+
-- group: 
   - test
   name: lemon
   version: 0+
+- group: 
+  - build
+  name: redline
+  version: 0+
+- group: 
+  - build
+  name: reap
+  version: 0+
 manifest: MANIFEST
-version: 1.5.0
+version: 1.5.1
 licenses: []
 
 copyright: Copyright (c) 2009 Thomas Sawyer
