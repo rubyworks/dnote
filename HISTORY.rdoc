@@ -1,13 +1,19 @@
 = RELEASE HISTORY
 
-== 1.5.1 / 2011-05-17
+== 1.6.0 / 2011-05-17
 
-This release simply fixes the false note match that can arise when
+This release adds code conext output. Select the number of
+context lines to display with the `-c` option. Currently
+only the HTML, YAML and JSON formats support context.
+
+This release also fixes the false note match that can arise when
 a class or module name with double-colons starts a comment line.
-We have changed the regex to REQUIRE a space after the label colon.
+We have changed the regex to ALWAYS REQUIRE a space after the
+label colon. Please make a note of it!
 
 Changes:
 
+* Add code context count option and output.
 * Regex changed to REQUIRE space after label colon.
 
 

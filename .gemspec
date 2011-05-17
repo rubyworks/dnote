@@ -1,13 +1,13 @@
 --- !ruby/object:Gem::Specification 
 name: dnote
 version: !ruby/object:Gem::Version 
-  hash: 1
+  hash: 15
   prerelease: false
   segments: 
   - 1
-  - 5
-  - 1
-  version: 1.5.1
+  - 6
+  - 0
+  version: 1.6.0
 platform: ruby
 authors: 
 - Thomas Sawyer
