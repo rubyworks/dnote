@@ -64,6 +64,9 @@ module Redline::Plugins
     # Title to use if temaplte can use it.
     attr_accessor :title
 
+    # Number of context lines to display.
+    attr_accessor :lines
+
     #
     def output=(path)
       @output = Pathname.new(path)
@@ -85,6 +88,7 @@ module Redline::Plugins
         s.ignore  = ignore
         s.labels  = labels #|| DEFAULT_LABELS   
         s.title   = title
+        s.context = lines
         s.output  = output
         s.dryrun  = trial?
       end

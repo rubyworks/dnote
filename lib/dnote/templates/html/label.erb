@@ -32,6 +32,11 @@
 <% line_notes.each do |note| %>
         <li class="note <%= label.downcase %>" ref="<%= note.line %>">
           <%= h note.text %> <sup><a href="<%= note.url %>"><%= note.line %></a></sup>
+<% if note.code? %>
+<pre>
+<%= note.code %>
+</pre>
+<% end %>
         </li>
 <% end %>
       </ol></li>

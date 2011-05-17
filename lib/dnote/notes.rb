@@ -40,14 +40,20 @@ module DNote
     # Link template.
     attr_accessor :url
 
+    # Number of lines of context to show.
+    attr_accessor :context
+
     # New set of notes for give +files+ and optional special labels.
     def initialize(files, options={})
-      @files  = [files].flatten
-      @labels = [options[:labels] || DEFAULT_LABELS].flatten.compact
-      @colon  = options[:colon].nil? ? true : options[:colon]
-      @marker = options[:marker] #|| '#'
-      @url    = options[:url]
-      @remark = {}
+      @files   = [files].flatten
+      @labels  = [options[:labels] || DEFAULT_LABELS].flatten.compact
+      @colon   = options[:colon].nil? ? true : options[:colon]
+      @marker  = options[:marker] #|| '#'
+      @url     = options[:url]
+      @context = options[:context] || 0
+
+      @remark  = {}
+
       parse
     end
 
@@ -87,16 +93,17 @@ module DNote
         next unless File.file?(fname)
         #next unless fname =~ /\.rb$/      # TODO: should this be done?
         mark = remark(fname)
-        lineno, save, text = 0, nil, nil
+        lineno, note, text, capt = 0, nil, nil, nil
         File.readlines(fname).each do |line|
           #while line = f.gets
             lineno += 1
-            save = match(line, lineno, fname)
-            if save
+            note = match(line, lineno, fname)
+            if note
               #file = fname
-              text = save.text
-              #save = {'label'=>label,'file'=>file,'line'=>line_no,'note'=>text}
-              records << save
+              text = note.text
+              capt = note.capture
+              #note = {'label'=>label,'file'=>file,'line'=>line_no,'note'=>text}
+              records << note
             else
               if text
                 case line
@@ -113,6 +120,10 @@ module DNote
                   text.strip!
                   text = nil
                 end
+              else
+                if line !~ /^\s*#{mark}/
+                  capt << line if capt && capt.size < context
+                end
               end
             end
           #end
@@ -122,7 +133,7 @@ module DNote
       @notes  = records.sort
     end
 
-    #
+    # Is this line a note?
     def match(line, lineno, file)
       if labels.empty?
         match_general(line, lineno, file)

@@ -8,7 +8,7 @@ module DNote
   class Note
 
     # Number of lines to provide in source context.
-    CONTEXT_DEPTH = 5
+    #CONTEXT_DEPTH = 5
 
     # Set of notes to which this note belongs.
     attr :notes
@@ -28,6 +28,9 @@ module DNote
     # Remark marker used in parsing the note.
     attr :mark
 
+    # Contextual lines of code.
+    attr :capture
+
     # Initialize new Note instance.
     def initialize(notes, file, label, line, text, mark)
       @notes   = notes
@@ -37,6 +40,7 @@ module DNote
       @line    = line
       @text    = text.rstrip
       @mark    = mark
+      @capture = []
     end
 
     # Convert to string representation.
@@ -64,6 +68,7 @@ module DNote
     # Convert to Hash.
     #--
     # TODO: Add +url+?
+    # TODO: Add +code+? Problem is that xml needs code in CDATA.
     #++
     def to_h
       { 'label'=>label, 'text'=>textline, 'file'=>file, 'line'=>line }
@@ -71,7 +76,7 @@ module DNote
 
     # Convert to Hash, leaving the note text verbatim.
     def to_h_raw
-      { 'label'=>label, 'text'=>text, 'file'=>file, 'line'=>line }
+      { 'label'=>label, 'text'=>text, 'file'=>file, 'line'=>line, 'code'=>code }
     end
 
     # Convert to JSON.
@@ -94,15 +99,25 @@ module DNote
       end
     end
 
+    #
+    def code
+      unindent(capture).join
+    end
+
+    # Is there code to show?
+    def code?
+      !capture.empty?
+    end
+
+=begin
     # This isn't being used currently b/c the URL solution as deeemd better,
-    # but the code is here for custom templates. Note that the CONTEXT_DEPTH
-    # is presently a fixed value (5 lines).
-    def context
+    # but the code is here for custom templates.
+    def capture
       @context ||= (
         lines = file_cache(file) #.lines.to_a
         count = line()
         count +=1 while /^\s*#{mark}/ =~ lines[count]
-        lines[count, CONTEXT_DEPTH]
+        lines[count, context_depth]
       )
     end
 
@@ -110,6 +125,24 @@ module DNote
     def file_cache(file)
       @@file_cache ||= {}
       @@file_cache[file] ||= File.read(file).lines.to_a
+    end
+=end
+
+    private
+
+    # Remove blank space from lines.
+    def unindent(lines)
+      dents = []
+      lines.each do |line|
+        if md = /^([\ ]*)/.match(line)
+          size = md[1].size
+          dents << md[1]
+        end
+      end
+      dent = dents.min{ |a,b| a.size <=> b.size }
+      lines.map do |line|
+        line.sub(dent, '')
+      end
     end
 
   end

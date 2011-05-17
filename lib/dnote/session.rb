@@ -64,6 +64,9 @@ module DNote
     #
     attr_accessor :url
 
+    # Number of lines of context to display. The default is zero.
+    attr_accessor :context
+
   private
 
     # New Session.
@@ -85,6 +88,7 @@ module DNote
       @dryrun  = false
       @marker  = nil
       @url     = nil
+      @context = 0
     end
 
   public
@@ -101,7 +105,7 @@ module DNote
 
     # Run session.
     def run
-      notes = Notes.new(files, :labels=>labels, :colon=>colon, :marker=>marker, :url=>url)
+      notes = Notes.new(files, :labels=>labels, :colon=>colon, :marker=>marker, :url=>url, :context=>context)
       formatter = Format.new(notes) do |f|
         f.format   = format
         f.template = template
@@ -155,7 +159,6 @@ module DNote
       session = Session.new
 
       opts = OptionParser.new do |opt|
-
         opt.banner = "DNote v#{DNote::VERSION}"
 
         opt.separator(" ")
@@ -196,8 +199,12 @@ module DNote
            session.marker = mark 
         end
 
-        opt.on("--url", "-u TEMPLATE", "url template for line entries (for HTML)") do |temp|
-           session.url = temp
+        opt.on("--url", "-u TEMPLATE", "url template for line entries (for HTML)") do |url|
+           session.url = url
+        end
+
+        opt.on("--context", "-c INTEGER", "number of lines of context to display") do |int|
+           session.context = int.to_i
         end
 
         opt.on("--exclude", "-x PATH", "exclude file or directory") do |path|
@@ -234,7 +241,7 @@ module DNote
           tnames = tfiles.map{ |tname| tname.sub(tdir+'/', '').chomp('.erb') }
           groups = tnames.group_by{ |tname| tname.split('/').first }
           groups.sort.each do |(type, names)|
-            puts("%-18s " * names.size) % names.sort
+            puts("%-18s " * names.size % names.sort)
           end
           exit
         end
