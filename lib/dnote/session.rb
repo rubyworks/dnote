@@ -171,7 +171,7 @@ module DNote
           session.format = format
         end
 
-        opt.on("--custom", "-c FILE", "use a custom ERB template") do |file|
+        opt.on("--custom", "-C FILE", "use a custom ERB template") do |file|
           session.format = 'custom'
           session.template = file
         end
