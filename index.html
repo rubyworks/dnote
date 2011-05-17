@@ -130,18 +130,20 @@
    
   OUTPUT FORMAT: (choose one)
       -f, --format NAME                select a format [text]
-      -c, --custom FILE                use a custom ERB template
+      -C, --custom FILE                use a custom ERB template
           --file                       shortcut for text/file format
           --list                       shortcut for text/list format
-   
+
   OTHER OPTIONS:
       -l, --label LABEL                labels to collect
           --[no-]colon                 match labels with/without colon suffix
-      -m, --marker MARK                Alternative remark marker
+      -m, --marker MARK                alternative remark marker
+      -u, --url TEMPLATE               url template for line entries (for HTML)
+      -c, --context INTEGER            number of lines of context to display
       -x, --exclude PATH               exclude file or directory
-      -i, --ignore NAME                ignore based on any part of the pathname
+      -i, --ignore NAME                ignore file based on any part of pathname
       -t, --title TITLE                title to use in header
-      -o, --output PATH                name of file or directory
+      -o, --output PATH                save to file or directory
       -n, --dryrun                     do not actually write to disk
           --debug                      debug mode
    
