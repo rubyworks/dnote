@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>Class: DNoteTask</title>
+
+  
+    <link rel="SHORTCUT ICON" href="./assets/icon/class.png">
+  
+
+  <link type="text/css" rel="stylesheet" href="./assets/rdoc.css" media="screen" />
+  <link type="text/css" rel="stylesheet" href="./assets/highlight/styles/github.css" title="GitHub" />
+
+  <script type="text/javascript" charset="utf-8" src="./assets/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./assets/highlight/highlight.pack.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./assets/quicksearch.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./assets/main.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function() {
+      $('#documentation pre').wrapInner('<code></code>');
+      hljs.tabReplace = '    ';
+      hljs.initHighlightingOnLoad('ruby');
+
+	    hookSourceViews();
+	    hookDebuggingToggle();
+	    hookQuickSearch();
+	    highlightLocationTarget();
+
+	    $('ul.link-list a').bind( "click", highlightClickTarget );
+    });
+  </script>
+</head>
+<body class="class">
+<div id="main">
+
+  <div class="head">
+    <h1>
+      
+        <img src="./assets/icon/class.png" align="absmiddle">&nbsp;
+      
+      <a href="./index.html">&quot;DNote&quot;</a>&nbsp;
+      <a href="/">DNoteTask</a>
+    </h1>
+  </div>
+
+  <div id="metadata">
+    <div id="project-metadata">
+
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li class="file"><a href="./lib/plugins/rake/task_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/plugins/rake/task.rb">lib/plugins/rake/task.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      <!-- What about Git info, or Hg info? This seems almost silly, albeit kind of cool. -->
+      <!-- TODO: generalize this for all SCMs -->
+
+      
+    </div>
+
+    <div id="class-metadata">
+
+      <!-- Parent Class -->
+      
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        <ul>
+          
+            
+              <li class="class">Rake::TaskLib</li>
+            
+          
+        </ul>
+      </div>
+      
+
+      <!-- Namespace Contents -->
+      
+
+      <!-- Method Quickref -->
+      
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+            
+            <li class="method">
+              <a href="#method-i-clean">#clean</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-define">#define</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-document">#document</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-init">#init</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-reset">#reset</a>
+            </li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Included Modules -->
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Information</h3>
+        <ul>
+        
+          <li class="file"><a href="./README_rdoc.html">README.rdoc</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="./assets/icon/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <!-- classpage.html : classes -->
+        <ul class="link-list">
+        
+          <li class="module"><a href="./DNote.html">DNote</a></li>
+        
+          <li class="class"><a href="./DNote/Format.html">DNote::Format</a></li>
+        
+          <li class="class"><a href="./DNote/Format/ErbScope.html">DNote::Format::ErbScope</a></li>
+        
+          <li class="class"><a href="./DNote/Note.html">DNote::Note</a></li>
+        
+          <li class="class"><a href="./DNote/Notes.html">DNote::Notes</a></li>
+        
+          <li class="class"><a href="./DNote/Session.html">DNote::Session</a></li>
+        
+          <li class="module"><a href="./Redline.html">Redline</a></li>
+        
+          <li class="module"><a href="./Redline/Plugins.html">Redline::Plugins</a></li>
+        
+          <li class="class"><a href="./Redline/Plugins/DNote.html">Redline::Plugins::DNote</a></li>
+        
+          <li class="class"><a href="./Xacto.html">Xacto</a></li>
+        
+          <li class="module"><a href="./Xacto/String.html">Xacto::String</a></li>
+        
+          <li class="class"><a href="./DNoteTask.html">DNoteTask</a></li>
+        
+          <li class="module"><a href="./Enumerable.html">Enumerable</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+    </div>
+
+    <div id="validator-badges">
+      
+      <div style="float: right; margin-right: 5px;">
+        <a href="http://validator.w3.org/check/referer"><img src="./assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
+      </div>
+      Generated with <a href="http://rubyworks.github.com/newfish">Newfish</a> 0.2.0
+      <br/><br/>
+    </div>
+  </div>
+
+  <div id="documentation">
+
+    <div id="description">
+      
+
+      
+<h1>Developmer’s Notes Rake Task</h1>
+
+    </div>
+
+    <!-- Constants -->
+    
+    <div id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt><a name="DEFAULT_LABELS">DEFAULT_LABELS</a></dt>
+        
+        <dd class="description"><p>Default note labels to looked for in source code.</p></dd>
+        
+      
+      </dl>
+    </div>
+    
+
+    <!-- Attributes -->
+    
+    <div id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="files-attribute-method" class="method-detail">
+        <a name="files"></a>
+        
+        <a name="files="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">files</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>File paths to search.</p>
+        
+        </div>
+      </div>
+      
+      <div id="labels-attribute-method" class="method-detail">
+        <a name="labels"></a>
+        
+        <a name="labels="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">labels</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Labels to document. Defaults are: TODO, FIXME, OPTIMIZE and DEPRECATE.</p>
+        
+        </div>
+      </div>
+      
+      <div id="formats-attribute-method" class="method-detail">
+        <a name="formats"></a>
+        
+        <a name="formats="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">formats</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Formats (xml, html, rdoc, rdoc/list and so on).</p>
+        
+        </div>
+      </div>
+      
+      <div id="exclude-attribute-method" class="method-detail">
+        <a name="exclude"></a>
+        
+        <a name="exclude="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">exclude</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Exclude paths.</p>
+        
+        </div>
+      </div>
+      
+      <div id="ignore-attribute-method" class="method-detail">
+        <a name="ignore"></a>
+        
+        <a name="ignore="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">ignore</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Ignore paths based on any part of pathname.</p>
+        
+        </div>
+      </div>
+      
+      <div id="output-attribute-method" class="method-detail">
+        <a name="output"></a>
+        
+        <a name="output="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">output</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Output directory to save notes file. Defaults to <tt>dnote/</tt> under the
+project log directory (eg. <tt>log/dnote/</tt>).</p>
+        
+        </div>
+      </div>
+      
+      <div id="title-attribute-method" class="method-detail">
+        <a name="title"></a>
+        
+        <a name="title="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">title</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Title to use if temaplte can use it.</p>
+        
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- Methods -->
+    
+    <div id="public-instance-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="clean-method" class="method-detail ">
+        <a name="method-i-clean"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">clean</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Remove output files.</p>
+          
+
+          
+          <div class="method-source-code"
+            id="clean-source">
+<pre>
+<span class="ruby-comment"># File lib/plugins/rake/task.rb, line 94</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">clean</span>
+  <span class="ruby-comment">#if File.directory?(output)</span>
+    <span class="ruby-identifier">formats</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">format</span> <span class="ruby-operator">==</span> <span class="ruby-string">'index'</span>
+        <span class="ruby-identifier">file</span> = (<span class="ruby-identifier">output</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;index.html&quot;</span>).<span class="ruby-identifier">to_s</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">ext</span> = <span class="ruby-operator">::</span><span class="ruby-constant">DNote</span><span class="ruby-operator">::</span><span class="ruby-constant">Format</span><span class="ruby-operator">::</span><span class="ruby-constant">EXTENSIONS</span>[<span class="ruby-identifier">format</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">format</span>
+        <span class="ruby-identifier">file</span> = (<span class="ruby-identifier">output</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot;notes.#{ext}&quot;</span>).<span class="ruby-identifier">to_s</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">rm</span>(<span class="ruby-identifier">file</span>)
+      <span class="ruby-identifier">report</span> <span class="ruby-node">&quot;Removed #{output}&quot;</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-comment">#else</span>
+  <span class="ruby-comment">#  rm(output)</span>
+  <span class="ruby-comment">#  report &quot;Removed #{output}&quot;</span>
+  <span class="ruby-comment">#end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="define-method" class="method-detail ">
+        <a name="method-i-define"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">define</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="define-source">
+<pre>
+<span class="ruby-comment"># File lib/plugins/rake/task.rb, line 48</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">define</span>
+  <span class="ruby-identifier">desc</span> <span class="ruby-string">&quot;Collect Developer's Notes&quot;</span>
+  <span class="ruby-identifier">task</span> <span class="ruby-string">'dnote'</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">document</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">task</span> <span class="ruby-string">'dnote:clobber'</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">clean</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">task</span> <span class="ruby-value">:clobber</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">'dnote:clobber'</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="document-method" class="method-detail ">
+        <a name="method-i-document"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">document</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Generate notes document(s).</p>
+          
+
+          
+          <div class="method-source-code"
+            id="document-source">
+<pre>
+<span class="ruby-comment"># File lib/plugins/rake/task.rb, line 60</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">document</span>
+  <span class="ruby-identifier">abort</span> <span class="ruby-node">&quot;dnote: #{output} is not a directory&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">output</span>.<span class="ruby-identifier">directory?</span>
+
+  <span class="ruby-identifier">session</span> = <span class="ruby-operator">::</span><span class="ruby-constant">DNote</span><span class="ruby-operator">::</span><span class="ruby-constant">Session</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">s</span>.<span class="ruby-identifier">paths</span>   = <span class="ruby-identifier">files</span>
+    <span class="ruby-identifier">s</span>.<span class="ruby-identifier">exclude</span> = <span class="ruby-identifier">exclude</span>
+    <span class="ruby-identifier">s</span>.<span class="ruby-identifier">ignore</span>  = <span class="ruby-identifier">ignore</span>
+    <span class="ruby-identifier">s</span>.<span class="ruby-identifier">labels</span>  = <span class="ruby-identifier">labels</span> <span class="ruby-comment">#|| DEFAULT_LABELS   </span>
+    <span class="ruby-identifier">s</span>.<span class="ruby-identifier">title</span>   = <span class="ruby-identifier">title</span>
+    <span class="ruby-identifier">s</span>.<span class="ruby-identifier">output</span>  = <span class="ruby-identifier">output</span>
+    <span class="ruby-identifier">s</span>.<span class="ruby-identifier">dryrun</span>  = <span class="ruby-identifier">application</span>.<span class="ruby-identifier">options</span>.<span class="ruby-identifier">dryrun</span> <span class="ruby-comment">#trial?</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">formats</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">format</span> <span class="ruby-operator">==</span> <span class="ruby-string">'index'</span>
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">format</span> = <span class="ruby-string">'html'</span>
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">output</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">output</span>, <span class="ruby-string">'index.html'</span>)
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">format</span> = <span class="ruby-identifier">format</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">session</span>.<span class="ruby-identifier">run</span>
+    <span class="ruby-identifier">report</span> <span class="ruby-node">&quot;Updated #{output.to_s.sub(Dir.pwd+'/','')}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">trial?</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="init-method" class="method-detail ">
+        <a name="method-i-init"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">init</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="init-source">
+<pre>
+<span class="ruby-comment"># File lib/plugins/rake/task.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">init</span>
+  <span class="ruby-identifier">require</span> <span class="ruby-string">'dnote'</span>
+  <span class="ruby-identifier">require</span> <span class="ruby-string">'dnote/format'</span>
+  <span class="ruby-ivar">@files</span>   = <span class="ruby-string">&quot;**/*.rb&quot;</span>
+  <span class="ruby-ivar">@output</span>  = <span class="ruby-string">'log/dnote'</span>
+  <span class="ruby-ivar">@formats</span> = [<span class="ruby-string">'index'</span>]
+  <span class="ruby-ivar">@labels</span>  = <span class="ruby-keyword">nil</span> <span class="ruby-comment">#DEFAULT_LABELS</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="reset-method" class="method-detail ">
+        <a name="method-i-reset"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">reset</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>Reset output directory, marking it as out-of-date.</p>
+          
+
+          
+          <div class="method-source-code"
+            id="reset-source">
+<pre>
+<span class="ruby-comment"># File lib/plugins/rake/task.rb, line 86</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">reset</span>
+  <span class="ruby-comment">#if File.directory?(output)</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">utime</span>(<span class="ruby-value">0</span>,<span class="ruby-value">0</span>,<span class="ruby-identifier">output</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">$NOOP</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Marked #{output} as out-of-date&quot;</span>
+  <span class="ruby-comment">#end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+
+  </div>
+
+
+  <div id="rdoc-debugging-section-dump" class="debugging-section">
+  
+    <p>Disabled; run with --debug to generate this.</p>
+  
+  </div>
+
+</main>
+</body>
+</html>
+
