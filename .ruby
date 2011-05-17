@@ -35,7 +35,7 @@ requires:
   name: reap
   version: 0+
 manifest: MANIFEST
-version: 1.6.0
+version: 1.6.1
 licenses: []
 
 copyright: Copyright (c) 2009 Thomas Sawyer

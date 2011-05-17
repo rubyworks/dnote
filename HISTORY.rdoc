@@ -1,5 +1,17 @@
 = RELEASE HISTORY
 
+
+== 1.6.1 / 2011-05-18
+
+Last release reused the `-c` option for context lines. This clobbered
+the shortcut option for `--custom`. To fix this release capitalizes
+the shortcut to `-C`.
+
+Changes:
+
+* Capitalize custom shortcut option (-c becomes -C).
+
+
 == 1.6.0 / 2011-05-17
 
 This release adds code conext output. Select the number of
