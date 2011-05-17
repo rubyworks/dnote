@@ -4,3 +4,7 @@ file "lib/**/*.rb" do
   system "lemon -Ilib test/*_case.rb"
 end
 
+trip :test do
+  system "lemon -Ilib test/*_case.rb"
+end
+
