@@ -48,7 +48,7 @@ rdoc:
   exclude  : [ "lib/dnote/templates" ]
   main     : ~
   extra    : ~
-  output   : site/docs/api
+  output   : site/doc
   active   : true
 
 ri:
@@ -64,6 +64,7 @@ dnote:
   labels   : ~
   output   : ~
   format   : ~
+  lines    : 5
   active   : true
 
 stats:
