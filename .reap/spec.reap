@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+file "Profile", "Version" do
+  system "pom spec -u"
+  system "pom gemspec -u"
+end
+
+#file "Version" do
+#  system "pom spec -u"
+#  system "pom gemspec -u"
+#end
+
+file "Manifest", "MANIFEST" do
+  system "pom gemspec -u"
+end
+
