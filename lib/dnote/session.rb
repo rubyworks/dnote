@@ -95,12 +95,12 @@ module DNote
 
     # Set exclude list ensuring that the value is an array.
     def exclude=(list)
-      @exclude = [list].flatten.compact
+      @exclude = [list].compact.flatten.compact
     end
 
     # Set ignore list ensuring that the value is an array.
     def ignore=(list)
-      @ignore = [list].flatten.compact
+      @ignore = [list].compact.flatten.compact
     end
 
     # Run session.

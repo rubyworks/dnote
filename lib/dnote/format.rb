@@ -45,6 +45,7 @@ module DNote
       @format  = 'text'
       @subtype = 'label'
       @title   = "Developer's Notes"
+      @dryrun  = false
       options.each{ |k,v| __send__("#{k}=", v) if v }
       yield(self) if block_given?
     end
