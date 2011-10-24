@@ -1,5 +1,6 @@
-#!mast .ruby bin lib test try [A-Z][A-Z]*
+#!mast .ruby .yardopts bin lib man spec test try [A-Z]*.*
 .ruby
+.yardopts
 bin/dnote
 lib/dnote/core_ext.rb
 lib/dnote/format.rb
@@ -46,11 +47,10 @@ lib/dnote/templates/yaml.erb
 lib/dnote/version.rb
 lib/dnote.rb
 lib/plugins/rake/task.rb
-lib/plugins/redline/dnote.rb
 test/notes_case.rb
 try/sample.bas
 try/sample.js
 try/sample.rb
 HISTORY.rdoc
-APACHE2.txt
 README.rdoc
+COPYING.rdoc

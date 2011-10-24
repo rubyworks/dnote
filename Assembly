@@ -1,0 +1,35 @@
+---
+email:
+  service : Email
+  mailto  :
+    - ruby-talk@ruby-lang.org
+    - rubyworks-mailinglist@googlegroups.com
+
+gem:
+  active: true
+
+github:
+  active: true
+
+yard:
+  priority: 2
+
+dnote:
+  labels   : ~
+  lines    : 5
+  output   :
+    - log/NOTES.rdoc
+
+vclog:
+  output:
+    - log/Changes.rdoc
+    - log/History.rdoc
+
+#lemon:
+#  tests    : ~
+#  exclude  : ~
+#  loadpath : ~
+#  requires : ~
+#  live     : false   
+#  active   : false
+

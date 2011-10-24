@@ -1,47 +1,51 @@
---- 
-spec_version: 1.0.0
-replaces: []
-
-loadpath: 
-- lib
-name: dnote
-repositories: 
-  public: git://github.com/rubyworks/dnote.git
-conflicts: []
-
-engine_check: []
-
-title: DNote
-contact: trans <transfire@gmail.com>
-resources: 
-  code: http://github.com/rubyworks/dnote
-  api: http://rubyworks.github.com/dnote/rdoc
-  mail: http://groups.google.com/group/rubyworks-mailinglist
-  wiki: http://wiki.github.com/rubyworks/dnote
-  home: http://rubyworks.github.com/dnote
-maintainers: []
-
-requires: 
-- group: 
+---
+source:
+- meta/
+authors:
+- name: Thomas Sawyer
+  email: transfire@gmail.com
+copyrights:
+- holder: Thomas Sawyer, Rubyworks
+  year: '2009'
+replacements: []
+alternatives: []
+requirements:
+- name: lemon
+  groups:
   - test
-  name: lemon
-  version: 0+
-- group: 
+  development: true
+- name: detroit
+  groups:
   - build
-  name: redline
-  version: 0+
-- group: 
+  development: true
+- name: reap
+  groups:
   - build
-  name: reap
-  version: 0+
-manifest: MANIFEST
+  development: true
+dependencies: []
+conflicts: []
+repositories:
+- uri: git://github.com/rubyworks/dnote.git
+  scm: git
+  name: upstream
+resources:
+  home: http://rubyworks.github.com/dnote
+  code: http://github.com/rubyworks/dnote
+  wiki: http://wiki.github.com/rubyworks/dnote
+  api: http://rubydoc.info/gems/dnote
+  bugs: http://github.com/rubyworks/dnote/issues
+  mail: http://groups.google.com/groups/rubyworks-mailinglist
+extra: {}
+load_path:
+- lib
+revision: 0
+created: '2009-10-09'
+summary: Extract developer's notes from source code.
+title: DNote
 version: 1.6.1
-licenses: []
+name: dnote
+description: ! 'DNote makes it easy to extract developer''s notes from source code,
 
-copyright: Copyright (c) 2009 Thomas Sawyer
-authors: 
-- Thomas Sawyer
+  and supports almost any language.'
 organization: RubyWorks
-description: DNote makes it easy to extract developer's notes from source code, and supports almost any language.
-summary: Extract developer's notes from source code
-created: 2009-10-09
+date: '2011-10-24'

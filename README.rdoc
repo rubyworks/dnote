@@ -1,4 +1,4 @@
-= D'Note
+= DNote
 
 * {Homepage}[http://rubyworks.github.com/dnote]
 * {Mailing List}[http://googlegroups.com/group/rubyworks-mailinglist]
@@ -16,7 +16,7 @@ output formats for them.
 === Note Structure
 
 DNote scans for the common note patterns used by developers of many languages in the form of an
-all-caps labels followed by a colon. To be more specific, for D'Note to recognize a note,
+all-caps labels followed by a colon. To be more specific, for DNote to recognize a note,
 it needs to follow this simple set of rules:
 
 1) Notes start with an all-caps label punctuated with a colon, followed by the note's text.
@@ -106,17 +106,8 @@ The usual RubyGem's command will do the trick.
 
 == COPYRIGHT
 
-Copyright (c) 2006 Thomas Sawyer
+Copyright (c) 2006 Thomas Sawyer, Rubyworks
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+DNote is distributable in accordance with the terms of the *FreeBSD* license.
 
-   http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
+See COPYING.rdoc for details.
