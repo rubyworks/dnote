@@ -1,4 +1,6 @@
 .reap/digest
+.yardoc
+doc
 log
 pkg
 ri
