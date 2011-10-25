@@ -1,11 +1,23 @@
 = RELEASE HISTORY
 
 
+== 1.7.0 / 2011-10-25
+
+This release finishes adding code context support to all formats. Use the `-c`
+option to set the number of lines to include. Note also that the rake task has
+been moved to `dnote/rake/dnotetask`.
+
+Changes:
+
+* Support code contexts in all formats.
+* Rake task moved to `dnote/rake/dnotetask`.
+
+
 == 1.6.1 / 2011-05-18
 
 Last release reused the `-c` option for context lines. This clobbered
-the shortcut option for `--custom`. To fix this release capitalizes
-the shortcut to `-C`.
+the shortcut option for `--custom`. To fix, this release capitalizes
+the custom shortcut to `-C`.
 
 Changes:
 
