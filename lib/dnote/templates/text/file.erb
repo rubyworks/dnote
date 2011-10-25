@@ -5,6 +5,7 @@
 <%= file %>:
 
 <% line_notes.sort!{ |a,b| a.line <=> b.line } %><% line_notes.each do |note| %>
-<%= note.to_s.indent(10).sub(' ' * 10,'        * ') %> (<%= note.line %>)
+<%= note.to_s.indent(4).sub(' ' * 4,'    * ') %> (<%= note.line %>)
+<% if note.code? %><%= "\n" + note.code.tabset(10) + "\n" %><% end %>
 <% end; end %>
 

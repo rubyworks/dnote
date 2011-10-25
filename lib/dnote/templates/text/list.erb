@@ -3,5 +3,6 @@
 
 <% notes.each_with_index do |note, index| %>
 <%= "%4s %s %s" % [index+1, note.label, note.text.gsub("\n", ' ')] %> (<%= note.file %>:<%= note.line %>)
+<% if note.code? %><%= "\n" + note.code.tabset(8) + "\n" %><% end %>
 <% end %>
 

@@ -1,15 +1,23 @@
 <?xml version="1.0" ?>
 <notes>
 <% notes.by_label_file.each do |label, per_file| %>
-    <label name="<%= label %>">
+  <label name="<%= label %>">
 <% per_file.each do |file, line_notes| %>
-        <file src="<%= file %>">
+    <file src="<%= file %>">
 <% line_notes.sort!{ |a,b| a.line <=> b.line } %>
 <% line_notes.each do |note| %>
-            <note line="<%= note.line %>" type="<%= label %>"><%= h note.textline %></note>
+      <note line="<%= note.line %>" type="<%= label %>">
+        <%= h note.textline %>
+<% if note.code? %>
+
+<![CDATA[
+<%= note.code %>
+]]>
 <% end %>
-        </file>
+      </note>
 <% end %>
-    </label>
+    </file>
+<% end %>
+  </label>
 <% end %>
 </notes>

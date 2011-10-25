@@ -9,5 +9,6 @@ file://<%= file %>
 
 <% list.each do |note| %>
 * <%= note %> (<%= note.line %>)
+<% if note.code? %><%= "\n" + note.code.tabset(4).rstrip + "\n\n" %><% end %>
 <% end; end %>
 

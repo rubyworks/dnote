@@ -5,5 +5,6 @@
 
 <% notes.each_with_index do |note, index| %>
 <%= "%s" % [index+1] %>. <%= note.label %>: <%= h note.textline %> (<%= note.file %>: <%= note.line %>)
+<% if note.code? %><%= "\n" + note.code.tabset(4).rstrip + "\n\n" %><% end %>
 <% end %>
 
