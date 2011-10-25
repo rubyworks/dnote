@@ -1,6 +1,6 @@
 ---
 source:
-- meta/
+- meta
 authors:
 - name: Thomas Sawyer
   email: transfire@gmail.com
@@ -11,6 +11,10 @@ replacements: []
 alternatives: []
 requirements:
 - name: lemon
+  groups:
+  - test
+  development: true
+- name: ae
   groups:
   - test
   development: true
@@ -48,4 +52,4 @@ description: ! 'DNote makes it easy to extract developer''s notes from source co
 
   and supports almost any language.'
 organization: RubyWorks
-date: '2011-10-24'
+date: '2011-10-25'

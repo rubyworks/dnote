@@ -1,44 +1,64 @@
+require 'lemon'
+require 'ae'
 require 'dnote/notes'
 
 testcase DNote::Notes do
 
   concern "Coverage of DNote::Notes class."
 
-  unit :labels => 'returns the list of labels' do
-    notes = DNote::Notes.new([], :labels=>['TODO'])
-    notes.labels.assert == ['TODO'] #DNote::Notes::DEFAULT_LABELS
+  method :labels do
+    test 'returns the list of labels' do
+      notes = DNote::Notes.new([], :labels=>['TODO'])
+      notes.labels.assert == ['TODO'] #DNote::Notes::DEFAULT_LABELS
+    end
   end
 
-  unit :files => 'returns the files attribute' do
-    notes = DNote::Notes.new(["example1.rb"])
-    notes.assert.files == ["example1.rb"]
-    notes = DNote::Notes.new([], :paths => ["example2.rb"])
-    notes.assert.files == ["example2.rb"]
+  method :files do
+    test 'returns the files attribute' do
+      notes = DNote::Notes.new(["example1.rb"])
+      notes.assert.files == ["example1.rb"]
+      notes = DNote::Notes.new([], :paths => ["example2.rb"])
+      notes.assert.files == ["example2.rb"]
+    end
   end
 
-  unit :files= => 'changes the paths attribute' do
-    notes = DNote::Notes.new([])
-    notes.files = ["example1.rb"]
-    notes.assert.files == ["example1.rb"]
+  method :files do
+    test 'changes the paths attribute' do
+      notes = DNote::Notes.new([])
+      notes.files = ["example1.rb"]
+      notes.assert.files == ["example1.rb"]
+    end
   end
 
-  unit :match_general => '' do
-    notes = DNote::Notes.new([])
-    line, lineno, file = "# TODO: Do something or another!", 1, "foo.rb"
-    rec = notes.match_general(line, lineno, file)
-    rec.to_h.assert == {'label'=>"TODO",'file'=>file,'line'=>lineno,'text'=>"Do something or another!"}
+  method :match_general do
+    test 'works' do
+      notes = DNote::Notes.new([])
+      line, lineno, file = "# TODO: Do something or another!", 1, "foo.rb"
+      rec = notes.match_general(line, lineno, file)
+      rec.to_h.assert == {'label'=>"TODO",'file'=>file,'line'=>lineno,'text'=>"Do something or another!"}
+    end
   end
 
-  unit :match_special => '' do
-    notes = DNote::Notes.new([], :labels=>['TODO'])
-    line, lineno, file = "# TODO: Do something or another!", 1, "foo.rb"
-    rec = notes.match_special(line, lineno, file)
-    rec.to_h.assert == {'label'=>"TODO",'file'=>file,'line'=>lineno,'text'=>"Do something or another!"}
+  method :match_special do
+    test 'works' do
+      notes = DNote::Notes.new([], :labels=>['TODO'])
+      line, lineno, file = "# TODO: Do something or another!", 1, "foo.rb"
+      rec = notes.match_special(line, lineno, file)
+      rec.to_h.assert == {'label'=>"TODO",'file'=>file,'line'=>lineno,'text'=>"Do something or another!"}
+    end
   end
 
-  unit :counts
-  unit :notes
-  unit :parse
+  method :counts do
+    test{ raise NotImplementedError }
+  end
+
+  method :notes do
+    test{ raise NotImplementedError }
+  end
+
+  method :parse do
+    test{ raise NotImplementedError }
+  end
 
 end
 
