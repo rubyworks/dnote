@@ -6,8 +6,8 @@ lib/dnote/core_ext.rb
 lib/dnote/format.rb
 lib/dnote/note.rb
 lib/dnote/notes.rb
+lib/dnote/rake/dnotetask.rb
 lib/dnote/session.rb
-lib/dnote/string.rb
 lib/dnote/templates/html/file.erb
 lib/dnote/templates/html/label.erb
 lib/dnote/templates/html/list.erb
@@ -46,7 +46,6 @@ lib/dnote/templates/yaml/list.erb
 lib/dnote/templates/yaml.erb
 lib/dnote/version.rb
 lib/dnote.rb
-lib/plugins/rake/task.rb
 test/notes_case.rb
 try/sample.bas
 try/sample.js

@@ -46,7 +46,7 @@ revision: 0
 created: '2009-10-09'
 summary: Extract developer's notes from source code.
 title: DNote
-version: 1.6.1
+version: 1.7.0
 name: dnote
 description: ! 'DNote makes it easy to extract developer''s notes from source code,
 
