@@ -9,7 +9,7 @@ gem:
   active: true
 
 github:
-  active: true
+  gh_pages: web
 
 yard:
   priority: 2
