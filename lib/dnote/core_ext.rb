@@ -15,7 +15,7 @@ module DNote
   # Extensions for String class.
   # These methods are taken directly from Ruby Facets.
   #
-  module String
+  module StringExt
 
     # Provides a margin controlled string.
     #
@@ -85,7 +85,7 @@ module DNote
   end
 
   class ::String #:nodoc:
-    include DNote::String
+    include DNote::StringExt
   end
 
 end
