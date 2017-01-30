@@ -7,3 +7,4 @@ ri
 tmp
 site/doc
 web
+Gemfile.lock
