@@ -1,4 +1,5 @@
 module DNote
+  VERSION = '1.7.1'
 
   #
   def self.metadata
