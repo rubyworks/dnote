@@ -76,7 +76,7 @@ module DNote
     end
   end
 
-  class ::String #:nodoc:
+  ::String.class_eval do
     include DNote::StringExt
   end
 end
