@@ -73,7 +73,7 @@ module DNote
       formats.each do |format|
         if format == 'index'
           session.format = 'html'
-          session.output = File.join(self.output, 'index.html')
+          session.output = File.join(output, 'index.html')
         else
           session.format = format
         end
