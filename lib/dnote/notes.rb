@@ -102,27 +102,23 @@ module DNote
             text = note.text
             capt = note.capture
             records << note
-          else
-            if text
-              case line
-              when /^\s*#{mark}+\s*$/, /^\s*#{mark}\-\-/, /^\s*#{mark}\+\+/
-                text.strip!
-                text = nil
-              when /^\s*#{mark}/
-                if text[-1, 1] == "\n"
-                  text << line.gsub(/^\s*#{mark}\s*/, '')
-                else
-                  text << "\n" << line.gsub(/^\s*#{mark}\s*/, '')
-                end
-              else
-                text.strip!
-                text = nil
-              end
+          elsif text
+            case line
+            when /^\s*#{mark}+\s*$/, /^\s*#{mark}\-\-/, /^\s*#{mark}\+\+/
+              text.strip!
+              text = nil
+            when /^\s*#{mark}/
+              if text[-1, 1] == "\n"
+                text << line.gsub(/^\s*#{mark}\s*/, '')
             else
-              if line !~ /^\s*#{mark}/
-                capt << line if capt && capt.size < context
-              end
+              text << "\n" << line.gsub(/^\s*#{mark}\s*/, '')
+                end
+            else
+              text.strip!
+              text = nil
             end
+          elsif line !~ /^\s*#{mark}/
+            capt << line if capt && capt.size < context
           end
         end
       end
