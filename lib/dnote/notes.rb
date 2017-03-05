@@ -111,7 +111,7 @@ module DNote
               when /^\s*#{mark}/
                 if text[-1, 1] == "\n"
                   text << line.gsub(/^\s*#{mark}\s*/, '')
-              else
+                else
                 text << "\n" << line.gsub(/^\s*#{mark}\s*/, '')
                   end
               else
