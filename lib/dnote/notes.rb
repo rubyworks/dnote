@@ -47,7 +47,7 @@ module DNote
       @files   = [files].flatten
       @labels  = [options[:labels] || DEFAULT_LABELS].flatten.compact
       @colon   = options[:colon].nil? ? true : options[:colon]
-      @marker  = options[:marker] #|| '#'
+      @marker  = options[:marker]
       @url     = options[:url]
       @context = options[:context] || 0
 
@@ -145,7 +145,6 @@ module DNote
       labels.each do |label|
         if md = match_special_regex(label, file).match(line)
           text = md[1]
-          #rec = {'label'=>label,'file'=>file,'line'=>lineno,'note'=>text}
           rec = Note.new(self, file, label, lineno, text, remark(file))
         end
       end
@@ -193,7 +192,7 @@ module DNote
         notes.each do |note|
           list[note.label] ||= []
           list[note.label] << note
-          list[note.label].sort #!{ |a,b| a.line <=> b.line }
+          list[note.label].sort
         end
         list
       )
@@ -206,7 +205,7 @@ module DNote
         notes.each do |note|
           list[note.file] ||= []
           list[note.file] << note
-          list[note.file].sort! #!{ |a,b| a.line <=> b.line }
+          list[note.file].sort!
         end
         list
       )
@@ -221,7 +220,7 @@ module DNote
           list[note.label] ||= {}
           list[note.label][note.file] ||= []
           list[note.label][note.file] << note
-          list[note.label][note.file].sort! #{ |a,b| a.line <=> b.line }
+          list[note.label][note.file].sort!
         end
         list
       )
@@ -236,7 +235,7 @@ module DNote
           list[note.file] ||= {}
           list[note.file][note.label] ||= []
           list[note.file][note.label] << note
-          list[note.file][note.label].sort! #{ |a,b| a.line <=> b.line }
+          list[note.file][note.label].sort!
         end
         list
       )

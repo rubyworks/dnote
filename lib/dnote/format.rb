@@ -12,8 +12,6 @@ module DNote
     require 'rexml/text'
     require 'dnote/core_ext'
 
-    #DEFAULT_OUTPUT_DIR = "log/dnote"
-
     EXTENSIONS = { 'text' => 'txt', 'soap' => 'xml', 'xoxo' => 'xml' }
 
     #
@@ -66,7 +64,6 @@ module DNote
 
     #
     def render_custom
-      #raise ArgumentError unless File.exist?(template)
       result = erb(template)
       publish(result)
     end

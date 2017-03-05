@@ -138,18 +138,6 @@ module DNote
       end.flatten.uniq
     end
 
-    # Set special labels.
-    #def labels=(labels)
-    #  @labels = (
-    #    case labels
-    #    when String
-    #      labels.split(/[:;,]/)
-    #    else
-    #      labels = [labels].flatten.compact.uniq.map{ |s| s.to_s }
-    #    end
-    #  )
-    #end
-
     # Commandline interface.
     def self.main(*argv)
       require 'optparse'

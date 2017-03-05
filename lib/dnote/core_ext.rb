@@ -1,7 +1,6 @@
 module Enumerable
   # Taken from Ruby Facets.
   def group_by #:yield:
-    #h = k = e = nil
     r = Hash.new
     each { |e| (r[yield(e)] ||= []) << e }
     r
@@ -27,8 +26,6 @@ module DNote
     #  CREDIT: Trans
 
     def margin(n=0)
-      #d = /\A.*\n\s*(.)/.match( self )[1]
-      #d = /\A\s*(.)/.match( self)[1] unless d
       d = (/\A.*\n\s*(.)/.match(self) ||
           /\A\s*(.)/.match(self))[1]
       return '' unless d

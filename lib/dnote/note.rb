@@ -5,9 +5,6 @@ module DNote
   # being generated for a given session. This allows the note to access
   # general options applicable to all notes.
   class Note
-    # Number of lines to provide in source context.
-    #CONTEXT_DEPTH = 5
-
     # Set of notes to which this note belongs.
     attr_reader :notes
 
