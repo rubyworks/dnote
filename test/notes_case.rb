@@ -14,8 +14,6 @@ describe DNote::Notes do
     it 'returns the files attribute' do
       notes = DNote::Notes.new(["example1.rb"])
       notes.files.must_equal ["example1.rb"]
-      notes = DNote::Notes.new([], :paths => ["example2.rb"])
-      notes.files.must_equal ["example2.rb"]
     end
   end
 
