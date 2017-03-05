@@ -147,15 +147,18 @@ module DNote
       def initialize(data={})
         @data = data
       end
+
       #
       def render(file)
         erb = ERB.new(File.read(file), nil, '<>')
         erb.result(binding)
       end
+
       #
       def h(string)
         REXML::Text.normalize(string)
       end
+
       #
       def method_missing(s, *_a)
         @data[s.to_sym]
