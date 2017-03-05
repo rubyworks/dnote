@@ -160,7 +160,7 @@ module DNote
         REXML::Text.normalize(string)
       end
       #
-      def method_missing(s, *a)
+      def method_missing(s, *_a)
         @data[s.to_sym]
       end
     end
