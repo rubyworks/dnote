@@ -70,7 +70,7 @@ module DNote
     def render_custom
       #raise ArgumentError unless File.exist?(template)
       result = erb(template)
-      publish(result)    
+      publish(result)
     end
 
     # T E M P L A T E
@@ -80,7 +80,7 @@ module DNote
       template = File.join(File.dirname(__FILE__), 'templates', "#{format}.erb")
       raise "No such format - #{format}" unless File.exist?(template)
       result = erb(template)
-      publish(result)  
+      publish(result)
     end
 
   private
@@ -147,7 +147,7 @@ module DNote
     end
 
     #
-    class ErbScope 
+    class ErbScope
       #
       def initialize(data={})
         @data = data

@@ -59,7 +59,7 @@ module DNote
 
     # String template for line URLs (mainly for HTML format). For example,
     # DNote uses GitHub so we could use a link template:
-    # 
+    #
     #   "https://github.com/rubyworks/dnote/blob/master/%s#L%s"
     #
     attr_accessor :url
@@ -128,7 +128,7 @@ module DNote
       end
     end
 
-    # Collect the file glob of each path given. If 
+    # Collect the file glob of each path given. If
     # a path is a directory, inclue all content.
     def glob(paths)
       paths.map do |path|
@@ -196,7 +196,7 @@ module DNote
         end
 
         opt.on('--marker', '-m MARK', 'alternative remark marker') do |mark|
-           session.marker = mark 
+           session.marker = mark
         end
 
         opt.on('--url', '-u TEMPLATE', 'url template for line entries (for HTML)') do |url|

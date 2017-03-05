@@ -66,7 +66,7 @@ module DNote
         s.paths   = files
         s.exclude = exclude
         s.ignore  = ignore
-        s.labels  = labels #|| DEFAULT_LABELS   
+        s.labels  = labels #|| DEFAULT_LABELS
         s.title   = title
         s.output  = output
         s.dryrun  = application.options.dryrun #trial?

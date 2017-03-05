@@ -72,7 +72,7 @@ module DNote
 
     #
     #
-    def tabset(n) 
+    def tabset(n)
       i = lines.map do |line|
         line.strip.empty? ? nil : line.index(/\S/)
       end

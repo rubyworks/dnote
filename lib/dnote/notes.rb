@@ -151,7 +151,7 @@ module DNote
     end
 
     #--
-    # TODO: ruby-1.9.1-p378 reports: `match': invalid byte sequence in UTF-8 
+    # TODO: ruby-1.9.1-p378 reports: `match': invalid byte sequence in UTF-8
     #++
     def match_special_regex(label, file)
       mark = remark(file)
@@ -178,7 +178,7 @@ module DNote
       mark = remark(file)
       if colon
         /#{mark}\s*([A-Z]+)[:]\s+(.*?)$/
-      else 
+      else
         /#{mark}\s*([A-Z]+)\s+(.*?)$/
       end
     end
@@ -273,7 +273,7 @@ module DNote
       when '.asm'
         ';'
       else
-        '#'        
+        '#'
       end
     end
 
