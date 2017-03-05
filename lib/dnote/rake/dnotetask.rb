@@ -40,7 +40,7 @@ module DNote
     def init
       require 'dnote'
       require 'dnote/format'
-      @files   = "**/*.rb"
+      @files   = '**/*.rb'
       @output  = 'log/dnote'
       @formats = ['index']
       @labels  = nil #DEFAULT_LABELS
@@ -97,7 +97,7 @@ module DNote
       #if File.directory?(output)
         formats.each do |format|
           if format == 'index'
-            file = (output + "index.html").to_s
+            file = (output + 'index.html').to_s
           else
             ext = ::DNote::Format::EXTENSIONS[format] || format
             file = (output + "notes.#{ext}").to_s

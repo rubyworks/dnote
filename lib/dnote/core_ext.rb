@@ -66,7 +66,7 @@ module DNote
       if n >= 0
         gsub(/^/, ' ' * n)
       else
-        gsub(/^ {0,#{-n}}/, "")
+        gsub(/^ {0,#{-n}}/, '')
       end
     end
 
