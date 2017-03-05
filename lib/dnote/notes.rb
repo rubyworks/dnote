@@ -120,7 +120,7 @@ module DNote
               end
             else
               if line !~ /^\s*#{mark}/
-                  capt << line if capt && capt.size < context
+                capt << line if capt && capt.size < context
               end
             end
           end

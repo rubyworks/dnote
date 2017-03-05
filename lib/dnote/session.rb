@@ -182,15 +182,15 @@ module DNote
         end
 
         opt.on('--marker', '-m MARK', 'alternative remark marker') do |mark|
-           session.marker = mark
+          session.marker = mark
         end
 
         opt.on('--url', '-u TEMPLATE', 'url template for line entries (for HTML)') do |url|
-           session.url = url
+          session.url = url
         end
 
         opt.on('--context', '-c INTEGER', 'number of lines of context to display') do |int|
-           session.context = int.to_i
+          session.context = int.to_i
         end
 
         opt.on('--exclude', '-x PATH', 'exclude file or directory') do |path|
