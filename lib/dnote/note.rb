@@ -9,25 +9,25 @@ module DNote
     #CONTEXT_DEPTH = 5
 
     # Set of notes to which this note belongs.
-    attr :notes
+    attr_reader :notes
 
     # The file in which the note is made.
-    attr :file
+    attr_reader :file
 
     # The type of note.
-    attr :label
+    attr_reader :label
 
     # The line number of the note.
-    attr :line
+    attr_reader :line
 
     # The verbatim text of the note.
-    attr :text
+    attr_reader :text
 
     # Remark marker used in parsing the note.
-    attr :mark
+    attr_reader :mark
 
     # Contextual lines of code.
-    attr :capture
+    attr_reader :capture
 
     # Initialize new Note instance.
     def initialize(notes, file, label, line, text, mark)

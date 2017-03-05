@@ -17,7 +17,7 @@ module DNote
     EXTENSIONS = { 'text' => 'txt', 'soap' => 'xml', 'xoxo' => 'xml' }
 
     #
-    attr :notes
+    attr_reader :notes
 
     #
     attr_accessor :format
