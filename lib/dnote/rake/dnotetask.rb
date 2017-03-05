@@ -55,7 +55,7 @@ module DNote
       task 'dnote:clobber' do
         clean
       end
-      task :clobber => ['dnote:clobber']
+      task clobber: ['dnote:clobber']
     end
 
     # Generate notes document(s).

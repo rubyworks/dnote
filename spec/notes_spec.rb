@@ -3,7 +3,7 @@ require 'dnote/notes'
 describe(DNote::Notes) do
   describe(:labels) do
     it('returns the list of labels') do
-      notes = DNote::Notes.new([], :labels => (['TODO']))
+      notes = DNote::Notes.new([], labels: (['TODO']))
       expect(notes.labels).to eq(['TODO'])
     end
   end
@@ -30,7 +30,7 @@ describe(DNote::Notes) do
   end
   describe(:match_special) do
     it('works') do
-      notes = DNote::Notes.new([], :labels => (['TODO']))
+      notes = DNote::Notes.new([], labels: (['TODO']))
       line, lineno, file = '# TODO: Do something or another!', 1, 'foo.rb'
       rec = notes.match_special(line, lineno, file)
       expect(rec.to_h).to eq('label' => 'TODO', 'file' => file, 'line' => lineno, 'text' => 'Do something or another!')

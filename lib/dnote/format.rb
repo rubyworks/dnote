@@ -87,7 +87,7 @@ module DNote
 
     #
     def erb(file)
-      scope = ErbScope.new(:notes=>notes, :title=>title)
+      scope = ErbScope.new(notes: notes, title: title)
       scope.render(file)
     end
 
