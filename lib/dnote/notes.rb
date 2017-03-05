@@ -240,7 +240,7 @@ module DNote
 
     # Convert to an array of hashes.
     def to_a
-      notes.map{ |n| n.to_h }
+      notes.map { |n| n.to_h }
     end
 
     # Same as #by_label.

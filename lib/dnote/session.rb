@@ -71,7 +71,7 @@ module DNote
     def initialize(options={})
       options ||= {}
       initialize_defaults
-      options.each{ |k, v| __send__("#{k}=", v) }
+      options.each { |k, v| __send__("#{k}=", v) }
       yield(self) if block_given?
     end
 
@@ -122,7 +122,7 @@ module DNote
       list = glob(list)
       list = list - glob(exclude)
       list.reject do |path|
-        path.split('/').any?{ |part| ignore.any?{ |ig| File.fnmatch?(ig, part) } }
+        path.split('/').any? { |part| ignore.any? { |ig| File.fnmatch?(ig, part) } }
       end
     end
 
@@ -236,8 +236,8 @@ module DNote
         opt.on_tail('--templates', '-T', 'list available format templates') do
           tdir   = File.join(DIR, 'templates')
           tfiles = Dir[File.join(tdir, '**/*.erb')]
-          tnames = tfiles.map{ |tname| tname.sub(tdir + '/', '').chomp('.erb') }
-          groups = tnames.group_by{ |tname| tname.split('/').first }
+          tnames = tfiles.map { |tname| tname.sub(tdir + '/', '').chomp('.erb') }
+          groups = tnames.group_by { |tname| tname.split('/').first }
           groups.sort.each do |(type, names)|
             puts('%-18s ' * names.size % names.sort)
           end

@@ -118,7 +118,7 @@ module DNote
           dents << md[1]
         end
       end
-      dent = dents.min{ |a, b| a.size <=> b.size }
+      dent = dents.min { |a, b| a.size <=> b.size }
       lines.map do |line|
         line.sub(dent, '')
       end

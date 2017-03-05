@@ -44,7 +44,7 @@ module DNote
       @subtype = 'label'
       @title   = "Developer's Notes"
       @dryrun  = false
-      options.each{ |k, v| __send__("#{k}=", v) if v }
+      options.each { |k, v| __send__("#{k}=", v) if v }
       yield(self) if block_given?
     end
 
@@ -96,7 +96,7 @@ module DNote
       else
         puts(result)
       end
-      $stderr << '(' + notes.counts.map{|l, n| "#{n} #{l}s"}.join(', ') + ")\n"
+      $stderr << '(' + notes.counts.map {|l, n| "#{n} #{l}s"}.join(', ') + ")\n"
     end
 
     #
@@ -114,7 +114,7 @@ module DNote
       else
         dir = File.dirname(file)
         fu.mkdir(dir) unless File.exist?(dir)
-        File.open(file, 'w'){ |f| f << result }
+        File.open(file, 'w') { |f| f << result }
       end
       return file
     end
