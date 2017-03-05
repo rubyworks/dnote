@@ -111,10 +111,10 @@ module DNote
                   text.strip!
                   text = nil
                 when /^\s*#{mark}/
-                  if text[-1,1] == "\n"
-                    text << line.gsub(/^\s*#{mark}\s*/,'')
+                  if text[-1, 1] == "\n"
+                    text << line.gsub(/^\s*#{mark}\s*/, '')
                   else
-                    text << "\n" << line.gsub(/^\s*#{mark}\s*/,'')
+                    text << "\n" << line.gsub(/^\s*#{mark}\s*/, '')
                   end
                 else
                   text.strip!
@@ -130,7 +130,7 @@ module DNote
         end
       end
 
-      @notes  = records.sort
+      @notes = records.sort
     end
 
     # Is this line a note?

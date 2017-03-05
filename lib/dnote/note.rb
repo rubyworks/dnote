@@ -71,12 +71,12 @@ module DNote
     # TODO: Add +code+? Problem is that xml needs code in CDATA.
     #++
     def to_h
-      { 'label'=>label, 'text'=>textline, 'file'=>file, 'line'=>line }
+      { 'label' => label, 'text' => textline, 'file' => file, 'line' => line }
     end
 
     # Convert to Hash, leaving the note text verbatim.
     def to_h_raw
-      { 'label'=>label, 'text'=>text, 'file'=>file, 'line'=>line, 'code'=>code }
+      { 'label' => label, 'text' => text, 'file' => file, 'line' => line, 'code' => code }
     end
 
     # Convert to JSON.
@@ -139,7 +139,7 @@ module DNote
           dents << md[1]
         end
       end
-      dent = dents.min{ |a,b| a.size <=> b.size }
+      dent = dents.min{ |a, b| a.size <=> b.size }
       lines.map do |line|
         line.sub(dent, '')
       end

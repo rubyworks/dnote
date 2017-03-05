@@ -80,14 +80,14 @@ module DNote
           session.format = format
         end
         session.run
-        report "Updated #{output.to_s.sub(Dir.pwd+'/','')}" unless trial?
+        report "Updated #{output.to_s.sub(Dir.pwd + '/', '')}" unless trial?
       end
     end
 
     # Reset output directory, marking it as out-of-date.
     def reset
       #if File.directory?(output)
-        File.utime(0,0,output) unless $NOOP
+        File.utime(0, 0, output) unless $NOOP
         puts "Marked #{output} as out-of-date"
       #end
     end

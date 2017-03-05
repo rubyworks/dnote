@@ -16,7 +16,7 @@ module DNote
 
     #DEFAULT_OUTPUT_DIR = "log/dnote"
 
-    EXTENSIONS = { 'text'=>'txt', 'soap'=>'xml', 'xoxo'=>'xml' }
+    EXTENSIONS = { 'text' => 'txt', 'soap' => 'xml', 'xoxo' => 'xml' }
 
     #
     attr :notes
@@ -46,7 +46,7 @@ module DNote
       @subtype = 'label'
       @title   = "Developer's Notes"
       @dryrun  = false
-      options.each{ |k,v| __send__("#{k}=", v) if v }
+      options.each{ |k, v| __send__("#{k}=", v) if v }
       yield(self) if block_given?
     end
 
@@ -98,12 +98,12 @@ module DNote
       else
         puts(result)
       end
-      $stderr << '(' + notes.counts.map{|l,n| "#{n} #{l}s"}.join(', ') + ")\n"
+      $stderr << '(' + notes.counts.map{|l, n| "#{n} #{l}s"}.join(', ') + ")\n"
     end
 
     #
     def write(result, fname=nil)
-      if output.to_s[-1,1] == '/' || File.directory?(output)
+      if output.to_s[-1, 1] == '/' || File.directory?(output)
         fmt  = format.split('/').first
         ext  = EXTENSIONS[fmt] || fmt
         file = File.join(output, fname || "notes.#{ext}")

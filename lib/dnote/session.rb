@@ -17,7 +17,7 @@ module DNote
     DIR = File.dirname(__FILE__)
 
     # Default format.
-    DEFAULT_FORMAT  = 'text'
+    DEFAULT_FORMAT = 'text'
 
     # Default title.
     DEFAULT_TITLE = "Developer's Notes"
@@ -73,7 +73,7 @@ module DNote
     def initialize(options={})
       options ||= {}
       initialize_defaults
-      options.each{ |k,v| __send__("#{k}=", v) }
+      options.each{ |k, v| __send__("#{k}=", v) }
       yield(self) if block_given?
     end
 
@@ -238,7 +238,7 @@ module DNote
         opt.on_tail('--templates', '-T', 'list available format templates') do
           tdir   = File.join(DIR, 'templates')
           tfiles = Dir[File.join(tdir, '**/*.erb')]
-          tnames = tfiles.map{ |tname| tname.sub(tdir+'/', '').chomp('.erb') }
+          tnames = tfiles.map{ |tname| tname.sub(tdir + '/', '').chomp('.erb') }
           groups = tnames.group_by{ |tname| tname.split('/').first }
           groups.sort.each do |(type, names)|
             puts('%-18s ' * names.size % names.sort)

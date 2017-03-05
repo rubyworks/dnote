@@ -37,9 +37,9 @@ module DNote
           (/\A\s*(.)/.match(self)))[1]
       return '' unless d
       if n == 0
-        gsub(/\n\s*\Z/,'').gsub(/^\s*[#{d}]/, '')
+        gsub(/\n\s*\Z/, '').gsub(/^\s*[#{d}]/, '')
       else
-        gsub(/\n\s*\Z/,'').gsub(/^\s*[#{d}]/, ' ' * n)
+        gsub(/\n\s*\Z/, '').gsub(/^\s*[#{d}]/, ' ' * n)
       end
     end
 
