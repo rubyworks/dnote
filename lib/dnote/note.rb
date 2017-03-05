@@ -109,25 +109,6 @@ module DNote
       !capture.empty?
     end
 
-=begin
-    # This isn't being used currently b/c the URL solution as deeemd better,
-    # but the code is here for custom templates.
-    def capture
-      @context ||= (
-        lines = file_cache(file) #.lines.to_a
-        count = line()
-        count +=1 while /^\s*#{mark}/ =~ lines[count]
-        lines[count, context_depth]
-      )
-    end
-
-    # Read in +file+, parse into lines and cache.
-    def file_cache(file)
-      @@file_cache ||= {}
-      @@file_cache[file] ||= File.read(file).lines.to_a
-    end
-=end
-
     private
 
     # Remove blank space from lines.

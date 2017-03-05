@@ -91,42 +91,37 @@ module DNote
       records = []
       files.each do |fname|
         next unless File.file?(fname)
-        #next unless fname =~ /\.rb$/      # TODO: should this be done?
         mark = remark(fname)
         lineno, note, text, capt = 0, nil, nil, nil
         File.readlines(fname).each do |line|
-          #while line = f.gets
-            lineno += 1
-            note = match(line, lineno, fname)
-            if note
-              #file = fname
-              text = note.text
-              capt = note.capture
-              #note = {'label'=>label,'file'=>file,'line'=>line_no,'note'=>text}
-              records << note
-            else
-              if text
-                case line
-                when /^\s*#{mark}+\s*$/, /^\s*#{mark}\-\-/, /^\s*#{mark}\+\+/
-                  text.strip!
-                  text = nil
-                when /^\s*#{mark}/
-                  if text[-1, 1] == "\n"
-                    text << line.gsub(/^\s*#{mark}\s*/, '')
-                  else
-                    text << "\n" << line.gsub(/^\s*#{mark}\s*/, '')
-                  end
-                else
-                  text.strip!
-                  text = nil
-                end
+          lineno += 1
+          note = match(line, lineno, fname)
+          if note
+            text = note.text
+            capt = note.capture
+            records << note
+          else
+            if text
+              case line
+              when /^\s*#{mark}+\s*$/, /^\s*#{mark}\-\-/, /^\s*#{mark}\+\+/
+                text.strip!
+                text = nil
+              when /^\s*#{mark}/
+                if text[-1, 1] == "\n"
+                  text << line.gsub(/^\s*#{mark}\s*/, '')
               else
-                if line !~ /^\s*#{mark}/
+                text << "\n" << line.gsub(/^\s*#{mark}\s*/, '')
+                  end
+              else
+                text.strip!
+                text = nil
+              end
+            else
+              if line !~ /^\s*#{mark}/
                   capt << line if capt && capt.size < context
-                end
               end
             end
-          #end
+          end
         end
       end
 
@@ -172,7 +167,6 @@ module DNote
       rec = nil
       if md = match_general_regex(file).match(line)
         label, text = md[1], md[2]
-        #rec = {'label'=>label,'file'=>file,'line'=>lineno,'note'=>text}
         rec = Note.new(self, file, label, lineno, text, remark(file))
       end
       return rec
@@ -282,37 +276,6 @@ module DNote
         '#'        
       end
     end
-
-    # Convert to array of hashes then to YAML.
-    #def to_yaml
-    #  require 'yaml'
-    #  to_a.to_yaml
-    #end
-
-    # Convert to array of hashes then to JSON.
-    #def to_json
-    #  begin
-    #    require 'json'
-    #  rescue LoadError
-    #    require 'json_pure'
-    #  end
-    #  to_a.to_json
-    #end
-
-    # Convert to array of hashes then to a SOAP XML envelope.
-    #def to_soap
-    #  require 'soap/marshal'
-    #  SOAP::Marshal.marshal(to_a)
-    #end
-
-    # XOXO microformat.
-    #--
-    # TODO: Would to_xoxo be better organized by label and or file?
-    #++
-    #def to_xoxo
-    #  require 'xoxo'
-    #  to_a.to_xoxo
-    #end
 
   end
 
