@@ -1,9 +1,7 @@
 module DNote
-
   # = Developmer's Notes Rake Task
   #
   class RakeTask < Rake::TaskLib
-
     require 'rake/clean'
 
     # Default note labels to looked for in source code.
@@ -40,10 +38,10 @@ module DNote
     def init
       require 'dnote'
       require 'dnote/format'
-      @files   = "**/*.rb"
+      @files   = '**/*.rb'
       @output  = 'log/dnote'
       @formats = ['index']
-      @labels  = nil #DEFAULT_LABELS
+      @labels  = nil
     end
 
     #
@@ -55,7 +53,7 @@ module DNote
       task 'dnote:clobber' do
         clean
       end
-      task :clobber => ['dnote:clobber']
+      task clobber: ['dnote:clobber']
     end
 
     # Generate notes document(s).
@@ -66,51 +64,42 @@ module DNote
         s.paths   = files
         s.exclude = exclude
         s.ignore  = ignore
-        s.labels  = labels #|| DEFAULT_LABELS   
+        s.labels  = labels
         s.title   = title
         s.output  = output
-        s.dryrun  = application.options.dryrun #trial?
+        s.dryrun  = application.options.dryrun # trial?
       end
 
       formats.each do |format|
         if format == 'index'
           session.format = 'html'
-          session.output = File.join(self.output, 'index.html')
+          session.output = File.join(output, 'index.html')
         else
           session.format = format
         end
         session.run
-        report "Updated #{output.to_s.sub(Dir.pwd+'/','')}" unless trial?
+        report "Updated #{output.to_s.sub(Dir.pwd + '/', '')}" unless trial?
       end
     end
 
     # Reset output directory, marking it as out-of-date.
     def reset
-      #if File.directory?(output)
-        File.utime(0,0,output) unless $NOOP
-        puts "Marked #{output} as out-of-date"
-      #end
+      File.utime(0, 0, output) unless $NOOP
+      puts "Marked #{output} as out-of-date"
     end
 
     # Remove output files.
     def clean
-      #if File.directory?(output)
-        formats.each do |format|
-          if format == 'index'
-            file = (output + "index.html").to_s
-          else
-            ext = ::DNote::Format::EXTENSIONS[format] || format
-            file = (output + "notes.#{ext}").to_s
-          end
-          rm(file)
-          report "Removed #{output}"
+      formats.each do |format|
+        if format == 'index'
+          file = (output + 'index.html').to_s
+        else
+          ext = ::DNote::Format::EXTENSIONS[format] || format
+          file = (output + "notes.#{ext}").to_s
         end
-      #else
-      #  rm(output)
-      #  report "Removed #{output}"
-      #end
+        rm(file)
+        report "Removed #{output}"
+      end
     end
-
   end
-
 end

@@ -8,4 +8,3 @@ def sample
   n = 100
   n
 end
-

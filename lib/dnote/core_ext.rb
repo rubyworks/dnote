@@ -1,22 +1,17 @@
 module Enumerable
-
   # Taken from Ruby Facets.
   def group_by #:yield:
-    #h = k = e = nil
     r = Hash.new
-    each{ |e| (r[yield(e)] ||= []) << e }
+    each { |e| (r[yield(e)] ||= []) << e }
     r
   end unless method_defined?(:group_by)
-
 end
 
 module DNote
-
   # Extensions for String class.
   # These methods are taken directly from Ruby Facets.
   #
   module StringExt
-
     # Provides a margin controlled string.
     #
     #   x = %Q{
@@ -30,16 +25,14 @@ module DNote
     #
     #  CREDIT: Trans
 
-    def margin(n=0)
-      #d = /\A.*\n\s*(.)/.match( self )[1]
-      #d = /\A\s*(.)/.match( self)[1] unless d
-      d = ((/\A.*\n\s*(.)/.match(self)) ||
-          (/\A\s*(.)/.match(self)))[1]
+    def margin(n = 0)
+      d = (/\A.*\n\s*(.)/.match(self) ||
+          /\A\s*(.)/.match(self))[1]
       return '' unless d
       if n == 0
-        gsub(/\n\s*\Z/,'').gsub(/^\s*[#{d}]/, '')
+        gsub(/\n\s*\Z/, '').gsub(/^\s*[#{d}]/, '')
       else
-        gsub(/\n\s*\Z/,'').gsub(/^\s*[#{d}]/, ' ' * n)
+        gsub(/\n\s*\Z/, '').gsub(/^\s*[#{d}]/, ' ' * n)
       end
     end
 
@@ -66,13 +59,13 @@ module DNote
       if n >= 0
         gsub(/^/, ' ' * n)
       else
-        gsub(/^ {0,#{-n}}/, "")
+        gsub(/^ {0,#{-n}}/, '')
       end
     end
 
     #
     #
-    def tabset(n) 
+    def tabset(n)
       i = lines.map do |line|
         line.strip.empty? ? nil : line.index(/\S/)
       end
@@ -81,12 +74,9 @@ module DNote
       t = 0 if t < 0
       indent(t)
     end
-
   end
 
-  class ::String #:nodoc:
+  ::String.class_eval do
     include DNote::StringExt
   end
-
 end
-
