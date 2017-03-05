@@ -1,6 +1,6 @@
 = RELEASE HISTORY
 
-== 1.7.2 / Unreleased
+== 1.7.2 / 2017-03-05
 
 * Support CRuby 2.4
 
