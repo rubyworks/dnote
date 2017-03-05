@@ -111,7 +111,6 @@ module DNote
       dents = []
       lines.each do |line|
         if md = /^([\ ]*)/.match(line)
-          size = md[1].size
           dents << md[1]
         end
       end
