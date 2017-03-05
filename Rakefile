@@ -1,11 +1,18 @@
 require 'bundler/gem_tasks'
+require 'cucumber/rake/task'
 require 'rake/clean'
 require 'rake/testtask'
+require 'rspec/core/rake_task'
 
-Rake::TestTask.new(:test) do |t|
-  t.libs = ['lib']
-  t.ruby_opts += ["-w -Itest"]
-  t.test_files = FileList['test/**/*.rb']
+RSpec::Core::RakeTask.new(:spec) do |t|
+  t.pattern = 'spec/**/*_spec.rb'
+  t.ruby_opts = ['-Ilib -w']
 end
 
-task default: :test
+Cucumber::Rake::Task.new(:features) do |t|
+  t.cucumber_opts = 'features --format progress --color'
+end
+
+
+task default: :spec
+task default: :features

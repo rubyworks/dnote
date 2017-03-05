@@ -24,8 +24,10 @@ Gem::Specification.new do |s|
   s.executables = ['dnote']
   s.extra_rdoc_files = ['HISTORY.rdoc', 'README.rdoc', 'COPYING.rdoc']
 
-  s.add_development_dependency('minitest', ['~> 5.10'])
+  s.add_development_dependency('aruba', ["~> 0.14.1"])
+  s.add_development_dependency('cucumber', ["~> 2.4"])
   s.add_development_dependency('rake', ["~> 12.0"])
+  s.add_development_dependency('rspec', ['~> 3.5'])
 
   s.require_paths = ["lib"]
 end
