@@ -43,7 +43,7 @@ module DNote
     attr_accessor :context
 
     # New set of notes for give +files+ and optional special labels.
-    def initialize(files, options={})
+    def initialize(files, options = {})
       @files   = [files].flatten
       @labels  = [options[:labels] || DEFAULT_LABELS].flatten.compact
       @colon   = options[:colon].nil? ? true : options[:colon]

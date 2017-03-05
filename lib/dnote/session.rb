@@ -68,7 +68,7 @@ module DNote
   private
 
     # New Session.
-    def initialize(options={})
+    def initialize(options = {})
       options ||= {}
       initialize_defaults
       options.each { |k, v| __send__("#{k}=", v) }

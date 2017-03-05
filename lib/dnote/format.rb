@@ -36,7 +36,7 @@ module DNote
     attr_accessor :dryrun
 
     #
-    def initialize(notes, options={})
+    def initialize(notes, options = {})
       @notes   = notes
       @format  = 'text'
       @subtype = 'label'
@@ -87,7 +87,7 @@ module DNote
     end
 
     #
-    def publish(result, fname=nil)
+    def publish(result, fname = nil)
       if output
         write(result, fname)
       else
@@ -97,7 +97,7 @@ module DNote
     end
 
     #
-    def write(result, fname=nil)
+    def write(result, fname = nil)
       if output.to_s[-1, 1] == '/' || File.directory?(output)
         fmt  = format.split('/').first
         ext  = EXTENSIONS[fmt] || fmt
@@ -144,7 +144,7 @@ module DNote
     #
     class ErbScope
       #
-      def initialize(data={})
+      def initialize(data = {})
         @data = data
       end
 

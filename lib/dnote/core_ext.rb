@@ -25,7 +25,7 @@ module DNote
     #
     #  CREDIT: Trans
 
-    def margin(n=0)
+    def margin(n = 0)
       d = (/\A.*\n\s*(.)/.match(self) ||
           /\A\s*(.)/.match(self))[1]
       return '' unless d
