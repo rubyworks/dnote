@@ -1,5 +1,9 @@
 = RELEASE HISTORY
 
+== 1.7.2 / Unreleased
+
+* Support CRuby 2.4
+
 == 1.7.1 / 2017-03-05
 
 This is the first version of the mvz-dnote fork. This fork will add support for
