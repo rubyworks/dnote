@@ -25,9 +25,7 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = ['HISTORY.rdoc', 'README.rdoc', 'COPYING.rdoc']
 
   s.add_development_dependency('minitest', ['>= 0'])
-  s.add_development_dependency('detroit', ['>= 0'])
   s.add_development_dependency('rake', ["~> 12.0"])
-  s.add_development_dependency('reap', ['>= 0'])
 
   s.require_paths = ["lib"]
 end
