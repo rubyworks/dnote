@@ -83,4 +83,3 @@ module DNote
     include DNote::StringExt
   end
 end
-

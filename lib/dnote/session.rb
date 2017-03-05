@@ -262,4 +262,3 @@ module DNote
     end
   end
 end
-
