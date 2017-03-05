@@ -172,7 +172,7 @@ module DNote
         text = md[2]
         rec = Note.new(self, file, label, lineno, text, remark(file))
       end
-      return rec
+      rec
     end
 
     # Keep in mind that general non-colon matches have a higher potential

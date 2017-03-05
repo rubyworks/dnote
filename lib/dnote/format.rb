@@ -116,7 +116,7 @@ module DNote
         fu.mkdir(dir) unless File.exist?(dir)
         File.open(file, 'w') { |f| f << result }
       end
-      return file
+      file
     end
 
     #
