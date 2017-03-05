@@ -15,3 +15,6 @@ matrix:
     - rvm: ruby-head
     - rvm: rubinius-3
 script: "bundle exec rake"
+branches:
+  only:
+    - master
