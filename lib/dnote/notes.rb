@@ -91,7 +91,10 @@ module DNote
       files.each do |fname|
         next unless File.file?(fname)
         mark = remark(fname)
-        lineno, note, text, capt = 0, nil, nil, nil
+        lineno = 0
+        note = nil
+        text = nil
+        capt = nil
         File.readlines(fname).each do |line|
           lineno += 1
           note = match(line, lineno, fname)
@@ -165,7 +168,8 @@ module DNote
     def match_general(line, lineno, file)
       rec = nil
       if md = match_general_regex(file).match(line)
-        label, text = md[1], md[2]
+        label = md[1]
+        text = md[2]
         rec = Note.new(self, file, label, lineno, text, remark(file))
       end
       return rec

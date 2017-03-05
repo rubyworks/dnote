@@ -23,7 +23,9 @@ describe(DNote::Notes) do
   describe(:match_general) do
     it('works') do
       notes = DNote::Notes.new([])
-      line, lineno, file = '# TODO: Do something or another!', 1, 'foo.rb'
+      line = '# TODO: Do something or another!'
+      lineno = 1
+      file = 'foo.rb'
       rec = notes.match_general(line, lineno, file)
       expect(rec.to_h).to eq('label' => 'TODO', 'file' => file, 'line' => lineno, 'text' => 'Do something or another!')
     end
@@ -31,7 +33,9 @@ describe(DNote::Notes) do
   describe(:match_special) do
     it('works') do
       notes = DNote::Notes.new([], labels: ['TODO'])
-      line, lineno, file = '# TODO: Do something or another!', 1, 'foo.rb'
+      line = '# TODO: Do something or another!'
+      lineno = 1
+      file = 'foo.rb'
       rec = notes.match_special(line, lineno, file)
       expect(rec.to_h).to eq('label' => 'TODO', 'file' => file, 'line' => lineno, 'text' => 'Do something or another!')
     end
