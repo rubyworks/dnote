@@ -13,5 +13,4 @@ module DNote
   def self.const_missing(name)
     metadata[name.to_s.downcase] || super(name)
   end
-
 end

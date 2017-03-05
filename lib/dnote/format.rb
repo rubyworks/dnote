@@ -1,5 +1,4 @@
 module DNote
-
   # = Notes Formatter
   #
   #--
@@ -8,7 +7,6 @@ module DNote
   #   TODO: Need XSL?
   #++
   class Format
-
     require 'fileutils'
     require 'erb'
     require 'rexml/text'
@@ -166,8 +164,6 @@ module DNote
         @data[s.to_sym]
       end
     end
-
   end
-
 end
 

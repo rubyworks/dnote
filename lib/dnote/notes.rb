@@ -2,7 +2,6 @@ require 'pathname'
 require 'dnote/note'
 
 module DNote
-
   # = Developer Notes
   #
   # This class goes through you source files and compiles a list
@@ -276,8 +275,6 @@ module DNote
         '#'
       end
     end
-
   end
-
 end
 

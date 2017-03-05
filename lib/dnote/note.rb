@@ -1,12 +1,10 @@
 module DNote
-
   # The Note class encapsulates a single note made in a source file.
   #
   # Each note instance holds a reference, +notes+, to the set of notes
   # being generated for a given session. This allows the note to access
   # general options applicable to all notes.
   class Note
-
     # Number of lines to provide in source context.
     #CONTEXT_DEPTH = 5
 
@@ -125,7 +123,5 @@ module DNote
         line.sub(dent, '')
       end
     end
-
   end
-
 end

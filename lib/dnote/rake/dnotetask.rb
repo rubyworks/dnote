@@ -1,9 +1,7 @@
 module DNote
-
   # = Developmer's Notes Rake Task
   #
   class RakeTask < Rake::TaskLib
-
     require 'rake/clean'
 
     # Default note labels to looked for in source code.
@@ -110,7 +108,5 @@ module DNote
       #  report "Removed #{output}"
       #end
     end
-
   end
-
 end

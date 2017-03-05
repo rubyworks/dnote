@@ -1,5 +1,4 @@
 module DNote
-
   require 'dnote/core_ext'
   require 'dnote/notes'
   require 'dnote/format'
@@ -11,7 +10,6 @@ module DNote
   # calling the commandline, but without the need to shellout.
   #
   class Session
-
     # Directory relative to this script. This is used
     # to lookup the available format templates.
     DIR = File.dirname(__FILE__)
@@ -262,8 +260,6 @@ module DNote
         exit 1
       end
     end
-
   end
-
 end
 

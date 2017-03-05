@@ -1,5 +1,4 @@
 module Enumerable
-
   # Taken from Ruby Facets.
   def group_by #:yield:
     #h = k = e = nil
@@ -7,16 +6,13 @@ module Enumerable
     each{ |e| (r[yield(e)] ||= []) << e }
     r
   end unless method_defined?(:group_by)
-
 end
 
 module DNote
-
   # Extensions for String class.
   # These methods are taken directly from Ruby Facets.
   #
   module StringExt
-
     # Provides a margin controlled string.
     #
     #   x = %Q{
@@ -81,12 +77,10 @@ module DNote
       t = 0 if t < 0
       indent(t)
     end
-
   end
 
   class ::String #:nodoc:
     include DNote::StringExt
   end
-
 end
 
