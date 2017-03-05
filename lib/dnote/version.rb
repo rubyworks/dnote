@@ -3,10 +3,10 @@ module DNote
 
   #
   def self.metadata
-    @metadata ||= (
+    @metadata ||= begin
       require 'yaml'
       YAML.load_file(File.dirname(__FILE__) + '/../dnote.yml')
-    )
+    end
   end
 
   #

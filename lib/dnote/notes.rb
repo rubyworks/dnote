@@ -63,13 +63,13 @@ module DNote
 
     # Notes counts by label.
     def counts
-      @counts ||= (
+      @counts ||= begin
         h = {}
         by_label.each do |label, notes|
           h[label] = notes.size
         end
         h
-      )
+      end
     end
 
     # Iterate through notes.
@@ -187,7 +187,7 @@ module DNote
 
     # Organize notes into a hash with labels for keys.
     def by_label
-      @by_label ||= (
+      @by_label ||= begin
         list = {}
         notes.each do |note|
           list[note.label] ||= []
@@ -195,12 +195,12 @@ module DNote
           list[note.label].sort
         end
         list
-      )
+      end
     end
 
     # Organize notes into a hash with filename for keys.
     def by_file
-      @by_file ||= (
+      @by_file ||= begin
         list = {}
         notes.each do |note|
           list[note.file] ||= []
@@ -208,13 +208,13 @@ module DNote
           list[note.file].sort!
         end
         list
-      )
+      end
     end
 
     # Organize notes into a hash with labels for keys, followed
     # by a hash with filename for keys.
     def by_label_file
-      @by_label ||= (
+      @by_label ||= begin
         list = {}
         notes.each do |note|
           list[note.label] ||= {}
@@ -223,13 +223,13 @@ module DNote
           list[note.label][note.file].sort!
         end
         list
-      )
+      end
     end
 
     # Organize notes into a hash with filenames for keys, followed
     # by a hash with labels for keys.
     def by_file_label
-      @by_file ||= (
+      @by_file ||= begin
         list = {}
         notes.each do |note|
           list[note.file] ||= {}
@@ -238,7 +238,7 @@ module DNote
           list[note.file][note.label].sort!
         end
         list
-      )
+      end
     end
 
     # Convert to an array of hashes.
@@ -253,10 +253,10 @@ module DNote
 
     #
     def remark(file)
-      @remark[File.extname(file)] ||= (
+      @remark[File.extname(file)] ||= begin
         mark = guess_marker(file)
         Regexp.escape(mark)
-      )
+      end
     end
 
     # Guess marker based on file extension. Fallsback to '#'

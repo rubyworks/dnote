@@ -128,7 +128,7 @@ module DNote
 
     #
     def fu
-      @fu ||= (
+      @fu ||= begin
         if dryrun? and debug?
           FileUtils::DryRun
         elsif dryrun?
@@ -138,7 +138,7 @@ module DNote
         else
           FileUtils
         end
-      )
+      end
     end
 
     #
