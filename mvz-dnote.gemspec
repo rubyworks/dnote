@@ -16,11 +16,11 @@ Gem::Specification.new do |s|
     and supports almost any language.
   DESC
 
-  s.files = Dir[ '{lib,test,try}/**/*',
+  s.files = Dir['{lib,test,try}/**/*',
                  'COPYING.rdoc',
                  'HISTORY.rdoc',
                  'README.rdoc',
-                 'bin/dnote' ] & `git ls-files -z`.split("\0")
+                 'bin/dnote'] & `git ls-files -z`.split("\0")
   s.executables = ['dnote']
   s.extra_rdoc_files = ['HISTORY.rdoc', 'README.rdoc', 'COPYING.rdoc']
 
