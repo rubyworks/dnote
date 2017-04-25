@@ -43,7 +43,7 @@ module DNote
 
     def tabto(n)
       if self =~ /^( *)\S/
-        indent(n - $1.length)
+        indent(n - Regexp.last_match(1).length)
       else
         self
       end
