@@ -15,10 +15,10 @@ module DNote
     DIR = File.dirname(__FILE__)
 
     # Default format.
-    DEFAULT_FORMAT = 'text'
+    DEFAULT_FORMAT = 'text'.freeze
 
     # Default title.
-    DEFAULT_TITLE = "Developer's Notes"
+    DEFAULT_TITLE = "Developer's Notes".freeze
 
     # Paths to include.
     attr_accessor :paths

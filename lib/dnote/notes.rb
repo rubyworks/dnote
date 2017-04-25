@@ -19,10 +19,10 @@ module DNote
     include Enumerable
 
     # Default paths (all ruby scripts).
-    DEFAULT_PATHS  = ['**/*.rb']
+    DEFAULT_PATHS  = ['**/*.rb'].freeze
 
     # Default note labels to look for in source code. (NOT CURRENTLY USED!)
-    DEFAULT_LABELS = ['TODO', 'FIXME', 'OPTIMIZE', 'THINK', 'DEPRECATE']
+    DEFAULT_LABELS = ['TODO', 'FIXME', 'OPTIMIZE', 'THINK', 'DEPRECATE'].freeze
 
     # Files to search for notes.
     attr_accessor :files
