@@ -78,7 +78,7 @@ module DNote
       publish(result)
     end
 
-  private
+    private
 
     #
     def erb(file)

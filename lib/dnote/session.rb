@@ -65,7 +65,7 @@ module DNote
     # Number of lines of context to display. The default is zero.
     attr_accessor :context
 
-  private
+    private
 
     # New Session.
     def initialize(options = {})
@@ -89,7 +89,7 @@ module DNote
       @context = 0
     end
 
-  public
+    public
 
     # Set exclude list ensuring that the value is an array.
     def exclude=(list)
