@@ -1,5 +1,4 @@
 module DNote
-
   # = Notes Formatter
   #
   #--
@@ -8,18 +7,15 @@ module DNote
   #   TODO: Need XSL?
   #++
   class Format
-
     require 'fileutils'
     require 'erb'
     require 'rexml/text'
     require 'dnote/core_ext'
 
-    #DEFAULT_OUTPUT_DIR = "log/dnote"
-
-    EXTENSIONS = { 'text'=>'txt', 'soap'=>'xml', 'xoxo'=>'xml' }
+    EXTENSIONS = { 'text' => 'txt', 'soap' => 'xml', 'xoxo' => 'xml' }.freeze
 
     #
-    attr :notes
+    attr_reader :notes
 
     #
     attr_accessor :format
@@ -40,13 +36,13 @@ module DNote
     attr_accessor :dryrun
 
     #
-    def initialize(notes, options={})
+    def initialize(notes, options = {})
       @notes   = notes
       @format  = 'text'
       @subtype = 'label'
       @title   = "Developer's Notes"
       @dryrun  = false
-      options.each{ |k,v| __send__("#{k}=", v) if v }
+      options.each { |k, v| __send__("#{k}=", v) if v }
       yield(self) if block_given?
     end
 
@@ -68,9 +64,8 @@ module DNote
 
     #
     def render_custom
-      #raise ArgumentError unless File.exist?(template)
       result = erb(template)
-      publish(result)    
+      publish(result)
     end
 
     # T E M P L A T E
@@ -80,30 +75,30 @@ module DNote
       template = File.join(File.dirname(__FILE__), 'templates', "#{format}.erb")
       raise "No such format - #{format}" unless File.exist?(template)
       result = erb(template)
-      publish(result)  
+      publish(result)
     end
 
-  private
+    private
 
     #
     def erb(file)
-      scope = ErbScope.new(:notes=>notes, :title=>title)
+      scope = ErbScope.new(notes: notes, title: title)
       scope.render(file)
     end
 
     #
-    def publish(result, fname=nil)
+    def publish(result, fname = nil)
       if output
         write(result, fname)
       else
         puts(result)
       end
-      $stderr << "(" + notes.counts.map{|l,n| "#{n} #{l}s"}.join(', ') + ")\n"
+      $stderr << '(' + notes.counts.map { |l, n| "#{n} #{l}s" }.join(', ') + ")\n"
     end
 
     #
-    def write(result, fname=nil)
-      if output.to_s[-1,1] == '/' || File.directory?(output)
+    def write(result, fname = nil)
+      if output.to_s[-1, 1] == '/' || File.directory?(output)
         fmt  = format.split('/').first
         ext  = EXTENSIONS[fmt] || fmt
         file = File.join(output, fname || "notes.#{ext}")
@@ -116,9 +111,9 @@ module DNote
       else
         dir = File.dirname(file)
         fu.mkdir(dir) unless File.exist?(dir)
-        File.open(file, 'w'){ |f| f << result }
+        File.open(file, 'w') { |f| f << result }
       end
-      return file
+      file
     end
 
     #
@@ -133,8 +128,8 @@ module DNote
 
     #
     def fu
-      @fu ||= (
-        if dryrun? and debug?
+      @fu ||= begin
+        if dryrun? && debug?
           FileUtils::DryRun
         elsif dryrun?
           FileUtils::Noop
@@ -143,31 +138,31 @@ module DNote
         else
           FileUtils
         end
-      )
+      end
     end
 
     #
-    class ErbScope 
+    class ErbScope
       #
-      def initialize(data={})
+      def initialize(data = {})
         @data = data
       end
+
       #
       def render(file)
         erb = ERB.new(File.read(file), nil, '<>')
         erb.result(binding)
       end
+
       #
       def h(string)
         REXML::Text.normalize(string)
       end
+
       #
-      def method_missing(s, *a)
+      def method_missing(s, *_a)
         @data[s.to_sym]
       end
     end
-
   end
-
 end
-

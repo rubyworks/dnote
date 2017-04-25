@@ -1,7 +1,0 @@
-#!/usr/bin/env ruby
-
-trip :pack do
-  system "gem build .gemspec"
-  system "mv *.gem pkg/"
-end
-

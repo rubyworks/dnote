@@ -1,5 +1,4 @@
 module DNote
-
   require 'dnote/core_ext'
   require 'dnote/notes'
   require 'dnote/format'
@@ -11,16 +10,15 @@ module DNote
   # calling the commandline, but without the need to shellout.
   #
   class Session
-
     # Directory relative to this script. This is used
     # to lookup the available format templates.
     DIR = File.dirname(__FILE__)
 
     # Default format.
-    DEFAULT_FORMAT  = "text"
+    DEFAULT_FORMAT = 'text'.freeze
 
     # Default title.
-    DEFAULT_TITLE = "Developer's Notes"
+    DEFAULT_TITLE = "Developer's Notes".freeze
 
     # Paths to include.
     attr_accessor :paths
@@ -59,7 +57,7 @@ module DNote
 
     # String template for line URLs (mainly for HTML format). For example,
     # DNote uses GitHub so we could use a link template:
-    # 
+    #
     #   "https://github.com/rubyworks/dnote/blob/master/%s#L%s"
     #
     attr_accessor :url
@@ -67,13 +65,13 @@ module DNote
     # Number of lines of context to display. The default is zero.
     attr_accessor :context
 
-  private
+    private
 
     # New Session.
-    def initialize(options={})
+    def initialize(options = {})
       options ||= {}
       initialize_defaults
-      options.each{ |k,v| __send__("#{k}=", v) }
+      options.each { |k, v| __send__("#{k}=", v) }
       yield(self) if block_given?
     end
 
@@ -91,7 +89,7 @@ module DNote
       @context = 0
     end
 
-  public
+    public
 
     # Set exclude list ensuring that the value is an array.
     def exclude=(list)
@@ -105,7 +103,7 @@ module DNote
 
     # Run session.
     def run
-      notes = Notes.new(files, :labels=>labels, :colon=>colon, :marker=>marker, :url=>url, :context=>context)
+      notes = Notes.new(files, labels: labels, colon: colon, marker: marker, url: url, context: context)
       formatter = Format.new(notes) do |f|
         f.format   = format
         f.template = template
@@ -124,11 +122,11 @@ module DNote
       list = glob(list)
       list = list - glob(exclude)
       list.reject do |path|
-        path.split('/').any?{ |part| ignore.any?{ |ig| File.fnmatch?(ig, part) } }
+        path.split('/').any? { |part| ignore.any? { |ig| File.fnmatch?(ig, part) } }
       end
     end
 
-    # Collect the file glob of each path given. If 
+    # Collect the file glob of each path given. If
     # a path is a directory, inclue all content.
     def glob(paths)
       paths.map do |path|
@@ -140,18 +138,6 @@ module DNote
       end.flatten.uniq
     end
 
-    # Set special labels.
-    #def labels=(labels)
-    #  @labels = (
-    #    case labels
-    #    when String
-    #      labels.split(/[:;,]/)
-    #    else
-    #      labels = [labels].flatten.compact.uniq.map{ |s| s.to_s }
-    #    end
-    #  )
-    #end
-
     # Commandline interface.
     def self.main(*argv)
       require 'optparse'
@@ -161,92 +147,92 @@ module DNote
       opts = OptionParser.new do |opt|
         opt.banner = "DNote v#{DNote::VERSION}"
 
-        opt.separator(" ")
+        opt.separator(' ')
         opt.separator("USAGE:\n  dnote [OPTIONS] path1 [path2 ...]")
 
-        opt.separator(" ")
-        opt.separator("OUTPUT FORMAT: (choose one)")
+        opt.separator(' ')
+        opt.separator('OUTPUT FORMAT: (choose one)')
 
-        opt.on("--format", "-f NAME", "select a format [text]") do |format|
+        opt.on('--format', '-f NAME', 'select a format [text]') do |format|
           session.format = format
         end
 
-        opt.on("--custom", "-C FILE", "use a custom ERB template") do |file|
+        opt.on('--custom', '-C FILE', 'use a custom ERB template') do |file|
           session.format = 'custom'
           session.template = file
         end
 
-        opt.on("--file", "shortcut for text/file format") do
+        opt.on('--file', 'shortcut for text/file format') do
           session.format = 'text/file'
         end
 
-        opt.on("--list", "shortcut for text/list format") do
+        opt.on('--list', 'shortcut for text/list format') do
           session.format = 'text/list'
         end
 
-        opt.separator(" ")
-        opt.separator("OTHER OPTIONS:")
+        opt.separator(' ')
+        opt.separator('OTHER OPTIONS:')
 
-        opt.on("--label", "-l LABEL", "labels to collect") do |lbl|
+        opt.on('--label', '-l LABEL', 'labels to collect') do |lbl|
           session.labels.concat(lbl.split(':'))
         end
 
-        opt.on("--[no-]colon", "match labels with/without colon suffix") do |val|
+        opt.on('--[no-]colon', 'match labels with/without colon suffix') do |val|
           session.colon = val
         end
 
-        opt.on("--marker", "-m MARK", "alternative remark marker") do |mark|
-           session.marker = mark 
+        opt.on('--marker', '-m MARK', 'alternative remark marker') do |mark|
+          session.marker = mark
         end
 
-        opt.on("--url", "-u TEMPLATE", "url template for line entries (for HTML)") do |url|
-           session.url = url
+        opt.on('--url', '-u TEMPLATE', 'url template for line entries (for HTML)') do |url|
+          session.url = url
         end
 
-        opt.on("--context", "-c INTEGER", "number of lines of context to display") do |int|
-           session.context = int.to_i
+        opt.on('--context', '-c INTEGER', 'number of lines of context to display') do |int|
+          session.context = int.to_i
         end
 
-        opt.on("--exclude", "-x PATH", "exclude file or directory") do |path|
+        opt.on('--exclude', '-x PATH', 'exclude file or directory') do |path|
           session.exclude << path
         end
 
-        opt.on("--ignore", "-i NAME", "ignore file based on any part of pathname") do |name|
+        opt.on('--ignore', '-i NAME', 'ignore file based on any part of pathname') do |name|
           session.ignore << name
         end
 
-        opt.on("--title", "-t TITLE", "title to use in header") do |title|
+        opt.on('--title', '-t TITLE', 'title to use in header') do |title|
           session.title = title
         end
 
-        opt.on("--output", "-o PATH", "save to file or directory") do |path|
+        opt.on('--output', '-o PATH', 'save to file or directory') do |path|
           session.output = path
         end
 
-        opt.on("--dryrun", "-n", "do not actually write to disk") do
+        opt.on('--dryrun', '-n', 'do not actually write to disk') do
           session.dryrun = true
         end
 
-        opt.on("--debug", "debug mode") do
+        opt.on('--debug', 'debug mode') do
           $DEBUG = true
           $VERBOSE = true
         end
 
-        opt.separator(" ")
-        opt.separator("COMMAND OPTIONS:")
+        opt.separator(' ')
+        opt.separator('COMMAND OPTIONS:')
 
-        opt.on_tail('--templates', "-T", "list available format templates") do
+        opt.on_tail('--templates', '-T', 'list available format templates') do
           tdir   = File.join(DIR, 'templates')
           tfiles = Dir[File.join(tdir, '**/*.erb')]
-          tnames = tfiles.map{ |tname| tname.sub(tdir+'/', '').chomp('.erb') }
-          groups = tnames.group_by{ |tname| tname.split('/').first }
-          groups.sort.each do |(type, names)|
-            puts("%-18s " * names.size % names.sort)
+          tnames = tfiles.map { |tname| tname.sub(tdir + '/', '').chomp('.erb') }
+          groups = tnames.group_by { |tname| tname.split('/').first }
+          groups.sort.each do |(_type, names)|
+            puts('%-18s ' * names.size % names.sort)
           end
           exit
         end
 
-        opt.on_tail('--help', '-h', "show this help information") do
+        opt.on_tail('--help', '-h', 'show this help information') do
           puts opt
           exit
         end
@@ -262,8 +248,5 @@ module DNote
         exit 1
       end
     end
-
   end
-
 end
-
