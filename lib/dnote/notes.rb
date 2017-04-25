@@ -19,10 +19,10 @@ module DNote
     include Enumerable
 
     # Default paths (all ruby scripts).
-    DEFAULT_PATHS  = ['**/*.rb']
+    DEFAULT_PATHS  = ['**/*.rb'].freeze
 
     # Default note labels to look for in source code. (NOT CURRENTLY USED!)
-    DEFAULT_LABELS = ['TODO', 'FIXME', 'OPTIMIZE', 'THINK', 'DEPRECATE']
+    DEFAULT_LABELS = %w(TODO FIXME OPTIMIZE THINK DEPRECATE).freeze
 
     # Files to search for notes.
     attr_accessor :files
@@ -110,9 +110,9 @@ module DNote
             when /^\s*#{mark}/
               if text[-1, 1] == "\n"
                 text << line.gsub(/^\s*#{mark}\s*/, '')
-            else
-              text << "\n" << line.gsub(/^\s*#{mark}\s*/, '')
-                end
+              else
+                text << "\n" << line.gsub(/^\s*#{mark}\s*/, '')
+              end
             else
               text.strip!
               text = nil
@@ -139,7 +139,7 @@ module DNote
     def match_special(line, lineno, file)
       rec = nil
       labels.each do |label|
-        if md = match_special_regex(label, file).match(line)
+        if (md = match_special_regex(label, file).match(line))
           text = md[1]
           rec = Note.new(self, file, label, lineno, text, remark(file))
         end
@@ -162,7 +162,7 @@ module DNote
     # Match notes that are labeled with a colon.
     def match_general(line, lineno, file)
       rec = nil
-      if md = match_general_regex(file).match(line)
+      if (md = match_general_regex(file).match(line))
         label = md[1]
         text = md[2]
         rec = Note.new(self, file, label, lineno, text, remark(file))

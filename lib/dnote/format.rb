@@ -12,7 +12,7 @@ module DNote
     require 'rexml/text'
     require 'dnote/core_ext'
 
-    EXTENSIONS = { 'text' => 'txt', 'soap' => 'xml', 'xoxo' => 'xml' }
+    EXTENSIONS = { 'text' => 'txt', 'soap' => 'xml', 'xoxo' => 'xml' }.freeze
 
     #
     attr_reader :notes
@@ -78,7 +78,7 @@ module DNote
       publish(result)
     end
 
-  private
+    private
 
     #
     def erb(file)
@@ -129,7 +129,7 @@ module DNote
     #
     def fu
       @fu ||= begin
-        if dryrun? and debug?
+        if dryrun? && debug?
           FileUtils::DryRun
         elsif dryrun?
           FileUtils::Noop

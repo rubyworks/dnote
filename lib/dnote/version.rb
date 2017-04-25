@@ -1,5 +1,5 @@
 module DNote
-  VERSION = '1.7.2'
+  VERSION = '1.7.2'.freeze
 
   #
   def self.metadata

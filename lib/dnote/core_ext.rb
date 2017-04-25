@@ -1,10 +1,12 @@
 module Enumerable
   # Taken from Ruby Facets.
-  def group_by #:yield:
-    r = Hash.new
-    each { |e| (r[yield(e)] ||= []) << e }
-    r
-  end unless method_defined?(:group_by)
+  unless method_defined?(:group_by)
+    def group_by #:yield:
+      r = {}
+      each { |e| (r[yield(e)] ||= []) << e }
+      r
+    end
+  end
 end
 
 module DNote
@@ -29,11 +31,7 @@ module DNote
       d = (/\A.*\n\s*(.)/.match(self) ||
           /\A\s*(.)/.match(self))[1]
       return '' unless d
-      if n == 0
-        gsub(/\n\s*\Z/, '').gsub(/^\s*[#{d}]/, '')
-      else
-        gsub(/\n\s*\Z/, '').gsub(/^\s*[#{d}]/, ' ' * n)
-      end
+      gsub(/\n\s*\Z/, '').gsub(/^\s*[#{d}]/, ' ' * n)
     end
 
     # Preserves relative tabbing.
@@ -43,7 +41,7 @@ module DNote
 
     def tabto(n)
       if self =~ /^( *)\S/
-        indent(n - $1.length)
+        indent(n - Regexp.last_match(1).length)
       else
         self
       end

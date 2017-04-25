@@ -50,7 +50,7 @@ module DNote
 
     # Remove newlines from note text.
     def textline
-      text.gsub("\n", ' ')
+      text.tr("\n", ' ')
     end
 
     # Sort by file name and line number.
@@ -110,7 +110,7 @@ module DNote
     def unindent(lines)
       dents = []
       lines.each do |line|
-        if md = /^([\ ]*)/.match(line)
+        if (md = /^([\ ]*)/.match(line))
           dents << md[1]
         end
       end

@@ -15,10 +15,10 @@ module DNote
     DIR = File.dirname(__FILE__)
 
     # Default format.
-    DEFAULT_FORMAT = 'text'
+    DEFAULT_FORMAT = 'text'.freeze
 
     # Default title.
-    DEFAULT_TITLE = "Developer's Notes"
+    DEFAULT_TITLE = "Developer's Notes".freeze
 
     # Paths to include.
     attr_accessor :paths
@@ -65,7 +65,7 @@ module DNote
     # Number of lines of context to display. The default is zero.
     attr_accessor :context
 
-  private
+    private
 
     # New Session.
     def initialize(options = {})
@@ -89,7 +89,7 @@ module DNote
       @context = 0
     end
 
-  public
+    public
 
     # Set exclude list ensuring that the value is an array.
     def exclude=(list)
@@ -226,7 +226,7 @@ module DNote
           tfiles = Dir[File.join(tdir, '**/*.erb')]
           tnames = tfiles.map { |tname| tname.sub(tdir + '/', '').chomp('.erb') }
           groups = tnames.group_by { |tname| tname.split('/').first }
-          groups.sort.each do |(type, names)|
+          groups.sort.each do |(_type, names)|
             puts('%-18s ' * names.size % names.sort)
           end
           exit
