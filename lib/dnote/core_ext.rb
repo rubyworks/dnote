@@ -1,10 +1,12 @@
 module Enumerable
   # Taken from Ruby Facets.
-  def group_by #:yield:
-    r = {}
-    each { |e| (r[yield(e)] ||= []) << e }
-    r
-  end unless method_defined?(:group_by)
+  unless method_defined?(:group_by)
+    def group_by #:yield:
+      r = {}
+      each { |e| (r[yield(e)] ||= []) << e }
+      r
+    end
+  end
 end
 
 module DNote
