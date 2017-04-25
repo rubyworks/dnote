@@ -31,11 +31,7 @@ module DNote
       d = (/\A.*\n\s*(.)/.match(self) ||
           /\A\s*(.)/.match(self))[1]
       return '' unless d
-      if n == 0
-        gsub(/\n\s*\Z/, '').gsub(/^\s*[#{d}]/, '')
-      else
-        gsub(/\n\s*\Z/, '').gsub(/^\s*[#{d}]/, ' ' * n)
-      end
+      gsub(/\n\s*\Z/, '').gsub(/^\s*[#{d}]/, ' ' * n)
     end
 
     # Preserves relative tabbing.
