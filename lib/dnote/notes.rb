@@ -139,7 +139,7 @@ module DNote
     def match_special(line, lineno, file)
       rec = nil
       labels.each do |label|
-        if md = match_special_regex(label, file).match(line)
+        if (md = match_special_regex(label, file).match(line))
           text = md[1]
           rec = Note.new(self, file, label, lineno, text, remark(file))
         end
@@ -162,7 +162,7 @@ module DNote
     # Match notes that are labeled with a colon.
     def match_general(line, lineno, file)
       rec = nil
-      if md = match_general_regex(file).match(line)
+      if (md = match_general_regex(file).match(line))
         label = md[1]
         text = md[2]
         rec = Note.new(self, file, label, lineno, text, remark(file))

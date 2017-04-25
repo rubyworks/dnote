@@ -110,7 +110,7 @@ module DNote
     def unindent(lines)
       dents = []
       lines.each do |line|
-        if md = /^([\ ]*)/.match(line)
+        if (md = /^([\ ]*)/.match(line))
           dents << md[1]
         end
       end
