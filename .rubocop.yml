@@ -1,0 +1,7 @@
+# Dot at end of line makes it clearer that the line is not done
+Style/DotPosition:
+  EnforcedStyle: trailing
+
+# Require lines to fit in pull requests.
+Metrics/LineLength:
+  Max: 92
