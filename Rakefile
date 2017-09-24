@@ -13,6 +13,5 @@ Cucumber::Rake::Task.new(:features) do |t|
   t.cucumber_opts = 'features --format progress --color'
 end
 
-
 task default: :spec
 task default: :features
