@@ -1,3 +1,7 @@
+# Dot at end of line makes it clearer that the line is not done
+Layout/DotPosition:
+  EnforcedStyle: trailing
+
 # Spec blocks can be any size
 Metrics/BlockLength:
   Exclude:
@@ -7,13 +11,8 @@ Metrics/BlockLength:
 Metrics/LineLength:
   Max: 92
 
-# Dot at end of line makes it clearer that the line is not done
-Style/DotPosition:
-  EnforcedStyle: trailing
-
 # Prefer oroginal RuboCop defaults
 Style/PercentLiteralDelimiters:
   PreferredDelimiters:
     '%W': ()
     '%w': ()
-
