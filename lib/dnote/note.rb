@@ -88,7 +88,7 @@ module DNote
     # returns the file.
     def url
       if notes.url
-        notes.url % [file, line]
+        format(notes.url, file, line)
       else
         file
       end
