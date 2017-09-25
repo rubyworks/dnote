@@ -24,7 +24,7 @@ module DNote
 
     # Output directory to save notes file. Defaults to <tt>dnote/</tt> under
     # the project log directory (eg. <tt>log/dnote/</tt>).
-    attr_accessor :output
+    attr_reader :output
 
     # Title to use if temaplte can use it.
     attr_accessor :title
