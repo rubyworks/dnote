@@ -82,12 +82,6 @@ module DNote
       end
     end
 
-    # Reset output directory, marking it as out-of-date.
-    def reset
-      File.utime(0, 0, output) unless $NOOP
-      puts "Marked #{output} as out-of-date"
-    end
-
     # Remove output files.
     def clean
       formats.each do |format|
