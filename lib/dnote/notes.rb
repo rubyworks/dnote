@@ -57,9 +57,7 @@ module DNote
     end
 
     # Array of notes.
-    def notes
-      @notes
-    end
+    attr_reader :notes
 
     # Notes counts by label.
     def counts
