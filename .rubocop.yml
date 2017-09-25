@@ -1,3 +1,7 @@
+AllCops:
+  Exclude:
+    - 'tmp/**/*'
+
 # Dot at end of line makes it clearer that the line is not done
 Layout/DotPosition:
   EnforcedStyle: trailing
