@@ -1,8 +1,8 @@
-module DNote
-  require 'dnote/core_ext'
-  require 'dnote/notes'
-  require 'dnote/format'
+require 'dnote/core_ext'
+require 'dnote/notes'
+require 'dnote/format'
 
+module DNote
   # User session which is used by commandline interface.
   #
   # By making this a class it makes it easy for external
@@ -120,7 +120,7 @@ module DNote
       list = [paths].flatten.compact
       list = ['**/*.rb'] if list.empty?
       list = glob(list)
-      list = list - glob(exclude)
+      list -= glob(exclude)
       list.reject do |path|
         path.split('/').any? { |part| ignore.any? { |ig| File.fnmatch?(ig, part) } }
       end
@@ -242,7 +242,7 @@ module DNote
         opts.parse!(argv)
         session.paths.replace(argv)
         session.run
-      rescue => err
+      rescue StandardError => err
         raise err if $DEBUG
         puts err
         exit 1

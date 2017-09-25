@@ -161,7 +161,13 @@ module DNote
 
       #
       def method_missing(s, *_a)
-        @data[s.to_sym]
+        sym = s.to_sym
+        return @data.fetch(sym) if @data.key? sym
+        super
+      end
+
+      def respond_to_missing?(s)
+        @data.key? s.to_sym
       end
     end
   end

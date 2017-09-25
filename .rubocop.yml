@@ -1,19 +1,51 @@
+AllCops:
+  Exclude:
+    - 'tmp/**/*'
+
+# Dot at end of line makes it clearer that the line is not done
+Layout/DotPosition:
+  EnforcedStyle: trailing
+
 # Spec blocks can be any size
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
 
-# Require lines to fit in pull requests.
-Metrics/LineLength:
-  Max: 92
+# TODO: Lower Max and fix offenses
+Metrics/AbcSize:
+  Max: 67
 
-# Dot at end of line makes it clearer that the line is not done
-Style/DotPosition:
-  EnforcedStyle: trailing
+# TODO: Lower Max and fix offenses
+Metrics/BlockLength:
+  Max: 70
+
+# TODO: Lower Max and fix offenses
+Metrics/ClassLength:
+  Max: 190
+
+# TODO: Lower Max and fix offenses
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+# TODO: Lower Max and fix offenses
+# Target is around 92
+Metrics/LineLength:
+  Max: 119
+
+# TODO: Lower Max and fix offenses
+Metrics/MethodLength:
+  Max: 83
+
+# TODO: Lower Max and fix offenses
+Metrics/ParameterLists:
+  Max: 6
+
+# TODO: Lower Max and fix offenses
+Metrics/PerceivedComplexity:
+  Max: 11
 
 # Prefer oroginal RuboCop defaults
 Style/PercentLiteralDelimiters:
   PreferredDelimiters:
     '%W': ()
     '%w': ()
-

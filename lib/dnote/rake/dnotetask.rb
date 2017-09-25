@@ -24,7 +24,7 @@ module DNote
 
     # Output directory to save notes file. Defaults to <tt>dnote/</tt> under
     # the project log directory (eg. <tt>log/dnote/</tt>).
-    attr_accessor :output
+    attr_reader :output
 
     # Title to use if temaplte can use it.
     attr_accessor :title
@@ -80,12 +80,6 @@ module DNote
         session.run
         report "Updated #{output.to_s.sub(Dir.pwd + '/', '')}" unless trial?
       end
-    end
-
-    # Reset output directory, marking it as out-of-date.
-    def reset
-      File.utime(0, 0, output) unless $NOOP
-      puts "Marked #{output} as out-of-date"
     end
 
     # Remove output files.
