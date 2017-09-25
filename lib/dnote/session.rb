@@ -120,7 +120,7 @@ module DNote
       list = [paths].flatten.compact
       list = ['**/*.rb'] if list.empty?
       list = glob(list)
-      list = list - glob(exclude)
+      list -= glob(exclude)
       list.reject do |path|
         path.split('/').any? { |part| ignore.any? { |ig| File.fnmatch?(ig, part) } }
       end
