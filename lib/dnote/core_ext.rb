@@ -1,14 +1,3 @@
-module Enumerable
-  # Taken from Ruby Facets.
-  unless method_defined?(:group_by)
-    def group_by #:yield:
-      r = {}
-      each { |e| (r[yield(e)] ||= []) << e }
-      r
-    end
-  end
-end
-
 module DNote
   # Extensions for String class.
   # These methods are taken directly from Ruby Facets.
