@@ -1,8 +1,8 @@
-module DNote
-  require 'dnote/core_ext'
-  require 'dnote/notes'
-  require 'dnote/format'
+require 'dnote/core_ext'
+require 'dnote/notes'
+require 'dnote/format'
 
+module DNote
   # User session which is used by commandline interface.
   #
   # By making this a class it makes it easy for external

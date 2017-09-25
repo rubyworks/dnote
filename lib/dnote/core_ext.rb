@@ -62,8 +62,8 @@ module DNote
       indent(t)
     end
   end
+end
 
-  ::String.class_eval do
-    include DNote::StringExt
-  end
+String.class_eval do
+  include DNote::StringExt
 end
