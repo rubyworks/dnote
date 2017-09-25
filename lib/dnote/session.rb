@@ -242,7 +242,7 @@ module DNote
         opts.parse!(argv)
         session.paths.replace(argv)
         session.run
-      rescue => err
+      rescue StandardError => err
         raise err if $DEBUG
         puts err
         exit 1
