@@ -7,9 +7,38 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
 
-# Require lines to fit in pull requests.
+# TODO: Lower Max and fix offenses
+Metrics/AbcSize:
+  Max: 67
+
+# TODO: Lower Max and fix offenses
+Metrics/BlockLength:
+  Max: 70
+
+# TODO: Lower Max and fix offenses
+Metrics/ClassLength:
+  Max: 190
+
+# TODO: Lower Max and fix offenses
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+# TODO: Lower Max and fix offenses
+# Target is around 92
 Metrics/LineLength:
-  Max: 92
+  Max: 119
+
+# TODO: Lower Max and fix offenses
+Metrics/MethodLength:
+  Max: 83
+
+# TODO: Lower Max and fix offenses
+Metrics/ParameterLists:
+  Max: 6
+
+# TODO: Lower Max and fix offenses
+Metrics/PerceivedComplexity:
+  Max: 11
 
 # Prefer oroginal RuboCop defaults
 Style/PercentLiteralDelimiters:
