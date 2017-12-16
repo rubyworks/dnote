@@ -107,6 +107,7 @@ The usual RubyGem's command will do the trick.
 == COPYRIGHT
 
 Copyright (c) 2006 Thomas Sawyer, Rubyworks
+Copyright (c) 2017 Matijs van Zuijlen
 
 DNote is distributable in accordance with the terms of the *FreeBSD* license.
 
