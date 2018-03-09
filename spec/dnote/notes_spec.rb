@@ -3,26 +3,26 @@ require 'spec_helper'
 describe(DNote::Notes) do
   describe(:labels) do
     it('returns the list of labels') do
-      notes = DNote::Notes.new([], labels: ['TODO'])
+      notes = described_class.new([], labels: ['TODO'])
       expect(notes.labels).to eq(['TODO'])
     end
   end
   describe(:files) do
     it('returns the files attribute') do
-      notes = DNote::Notes.new(['example1.rb'])
+      notes = described_class.new(['example1.rb'])
       expect(notes.files).to eq(['example1.rb'])
     end
   end
   describe(:files) do
     it('changes the paths attribute') do
-      notes = DNote::Notes.new([])
+      notes = described_class.new([])
       notes.files = ['example1.rb']
       expect(notes.files).to eq(['example1.rb'])
     end
   end
   describe(:match_general) do
     it('works') do
-      notes = DNote::Notes.new([])
+      notes = described_class.new([])
       line = '# TODO: Do something or another!'
       lineno = 1
       file = 'foo.rb'
@@ -32,7 +32,7 @@ describe(DNote::Notes) do
   end
   describe(:match_special) do
     it('works') do
-      notes = DNote::Notes.new([], labels: ['TODO'])
+      notes = described_class.new([], labels: ['TODO'])
       line = '# TODO: Do something or another!'
       lineno = 1
       file = 'foo.rb'
