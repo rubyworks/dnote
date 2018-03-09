@@ -139,14 +139,14 @@ module DNote
         REXML::Text.normalize(string)
       end
 
-      def method_missing(s, *_a)
-        sym = s.to_sym
+      def method_missing(method, *_args)
+        sym = method.to_sym
         return @data.fetch(sym) if @data.key? sym
         super
       end
 
-      def respond_to_missing?(s)
-        @data.key? s.to_sym
+      def respond_to_missing?(method)
+        @data.key? method.to_sym
       end
     end
   end
