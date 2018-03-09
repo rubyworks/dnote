@@ -3,39 +3,6 @@ module DNote
   # These methods are taken directly from Ruby Facets.
   #
   module StringExt
-    # Provides a margin controlled string.
-    #
-    #   x = %Q{
-    #         | This
-    #         |   is
-    #         |     margin controlled!
-    #         }.margin
-    #
-    #
-    #   NOTE: This may still need a bit of tweaking.
-    #
-    #  CREDIT: Trans
-
-    def margin(n = 0)
-      d = (/\A.*\n\s*(.)/.match(self) ||
-          /\A\s*(.)/.match(self))[1]
-      return '' unless d
-      gsub(/\n\s*\Z/, '').gsub(/^\s*[#{d}]/, ' ' * n)
-    end
-
-    # Preserves relative tabbing.
-    # The first non-empty line ends up with n spaces before nonspace.
-    #
-    #  CREDIT: Gavin Sinclair
-
-    def tabto(n)
-      if self =~ /^( *)\S/
-        indent(n - Regexp.last_match(1).length)
-      else
-        self
-      end
-    end
-
     # Indent left or right by n spaces.
     # (This used to be called #tab and aliased as #indent.)
     #
