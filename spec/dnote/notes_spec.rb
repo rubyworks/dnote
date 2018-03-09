@@ -13,7 +13,8 @@ describe(DNote::Notes) do
       expect(notes.files).to eq(['example1.rb'])
     end
   end
-  describe('#files') do
+
+  describe('#files=') do
     it('changes the paths attribute') do
       notes = described_class.new([])
       notes.files = ['example1.rb']
