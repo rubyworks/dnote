@@ -208,7 +208,7 @@ module DNote
     # Organize notes into a hash with labels for keys, followed
     # by a hash with filename for keys.
     def by_label_file
-      @by_label ||= begin
+      @by_label_file ||= begin
         list = {}
         notes.each do |note|
           list[note.label] ||= {}
@@ -223,7 +223,7 @@ module DNote
     # Organize notes into a hash with filenames for keys, followed
     # by a hash with labels for keys.
     def by_file_label
-      @by_file ||= begin
+      @by_file_label ||= begin
         list = {}
         notes.each do |note|
           list[note.file] ||= {}
@@ -245,7 +245,6 @@ module DNote
       by_label
     end
 
-    #
     def remark(file)
       @remark[File.extname(file)] ||= begin
         mark = guess_marker(file)

@@ -29,12 +29,10 @@ module DNote
     # Title to use if temaplte can use it.
     attr_accessor :title
 
-    #
     def output=(path)
       @output = Pathname.new(path)
     end
 
-    #
     def init
       require 'dnote'
       require 'dnote/format'
@@ -44,7 +42,6 @@ module DNote
       @labels  = nil
     end
 
-    #
     def define
       desc "Collect Developer's Notes"
       task 'dnote' do

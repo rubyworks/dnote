@@ -3,61 +3,26 @@ module DNote
   # These methods are taken directly from Ruby Facets.
   #
   module StringExt
-    # Provides a margin controlled string.
-    #
-    #   x = %Q{
-    #         | This
-    #         |   is
-    #         |     margin controlled!
-    #         }.margin
-    #
-    #
-    #   NOTE: This may still need a bit of tweaking.
-    #
-    #  CREDIT: Trans
-
-    def margin(n = 0)
-      d = (/\A.*\n\s*(.)/.match(self) ||
-          /\A\s*(.)/.match(self))[1]
-      return '' unless d
-      gsub(/\n\s*\Z/, '').gsub(/^\s*[#{d}]/, ' ' * n)
-    end
-
-    # Preserves relative tabbing.
-    # The first non-empty line ends up with n spaces before nonspace.
-    #
-    #  CREDIT: Gavin Sinclair
-
-    def tabto(n)
-      if self =~ /^( *)\S/
-        indent(n - Regexp.last_match(1).length)
-      else
-        self
-      end
-    end
-
-    # Indent left or right by n spaces.
+    # Indent left or right by num spaces.
     # (This used to be called #tab and aliased as #indent.)
     #
     #  CREDIT: Gavin Sinclair
     #  CREDIT: Trans
 
-    def indent(n)
-      if n >= 0
-        gsub(/^/, ' ' * n)
+    def indent(num)
+      if num >= 0
+        gsub(/^/, ' ' * num)
       else
-        gsub(/^ {0,#{-n}}/, '')
+        gsub(/^ {0,#{-num}}/, '')
       end
     end
 
-    #
-    #
-    def tabset(n)
+    def tabset(num)
       i = lines.map do |line|
         line.strip.empty? ? nil : line.index(/\S/)
       end
       x = i.compact.min
-      t = n - x.to_i
+      t = num - x.to_i
       t = 0 if t < 0
       indent(t)
     end

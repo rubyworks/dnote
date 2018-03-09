@@ -94,7 +94,6 @@ module DNote
       end
     end
 
-    #
     def code
       unindent(capture).join
     end
