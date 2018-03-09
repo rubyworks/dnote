@@ -1,4 +1,4 @@
-require 'dnote/notes'
+require 'spec_helper'
 
 describe(DNote::Notes) do
   describe(:labels) do

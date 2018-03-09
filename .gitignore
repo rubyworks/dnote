@@ -1,5 +1,6 @@
 .reap/digest
 .yardoc
+coverage/
 doc
 log
 pkg
