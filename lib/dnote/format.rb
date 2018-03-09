@@ -124,6 +124,7 @@ module DNote
       end
     end
 
+    # Evaluation scope for ERB templates
     class ErbScope
       def initialize(data = {})
         @data = data
