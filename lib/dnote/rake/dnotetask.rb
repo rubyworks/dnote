@@ -1,3 +1,5 @@
+require 'rspec/core/rake_task'
+
 module DNote
   # = Developmer's Notes Rake Task
   #
