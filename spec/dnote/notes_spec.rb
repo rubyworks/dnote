@@ -1,26 +1,26 @@
 require 'spec_helper'
 
 describe(DNote::Notes) do
-  describe(:labels) do
+  describe('#labels') do
     it('returns the list of labels') do
       notes = described_class.new([], labels: ['TODO'])
       expect(notes.labels).to eq(['TODO'])
     end
   end
-  describe(:files) do
+  describe('#files') do
     it('returns the files attribute') do
       notes = described_class.new(['example1.rb'])
       expect(notes.files).to eq(['example1.rb'])
     end
   end
-  describe(:files) do
+  describe('#files') do
     it('changes the paths attribute') do
       notes = described_class.new([])
       notes.files = ['example1.rb']
       expect(notes.files).to eq(['example1.rb'])
     end
   end
-  describe(:match_general) do
+  describe('#match_general') do
     it('works') do
       notes = described_class.new([])
       line = '# TODO: Do something or another!'
@@ -30,7 +30,7 @@ describe(DNote::Notes) do
       expect(rec.to_h).to eq('label' => 'TODO', 'file' => file, 'line' => lineno, 'text' => 'Do something or another!')
     end
   end
-  describe(:match_special) do
+  describe('#match_special') do
     it('works') do
       notes = described_class.new([], labels: ['TODO'])
       line = '# TODO: Do something or another!'
@@ -40,7 +40,7 @@ describe(DNote::Notes) do
       expect(rec.to_h).to eq('label' => 'TODO', 'file' => file, 'line' => lineno, 'text' => 'Do something or another!')
     end
   end
-  describe(:counts) { it { skip('pending') } }
-  describe(:notes) { it { skip('pending') } }
-  describe(:parse) { it { skip('pending') } }
+  describe('#counts') { it { skip('pending') } }
+  describe('#notes') { it { skip('pending') } }
+  describe('#parse') { it { skip('pending') } }
 end
