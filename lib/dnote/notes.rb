@@ -245,7 +245,6 @@ module DNote
       by_label
     end
 
-    #
     def remark(file)
       @remark[File.extname(file)] ||= begin
         mark = guess_marker(file)

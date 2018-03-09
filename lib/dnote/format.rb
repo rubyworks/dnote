@@ -14,28 +14,20 @@ module DNote
 
     EXTENSIONS = { 'text' => 'txt', 'soap' => 'xml', 'xoxo' => 'xml' }.freeze
 
-    #
     attr_reader :notes
 
-    #
     attr_accessor :format
 
-    #
     attr_accessor :subtype
 
-    #
     attr_accessor :output
 
-    #
     attr_accessor :template
 
-    #
     attr_accessor :title
 
-    #
     attr_accessor :dryrun
 
-    #
     def initialize(notes, options = {})
       @notes   = notes
       @format  = 'text'
@@ -46,7 +38,6 @@ module DNote
       yield(self) if block_given?
     end
 
-    #
     def render
       if notes.empty?
         $stderr << "No #{notes.labels.join(', ')} notes.\n"
@@ -62,7 +53,6 @@ module DNote
 
     # C U S T O M
 
-    #
     def render_custom
       result = erb(template)
       publish(result)
@@ -70,7 +60,6 @@ module DNote
 
     # T E M P L A T E
 
-    #
     def render_template
       template = File.join(File.dirname(__FILE__), 'templates', "#{format}.erb")
       raise "No such format - #{format}" unless File.exist?(template)
@@ -80,13 +69,11 @@ module DNote
 
     private
 
-    #
     def erb(file)
       scope = ErbScope.new(notes: notes, title: title)
       scope.render(file)
     end
 
-    #
     def publish(result, fname = nil)
       if output
         write(result, fname)
@@ -96,7 +83,6 @@ module DNote
       $stderr << '(' + notes.counts.map { |l, n| "#{n} #{l}s" }.join(', ') + ")\n"
     end
 
-    #
     def write(result, fname = nil)
       if output.to_s[-1, 1] == '/' || File.directory?(output)
         fmt  = format.split('/').first
@@ -116,17 +102,14 @@ module DNote
       file
     end
 
-    #
     def dryrun?
       @dryrun
     end
 
-    #
     def debug?
       $DEBUG
     end
 
-    #
     def fu
       @fu ||= begin
         if dryrun? && debug?
@@ -141,25 +124,20 @@ module DNote
       end
     end
 
-    #
     class ErbScope
-      #
       def initialize(data = {})
         @data = data
       end
 
-      #
       def render(file)
         erb = ERB.new(File.read(file), nil, '<>')
         erb.result(binding)
       end
 
-      #
       def h(string)
         REXML::Text.normalize(string)
       end
 
-      #
       def method_missing(s, *_a)
         sym = s.to_sym
         return @data.fetch(sym) if @data.key? sym
