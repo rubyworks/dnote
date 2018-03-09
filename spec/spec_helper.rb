@@ -1,4 +1,5 @@
 require 'simplecov'
 SimpleCov.start
 
-require 'dnote/notes'
+require 'dnote'
+require 'dnote/rake/dnotetask'
