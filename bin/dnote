@@ -1,3 +1,10 @@
 #!/usr/bin/env ruby
 require 'dnote'
-DNote::Session.main(*ARGV)
+
+begin
+  DNote::Session.main(*ARGV)
+rescue StandardError => err
+  raise err if $DEBUG
+  puts err
+  exit 1
+end

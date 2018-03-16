@@ -238,15 +238,9 @@ module DNote
         end
       end
 
-      begin
-        opts.parse!(argv)
-        session.paths.replace(argv)
-        session.run
-      rescue StandardError => err
-        raise err if $DEBUG
-        puts err
-        exit 1
-      end
+      opts.parse!(argv)
+      session.paths.replace(argv)
+      session.run
     end
   end
 end
