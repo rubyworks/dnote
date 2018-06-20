@@ -44,6 +44,8 @@ describe(DNote::Notes) do
   end
 
   describe('#counts') { it { skip('pending') } }
+
   describe('#notes') { it { skip('pending') } }
+
   describe('#parse') { it { skip('pending') } }
 end
