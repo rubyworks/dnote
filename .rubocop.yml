@@ -1,3 +1,5 @@
+inherit_from: .rubocop_todo.yml
+
 require:
   - rubocop-rspec
 
@@ -15,45 +17,12 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
 
-# TODO: Lower Max and fix offenses
-Metrics/AbcSize:
-  Max: 67
-
-# TODO: Lower Max and fix offenses
-Metrics/BlockLength:
-  Max: 70
-
-# TODO: Lower Max and fix offenses
-Metrics/ClassLength:
-  Max: 190
-
-# TODO: Lower Max and fix offenses
-Metrics/CyclomaticComplexity:
-  Max: 10
-
-# TODO: Lower Max and fix offenses
-# Target is around 92
-Metrics/LineLength:
-  Max: 119
-
-# TODO: Lower Max and fix offenses
-Metrics/MethodLength:
-  Max: 83
-
-# TODO: Lower Max and fix offenses
-Metrics/ParameterLists:
-  Max: 6
-
-# TODO: Lower Max and fix offenses
-Metrics/PerceivedComplexity:
-  Max: 11
-
 # DNote namespace is mapped to dnote directory, both in lib and spec.
 RSpec/FilePath:
   CustomTransform:
     DNote: dnote
 
-# Prefer oroginal RuboCop defaults
+# Prefer original RuboCop defaults
 Style/PercentLiteralDelimiters:
   PreferredDelimiters:
     '%W': ()

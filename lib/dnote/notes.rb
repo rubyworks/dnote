@@ -88,6 +88,7 @@ module DNote
       records = []
       files.each do |fname|
         next unless File.file?(fname)
+
         mark = remark(fname)
         lineno = 0
         note = nil
@@ -258,6 +259,7 @@ module DNote
     # TODO: Continue to add comment types.
     def guess_marker(file)
       return @marker if @marker # forced marker
+
       case File.extname(file)
       when '.js', '.c', 'cpp', '.css'
         '//'

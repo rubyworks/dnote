@@ -57,6 +57,7 @@ module DNote
     def <=>(other)
       s = file <=> other.file
       return s unless s.zero?
+
       line <=> other.line
     end
 
