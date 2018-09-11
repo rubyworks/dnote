@@ -63,6 +63,7 @@ module DNote
     def render_template
       template = File.join(File.dirname(__FILE__), 'templates', "#{format}.erb")
       raise "No such format - #{format}" unless File.exist?(template)
+
       result = erb(template)
       publish(result)
     end
@@ -142,6 +143,7 @@ module DNote
       def method_missing(method, *_args)
         sym = method.to_sym
         return @data.fetch(sym) if @data.key? sym
+
         super
       end
 
