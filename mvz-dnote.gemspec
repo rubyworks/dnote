@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = ['HISTORY.rdoc', 'README.rdoc', 'COPYING.rdoc']
 
   s.add_development_dependency('aruba', ['~> 0.14.1'])
-  s.add_development_dependency('cucumber', ['~> 3.0'])
+  s.add_development_dependency('cucumber', ['~> 4.0.0.rc.1'])
   s.add_development_dependency('rake', ['~> 12.0'])
   s.add_development_dependency('rspec', ['~> 3.5'])
   s.add_development_dependency('simplecov', ['~> 0.16.1'])
