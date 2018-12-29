@@ -105,7 +105,7 @@ Here is an example of DNote's current notes in RDoc format:
 
 The usual rubygems command will do the trick.
 
-    $ gem install dnote
+    $ gem install mvz-dnote
 
 
 ## COPYRIGHT
