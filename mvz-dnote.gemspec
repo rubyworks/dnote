@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require File.join(File.dirname(__FILE__), 'lib/dnote/version.rb')
 
 Gem::Specification.new do |s|
@@ -5,7 +7,7 @@ Gem::Specification.new do |s|
   s.version = DNote::VERSION
 
   s.summary = "Extract developer's notes from source code."
-  s.required_ruby_version = '>= 2.2.0'
+  s.required_ruby_version = '>= 2.3.0'
 
   s.authors = ['Thomas Sawyer', 'Matijs van Zuijlen']
   s.email = ['matijs@matijs.net']

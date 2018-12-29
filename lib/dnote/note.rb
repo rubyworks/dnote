@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module DNote
   # The Note class encapsulates a single note made in a source file.
   #

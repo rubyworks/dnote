@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module DNote
   # Extensions for String class.
   # These methods are taken directly from Ruby Facets.

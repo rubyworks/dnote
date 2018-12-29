@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'dnote/core_ext'
 require 'dnote/notes'
 require 'dnote/format'
@@ -15,10 +17,10 @@ module DNote
     DIR = File.dirname(__FILE__)
 
     # Default format.
-    DEFAULT_FORMAT = 'text'.freeze
+    DEFAULT_FORMAT = 'text'
 
     # Default title.
-    DEFAULT_TITLE = "Developer's Notes".freeze
+    DEFAULT_TITLE = "Developer's Notes"
 
     # Paths to include.
     attr_accessor :paths
