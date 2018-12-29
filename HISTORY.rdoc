@@ -1,9 +1,9 @@
 = RELEASE HISTORY
 
-== 1.7.3 / Unreleased
+== 1.8.0 / 2018-12-29
 
-* Officially support CRuby 2.5
-* Drop support for CRuby 2.1
+* Officially support CRuby 2.5 and 2.6
+* Drop support for CRuby 2.1 and 2.2
 
 == 1.7.2 / 2017-03-05
 

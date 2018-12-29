@@ -18,13 +18,13 @@ Gem::Specification.new do |s|
     and supports almost any language.
   DESC
 
-  s.files = Dir['{lib,test,try}/**/*',
+  s.files = Dir['lib/**/*',
                 'COPYING.rdoc',
                 'HISTORY.rdoc',
-                'README.rdoc',
+                'README.md',
                 'bin/dnote'] & `git ls-files -z`.split("\0")
   s.executables = ['dnote']
-  s.extra_rdoc_files = ['HISTORY.rdoc', 'README.rdoc', 'COPYING.rdoc']
+  s.extra_rdoc_files = ['HISTORY.rdoc', 'README.md', 'COPYING.rdoc']
 
   s.add_development_dependency('aruba', ['~> 0.14.1'])
   s.add_development_dependency('cucumber', ['~> 3.0'])

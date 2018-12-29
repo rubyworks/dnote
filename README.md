@@ -5,7 +5,7 @@
 * [Source Code](http://github.com/rubyworks/dnote)
 
 [![Gem Version](https://badge.fury.io/rb/mvz-dnote.svg)](https://badge.fury.io/rb/mvz-dnote)
-[![Build Status](https://travis-ci.org/mvz/dnote.svg?branch=master)](https://travis-ci.org/mvz/dnote)
+[![Build Status](https://travis-ci.org/mvz/mvz-dnote.svg?branch=master)](https://travis-ci.org/mvz/mvz-dnote)
 [![Coverage Status](https://coveralls.io/repos/github/mvz/mvz-dnote/badge.svg?branch=master)](https://coveralls.io/github/mvz/mvz-dnote?branch=master)
 [![Dependency Status](https://gemnasium.com/badges/github.com/mvz/mvz-dnote.svg)](https://gemnasium.com/github.com/mvz/mvz-dnote)
 [![Maintainability](https://api.codeclimate.com/v1/badges/608621bbad5de3a98e3b/maintainability)](https://codeclimate.com/github/mvz/dnote/maintainability)
