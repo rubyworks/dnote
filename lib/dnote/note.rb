@@ -58,7 +58,7 @@ module DNote
     # Sort by file name and line number.
     def <=>(other)
       s = file <=> other.file
-      return s unless s.zero?
+      return s unless s == 0
 
       line <=> other.line
     end

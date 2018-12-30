@@ -22,6 +22,9 @@ RSpec/FilePath:
   CustomTransform:
     DNote: dnote
 
+Style/NumericPredicate:
+  EnforcedStyle: comparison
+
 # Prefer original RuboCop defaults
 Style/PercentLiteralDelimiters:
   PreferredDelimiters:
