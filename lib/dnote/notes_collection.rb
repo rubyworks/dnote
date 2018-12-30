@@ -50,31 +50,13 @@ module DNote
     # Organize notes into a hash with labels for keys, followed
     # by a hash with filename for keys.
     def by_label_file
-      @by_label_file ||= begin
-        list = {}
-        notes.each do |note|
-          list[note.label] ||= {}
-          list[note.label][note.file] ||= []
-          list[note.label][note.file] << note
-          list[note.label][note.file].sort!
-        end
-        list
-      end
+      @by_label_file ||= by_label.transform_values { |notes| notes.group_by(&:file) }
     end
 
     # Organize notes into a hash with filenames for keys, followed
     # by a hash with labels for keys.
     def by_file_label
-      @by_file_label ||= begin
-        list = {}
-        notes.each do |note|
-          list[note.file] ||= {}
-          list[note.file][note.label] ||= []
-          list[note.file][note.label] << note
-          list[note.file][note.label].sort!
-        end
-        list
-      end
+      @by_file_label ||= by_file.transform_values { |notes| notes.group_by(&:label) }
     end
 
     # Convert to an array of hashes.
