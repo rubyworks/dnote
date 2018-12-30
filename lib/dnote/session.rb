@@ -111,7 +111,8 @@ module DNote
                         marker: marker,
                         url: url,
                         context: context)
-      formatter = Format.new(notes) do |f|
+      collection = notes.notes_collection
+      formatter = Format.new(collection) do |f|
         f.format   = format
         f.template = template
         f.title    = title
