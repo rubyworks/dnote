@@ -6,7 +6,7 @@ require:
 AllCops:
   Exclude:
     - 'tmp/**/*'
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.4
 
 # Dot at end of line makes it clearer that the line is not done
 Layout/DotPosition:
@@ -16,6 +16,10 @@ Layout/DotPosition:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
+
+# Lenient line length
+Metrics/LineLength:
+  Max: 92
 
 # DNote namespace is mapped to dnote directory, both in lib and spec.
 RSpec/FilePath:

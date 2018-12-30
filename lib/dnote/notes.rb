@@ -2,6 +2,7 @@
 
 require 'pathname'
 require 'dnote/note'
+require 'dnote/notes_collection'
 
 module DNote
   # = Developer Notes
@@ -18,8 +19,6 @@ module DNote
   #         have a outline format, rather then the single line.
   #++
   class Notes
-    include Enumerable
-
     # Default paths (all ruby scripts).
     DEFAULT_PATHS  = ['**/*.rb'].freeze
 
@@ -27,22 +26,22 @@ module DNote
     DEFAULT_LABELS = %w(TODO FIXME OPTIMIZE THINK DEPRECATE).freeze
 
     # Files to search for notes.
-    attr_accessor :files
+    attr_reader :files
 
     # Labels to document. Defaults are: +TODO+, +FIXME+, +OPTIMIZE+ and +DEPRECATE+.
-    attr_accessor :labels
+    attr_reader :labels
 
     # Require label colon? Default is +true+.
-    attr_accessor :colon
+    attr_reader :colon
 
     # Specific remark marker (+nil+ for auto).
-    attr_accessor :marker
+    attr_reader :marker
 
     # Link template.
-    attr_accessor :url
+    attr_reader :url
 
     # Number of lines of context to show.
-    attr_accessor :context
+    attr_reader :context
 
     # New set of notes for give +files+ and optional special labels.
     def initialize(files, options = {})
@@ -58,28 +57,8 @@ module DNote
       parse
     end
 
-    # Array of notes.
-    attr_reader :notes
-
-    # Notes counts by label.
-    def counts
-      @counts ||= begin
-        h = {}
-        by_label.each do |label, notes|
-          h[label] = notes.size
-        end
-        h
-      end
-    end
-
-    # Iterate through notes.
-    def each(&block)
-      notes.each(&block)
-    end
-
-    # No notes?
-    def empty?
-      notes.empty?
+    def notes_collection
+      @notes_collection ||= NotesCollection.new(@notes)
     end
 
     # Gather notes.
@@ -89,42 +68,45 @@ module DNote
     def parse
       records = []
       files.each do |fname|
-        next unless File.file?(fname)
-
-        mark = remark(fname)
-        lineno = 0
-        note = nil
-        text = nil
-        capt = nil
-        File.readlines(fname).each do |line|
-          lineno += 1
-          note = match(line, lineno, fname)
-          if note
-            text = note.text
-            capt = note.capture
-            records << note
-          elsif text
-            case line
-            when /^\s*#{mark}+\s*$/, /^\s*#{mark}\-\-/, /^\s*#{mark}\+\+/
-              text.strip!
-              text = nil
-            when /^\s*#{mark}/
-              if text[-1, 1] == "\n"
-                text << line.gsub(/^\s*#{mark}\s*/, '')
-              else
-                text << "\n" << line.gsub(/^\s*#{mark}\s*/, '')
-              end
-            else
-              text.strip!
-              text = nil
-            end
-          elsif line !~ /^\s*#{mark}/
-            capt << line if capt && capt.size < context
-          end
-        end
+        records += parse_file(fname)
       end
 
       @notes = records.sort
+    end
+
+    def parse_file(fname)
+      return [] unless File.file?(fname)
+
+      records = []
+      mark = remark(fname)
+      lineno = 0
+      note = nil
+      text = nil
+      capt = nil
+      File.readlines(fname).each do |line|
+        lineno += 1
+        note = match(line, lineno, fname)
+        if note
+          text = note.text
+          capt = note.capture
+          records << note
+        elsif text
+          case line
+          when /^\s*#{mark}+\s*$/, /^\s*#{mark}\-\-/, /^\s*#{mark}\+\+/
+            text.strip!
+            text = nil
+          when /^\s*#{mark}/
+            text << "\n" unless text[-1, 1] == "\n"
+            text << line.gsub(/^\s*#{mark}\s*/, '')
+          else
+            text.strip!
+            text = nil
+          end
+        elsif !/^\s*#{mark}/.match?(line)
+          capt << line if capt && capt.size < context
+        end
+      end
+      records
     end
 
     # Is this line a note?
@@ -148,15 +130,13 @@ module DNote
       rec
     end
 
-    #--
-    # TODO: ruby-1.9.1-p378 reports: `match': invalid byte sequence in UTF-8
-    #++
     def match_special_regex(label, file)
       mark = remark(file)
+      label = Regexp.escape(label)
       if colon
-        /#{mark}\s*#{Regexp.escape(label)}[:]\s+(.*?)$/
+        /#{mark}\s*#{label}[:]\s+(.*?)$/
       else
-        /#{mark}\s*#{Regexp.escape(label)}[:]?\s+(.*?)$/
+        /#{mark}\s*#{label}[:]?\s+(.*?)$/
       end
     end
 
@@ -180,72 +160,6 @@ module DNote
       else
         /#{mark}\s*([A-Z]+)\s+(.*?)$/
       end
-    end
-
-    # Organize notes into a hash with labels for keys.
-    def by_label
-      @by_label ||= begin
-        list = {}
-        notes.each do |note|
-          list[note.label] ||= []
-          list[note.label] << note
-          list[note.label].sort
-        end
-        list
-      end
-    end
-
-    # Organize notes into a hash with filename for keys.
-    def by_file
-      @by_file ||= begin
-        list = {}
-        notes.each do |note|
-          list[note.file] ||= []
-          list[note.file] << note
-          list[note.file].sort!
-        end
-        list
-      end
-    end
-
-    # Organize notes into a hash with labels for keys, followed
-    # by a hash with filename for keys.
-    def by_label_file
-      @by_label_file ||= begin
-        list = {}
-        notes.each do |note|
-          list[note.label] ||= {}
-          list[note.label][note.file] ||= []
-          list[note.label][note.file] << note
-          list[note.label][note.file].sort!
-        end
-        list
-      end
-    end
-
-    # Organize notes into a hash with filenames for keys, followed
-    # by a hash with labels for keys.
-    def by_file_label
-      @by_file_label ||= begin
-        list = {}
-        notes.each do |note|
-          list[note.file] ||= {}
-          list[note.file][note.label] ||= []
-          list[note.file][note.label] << note
-          list[note.file][note.label].sort!
-        end
-        list
-      end
-    end
-
-    # Convert to an array of hashes.
-    def to_a
-      notes.map(&:to_h)
-    end
-
-    # Same as #by_label.
-    def to_h
-      by_label
     end
 
     def remark(file)

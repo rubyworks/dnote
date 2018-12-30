@@ -105,13 +105,18 @@ module DNote
 
     # Run session.
     def run
-      notes = Notes.new(files, labels: labels, colon: colon, marker: marker, url: url, context: context)
-      formatter = Format.new(notes) do |f|
-        f.format   = format
-        f.template = template
-        f.title    = title
-        f.output   = output
-      end
+      notes = Notes.new(files,
+                        labels: labels,
+                        colon: colon,
+                        marker: marker,
+                        url: url,
+                        context: context)
+      collection = notes.notes_collection
+      formatter = Format.new(collection,
+                             format: format,
+                             template: template,
+                             title: title,
+                             output: output)
       formatter.render
     end
 

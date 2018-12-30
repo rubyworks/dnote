@@ -6,6 +6,14 @@ describe(DNote::Notes) do
   let(:line) { '# TODO: Do something or another!' }
   let(:file) { 'foo.rb' }
   let(:lineno) { 1 }
+  let(:todo_hash) do
+    {
+      'label' => 'TODO',
+      'file' => file,
+      'line' => lineno,
+      'text' => 'Do something or another!'
+    }
+  end
 
   describe('#labels') do
     it('returns the list of labels') do
@@ -21,19 +29,11 @@ describe(DNote::Notes) do
     end
   end
 
-  describe('#files=') do
-    it('changes the paths attribute') do
-      notes = described_class.new([])
-      notes.files = [file]
-      expect(notes.files).to eq([file])
-    end
-  end
-
   describe('#match_general') do
     it('works') do
       notes = described_class.new([])
       rec = notes.match_general(line, lineno, file)
-      expect(rec.to_h).to eq('label' => 'TODO', 'file' => file, 'line' => lineno, 'text' => 'Do something or another!')
+      expect(rec.to_h).to eq todo_hash
     end
   end
 
@@ -41,7 +41,7 @@ describe(DNote::Notes) do
     it('works') do
       notes = described_class.new([], labels: ['TODO'])
       rec = notes.match_special(line, lineno, file)
-      expect(rec.to_h).to eq('label' => 'TODO', 'file' => file, 'line' => lineno, 'text' => 'Do something or another!')
+      expect(rec.to_h).to eq todo_hash
     end
   end
 

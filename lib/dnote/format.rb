@@ -18,26 +18,28 @@ module DNote
 
     attr_reader :notes
 
-    attr_accessor :format
+    attr_reader :format
 
-    attr_accessor :subtype
+    attr_reader :output
 
-    attr_accessor :output
+    attr_reader :template
 
-    attr_accessor :template
+    attr_reader :title
 
-    attr_accessor :title
+    attr_reader :dryrun
 
-    attr_accessor :dryrun
-
-    def initialize(notes, options = {})
-      @notes   = notes
-      @format  = 'text'
-      @subtype = 'label'
-      @title   = "Developer's Notes"
-      @dryrun  = false
-      options.each { |k, v| __send__("#{k}=", v) if v }
-      yield(self) if block_given?
+    def initialize(notes,
+                   format: 'text',
+                   title: "Developer's Notes",
+                   template: nil,
+                   output: nil,
+                   dryrun: false)
+      @notes    = notes
+      @format   = format
+      @title    = title
+      @dryrun   = dryrun
+      @template = template
+      @output   = output
     end
 
     def render
@@ -52,6 +54,8 @@ module DNote
         end
       end
     end
+
+    private
 
     # C U S T O M
 
@@ -69,8 +73,6 @@ module DNote
       result = erb(template)
       publish(result)
     end
-
-    private
 
     def erb(file)
       scope = ErbScope.new(notes: notes, title: title)
