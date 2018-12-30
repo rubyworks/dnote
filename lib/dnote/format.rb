@@ -20,8 +20,6 @@ module DNote
 
     attr_accessor :format
 
-    attr_accessor :subtype
-
     attr_accessor :output
 
     attr_accessor :template
@@ -33,7 +31,6 @@ module DNote
     def initialize(notes, options = {})
       @notes   = notes
       @format  = 'text'
-      @subtype = 'label'
       @title   = "Developer's Notes"
       @dryrun  = false
       options.each { |k, v| __send__("#{k}=", v) if v }
@@ -53,6 +50,8 @@ module DNote
       end
     end
 
+    private
+
     # C U S T O M
 
     def render_custom
@@ -69,8 +68,6 @@ module DNote
       result = erb(template)
       publish(result)
     end
-
-    private
 
     def erb(file)
       scope = ErbScope.new(notes: notes, title: title)

@@ -89,6 +89,8 @@ module DNote
 
     # Return line URL based on URL template. If no template was set, then
     # returns the file.
+    #
+    # FIXME: Move out of Note so we can drop the reference to notes
     def url
       if notes.url
         format(notes.url, file, line)
