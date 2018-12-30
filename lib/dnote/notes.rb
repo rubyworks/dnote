@@ -153,15 +153,13 @@ module DNote
       rec
     end
 
-    #--
-    # TODO: ruby-1.9.1-p378 reports: `match': invalid byte sequence in UTF-8
-    #++
     def match_special_regex(label, file)
       mark = remark(file)
+      label = Regexp.escape(label)
       if colon
-        /#{mark}\s*#{Regexp.escape(label)}[:]\s+(.*?)$/
+        /#{mark}\s*#{label}[:]\s+(.*?)$/
       else
-        /#{mark}\s*#{Regexp.escape(label)}[:]?\s+(.*?)$/
+        /#{mark}\s*#{label}[:]?\s+(.*?)$/
       end
     end
 
