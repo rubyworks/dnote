@@ -112,12 +112,11 @@ module DNote
                         url: url,
                         context: context)
       collection = notes.notes_collection
-      formatter = Format.new(collection) do |f|
-        f.format   = format
-        f.template = template
-        f.title    = title
-        f.output   = output
-      end
+      formatter = Format.new(collection,
+                             format: format,
+                             template: template,
+                             title: title,
+                             output: output)
       formatter.render
     end
 

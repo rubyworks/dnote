@@ -18,23 +18,28 @@ module DNote
 
     attr_reader :notes
 
-    attr_accessor :format
+    attr_reader :format
 
-    attr_accessor :output
+    attr_reader :output
 
-    attr_accessor :template
+    attr_reader :template
 
-    attr_accessor :title
+    attr_reader :title
 
-    attr_accessor :dryrun
+    attr_reader :dryrun
 
-    def initialize(notes, options = {})
-      @notes   = notes
-      @format  = 'text'
-      @title   = "Developer's Notes"
-      @dryrun  = false
-      options.each { |k, v| __send__("#{k}=", v) if v }
-      yield(self) if block_given?
+    def initialize(notes,
+                   format: 'text',
+                   title: "Developer's Notes",
+                   template: nil,
+                   output: nil,
+                   dryrun: false)
+      @notes    = notes
+      @format   = format
+      @title    = title
+      @dryrun   = dryrun
+      @template = template
+      @output   = output
     end
 
     def render
