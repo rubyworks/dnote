@@ -1,5 +1,9 @@
 = RELEASE HISTORY
 
+== Unreleased
+
+* Drop support for Ruby 2.3
+
 == 1.8.0 / 2018-12-29
 
 * Officially support CRuby 2.5 and 2.6
