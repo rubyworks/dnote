@@ -89,42 +89,47 @@ module DNote
     def parse
       records = []
       files.each do |fname|
-        next unless File.file?(fname)
-
-        mark = remark(fname)
-        lineno = 0
-        note = nil
-        text = nil
-        capt = nil
-        File.readlines(fname).each do |line|
-          lineno += 1
-          note = match(line, lineno, fname)
-          if note
-            text = note.text
-            capt = note.capture
-            records << note
-          elsif text
-            case line
-            when /^\s*#{mark}+\s*$/, /^\s*#{mark}\-\-/, /^\s*#{mark}\+\+/
-              text.strip!
-              text = nil
-            when /^\s*#{mark}/
-              if text[-1, 1] == "\n"
-                text << line.gsub(/^\s*#{mark}\s*/, '')
-              else
-                text << "\n" << line.gsub(/^\s*#{mark}\s*/, '')
-              end
-            else
-              text.strip!
-              text = nil
-            end
-          elsif line !~ /^\s*#{mark}/
-            capt << line if capt && capt.size < context
-          end
-        end
+        records += parse_file(fname)
       end
 
       @notes = records.sort
+    end
+
+    def parse_file(fname)
+      return [] unless File.file?(fname)
+
+      records = []
+      mark = remark(fname)
+      lineno = 0
+      note = nil
+      text = nil
+      capt = nil
+      File.readlines(fname).each do |line|
+        lineno += 1
+        note = match(line, lineno, fname)
+        if note
+          text = note.text
+          capt = note.capture
+          records << note
+        elsif text
+          case line
+          when /^\s*#{mark}+\s*$/, /^\s*#{mark}\-\-/, /^\s*#{mark}\+\+/
+            text.strip!
+            text = nil
+          when /^\s*#{mark}/
+            unless text[-1, 1] == "\n"
+              text << "\n"
+            end
+            text << line.gsub(/^\s*#{mark}\s*/, '')
+          else
+            text.strip!
+            text = nil
+          end
+        elsif line !~ /^\s*#{mark}/
+          capt << line if capt && capt.size < context
+        end
+      end
+      records
     end
 
     # Is this line a note?
