@@ -105,7 +105,12 @@ module DNote
 
     # Run session.
     def run
-      notes = Notes.new(files, labels: labels, colon: colon, marker: marker, url: url, context: context)
+      notes = Notes.new(files,
+                        labels: labels,
+                        colon: colon,
+                        marker: marker,
+                        url: url,
+                        context: context)
       formatter = Format.new(notes) do |f|
         f.format   = format
         f.template = template

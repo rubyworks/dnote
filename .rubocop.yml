@@ -17,6 +17,10 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
 
+# Lenient line length
+Metrics/LineLength:
+  Max: 92
+
 # DNote namespace is mapped to dnote directory, both in lib and spec.
 RSpec/FilePath:
   CustomTransform:
