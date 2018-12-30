@@ -187,28 +187,12 @@ module DNote
 
     # Organize notes into a hash with labels for keys.
     def by_label
-      @by_label ||= begin
-        list = {}
-        notes.each do |note|
-          list[note.label] ||= []
-          list[note.label] << note
-          list[note.label].sort
-        end
-        list
-      end
+      @by_label ||= notes.group_by(&:label)
     end
 
     # Organize notes into a hash with filename for keys.
     def by_file
-      @by_file ||= begin
-        list = {}
-        notes.each do |note|
-          list[note.file] ||= []
-          list[note.file] << note
-          list[note.file].sort!
-        end
-        list
-      end
+      @by_file ||= notes.group_by(&:file)
     end
 
     # Organize notes into a hash with labels for keys, followed
