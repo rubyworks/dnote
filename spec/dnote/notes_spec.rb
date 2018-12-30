@@ -21,14 +21,6 @@ describe(DNote::Notes) do
     end
   end
 
-  describe('#files=') do
-    it('changes the paths attribute') do
-      notes = described_class.new([])
-      notes.files = [file]
-      expect(notes.files).to eq([file])
-    end
-  end
-
   describe('#match_general') do
     it('works') do
       notes = described_class.new([])

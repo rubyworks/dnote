@@ -27,22 +27,22 @@ module DNote
     DEFAULT_LABELS = %w(TODO FIXME OPTIMIZE THINK DEPRECATE).freeze
 
     # Files to search for notes.
-    attr_accessor :files
+    attr_reader :files
 
     # Labels to document. Defaults are: +TODO+, +FIXME+, +OPTIMIZE+ and +DEPRECATE+.
-    attr_accessor :labels
+    attr_reader :labels
 
     # Require label colon? Default is +true+.
-    attr_accessor :colon
+    attr_reader :colon
 
     # Specific remark marker (+nil+ for auto).
-    attr_accessor :marker
+    attr_reader :marker
 
     # Link template.
-    attr_accessor :url
+    attr_reader :url
 
     # Number of lines of context to show.
-    attr_accessor :context
+    attr_reader :context
 
     # New set of notes for give +files+ and optional special labels.
     def initialize(files, options = {})
