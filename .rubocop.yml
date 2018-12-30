@@ -6,7 +6,7 @@ require:
 AllCops:
   Exclude:
     - 'tmp/**/*'
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.4
 
 # Dot at end of line makes it clearer that the line is not done
 Layout/DotPosition:

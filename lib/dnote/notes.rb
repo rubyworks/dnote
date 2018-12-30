@@ -102,7 +102,7 @@ module DNote
             text.strip!
             text = nil
           end
-        elsif line !~ /^\s*#{mark}/
+        elsif !/^\s*#{mark}/.match?(line)
           capt << line if capt && capt.size < context
         end
       end
