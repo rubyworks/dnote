@@ -5,9 +5,9 @@ require 'dnote'
 
 begin
   DNote::Session.main(*ARGV)
-rescue StandardError => err
-  raise err if $DEBUG
+rescue StandardError => e
+  raise e if $DEBUG
 
-  puts err
+  puts e
   exit 1
 end
