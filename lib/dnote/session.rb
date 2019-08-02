@@ -3,6 +3,7 @@
 require 'dnote/core_ext'
 require 'dnote/notes'
 require 'dnote/format'
+require 'optparse'
 
 module DNote
   # User session which is used by commandline interface.
@@ -147,8 +148,6 @@ module DNote
 
     # Commandline interface.
     def self.main(*argv)
-      require 'optparse'
-
       session = Session.new
 
       opts = OptionParser.new do |opt|
