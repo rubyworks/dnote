@@ -61,7 +61,24 @@ module DNote
     def document
       abort "dnote: #{output} is not a directory" unless output.directory?
 
-      session = ::DNote::Session.new do |s|
+      session = new_session
+
+      formats.each do |format|
+        generate_document_for_format(session, format)
+      end
+    end
+
+    # Remove output files.
+    def clean
+      formats.each do |format|
+        clean_format format
+      end
+    end
+
+    private
+
+    def new_session
+      ::DNote::Session.new do |s|
         s.paths   = files
         s.exclude = exclude
         s.ignore  = ignore
@@ -70,31 +87,28 @@ module DNote
         s.output  = output
         s.dryrun  = application.options.dryrun # trial?
       end
-
-      formats.each do |format|
-        if format == 'index'
-          session.format = 'html'
-          session.output = File.join(output, 'index.html')
-        else
-          session.format = format
-        end
-        session.run
-        report "Updated #{output.to_s.sub(Dir.pwd + '/', '')}" unless trial?
-      end
     end
 
-    # Remove output files.
-    def clean
-      formats.each do |format|
-        if format == 'index'
-          file = (output + 'index.html').to_s
-        else
-          ext = ::DNote::Format::EXTENSIONS[format] || format
-          file = (output + "notes.#{ext}").to_s
-        end
-        rm(file)
-        report "Removed #{output}"
+    def generate_document_for_format(session, format)
+      if format == 'index'
+        session.format = 'html'
+        session.output = File.join(output, 'index.html')
+      else
+        session.format = format
       end
+      session.run
+      report "Updated #{output.to_s.sub(Dir.pwd + '/', '')}" unless trial?
+    end
+
+    def clean_format(format)
+      if format == 'index'
+        file = (output + 'index.html').to_s
+      else
+        ext = ::DNote::Format::EXTENSIONS[format] || format
+        file = (output + "notes.#{ext}").to_s
+      end
+      rm(file)
+      report "Removed #{output}"
     end
   end
 end
