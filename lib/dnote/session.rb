@@ -3,6 +3,7 @@
 require 'dnote/core_ext'
 require 'dnote/notes'
 require 'dnote/format'
+require 'dnote/options'
 
 module DNote
   # User session which is used by commandline interface.
@@ -147,106 +148,7 @@ module DNote
 
     # Commandline interface.
     def self.main(*argv)
-      require 'optparse'
-
-      session = Session.new
-
-      opts = OptionParser.new do |opt|
-        opt.banner = "DNote v#{DNote::VERSION}"
-
-        opt.separator(' ')
-        opt.separator("USAGE:\n  dnote [OPTIONS] path1 [path2 ...]")
-
-        opt.separator(' ')
-        opt.separator('OUTPUT FORMAT: (choose one)')
-
-        opt.on('--format', '-f NAME', 'select a format [text]') do |format|
-          session.format = format
-        end
-
-        opt.on('--custom', '-C FILE', 'use a custom ERB template') do |file|
-          session.format = 'custom'
-          session.template = file
-        end
-
-        opt.on('--file', 'shortcut for text/file format') do
-          session.format = 'text/file'
-        end
-
-        opt.on('--list', 'shortcut for text/list format') do
-          session.format = 'text/list'
-        end
-
-        opt.separator(' ')
-        opt.separator('OTHER OPTIONS:')
-
-        opt.on('--label', '-l LABEL', 'labels to collect') do |lbl|
-          session.labels.concat(lbl.split(':'))
-        end
-
-        opt.on('--[no-]colon', 'match labels with/without colon suffix') do |val|
-          session.colon = val
-        end
-
-        opt.on('--marker', '-m MARK', 'alternative remark marker') do |mark|
-          session.marker = mark
-        end
-
-        opt.on('--url', '-u TEMPLATE', 'url template for line entries (for HTML)') do |url|
-          session.url = url
-        end
-
-        opt.on('--context', '-c INTEGER', 'number of lines of context to display') do |int|
-          session.context = int.to_i
-        end
-
-        opt.on('--exclude', '-x PATH', 'exclude file or directory') do |path|
-          session.exclude << path
-        end
-
-        opt.on('--ignore', '-i NAME', 'ignore file based on any part of pathname') do |name|
-          session.ignore << name
-        end
-
-        opt.on('--title', '-t TITLE', 'title to use in header') do |title|
-          session.title = title
-        end
-
-        opt.on('--output', '-o PATH', 'save to file or directory') do |path|
-          session.output = path
-        end
-
-        opt.on('--dryrun', '-n', 'do not actually write to disk') do
-          session.dryrun = true
-        end
-
-        opt.on('--debug', 'debug mode') do
-          $DEBUG = true
-          $VERBOSE = true
-        end
-
-        opt.separator(' ')
-        opt.separator('COMMAND OPTIONS:')
-
-        opt.on_tail('--templates', '-T', 'list available format templates') do
-          tdir   = File.join(DIR, 'templates')
-          tfiles = Dir[File.join(tdir, '**/*.erb')]
-          tnames = tfiles.map { |tname| tname.sub(tdir + '/', '').chomp('.erb') }
-          groups = tnames.group_by { |tname| tname.split('/').first }
-          groups.sort.each do |(_type, names)|
-            puts('%-18s ' * names.size % names.sort)
-          end
-          exit
-        end
-
-        opt.on_tail('--help', '-h', 'show this help information') do
-          puts opt
-          exit
-        end
-      end
-
-      opts.parse!(argv)
-      session.paths.replace(argv)
+      session = Options.parse(*argv)
       session.run
     end
   end

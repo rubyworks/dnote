@@ -51,7 +51,6 @@ module DNote
       @marker  = options[:marker]
       @url     = options[:url]
       @context = options[:context] || 0
-
       @remark  = {}
 
       parse

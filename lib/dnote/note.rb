@@ -31,7 +31,6 @@ module DNote
     # Initialize new Note instance.
     def initialize(notes, file, label, line, text, mark)
       @notes   = notes
-
       @file    = file
       @label   = label
       @line    = line
