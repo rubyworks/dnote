@@ -136,7 +136,7 @@ module DNote
       end
 
       def render(file)
-        erb = ERB.new(File.read(file), nil, '<>')
+        erb = ERB.new(File.read(file), trim_mode: '<>')
         erb.result(binding)
       end
 
