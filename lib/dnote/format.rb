@@ -136,7 +136,12 @@ module DNote
       end
 
       def render(file)
-        erb = ERB.new(File.read(file), nil, '<>')
+        contents = File.read(file)
+        erb = if RUBY_VERSION >= '2.6'
+                ERB.new(contents, trim_mode: '<>')
+              else
+                ERB.new(contents, nil, '<>')
+              end
         erb.result(binding)
       end
 
