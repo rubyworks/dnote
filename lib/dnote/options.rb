@@ -35,18 +35,12 @@ module DNote
       session
     end
 
-    def add_command_options(_session, opt)
+    def add_command_options(session, opt)
       opt.separator(' ')
       opt.separator('COMMAND OPTIONS:')
 
       opt.on_tail('--templates', '-T', 'list available format templates') do
-        tdir   = File.join(DIR, 'templates')
-        tfiles = Dir[File.join(tdir, '**/*.erb')]
-        tnames = tfiles.map { |tname| tname.sub(tdir + '/', '').chomp('.erb') }
-        groups = tnames.group_by { |tname| tname.split('/').first }
-        groups.sort.each do |(_type, names)|
-          puts('%-18s ' * names.size % names.sort)
-        end
+        session.list_templates
         exit
       end
 
