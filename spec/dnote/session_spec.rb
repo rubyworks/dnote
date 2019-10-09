@@ -11,8 +11,8 @@ RSpec.describe DNote::Session do
     end
 
     it 'outputs template list if requested' do
-      expect { described_class.main("-T") }.
-        to output(/html\/file/).to_stdout
+      expect { described_class.main('-T') }.
+        to output(%r{html/file}).to_stdout
     end
   end
 end
