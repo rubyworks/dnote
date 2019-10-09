@@ -9,5 +9,10 @@ RSpec.describe DNote::Session do
         to output(/1. This is a test of an arbitrary label./).to_stdout.
         and output(/1 TESTs/).to_stderr
     end
+
+    it 'outputs template list if requested' do
+      expect { described_class.main("-T") }.
+        to output(/html\/file/).to_stdout
+    end
   end
 end
