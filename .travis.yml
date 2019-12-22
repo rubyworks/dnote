@@ -1,24 +1,30 @@
-sudo: required
-dist: trusty
 language: ruby
-cache: bundler
+
+dist: xenial
+
+cache:
+  bundler: true
+
 rvm:
-  - 2.4.5
-  - 2.5.3
-  - 2.6.0
-  - jruby-9.1.16.0
-  - jruby-9.2.5.0
+  - 2.4
+  - 2.5
+  - 2.6
+  - jruby-9.1
+  - jruby-9.2
   - jruby-head
   - ruby-head
   - rubinius-3
+  - rubinius-4
+
 matrix:
   allow_failures:
-    - rvm: jruby-9.1.16.0
-    - rvm: jruby-9.2.5.0
+    - rvm: jruby-9.1
+    - rvm: jruby-9.2
     - rvm: jruby-head
     - rvm: ruby-head
     - rvm: rubinius-3
-script: "bundle exec rake"
+    - rvm: rubinius-4
+
 branches:
   only:
     - master
