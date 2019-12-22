@@ -26,8 +26,8 @@ RSpec.describe(DNote::NotesCollection) do
 
   describe("#by_file_label") do
     it "returns notes grouped by file then label" do
-      expect(notes_collection.by_file_label).
-        to eq("bar.rb" => { "TODO" => [bar_todo], "HACK" => [bar_hack] },
+      expect(notes_collection.by_file_label)
+        .to eq("bar.rb" => { "TODO" => [bar_todo], "HACK" => [bar_hack] },
               "foo.rb" => { "TODO" => [foo_todo], "HACK" => [foo_hack] })
     end
   end
@@ -41,8 +41,8 @@ RSpec.describe(DNote::NotesCollection) do
 
   describe("#by_label_file") do
     it "returns notes grouped by label then file" do
-      expect(notes_collection.by_label_file).
-        to eq("HACK" => { "bar.rb" => [bar_hack], "foo.rb" => [foo_hack] },
+      expect(notes_collection.by_label_file)
+        .to eq("HACK" => { "bar.rb" => [bar_hack], "foo.rb" => [foo_hack] },
               "TODO" => { "bar.rb" => [bar_todo], "foo.rb" => [foo_todo] })
     end
   end

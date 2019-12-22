@@ -18,8 +18,8 @@ describe(DNote::Format) do
     end
 
     it "renders the note text" do
-      expect { format.render }.to output(/Foo Text/).to_stdout.
-        and output(/1 TODOs/).to_stderr
+      expect { format.render }.to output(/Foo Text/).to_stdout
+        .and output(/1 TODOs/).to_stderr
     end
   end
 end
