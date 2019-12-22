@@ -9,6 +9,10 @@ AllCops:
     - 'tmp/**/*'
   TargetRubyVersion: 2.4
 
+# Lenient line length
+Layout/LineLength:
+  Max: 92
+
 # Don't force lonely closing parentheses
 Layout/MultilineMethodCallBraceLayout:
   EnforcedStyle: same_line
@@ -39,10 +43,6 @@ Lint/AssignmentInCondition:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
-
-# Lenient line length
-Metrics/LineLength:
-  Max: 92
 
 # Allow and/or for control flow only
 Style/AndOr:
