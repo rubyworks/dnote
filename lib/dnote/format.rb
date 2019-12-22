@@ -9,12 +9,12 @@ module DNote
   #   TODO: Need XSL?
   #++
   class Format
-    require 'fileutils'
-    require 'erb'
-    require 'rexml/text'
-    require 'dnote/core_ext'
+    require "fileutils"
+    require "erb"
+    require "rexml/text"
+    require "dnote/core_ext"
 
-    EXTENSIONS = { 'text' => 'txt', 'soap' => 'xml', 'xoxo' => 'xml' }.freeze
+    EXTENSIONS = { "text" => "txt", "soap" => "xml", "xoxo" => "xml" }.freeze
 
     attr_reader :notes
 
@@ -29,7 +29,7 @@ module DNote
     attr_reader :dryrun
 
     def initialize(notes,
-                   format: 'text',
+                   format: "text",
                    title: "Developer's Notes",
                    template: nil,
                    output: nil,
@@ -47,7 +47,7 @@ module DNote
         $stderr << "No #{notes.labels.join(', ')} notes.\n"
       else
         case format
-        when 'custom'
+        when "custom"
           render_custom
         else
           render_template
@@ -67,7 +67,7 @@ module DNote
     # T E M P L A T E
 
     def render_template
-      template = File.join(File.dirname(__FILE__), 'templates', "#{format}.erb")
+      template = File.join(File.dirname(__FILE__), "templates", "#{format}.erb")
       raise "No such format - #{format}" unless File.exist?(template)
 
       result = erb(template)
@@ -85,12 +85,12 @@ module DNote
       else
         puts(result)
       end
-      $stderr << '(' + notes.counts.map { |l, n| "#{n} #{l}s" }.join(', ') + ")\n"
+      $stderr << "(" + notes.counts.map { |l, n| "#{n} #{l}s" }.join(", ") + ")\n"
     end
 
     def write(result, fname = nil)
-      if output.to_s[-1, 1] == '/' || File.directory?(output)
-        fmt  = format.split('/').first
+      if output.to_s[-1, 1] == "/" || File.directory?(output)
+        fmt  = format.split("/").first
         ext  = EXTENSIONS[fmt] || fmt
         file = File.join(output, fname || "notes.#{ext}")
       else
@@ -102,7 +102,7 @@ module DNote
       else
         dir = File.dirname(file)
         fu.mkdir(dir) unless File.exist?(dir)
-        File.open(file, 'w') { |f| f << result }
+        File.open(file, "w") { |f| f << result }
       end
       file
     end
@@ -137,10 +137,10 @@ module DNote
 
       def render(file)
         contents = File.read(file)
-        erb = if RUBY_VERSION >= '2.6'
-                ERB.new(contents, trim_mode: '<>')
+        erb = if RUBY_VERSION >= "2.6"
+                ERB.new(contents, trim_mode: "<>")
               else
-                ERB.new(contents, nil, '<>')
+                ERB.new(contents, nil, "<>")
               end
         erb.result(binding)
       end

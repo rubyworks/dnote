@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require 'rspec/core/rake_task'
+require "rspec/core/rake_task"
 
 module DNote
   # = Developmer's Notes Rake Task
   #
   class RakeTask < Rake::TaskLib
-    require 'rake/clean'
+    require "rake/clean"
 
     # Default note labels to looked for in source code.
     DEFAULT_LABELS = %w(TODO FIXME OPTIMIZE DEPRECATE).freeze
@@ -38,23 +38,23 @@ module DNote
     end
 
     def init
-      require 'dnote'
-      require 'dnote/format'
-      @files   = '**/*.rb'
-      @output  = 'log/dnote'
-      @formats = ['index']
+      require "dnote"
+      require "dnote/format"
+      @files   = "**/*.rb"
+      @output  = "log/dnote"
+      @formats = ["index"]
       @labels  = nil
     end
 
     def define
       desc "Collect Developer's Notes"
-      task 'dnote' do
+      task "dnote" do
         document
       end
-      task 'dnote:clobber' do
+      task "dnote:clobber" do
         clean
       end
-      task clobber: ['dnote:clobber']
+      task clobber: ["dnote:clobber"]
     end
 
     # Generate notes document(s).
@@ -90,9 +90,9 @@ module DNote
     end
 
     def generate_document_for_format(session, format)
-      if format == 'index'
-        session.format = 'html'
-        session.output = File.join(output, 'index.html')
+      if format == "index"
+        session.format = "html"
+        session.output = File.join(output, "index.html")
       else
         session.format = format
       end
@@ -101,8 +101,8 @@ module DNote
     end
 
     def clean_format(format)
-      if format == 'index'
-        file = (output + 'index.html').to_s
+      if format == "index"
+        file = (output + "index.html").to_s
       else
         ext = ::DNote::Format::EXTENSIONS[format] || format
         file = (output + "notes.#{ext}").to_s

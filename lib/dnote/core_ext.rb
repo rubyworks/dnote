@@ -13,9 +13,9 @@ module DNote
 
     def indent(num)
       if num >= 0
-        gsub(/^/, ' ' * num)
+        gsub(/^/, " " * num)
       else
-        gsub(/^ {0,#{-num}}/, '')
+        gsub(/^ {0,#{-num}}/, "")
       end
     end
 
