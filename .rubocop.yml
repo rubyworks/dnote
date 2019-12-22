@@ -1,17 +1,39 @@
 inherit_from: .rubocop_todo.yml
 
 require:
-  - rubocop-rspec
   - rubocop-performance
+  - rubocop-rspec
 
 AllCops:
   Exclude:
     - 'tmp/**/*'
   TargetRubyVersion: 2.4
 
-# Dot at end of line makes it clearer that the line is not done
-Layout/DotPosition:
-  EnforcedStyle: trailing
+# Don't force lonely closing parentheses
+Layout/MultilineMethodCallBraceLayout:
+  EnforcedStyle: same_line
+
+# Multi-line method calls should be simply indented. Aligning them makes it
+# even harder to keep a sane line length.
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+# Multi-line assignment should be simply indented. Aligning them makes it even
+# harder to keep a sane line length.
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+# Force consistent spacing independent of block contents
+Layout/SpaceBeforeBlockBraces:
+  EnforcedStyleForEmptyBraces: space
+
+# This cop gives bad advice
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
+
+# Allow if (foo = get_foo) style
+Lint/AssignmentInCondition:
+  AllowSafeAssignment: true
 
 # Spec blocks can be any size
 Metrics/BlockLength:
@@ -22,10 +44,9 @@ Metrics/BlockLength:
 Metrics/LineLength:
   Max: 92
 
-# DNote namespace is mapped to dnote directory, both in lib and spec.
-RSpec/FilePath:
-  CustomTransform:
-    DNote: dnote
+# Allow and/or for control flow only
+Style/AndOr:
+  EnforcedStyle: conditionals
 
 Style/NumericPredicate:
   EnforcedStyle: comparison
@@ -35,3 +56,22 @@ Style/PercentLiteralDelimiters:
   PreferredDelimiters:
     '%W': ()
     '%w': ()
+
+# Allow explicit return with multiple return values
+Style/RedundantReturn:
+  AllowMultipleReturnValues: true
+
+# Do not commit to use of interpolation
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+# Prefer symbols to look like symbols
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+# Project-specific configuration goes here.
+
+# DNote namespace is mapped to dnote directory, both in lib and spec.
+RSpec/FilePath:
+  CustomTransform:
+    DNote: dnote
