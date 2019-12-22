@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-require 'simplecov'
+require "simplecov"
 SimpleCov.start
 
-if ENV['CI']
+if ENV["CI"]
   begin
-    require 'coveralls'
+    require "coveralls"
     Coveralls.wear!
   rescue LoadError
     nil
   end
 end
 
-require 'dnote'
-require 'dnote/rake/dnotetask'
+require "dnote"
+require "dnote/rake/dnotetask"

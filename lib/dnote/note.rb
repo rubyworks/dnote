@@ -51,7 +51,7 @@ module DNote
 
     # Remove newlines from note text.
     def textline
-      text.tr("\n", ' ')
+      text.tr("\n", " ")
     end
 
     # Sort by file name and line number.
@@ -68,12 +68,12 @@ module DNote
     # TODO: Add +code+? Problem is that xml needs code in CDATA.
     #++
     def to_h
-      { 'label' => label, 'text' => textline, 'file' => file, 'line' => line }
+      { "label" => label, "text" => textline, "file" => file, "line" => line }
     end
 
     # Convert to Hash, leaving the note text verbatim.
     def to_h_raw
-      { 'label' => label, 'text' => text, 'file' => file, 'line' => line, 'code' => code }
+      { "label" => label, "text" => text, "file" => file, "line" => line, "code" => code }
     end
 
     # Convert to JSON.
@@ -119,7 +119,7 @@ module DNote
       end
       dent = dents.min_by(&:size)
       lines.map do |line|
-        line.sub(dent, '')
+        line.sub(dent, "")
       end
     end
   end

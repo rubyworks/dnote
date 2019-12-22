@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'pathname'
-require 'dnote/note'
-require 'dnote/notes_collection'
+require "pathname"
+require "dnote/note"
+require "dnote/notes_collection"
 
 module DNote
   # = Developer Notes
@@ -20,7 +20,7 @@ module DNote
   #++
   class Notes
     # Default paths (all ruby scripts).
-    DEFAULT_PATHS  = ['**/*.rb'].freeze
+    DEFAULT_PATHS  = ["**/*.rb"].freeze
 
     # Default note labels to look for in source code. (NOT CURRENTLY USED!)
     DEFAULT_LABELS = %w(TODO FIXME OPTIMIZE THINK DEPRECATE).freeze
@@ -96,7 +96,7 @@ module DNote
             text = nil
           when /^\s*#{mark}/
             text << "\n" unless text[-1, 1] == "\n"
-            text << line.gsub(/^\s*#{mark}\s*/, '')
+            text << line.gsub(/^\s*#{mark}\s*/, "")
           else
             text.strip!
             text = nil
@@ -176,16 +176,16 @@ module DNote
       return @marker if @marker # forced marker
 
       case File.extname(file)
-      when '.js', '.c', 'cpp', '.css'
-        '//'
-      when '.bas'
+      when ".js", ".c", "cpp", ".css"
+        "//"
+      when ".bas"
         "'"
-      when '.sql', '.ada'
-        '--'
-      when '.asm'
-        ';'
+      when ".sql", ".ada"
+        "--"
+      when ".asm"
+        ";"
       else
-        '#'
+        "#"
       end
     end
   end

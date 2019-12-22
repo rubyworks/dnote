@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require 'dnote/core_ext'
-require 'dnote/notes'
-require 'dnote/format'
-require 'dnote/options'
+require "dnote/core_ext"
+require "dnote/notes"
+require "dnote/format"
+require "dnote/options"
 
 module DNote
   # User session which is used by commandline interface.
@@ -18,7 +18,7 @@ module DNote
     DIR = File.dirname(__FILE__)
 
     # Default format.
-    DEFAULT_FORMAT = 'text'
+    DEFAULT_FORMAT = "text"
 
     # Default title.
     DEFAULT_TITLE = "Developer's Notes"
@@ -126,11 +126,11 @@ module DNote
     # compile the list of files.
     def files
       list = [paths].flatten.compact
-      list = ['**/*.rb'] if list.empty?
+      list = ["**/*.rb"] if list.empty?
       list = glob(list)
       list -= glob(exclude)
       list.reject do |path|
-        path.split('/').any? { |part| ignore.any? { |ig| File.fnmatch?(ig, part) } }
+        path.split("/").any? { |part| ignore.any? { |ig| File.fnmatch?(ig, part) } }
       end
     end
 
@@ -139,7 +139,7 @@ module DNote
     def glob(paths)
       paths.map do |path|
         if File.directory?(path)
-          Dir.glob(File.join(path, '**/*'))
+          Dir.glob(File.join(path, "**/*"))
         else
           Dir.glob(path)
         end
@@ -148,12 +148,12 @@ module DNote
 
     # List availble format templates
     def list_templates
-      tdir   = File.join(DIR, 'templates')
-      tfiles = Dir[File.join(tdir, '**/*.erb')]
-      tnames = tfiles.map { |tname| tname.sub(tdir + '/', '').chomp('.erb') }
-      groups = tnames.group_by { |tname| tname.split('/').first }
+      tdir   = File.join(DIR, "templates")
+      tfiles = Dir[File.join(tdir, "**/*.erb")]
+      tnames = tfiles.map { |tname| tname.sub(tdir + "/", "").chomp(".erb") }
+      groups = tnames.group_by { |tname| tname.split("/").first }
       groups.sort.each do |(_type, names)|
-        puts('%-18s ' * names.size % names.sort)
+        puts("%-18s " * names.size % names.sort)
       end
     end
 
