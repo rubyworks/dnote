@@ -1,6 +1,9 @@
 name: Keep Up
 
-on: [push]
+on:
+  schedule:
+    # Run once a week
+    - cron: '42 3 * * 1'
 
 jobs:
   build:
