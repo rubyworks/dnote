@@ -1,5 +1,6 @@
 .reap/digest
 .yardoc
+.bundle
 coverage/
 doc
 log
