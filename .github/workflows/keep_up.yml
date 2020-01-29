@@ -22,3 +22,11 @@ jobs:
         git config user.email "${GITHUB_ACTOR}@githubactions.com"
         git config user.name "${GITHUB_ACTOR} KeepUp Job"
         keep_up
+    - name: Create pull request
+      uses: peter-evans/create-pull-request@v2
+      with:
+        title: Update dependencies
+        body: Auto-generated pull request to update dependencies
+        commit-message: Update dependencies
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: auto-update-dependencies
