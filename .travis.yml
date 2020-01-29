@@ -29,3 +29,4 @@ matrix:
 branches:
   only:
     - master
+    - auto-update-dependencies
