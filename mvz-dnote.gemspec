@@ -31,7 +31,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency("pry", ["~> 0.12.2"])
   s.add_development_dependency("rake", ["~> 13.0"])
   s.add_development_dependency("rspec", ["~> 3.5"])
-  s.add_development_dependency("simplecov", ["~> 0.17.0"])
+  s.add_development_dependency("simplecov", ["~> 0.18.0"])
 
   s.require_paths = ["lib"]
 end
