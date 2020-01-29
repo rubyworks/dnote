@@ -1,0 +1,21 @@
+name: Keep Up
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby 2.6
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.6.x
+    - name: Update dependencies with keep_up
+      run: |
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+        gem install keep_up
+        keep_up
