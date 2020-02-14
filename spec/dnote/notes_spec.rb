@@ -44,10 +44,4 @@ describe(DNote::Notes) do
       expect(rec.to_h).to eq todo_hash
     end
   end
-
-  describe("#counts") { it { skip("pending") } }
-
-  describe("#notes") { it { skip("pending") } }
-
-  describe("#parse") { it { skip("pending") } }
 end
