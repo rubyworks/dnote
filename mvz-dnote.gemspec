@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   s.executables = ["dnote"]
   s.extra_rdoc_files = ["HISTORY.rdoc", "README.md", "COPYING.rdoc"]
 
-  s.add_development_dependency("aruba", ["~> 0.14.1"])
+  s.add_development_dependency("aruba", ["~> 1.0.0"])
   s.add_development_dependency("cucumber", ["~> 3.0"])
   s.add_development_dependency("pry", ["~> 0.12.2"])
   s.add_development_dependency("rake", ["~> 13.0"])
