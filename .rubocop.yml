@@ -9,7 +9,7 @@ AllCops:
     - 'tmp/**/*'
   TargetRubyVersion: 2.4
 
-# Lenient line length
+# Be lenient with line length
 Layout/LineLength:
   Max: 92
 
@@ -31,7 +31,7 @@ Layout/MultilineOperationIndentation:
 Layout/SpaceBeforeBlockBraces:
   EnforcedStyleForEmptyBraces: space
 
-# This cop gives bad advice
+# Assume the programmer knows how bracketed block syntax works
 Lint/AmbiguousBlockAssociation:
   Enabled: false
 
@@ -48,10 +48,23 @@ Metrics/BlockLength:
 Style/AndOr:
   EnforcedStyle: conditionals
 
+# Require at least two dependent lines before suggesting a guard clause
+Style/GuardClause:
+  MinBodyLength: 2
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
 Style/NumericPredicate:
   EnforcedStyle: comparison
 
-# Prefer original RuboCop defaults
+# Use older RuboCop default
 Style/PercentLiteralDelimiters:
   PreferredDelimiters:
     '%W': ()
