@@ -39,8 +39,10 @@ Lint/AmbiguousBlockAssociation:
 Lint/AssignmentInCondition:
   AllowSafeAssignment: true
 
-# Activate new cops from RuboCop 0.81
+# Activate new cops from RuboCop 0.81 and 0.82
 Lint/RaiseException:
+  Enabled: true
+Layout/SpaceAroundMethodCallOperator:
   Enabled: true
 Lint/StructNewOverride:
   Enabled: true
@@ -53,6 +55,10 @@ Metrics/BlockLength:
 # Allow and/or for control flow only
 Style/AndOr:
   EnforcedStyle: conditionals
+
+# Activate new cop from RuboCop 0.82
+Style/ExponentialNotation:
+  Enabled: true
 
 # Require at least two dependent lines before suggesting a guard clause
 Style/GuardClause:
