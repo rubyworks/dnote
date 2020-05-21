@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version = DNote::VERSION
 
   s.summary = "Extract developer's notes from source code."
-  s.required_ruby_version = ">= 2.4.0"
+  s.required_ruby_version = ">= 2.5.0"
 
   s.authors = ["Thomas Sawyer", "Matijs van Zuijlen"]
   s.email = ["matijs@matijs.net"]
