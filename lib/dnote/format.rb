@@ -16,17 +16,7 @@ module DNote
 
     EXTENSIONS = { "text" => "txt", "soap" => "xml", "xoxo" => "xml" }.freeze
 
-    attr_reader :notes
-
-    attr_reader :format
-
-    attr_reader :output
-
-    attr_reader :template
-
-    attr_reader :title
-
-    attr_reader :dryrun
+    attr_reader :notes, :format, :output, :template, :title, :dryrun
 
     def initialize(notes,
                    format: "text",

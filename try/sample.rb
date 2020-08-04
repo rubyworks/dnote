@@ -7,6 +7,5 @@
 # FIXME: And this is something urgant
 
 def sample
-  n = 100
-  n
+  100
 end
