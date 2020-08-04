@@ -7,6 +7,7 @@ require:
 AllCops:
   Exclude:
     - 'tmp/**/*'
+  NewCops: enable
   TargetRubyVersion: 2.5
 
 # Be lenient with line length
@@ -44,6 +45,9 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
 
+Performance/StartWith:
+  AutoCorrect: true
+
 # Allow and/or for control flow only
 Style/AndOr:
   EnforcedStyle: conditionals
@@ -52,8 +56,13 @@ Style/AndOr:
 Style/GuardClause:
   MinBodyLength: 2
 
+# Sometimes an if statement just looks better than next with a guard clause
+Style/Next:
+  Enabled: false
+
+# Allow both real comparison and predicate methods
 Style/NumericPredicate:
-  EnforcedStyle: comparison
+  Enabled: false
 
 # Use older RuboCop default
 Style/PercentLiteralDelimiters:
@@ -72,28 +81,6 @@ Style/StringLiterals:
 # Prefer symbols to look like symbols
 Style/SymbolArray:
   EnforcedStyle: brackets
-
-# Activate new cops from RuboCop 0.80 - 0.84
-Layout/EmptyLinesAroundAttributeAccessor:
-  Enabled: true
-Layout/SpaceAroundMethodCallOperator:
-  Enabled: true
-Lint/DeprecatedOpenSSLConstant:
-  Enabled: true
-Lint/RaiseException:
-  Enabled: true
-Lint/StructNewOverride:
-  Enabled: true
-Style/ExponentialNotation:
-  Enabled: true
-Style/HashEachMethods:
-  Enabled: true
-Style/HashTransformKeys:
-  Enabled: true
-Style/HashTransformValues:
-  Enabled: true
-Style/SlicingWithRange:
-  Enabled: true
 
 # Project-specific configuration goes here.
 
