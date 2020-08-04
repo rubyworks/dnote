@@ -91,7 +91,7 @@ module DNote
           records << note
         elsif text
           case line
-          when /^\s*#{mark}+\s*$/, /^\s*#{mark}\-\-/, /^\s*#{mark}\+\+/
+          when /^\s*#{mark}+\s*$/, /^\s*#{mark}--/, /^\s*#{mark}\+\+/
             text.strip!
             text = nil
           when /^\s*#{mark}/
@@ -133,9 +133,9 @@ module DNote
       mark = remark(file)
       label = Regexp.escape(label)
       if colon
-        /#{mark}\s*#{label}[:]\s+(.*?)$/
+        /#{mark}\s*#{label}:\s+(.*?)$/
       else
-        /#{mark}\s*#{label}[:]?\s+(.*?)$/
+        /#{mark}\s*#{label}:?\s+(.*?)$/
       end
     end
 
@@ -155,7 +155,7 @@ module DNote
     def match_general_regex(file)
       mark = remark(file)
       if colon
-        /#{mark}\s*([A-Z]+)[:]\s+(.*?)$/
+        /#{mark}\s*([A-Z]+):\s+(.*?)$/
       else
         /#{mark}\s*([A-Z]+)\s+(.*?)$/
       end
