@@ -97,12 +97,12 @@ module DNote
         session.format = format
       end
       session.run
-      report "Updated #{output.to_s.sub(Dir.pwd + '/', '')}" unless trial?
+      report "Updated #{output.to_s.sub("#{Dir.pwd}/", '')}" unless trial?
     end
 
     def clean_format(format)
       if format == "index"
-        file = (output + "index.html").to_s
+        file = "#{output}index.html".to_s
       else
         ext = ::DNote::Format::EXTENSIONS[format] || format
         file = (output + "notes.#{ext}").to_s

@@ -75,7 +75,7 @@ module DNote
       else
         puts(result)
       end
-      $stderr << "(" + notes.counts.map { |l, n| "#{n} #{l}s" }.join(", ") + ")\n"
+      $stderr << "(#{notes.counts.map { |l, n| "#{n} #{l}s" }.join(', ')})\n"
     end
 
     def write(result, fname = nil)
