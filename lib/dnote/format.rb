@@ -147,7 +147,7 @@ module DNote
       end
 
       def respond_to_missing?(method)
-        @data.key? method.to_sym
+        @data.key?(method.to_sym) || super
       end
     end
   end
