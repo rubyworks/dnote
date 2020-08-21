@@ -150,7 +150,7 @@ module DNote
     def list_templates
       tdir   = File.join(DIR, "templates")
       tfiles = Dir[File.join(tdir, "**/*.erb")]
-      tnames = tfiles.map { |tname| tname.sub(tdir + "/", "").chomp(".erb") }
+      tnames = tfiles.map { |tname| tname.sub("#{tdir}/", "").chomp(".erb") }
       groups = tnames.group_by { |tname| tname.split("/").first }
       groups.sort.each do |(_type, names)|
         puts("%-18s " * names.size % names.sort)

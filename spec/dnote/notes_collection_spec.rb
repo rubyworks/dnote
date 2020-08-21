@@ -7,8 +7,7 @@ RSpec.describe(DNote::NotesCollection) do
   let(:bar_hack) { instance_double(DNote::Note, file: "bar.rb", label: "HACK", line: 9) }
   let(:foo_todo) { instance_double(DNote::Note, file: "foo.rb", label: "TODO", line: 4) }
   let(:foo_hack) { instance_double(DNote::Note, file: "foo.rb", label: "HACK", line: 8) }
-  let(:notes) { [bar_todo, bar_hack, foo_todo, foo_hack] }
-  let(:notes_collection) { described_class.new(notes) }
+  let(:notes_collection) { described_class.new([bar_todo, bar_hack, foo_todo, foo_hack]) }
 
   describe("#counts") do
     it "returns correct counts" do

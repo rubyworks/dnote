@@ -75,7 +75,7 @@ module DNote
       else
         puts(result)
       end
-      $stderr << "(" + notes.counts.map { |l, n| "#{n} #{l}s" }.join(", ") + ")\n"
+      $stderr << "(#{notes.counts.map { |l, n| "#{n} #{l}s" }.join(', ')})\n"
     end
 
     def write(result, fname = nil)
@@ -147,7 +147,7 @@ module DNote
       end
 
       def respond_to_missing?(method)
-        @data.key? method.to_sym
+        @data.key?(method.to_sym) || super
       end
     end
   end
