@@ -1,20 +1,22 @@
+---
 language: ruby
-
-dist: xenial
 
 cache:
   bundler: true
 
-rvm:
-  - 2.5
-  - 2.6
-  - 2.7
-  - jruby-9.2
-  - jruby-head
-  - ruby-head
-  - rubinius-4
+script: bundle exec rake
 
-matrix:
+jobs:
+  include:
+    - rvm: 2.5
+    - rvm: 2.6
+    - rvm: 2.7
+    - rvm: jruby-9.2
+    - rvm: jruby-head
+    - rvm: ruby-head
+    - rvm: rubinius-4
+    - rvm: 2.7.1
+      script: bundle exec rubocop
   allow_failures:
     - rvm: jruby-9.2
     - rvm: jruby-head
