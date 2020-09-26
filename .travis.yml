@@ -16,6 +16,7 @@ jobs:
     - rvm: ruby-head
     - rvm: rubinius-4
     - rvm: 2.7.1
+      name: "RuboCop"
       script: bundle exec rubocop
   allow_failures:
     - rvm: jruby-9.2
