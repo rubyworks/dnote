@@ -162,10 +162,11 @@ module DNote
     end
 
     def remark(file)
-      @remark[File.extname(file)] ||= begin
-        mark = guess_marker(file)
-        Regexp.escape(mark)
-      end
+      @remark[File.extname(file)] ||=
+        begin
+          mark = guess_marker(file)
+          Regexp.escape(mark)
+        end
     end
 
     # Guess marker based on file extension. Fallsback to '#'

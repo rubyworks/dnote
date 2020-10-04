@@ -106,7 +106,7 @@ module DNote
     end
 
     def fu
-      @fu ||= begin
+      @fu ||=
         if dryrun? && debug?
           FileUtils::DryRun
         elsif dryrun?
@@ -116,7 +116,6 @@ module DNote
         else
           FileUtils
         end
-      end
     end
 
     # Evaluation scope for ERB templates

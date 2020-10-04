@@ -18,13 +18,14 @@ module DNote
 
     # Notes counts by label.
     def counts
-      @counts ||= begin
-        h = {}
-        by_label.each do |label, notes|
-          h[label] = notes.size
+      @counts ||=
+        begin
+          h = {}
+          by_label.each do |label, notes|
+            h[label] = notes.size
+          end
+          h
         end
-        h
-      end
     end
 
     # Iterate through notes.
