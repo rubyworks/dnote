@@ -34,7 +34,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "cucumber", "~> 5.0"
   spec.add_development_dependency "pry", "~> 0.13.0"
   spec.add_development_dependency "rake", "~> 13.0"
-  spec.add_development_dependency "rake-manifest", "~> 0.1.0"
+  spec.add_development_dependency "rake-manifest", "~> 0.2.0"
   spec.add_development_dependency "rspec", "~> 3.5"
   spec.add_development_dependency "rubocop", "~> 1.8.0"
   spec.add_development_dependency "rubocop-packaging", "~> 0.5.0"
