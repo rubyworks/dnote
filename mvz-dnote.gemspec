@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.executables = ["dnote"]
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "aruba", "~> 1.0"
+  spec.add_development_dependency "aruba", "~> 2.0"
   spec.add_development_dependency "cucumber", "~> 6.0"
   spec.add_development_dependency "pry", "~> 0.14.0"
   spec.add_development_dependency "rake", "~> 13.0"
