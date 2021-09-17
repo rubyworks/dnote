@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.authors = ["Thomas Sawyer", "Matijs van Zuijlen"]
   spec.email = ["matijs@matijs.net"]
 
-  spec.summary = "Extract developer'spec notes from source code."
+  spec.summary = "Extract developer's notes from source code."
   spec.description = <<~DESC
-    DNote makes it easy to extract developer'spec notes from source code,
+    DNote makes it easy to extract developer's notes from source code,
     and supports almost any language.
   DESC
   spec.homepage = "https://github.com/mvz/dnote"

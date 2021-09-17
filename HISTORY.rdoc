@@ -2,7 +2,12 @@
 
 == Unreleased
 
-* Drop support for Ruby 2.3
+== 1.9.0 / 2021-09-17
+
+* Drop support for Ruby 2.3 and 2.4
+* Officially support Ruby 2.7 and 3.0
+* Update development dependencies
+* Improve code quality
 
 == 1.8.0 / 2018-12-29
 
