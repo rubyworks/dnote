@@ -5,6 +5,7 @@ require_relative "lib/dnote/version"
 Gem::Specification.new do |spec|
   spec.name = "mvz-dnote"
   spec.version = DNote::VERSION
+
   spec.authors = ["Thomas Sawyer", "Matijs van Zuijlen"]
   spec.email = ["matijs@matijs.net"]
 
@@ -21,6 +22,7 @@ Gem::Specification.new do |spec|
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/mvz/dnote"
   spec.metadata["changelog_uri"] = "https://github.com/mvz/dnote/blob/master/HISTORY.rdoc"
+  spec.metadata["rubygems_mfa_required"] = "true"
 
   spec.files = File.readlines("Manifest.txt", chomp: true)
   spec.rdoc_options = ["--main", "README.md"]
@@ -36,7 +38,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "rake-manifest", "~> 0.2.0"
   spec.add_development_dependency "rspec", "~> 3.5"
-  spec.add_development_dependency "rubocop", "~> 1.22.0"
+  spec.add_development_dependency "rubocop", "~> 1.23.0"
   spec.add_development_dependency "rubocop-packaging", "~> 0.5.0"
   spec.add_development_dependency "rubocop-performance", "~> 1.12.0"
   spec.add_development_dependency "rubocop-rspec", "~> 2.6.0"
