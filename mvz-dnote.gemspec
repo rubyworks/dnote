@@ -5,6 +5,7 @@ require_relative "lib/dnote/version"
 Gem::Specification.new do |spec|
   spec.name = "mvz-dnote"
   spec.version = DNote::VERSION
+
   spec.authors = ["Thomas Sawyer", "Matijs van Zuijlen"]
   spec.email = ["matijs@matijs.net"]
 
@@ -21,6 +22,7 @@ Gem::Specification.new do |spec|
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/mvz/dnote"
   spec.metadata["changelog_uri"] = "https://github.com/mvz/dnote/blob/master/HISTORY.rdoc"
+  spec.metadata["rubygems_mfa_required"] = "true"
 
   spec.files = File.readlines("Manifest.txt", chomp: true)
   spec.rdoc_options = ["--main", "README.md"]
