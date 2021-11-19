@@ -5,7 +5,6 @@ require_relative "lib/dnote/version"
 Gem::Specification.new do |spec|
   spec.name = "mvz-dnote"
   spec.version = DNote::VERSION
-
   spec.authors = ["Thomas Sawyer", "Matijs van Zuijlen"]
   spec.email = ["matijs@matijs.net"]
 
@@ -16,7 +15,6 @@ Gem::Specification.new do |spec|
   DESC
   spec.homepage = "https://github.com/mvz/dnote"
   spec.license = "BSD-2-Clause"
-
   spec.required_ruby_version = ">= 2.6.0"
 
   spec.metadata["homepage_uri"] = spec.homepage
@@ -25,12 +23,12 @@ Gem::Specification.new do |spec|
   spec.metadata["rubygems_mfa_required"] = "true"
 
   spec.files = File.readlines("Manifest.txt", chomp: true)
-  spec.rdoc_options = ["--main", "README.md"]
-  spec.extra_rdoc_files = ["HISTORY.rdoc", "README.md", "COPYING.rdoc"]
-
   spec.bindir = "bin"
   spec.executables = ["dnote"]
   spec.require_paths = ["lib"]
+
+  spec.rdoc_options = ["--main", "README.md"]
+  spec.extra_rdoc_files = ["HISTORY.rdoc", "README.md", "COPYING.rdoc"]
 
   spec.add_development_dependency "aruba", "~> 2.0"
   spec.add_development_dependency "cucumber", "~> 7.0"
