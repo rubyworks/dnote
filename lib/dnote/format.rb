@@ -34,7 +34,7 @@ module DNote
 
     def render
       if notes.empty?
-        $stderr << "No #{notes.labels.join(', ')} notes.\n"
+        $stderr << "No #{notes.labels.join(", ")} notes.\n"
       else
         case format
         when "custom"
@@ -75,7 +75,7 @@ module DNote
       else
         puts(result)
       end
-      $stderr << "(#{notes.counts.map { |l, n| "#{n} #{l}s" }.join(', ')})\n"
+      $stderr << "(#{notes.counts.map { |l, n| "#{n} #{l}s" }.join(", ")})\n"
     end
 
     def write(result, fname = nil)

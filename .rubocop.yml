@@ -80,6 +80,10 @@ Style/NumericPredicate:
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
+# Make quoting outside and inside interpolation consistent
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes
+
 # Prefer symbols to look like symbols
 Style/SymbolArray:
   EnforcedStyle: brackets

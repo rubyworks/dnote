@@ -97,7 +97,7 @@ module DNote
         session.format = format
       end
       session.run
-      report "Updated #{output.to_s.sub("#{Dir.pwd}/", '')}" unless trial?
+      report "Updated #{output.to_s.sub("#{Dir.pwd}/", "")}" unless trial?
     end
 
     def clean_format(format)
