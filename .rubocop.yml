@@ -57,6 +57,10 @@ Metrics/BlockLength:
     - '*.gemspec'
     - 'spec/**/*'
 
+# Use standardrb style empty methods
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
 # Require at least two dependent lines before suggesting a guard clause
 Style/GuardClause:
   MinBodyLength: 2
