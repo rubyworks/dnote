@@ -23,7 +23,7 @@ module DNote
     DEFAULT_PATHS  = ["**/*.rb"].freeze
 
     # Default note labels to look for in source code. (NOT CURRENTLY USED!)
-    DEFAULT_LABELS = %w(TODO FIXME OPTIMIZE THINK DEPRECATE).freeze
+    DEFAULT_LABELS = %w[TODO FIXME OPTIMIZE THINK DEPRECATE].freeze
 
     # Files to search for notes.
     attr_reader :files

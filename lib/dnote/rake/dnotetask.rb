@@ -9,7 +9,7 @@ module DNote
     require "rake/clean"
 
     # Default note labels to looked for in source code.
-    DEFAULT_LABELS = %w(TODO FIXME OPTIMIZE DEPRECATE).freeze
+    DEFAULT_LABELS = %w[TODO FIXME OPTIMIZE DEPRECATE].freeze
 
     # File paths to search.
     attr_accessor :files
