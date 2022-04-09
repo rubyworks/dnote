@@ -76,10 +76,6 @@ Style/Next:
 Style/NumericPredicate:
   Enabled: false
 
-# Allow explicit return with multiple return values
-Style/RedundantReturn:
-  AllowMultipleReturnValues: true
-
 # Do not commit to use of interpolation
 Style/StringLiterals:
   EnforcedStyle: double_quotes
