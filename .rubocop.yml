@@ -39,6 +39,11 @@ Layout/MultilineOperationIndentation:
 Layout/SpaceBeforeBlockBraces:
   EnforcedStyleForEmptyBraces: space
 
+# Use standardrb style hash literals
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+  EnforcedStyleForEmptyBraces: no_space
+
 # Assume the programmer knows how bracketed block syntax works
 Lint/AmbiguousBlockAssociation:
   Enabled: false

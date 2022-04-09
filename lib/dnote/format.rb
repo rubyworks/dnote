@@ -14,7 +14,7 @@ module DNote
     require "rexml/text"
     require "dnote/core_ext"
 
-    EXTENSIONS = { "text" => "txt", "soap" => "xml", "xoxo" => "xml" }.freeze
+    EXTENSIONS = {"text" => "txt", "soap" => "xml", "xoxo" => "xml"}.freeze
 
     attr_reader :notes, :format, :output, :template, :title, :dryrun
 
