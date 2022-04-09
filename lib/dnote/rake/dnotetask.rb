@@ -40,10 +40,10 @@ module DNote
     def init
       require "dnote"
       require "dnote/format"
-      @files   = "**/*.rb"
-      @output  = "log/dnote"
+      @files = "**/*.rb"
+      @output = "log/dnote"
       @formats = ["index"]
-      @labels  = nil
+      @labels = nil
     end
 
     def define
@@ -79,13 +79,13 @@ module DNote
 
     def new_session
       ::DNote::Session.new do |s|
-        s.paths   = files
+        s.paths = files
         s.exclude = exclude
-        s.ignore  = ignore
-        s.labels  = labels
-        s.title   = title
-        s.output  = output
-        s.dryrun  = application.options.dryrun # trial?
+        s.ignore = ignore
+        s.labels = labels
+        s.title = title
+        s.output = output
+        s.dryrun = application.options.dryrun # trial?
       end
     end
 

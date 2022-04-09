@@ -24,12 +24,12 @@ module DNote
                    template: nil,
                    output: nil,
                    dryrun: false)
-      @notes    = notes
-      @format   = format
-      @title    = title
-      @dryrun   = dryrun
+      @notes = notes
+      @format = format
+      @title = title
+      @dryrun = dryrun
       @template = template
-      @output   = output
+      @output = output
     end
 
     def render
@@ -80,8 +80,8 @@ module DNote
 
     def write(result, fname = nil)
       if output.to_s[-1, 1] == "/" || File.directory?(output)
-        fmt  = format.split("/").first
-        ext  = EXTENSIONS[fmt] || fmt
+        fmt = format.split("/").first
+        ext = EXTENSIONS[fmt] || fmt
         file = File.join(output, fname || "notes.#{ext}")
       else
         file = output

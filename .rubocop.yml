@@ -17,6 +17,12 @@ AllCops:
 Layout/BeginEndAlignment:
   EnforcedStyleAlignWith: begin
 
+# Allow no extra spacing just like standardrb
+Layout/ExtraSpacing:
+  AllowForAlignment: false
+  AllowBeforeTrailingComments: false
+  ForceEqualSignAlignment: false
+
 # Be lenient with line length
 Layout/LineLength:
   Max: 92
