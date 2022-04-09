@@ -80,15 +80,15 @@ module DNote
 
     # Set default values for attributes.
     def initialize_defaults
-      @paths   = []
-      @labels  = []
+      @paths = []
+      @labels = []
       @exclude = []
-      @ignore  = []
-      @format  = DEFAULT_FORMAT
-      @title   = DEFAULT_TITLE
-      @dryrun  = false
-      @marker  = nil
-      @url     = nil
+      @ignore = []
+      @format = DEFAULT_FORMAT
+      @title = DEFAULT_TITLE
+      @dryrun = false
+      @marker = nil
+      @url = nil
       @context = 0
     end
 
@@ -148,7 +148,7 @@ module DNote
 
     # List availble format templates
     def list_templates
-      tdir   = File.join(DIR, "templates")
+      tdir = File.join(DIR, "templates")
       tfiles = Dir[File.join(tdir, "**/*.erb")]
       tnames = tfiles.map { |tname| tname.sub("#{tdir}/", "").chomp(".erb") }
       groups = tnames.group_by { |tname| tname.split("/").first }

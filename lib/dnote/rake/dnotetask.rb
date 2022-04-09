@@ -9,7 +9,7 @@ module DNote
     require "rake/clean"
 
     # Default note labels to looked for in source code.
-    DEFAULT_LABELS = %w(TODO FIXME OPTIMIZE DEPRECATE).freeze
+    DEFAULT_LABELS = %w[TODO FIXME OPTIMIZE DEPRECATE].freeze
 
     # File paths to search.
     attr_accessor :files
@@ -40,10 +40,10 @@ module DNote
     def init
       require "dnote"
       require "dnote/format"
-      @files   = "**/*.rb"
-      @output  = "log/dnote"
+      @files = "**/*.rb"
+      @output = "log/dnote"
       @formats = ["index"]
-      @labels  = nil
+      @labels = nil
     end
 
     def define
@@ -79,13 +79,13 @@ module DNote
 
     def new_session
       ::DNote::Session.new do |s|
-        s.paths   = files
+        s.paths = files
         s.exclude = exclude
-        s.ignore  = ignore
-        s.labels  = labels
-        s.title   = title
-        s.output  = output
-        s.dryrun  = application.options.dryrun # trial?
+        s.ignore = ignore
+        s.labels = labels
+        s.title = title
+        s.output = output
+        s.dryrun = application.options.dryrun # trial?
       end
     end
 
@@ -97,7 +97,7 @@ module DNote
         session.format = format
       end
       session.run
-      report "Updated #{output.to_s.sub("#{Dir.pwd}/", '')}" unless trial?
+      report "Updated #{output.to_s.sub("#{Dir.pwd}/", "")}" unless trial?
     end
 
     def clean_format(format)

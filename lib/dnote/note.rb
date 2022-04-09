@@ -30,12 +30,12 @@ module DNote
 
     # Initialize new Note instance.
     def initialize(notes, file, label, line, text, mark)
-      @notes   = notes
-      @file    = file
-      @label   = label
-      @line    = line
-      @text    = text.rstrip
-      @mark    = mark
+      @notes = notes
+      @file = file
+      @label = label
+      @line = line
+      @text = text.rstrip
+      @mark = mark
       @capture = []
     end
 
@@ -68,12 +68,12 @@ module DNote
     # TODO: Add +code+? Problem is that xml needs code in CDATA.
     #++
     def to_h
-      { "label" => label, "text" => textline, "file" => file, "line" => line }
+      {"label" => label, "text" => textline, "file" => file, "line" => line}
     end
 
     # Convert to Hash, leaving the note text verbatim.
     def to_h_raw
-      { "label" => label, "text" => text, "file" => file, "line" => line, "code" => code }
+      {"label" => label, "text" => text, "file" => file, "line" => line, "code" => code}
     end
 
     # Convert to JSON.

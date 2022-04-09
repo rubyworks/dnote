@@ -17,6 +17,12 @@ AllCops:
 Layout/BeginEndAlignment:
   EnforcedStyleAlignWith: begin
 
+# Allow no extra spacing just like standardrb
+Layout/ExtraSpacing:
+  AllowForAlignment: false
+  AllowBeforeTrailingComments: false
+  ForceEqualSignAlignment: false
+
 # Be lenient with line length
 Layout/LineLength:
   Max: 92
@@ -39,6 +45,11 @@ Layout/MultilineOperationIndentation:
 Layout/SpaceBeforeBlockBraces:
   EnforcedStyleForEmptyBraces: space
 
+# Use standardrb style hash literals
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+  EnforcedStyleForEmptyBraces: no_space
+
 # Assume the programmer knows how bracketed block syntax works
 Lint/AmbiguousBlockAssociation:
   Enabled: false
@@ -57,12 +68,9 @@ Metrics/BlockLength:
     - '*.gemspec'
     - 'spec/**/*'
 
-Performance/StartWith:
-  AutoCorrect: true
-
-# Allow and/or for control flow only
-Style/AndOr:
-  EnforcedStyle: conditionals
+# Use standardrb style empty methods
+Style/EmptyMethod:
+  EnforcedStyle: expanded
 
 # Require at least two dependent lines before suggesting a guard clause
 Style/GuardClause:
@@ -76,18 +84,12 @@ Style/Next:
 Style/NumericPredicate:
   Enabled: false
 
-# Use older RuboCop default
-Style/PercentLiteralDelimiters:
-  PreferredDelimiters:
-    '%W': ()
-    '%w': ()
-
-# Allow explicit return with multiple return values
-Style/RedundantReturn:
-  AllowMultipleReturnValues: true
-
 # Do not commit to use of interpolation
 Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+# Make quoting outside and inside interpolation consistent
+Style/StringLiteralsInInterpolation:
   EnforcedStyle: double_quotes
 
 # Prefer symbols to look like symbols

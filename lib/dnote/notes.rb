@@ -20,10 +20,10 @@ module DNote
   #++
   class Notes
     # Default paths (all ruby scripts).
-    DEFAULT_PATHS  = ["**/*.rb"].freeze
+    DEFAULT_PATHS = ["**/*.rb"].freeze
 
     # Default note labels to look for in source code. (NOT CURRENTLY USED!)
-    DEFAULT_LABELS = %w(TODO FIXME OPTIMIZE THINK DEPRECATE).freeze
+    DEFAULT_LABELS = %w[TODO FIXME OPTIMIZE THINK DEPRECATE].freeze
 
     # Files to search for notes.
     attr_reader :files
@@ -45,13 +45,13 @@ module DNote
 
     # New set of notes for give +files+ and optional special labels.
     def initialize(files, options = {})
-      @files   = [files].flatten
-      @labels  = [options[:labels] || DEFAULT_LABELS].flatten.compact
-      @colon   = options[:colon].nil? ? true : options[:colon]
-      @marker  = options[:marker]
-      @url     = options[:url]
+      @files = [files].flatten
+      @labels = [options[:labels] || DEFAULT_LABELS].flatten.compact
+      @colon = options[:colon].nil? ? true : options[:colon]
+      @marker = options[:marker]
+      @url = options[:url]
       @context = options[:context] || 0
-      @remark  = {}
+      @remark = {}
 
       parse
     end

@@ -14,7 +14,7 @@ module DNote
     require "rexml/text"
     require "dnote/core_ext"
 
-    EXTENSIONS = { "text" => "txt", "soap" => "xml", "xoxo" => "xml" }.freeze
+    EXTENSIONS = {"text" => "txt", "soap" => "xml", "xoxo" => "xml"}.freeze
 
     attr_reader :notes, :format, :output, :template, :title, :dryrun
 
@@ -24,17 +24,17 @@ module DNote
                    template: nil,
                    output: nil,
                    dryrun: false)
-      @notes    = notes
-      @format   = format
-      @title    = title
-      @dryrun   = dryrun
+      @notes = notes
+      @format = format
+      @title = title
+      @dryrun = dryrun
       @template = template
-      @output   = output
+      @output = output
     end
 
     def render
       if notes.empty?
-        $stderr << "No #{notes.labels.join(', ')} notes.\n"
+        $stderr << "No #{notes.labels.join(", ")} notes.\n"
       else
         case format
         when "custom"
@@ -75,13 +75,13 @@ module DNote
       else
         puts(result)
       end
-      $stderr << "(#{notes.counts.map { |l, n| "#{n} #{l}s" }.join(', ')})\n"
+      $stderr << "(#{notes.counts.map { |l, n| "#{n} #{l}s" }.join(", ")})\n"
     end
 
     def write(result, fname = nil)
       if output.to_s[-1, 1] == "/" || File.directory?(output)
-        fmt  = format.split("/").first
-        ext  = EXTENSIONS[fmt] || fmt
+        fmt = format.split("/").first
+        ext = EXTENSIONS[fmt] || fmt
         file = File.join(output, fname || "notes.#{ext}")
       else
         file = output
