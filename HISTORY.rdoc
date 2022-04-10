@@ -1,6 +1,10 @@
 = RELEASE HISTORY
 
-== Unreleased
+== 1.10.0 / 2022-04-10
+
+* Add support for Ruby 3.1
+* Drop support for Ruby 2.5
+* Loosen development dependencies
 
 == 1.9.0 / 2021-09-17
 
