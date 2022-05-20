@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
   spec.extra_rdoc_files = ["HISTORY.rdoc", "README.md", "COPYING.rdoc"]
 
   spec.add_development_dependency "aruba", "~> 2.0"
-  spec.add_development_dependency "cucumber", "~> 7.0"
+  spec.add_development_dependency "cucumber", "~> 8.0"
   spec.add_development_dependency "pry", "~> 0.14.0"
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "rake-manifest", "~> 0.2.0"
