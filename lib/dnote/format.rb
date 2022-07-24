@@ -91,7 +91,7 @@ module DNote
         puts "write: #{file}"
       else
         dir = File.dirname(file)
-        fu.mkdir(dir) unless File.exist?(dir)
+        FileUtils.mkdir_p(dir, **fu_opts)
         File.open(file, "w") { |f| f << result }
       end
       file
@@ -105,16 +105,13 @@ module DNote
       $DEBUG
     end
 
-    def fu
-      @fu ||=
-        if dryrun? && debug?
-          FileUtils::DryRun
-        elsif dryrun?
-          FileUtils::Noop
-        elsif debug?
-          FileUtils::Verbose
-        else
-          FileUtils
+    def fu_opts
+      @fu_opts ||=
+        begin
+          opts = {}
+          opts[:noop] = true if dryrun?
+          opts[:verbose] = true if debug?
+          opts
         end
     end
 
